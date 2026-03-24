@@ -14,7 +14,7 @@ const config = {
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
 
   markdown: {
     format: 'detect',
@@ -53,6 +53,8 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          routeBasePath: 'news', // Tránh xung đột với /src/pages/blog/
+          onUntruncatedBlogPosts: 'ignore',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

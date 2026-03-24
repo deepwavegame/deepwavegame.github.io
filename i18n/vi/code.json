@@ -226,5 +226,38 @@
   },
   "assets.common.price": {
     "message": "Giá"
-  }
+  },
+  "blog.page.title.part1": {
+    "message": "BÁO CÁO"
+  },
+  "blog.page.title.part2": {
+    "message": "THỰC ĐỊA"
+  },
+  "blog.page.subtitle": {
+    "message": "Phân tích kỹ thuật, báo cáo thực địa về các thực thể kinh dị và nhật ký kỹ thuật của studio."
+  },
+  "blog.post1.title": { "message": "Biến dạng Đỉnh (Vertex Displacement) Bậc cao cho Hiệu ứng Máu me" },
+  "blog.post1.desc": { "message": "Tạo các bề mặt biến dạng động bằng Shader Graph và URP cho các hiệu ứng kinh dị chân thực." },
+  "blog.post2.title": { "message": "Sương mù Thể tích (Volumetric Fog) trong URP: Phân tích Chuyên sâu" },
+  "blog.post2.desc": { "message": "Tối ưu hóa tán xạ khí quyển để tạo ra bầu không khí sương mù hoàn hảo mà không làm giảm hiệu năng." },
+  "blog.post3.title": { "message": "Âm thanh Binaural: Bí mật của Nỗi sợ Thực sự" },
+  "blog.post3.desc": { "message": "Cách triển khai âm thanh không gian HRTF trong Unity để khiến người chơi phải ngoảnh đầu trong đời thực." },
+  "blog.post4.title": { "message": "Scriptable Render Features Tùy chỉnh cho Hiệu ứng Glitch" },
+  "blog.post4.desc": { "message": "Sử dụng trình kết xuất URP để tạo ra các hiệu ứng hư hỏng kỹ thuật số và mất kiểm soát tâm lý cấp độ chuyên nghiệp." },
+  "blog.post5.title": { "message": "Compute Shaders cho Các Thực thể Kinh dị Quy mô lớn" },
+  "blog.post5.desc": { "message": "Mô phỏng hàng ngàn sinh vật bầy đàn bằng logic tính toán trên GPU." },
+  "blog.post6.title": { "message": "Tại sao \"P.T.\" Vẫn Ám ảnh Các Nhà Thiết kế Màn chơi" },
+  "blog.post6.desc": { "message": "Phân tích kỹ thuật về hành lang lặp lại và cách nó làm chủ tâm lý mệt mỏi do vòng lặp." },
+  "blog.post7.title": { "message": "Camera Resident Evil: Cố định so với Góc nhìn Ngang vai" },
+  "blog.post7.desc": { "message": "Phân tích cách góc nhìn camera quyết định nỗi sợ và sự chủ động của người chơi trong lịch sử game kinh dị." },
+  "blog.post8.title": { "message": "Subnautica: Nỗi sợ hãi từ Độ sâu Không xác định" },
+  "blog.post8.desc": { "message": "Xem xét hội chứng sợ biển sâu (thalassophobia) và thiết kế âm thanh như những nhân tố kinh dị chính." },
+  "blog.post9.title": { "message": "Alien Isolation: Phân tích AI Hành vi" },
+  "blog.post9.desc": { "message": "Cách Creative Assembly xây dựng hệ thống 'hai bộ não' cho nỗi kinh hoàng không theo kịch bản của Xenomorph." },
+  "blog.post10.title": { "message": "Âm thanh của Silent Hill: Nỗi kinh hoàng Công nghiệp của Akira Yamaoka" },
+  "blog.post10.desc": { "message": "Giải mã việc sử dụng tạp âm trắng và các mẫu âm thanh công nghiệp để tạo ra sự khó chịu." },
+  "blog.post11.title": { "message": "Chuyển dịch sang Unity 6: Chiến lược của Wave0084" },
+  "blog.post11.desc": { "message": "Tại sao chúng tôi chuyển quy trình sản xuất sang phiên bản Unity mới nhất cho dự án \"My Sister\"." },
+  "blog.post12.title": { "message": "Motion Capture với Ngân sách Indie" },
+  "blog.post12.desc": { "message": "Sử dụng Rokoko và các công cụ video AI để đạt được các chuyển động kinh dị thực tế." }
 }
