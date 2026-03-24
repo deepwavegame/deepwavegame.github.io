@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate';
+import assets from '@site/src/data/assets';
 
 function AssetGrid({ children }) {
   return (
@@ -11,7 +12,7 @@ function AssetGrid({ children }) {
   );
 }
 
-function AssetCard({ title, type, description, price, cta }) {
+function AssetCard({ title, type, description, price, link }) {
   return (
     <div className="col col--4" style={{ marginBottom: '2rem' }}>
       <div className="unity-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -25,7 +26,9 @@ function AssetCard({ title, type, description, price, cta }) {
         </div>
         <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span style={{ fontWeight: '800', color: '#ffffff' }}>{price}</span>
-          <Link className="unity-button primary" to="#" style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem' }}>{cta}</Link>
+          <Link className="unity-button primary" to={link} style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem' }}>
+             <Translate id="assets.cta.acquire">ACQUIRE</Translate>
+          </Link>
         </div>
       </div>
     </div>
@@ -44,27 +47,16 @@ export default function Assets() {
         </p>
         
         <AssetGrid>
-          <AssetCard 
-            title="Abandoned Cabin Prop Pack"
-            type="3D Models"
-            description="50+ low-poly props with high-fidelity PBR textures. Perfect for desolate interior environments."
-            price="FREE"
-            cta="DOWNLOAD"
-          />
-          <AssetCard 
-            title="Horror Decals & Blood"
-            type="Textures"
-            description="100+ high-resolution decals. Dried blood, handprints, and ritualistic symbols."
-            price="$4.99"
-            cta="ACQUIRE"
-          />
-          <AssetCard 
-            title="Creepy Ambient Soundscape"
-            type="Audio"
-            description="60 minutes of haunting atmospheric drones and localized sound effects for horror settings."
-            price="$15.00"
-            cta="ACQUIRE"
-          />
+          {assets.map((asset) => (
+            <AssetCard 
+              key={asset.id}
+              title={asset.title}
+              type={asset.type || '3D Models'}
+              description={asset.description}
+              price={asset.price}
+              link={asset.link}
+            />
+          ))}
         </AssetGrid>
       </main>
     </Layout>

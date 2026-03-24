@@ -1,0 +1,14 @@
+{
+  "nav.item.label.Games": {
+    "message": "ゲーム"
+  },
+  "nav.item.label.Tools": {
+    "message": "ツール"
+  },
+  "nav.item.label.Assets": {
+    "message": "アセット"
+  },
+  "nav.item.label.Blog": {
+    "message": "ブログ"
+  }
+}

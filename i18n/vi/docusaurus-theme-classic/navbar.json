@@ -1,0 +1,14 @@
+{
+  "nav.item.label.Games": {
+    "message": "Trò chơi"
+  },
+  "nav.item.label.Tools": {
+    "message": "Công cụ"
+  },
+  "nav.item.label.Assets": {
+    "message": "Tài nguyên"
+  },
+  "nav.item.label.Blog": {
+    "message": "Blog"
+  }
+}

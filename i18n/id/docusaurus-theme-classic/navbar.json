@@ -1,0 +1,14 @@
+{
+  "nav.item.label.Games": {
+    "message": "Permainan"
+  },
+  "nav.item.label.Tools": {
+    "message": "Alat"
+  },
+  "nav.item.label.Assets": {
+    "message": "Aset"
+  },
+  "nav.item.label.Blog": {
+    "message": "Blog"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "homepage.tagline": {
+    "message": "独立恐怖工作室 & 技术解决方案"
+  },
+  "games.view_details": {
+    "message": "启动协议"
+  },
+  "tools.view_specs": {
+    "message": "技术规格"
+  },
+  "tools.view_docs": {
+    "message": "开发文档"
+  },
+  "games.my-sister.title": {
+    "message": "My Sister - 我的妹妹"
+  },
+  "games.my-sister.description": {
+    "message": "心理第一人称恐怖。探索破碎家庭的扭曲记忆，寻找失踪的妹妹。基于 Unity HDRP 构建，极具沉浸感。"
+  },
+  "tools.unity-smart-sheet.title": {
+    "message": "Unity Smart Sheet"
+  },
+  "tools.unity-smart-sheet.description": {
+    "message": "Unity 编辑器内强大的数据管理。直接将 Google 表格导入、编辑并同步到 ScriptableObjects。"
+  },
+  "tools.simple-paint.title": {
+    "message": "Simple Paint"
+  },
+  "tools.simple-paint.description": {
+    "message": "适用于 Unity 项目的轻量级 2D 绘图系统。非常适合原型设计和游戏内绘图机制。"
+  },
+  "assets.horror-pack.title": {
+    "message": "恐怖环境包 Vol. 1"
+  },
+  "assets.horror-pack.description": {
+    "message": "用于废弃工业设置的模块化资产。适用于 Unity 和 Unreal 引擎的高质量 PBR 贴图。"
+  },
+  "assets.cta.acquire": {
+    "message": "立即获取"
+  }
+}

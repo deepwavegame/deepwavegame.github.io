@@ -16,11 +16,6 @@ Your goal is to build a high-end, high-performance portfolio website using Docus
 ## 2. Visual Identity: "Unity-Horror"
 - **Theme:** Professional Indie Horror Studio.
 - **Atmosphere:** Mysterious, technical, and refined.
-- **Style Guide:** - Inspired by Unity Editor's dark theme (Deep grays, sharp edges).
-    - Palette: Dark Slate (#1c1c1c), Deep Black (#0a0a0a).
-    - Accent: Ghostly Cyan (#00e5ff) for technical highlights.
-    - Border-radius: Minimal (2px - 4px).
-- **Product Grid:** Responsive grid (1-2-4 columns) with subtle hover glow effects.
 
 ## 3. Globalization (i18n)
 - Support 5 locales: English (default), Vietnamese, Chinese, Japanese, and Indonesian.

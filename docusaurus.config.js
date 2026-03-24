@@ -15,7 +15,19 @@ const config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  
+  markdown: {
+    format: 'detect',
+    mermaid: true,
+    preprocessor: ({filePath, fileContent}) => {
+      return fileContent;
+    },
+    mdx1Compat: {
+      comments: true,
+      admonitions: true,
+      headingIds: true,
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -71,30 +83,14 @@ const config = {
           {to: '/assets', label: 'Assets', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            type: 'dropdown',
-            label: 'Documentation',
-            position: 'left',
-            items: [
-              {
-                type: 'docSidebar',
-                sidebarId: 'unitySmartSheetSidebar',
-                label: 'Unity Smart Sheet',
-              },
-              {
-                type: 'docSidebar',
-                sidebarId: 'simplePaintSidebar',
-                label: 'Simple Paint',
-              },
-            ],
-          },
-          {
             type: 'localeDropdown',
             position: 'right',
           },
           {
             href: 'https://github.com/deepwavegame',
-            label: 'GitHub',
             position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
           },
         ],
       },
@@ -102,29 +98,39 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Studio',
+            title: 'Products',
             items: [
               { label: 'Games', to: '/games' },
-              { label: 'Tools', to: '/tools' },
-              { label: 'Assets', to: '/assets' },
+              { label: 'Unity Tools', to: '/tools' },
+              { label: '3D Assets', to: '/assets' },
             ],
           },
           {
-            title: 'Documentation',
+            title: 'Resources',
             items: [
-              { label: 'Unity Smart Sheet', to: '/docs/tools/unity-smart-sheet/intro' },
-              { label: 'Simple Paint', to: '/docs/tools/simple-paint/intro' },
+              { label: 'Documentation', to: '/docs/tools/unity-smart-sheet/intro' },
+              { label: 'Dev Blog', to: '/blog' },
+              { label: 'Support', href: 'mailto:support@wave0084.com' },
             ],
           },
           {
-            title: 'Social',
+            title: 'Community',
             items: [
+              { label: 'Discord', href: 'https://discord.gg/wave0084' },
+              { label: 'Twitter / X', href: 'https://twitter.com/wave0084' },
+              { label: 'YouTube', href: 'https://youtube.com/@wave0084' },
               { label: 'GitHub', href: 'https://github.com/deepwavegame' },
-              { label: 'Twitter', href: '#' },
+            ],
+          },
+          {
+            title: 'Legal',
+            items: [
+              { label: 'Privacy Policy', to: '/privacy' },
+              { label: 'Terms of Service', to: '/terms' },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Wave0084 Studio. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} WAVE0084 STUDIO. All Rights Reserved.`,
       },
     }),
 };

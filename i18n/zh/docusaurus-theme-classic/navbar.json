@@ -1,0 +1,14 @@
+{
+  "nav.item.label.Games": {
+    "message": "游戏"
+  },
+  "nav.item.label.Tools": {
+    "message": "工具"
+  },
+  "nav.item.label.Assets": {
+    "message": "资源"
+  },
+  "nav.item.label.Blog": {
+    "message": "博客"
+  }
+}

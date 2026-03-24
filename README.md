@@ -6,24 +6,6 @@ Chào mừng bạn đến với kho lưu trữ chính thức của **Wave0084 St
 
 ![Wave0084 Header](https://images.unsplash.com/photo-1505634467193-703328080f5d?auto=format&fit=crop&w=1200&q=80)
 
-## 🎮 Game Projects
-
-### [My Sister - Em Gái Tôi](https://deepwavegame.github.io/wave0084.com/games/my-sister)
-Một tựa game kinh dị góc nhìn thứ nhất (FPS Horror) đầy ám ảnh. Khám phá những mảnh ký ức méo mó trong một ngôi nhà gỗ bỏ hoang để tìm lại người em gái mất tích.
-- **Engine:** Unity HDRP
-- **Features:** Spatial Audio, Psychological Puzzles, AAA Lighting.
-
----
-
-## 🛠️ Technical Solutions
-
-Chúng tôi chia sẻ những công cụ (Battle-tested tools) được đúc kết từ chính quy trình sản xuất của studio:
-
-- **[Unity Smart Sheet](https://deepwavegame.github.io/wave0084.com/docs/tools/unity-smart-sheet/intro):** Quản lý dữ liệu Game ngay trong Unity Editor qua giao diện Spreadsheet, đồng bộ hóa mạnh mẽ với Google Sheets.
-- **[Simple Paint (Blender Addon)](https://deepwavegame.github.io/wave0084.com/docs/tools/simple-paint/intro):** Hệ thống Layering siêu nhanh cho Texture Painting trong Blender, tối ưu cho Indie Workflow.
-
----
-
 ## 🌐 Globalization (i18n)
 
 Trang web hỗ trợ đa ngôn ngữ để phục vụ cộng đồng toàn cầu:

@@ -1,0 +1,38 @@
+{
+  "footer.title.Products": {
+    "message": "Sản phẩm"
+  },
+  "footer.title.Resources": {
+    "message": "Tài nguyên"
+  },
+  "footer.title.Community": {
+    "message": "Cộng đồng"
+  },
+  "footer.title.Legal": {
+    "message": "Pháp lý"
+  },
+  "footer.link.label.Games": {
+    "message": "Trò chơi"
+  },
+  "footer.link.label.Unity Tools": {
+    "message": "Công cụ Unity"
+  },
+  "footer.link.label.3D Assets": {
+    "message": "Tài nguyên 3D"
+  },
+  "footer.link.label.Documentation": {
+    "message": "Tài liệu hướng dẫn"
+  },
+  "footer.link.label.Dev Blog": {
+    "message": "Blog phát triển"
+  },
+  "footer.link.label.Support": {
+    "message": "Hỗ trợ kỹ thuật"
+  },
+  "footer.link.label.Privacy Policy": {
+    "message": "Chính sách bảo mật"
+  },
+  "footer.link.label.Terms of Service": {
+    "message": "Điều khoản dịch vụ"
+  }
+}

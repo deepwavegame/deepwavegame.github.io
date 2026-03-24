@@ -1,0 +1,38 @@
+{
+  "footer.title.Products": {
+    "message": "产品"
+  },
+  "footer.title.Resources": {
+    "message": "资源"
+  },
+  "footer.title.Community": {
+    "message": "社区"
+  },
+  "footer.title.Legal": {
+    "message": "法律"
+  },
+  "footer.link.label.Games": {
+    "message": "游戏"
+  },
+  "footer.link.label.Unity Tools": {
+    "message": "Unity 工具"
+  },
+  "footer.link.label.3D Assets": {
+    "message": "3D 资源"
+  },
+  "footer.link.label.Documentation": {
+    "message": "文档"
+  },
+  "footer.link.label.Dev Blog": {
+    "message": "开发博客"
+  },
+  "footer.link.label.Support": {
+    "message": "支持"
+  },
+  "footer.link.label.Privacy Policy": {
+    "message": "隐私政策"
+  },
+  "footer.link.label.Terms of Service": {
+    "message": "服务条款"
+  }
+}

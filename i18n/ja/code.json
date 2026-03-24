@@ -1,0 +1,41 @@
+{
+  "homepage.tagline": {
+    "message": "インディーホラースタジオ ＆ テクニカルソリューション"
+  },
+  "games.view_details": {
+    "message": "プロトコル開始"
+  },
+  "tools.view_specs": {
+    "message": "技術仕様"
+  },
+  "tools.view_docs": {
+    "message": "ドキュメント"
+  },
+  "games.my-sister.title": {
+    "message": "My Sister - 私の妹"
+  },
+  "games.my-sister.description": {
+    "message": "心理的一人称ホラー。行方不明の妹を探しながら、壊れた家の歪んだ記憶を探索します。極限の没入感を実現するために Unity HDRP で構築されています。"
+  },
+  "tools.unity-smart-sheet.title": {
+    "message": "Unity Smart Sheet"
+  },
+  "tools.unity-smart-sheet.description": {
+    "message": "Unity エディター内での強力なデータ管理。Google スプレッドシートを ScriptableObjects に直接インポート、編集、同期します。"
+  },
+  "tools.simple-paint.title": {
+    "message": "Simple Paint"
+  },
+  "tools.simple-paint.description": {
+    "message": "Unity プロジェクト向けの軽量な 2D ペイント システム。プロトタイピングやゲーム内の描画メカニズムに最適です。"
+  },
+  "assets.horror-pack.title": {
+    "message": "ホラー環境パック Vol. 1"
+  },
+  "assets.horror-pack.description": {
+    "message": "放棄された工業施設向けのモジュール式アセット。Unity および Unreal Engine 用の高品質な PBR テクスチャ。"
+  },
+  "assets.cta.acquire": {
+    "message": "今すぐ入手"
+  }
+}

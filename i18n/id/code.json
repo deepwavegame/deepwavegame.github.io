@@ -1,0 +1,41 @@
+{
+  "homepage.tagline": {
+    "message": "Studio Horor Indie & Solusi Teknis"
+  },
+  "games.view_details": {
+    "message": "Mulai Protokol"
+  },
+  "tools.view_specs": {
+    "message": "Spesifikasi Teknis"
+  },
+  "tools.view_docs": {
+    "message": "Dokumentasi"
+  },
+  "games.my-sister.title": {
+    "message": "My Sister - Adik Perempuanku"
+  },
+  "games.my-sister.description": {
+    "message": "Horor psikologis sudut pandang pertama. Jelajahi kenangan menyimpang dari rumah yang hancur saat Anda mencari saudara Anda yang hilang. Dibangun di atas Unity HDRP untuk imersi ekstrem."
+  },
+  "tools.unity-smart-sheet.title": {
+    "message": "Unity Smart Sheet"
+  },
+  "tools.unity-smart-sheet.description": {
+    "message": "Manajemen data yang kuat dalam Unity Editor. Impor, edit, và sinkronkan Google Sheets langsung ke ScriptableObjects."
+  },
+  "tools.simple-paint.title": {
+    "message": "Simple Paint"
+  },
+  "tools.simple-paint.description": {
+    "message": "Sistem lukis 2D ringan untuk proyek Unity. Sempurna untuk pembuatan prototipe và mekanik menggambar dalam game."
+  },
+  "assets.horror-pack.title": {
+    "message": "Paket Lingkungan Horor Vol. 1"
+  },
+  "assets.horror-pack.description": {
+    "message": "Aset modular untuk pengaturan industri yang ditinggalkan. Tekstur PBR berkualitas tinggi untuk Unity và Unreal Engine."
+  },
+  "assets.cta.acquire": {
+    "message": "Dapatkan Sekarang"
+  }
+}

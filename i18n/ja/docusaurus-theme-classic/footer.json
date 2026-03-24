@@ -1,0 +1,38 @@
+{
+  "footer.title.Products": {
+    "message": "製品"
+  },
+  "footer.title.Resources": {
+    "message": "リソース"
+  },
+  "footer.title.Community": {
+    "message": "コミュニティ"
+  },
+  "footer.title.Legal": {
+    "message": "法的"
+  },
+  "footer.link.label.Games": {
+    "message": "ゲーム"
+  },
+  "footer.link.label.Unity Tools": {
+    "message": "Unity ツール"
+  },
+  "footer.link.label.3D Assets": {
+    "message": "3D アセット"
+  },
+  "footer.link.label.Documentation": {
+    "message": "ドキュメント"
+  },
+  "footer.link.label.Dev Blog": {
+    "message": "開発ブログ"
+  },
+  "footer.link.label.Support": {
+    "message": "サポート"
+  },
+  "footer.link.label.Privacy Policy": {
+    "message": "プライバシーポリシー"
+  },
+  "footer.link.label.Terms of Service": {
+    "message": "利用規約"
+  }
+}

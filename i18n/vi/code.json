@@ -70,5 +70,32 @@
   "tools.view_docs": {
     "message": "TÀI LIỆU HƯỚNG DẪN",
     "description": "Nút xem tài liệu công cụ"
+  },
+  "games.my-sister.title": {
+    "message": "My Sister - Em Gái Tôi"
+  },
+  "games.my-sister.description": {
+    "message": "Một trò chơi kinh dị tâm lý góc nhìn thứ nhất. Khám phá những ký ức méo mó của một ngôi nhà đổ nát khi bạn tìm kiếm người em mất tích. Được xây dựng trên Unity HDRP cho trải nghiệm cực kỳ chân thực."
+  },
+  "tools.unity-smart-sheet.title": {
+    "message": "Unity Smart Sheet"
+  },
+  "tools.unity-smart-sheet.description": {
+    "message": "Quản lý dữ liệu mạnh mẽ ngay trong Unity Editor. Nhập, chỉnh sửa và đồng bộ Google Sheets trực tiếp vào ScriptableObjects."
+  },
+  "tools.simple-paint.title": {
+    "message": "Simple Paint"
+  },
+  "tools.simple-paint.description": {
+    "message": "Hệ thống vẽ 2D gọn nhẹ cho các dự án Unity. Hoàn hảo cho việc tạo mẫu và các cơ chế vẽ trong trò chơi."
+  },
+  "assets.horror-pack.title": {
+    "message": "Gói Môi Trường Kinh Dị Vol. 1"
+  },
+  "assets.horror-pack.description": {
+    "message": "Các tài nguyên mô-đun cho bối cảnh công nghiệp bỏ hoang. Kết cấu PBR chất lượng cao cho Unity và Unreal Engine."
+  },
+  "assets.cta.acquire": {
+    "message": "SỞ HỮU NGAY"
   }
 }

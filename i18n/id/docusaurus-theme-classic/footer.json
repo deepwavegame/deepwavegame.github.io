@@ -1,0 +1,38 @@
+{
+  "footer.title.Products": {
+    "message": "Produk"
+  },
+  "footer.title.Resources": {
+    "message": "Sumber Daya"
+  },
+  "footer.title.Community": {
+    "message": "Komunitas"
+  },
+  "footer.title.Legal": {
+    "message": "Hukum"
+  },
+  "footer.link.label.Games": {
+    "message": "Permainan"
+  },
+  "footer.link.label.Unity Tools": {
+    "message": "Alat Unity"
+  },
+  "footer.link.label.3D Assets": {
+    "message": "Aset 3D"
+  },
+  "footer.link.label.Documentation": {
+    "message": "Dokumentasi"
+  },
+  "footer.link.label.Dev Blog": {
+    "message": "Blog Pengembang"
+  },
+  "footer.link.label.Support": {
+    "message": "Dukungan"
+  },
+  "footer.link.label.Privacy Policy": {
+    "message": "Kebijakan Privasi"
+  },
+  "footer.link.label.Terms of Service": {
+    "message": "Ketentuan Layanan"
+  }
+}

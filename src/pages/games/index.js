@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate';
+import games from '@site/src/data/games';
 
 export default function Games() {
   return (
@@ -14,31 +15,37 @@ export default function Games() {
         </h1>
         
         <div className="row" style={{ marginTop: '4rem' }}>
-          <div className="col col--6">
-            <div className="unity-card" style={{ padding: '0', overflow: 'hidden' }}>
-              <div style={{ height: '300px', backgroundColor: '#050505', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #222' }}>
-                <h2 className="horror-title" style={{ fontSize: '3rem', letterSpacing: '8px' }}>MY SISTER</h2>
-              </div>
-              <div style={{ padding: '2rem' }}>
-                <h3 style={{ color: '#00e5ff' }}>My Sister - Em Gái Tôi</h3>
-                <p style={{ color: '#aaa', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                  A psychological first-person horror. Explore the distorted memories of a broken home as you search for your missing sibling. Built on Unity HDRP for extreme immersion.
-                </p>
-                <div style={{ marginTop: '2rem' }}>
-                  <Link className="unity-button primary" to="/games/my-sister" style={{ width: '100%' }}>
-                    <Translate id="games.view_details">PROTOCOL INITIATE</Translate>
-                  </Link>
-                </div>
+          {games.map((game) => (
+            <div className="col col--6" key={game.id} style={{ marginBottom: '2rem' }}>
+              <div className="unity-card" style={{ padding: '0', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                {game.status === 'development' ? (
+                   <div style={{ height: '300px', backgroundColor: 'rgba(255,255,255,0.02)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #222', borderStyle: 'dashed' }}>
+                     <p style={{ color: '#444', letterSpacing: '2px' }}>{game.title}</p>
+                     <p style={{ color: '#222', fontSize: '0.8rem' }}>{game.description}</p>
+                   </div>
+                ) : (
+                  <>
+                    <div style={{ height: '300px', backgroundColor: '#050505', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #222' }}>
+                      <h2 className="horror-title" style={{ fontSize: '3rem', letterSpacing: '8px' }}>
+                        {game.id.toUpperCase().replace('-', ' ')}
+                      </h2>
+                    </div>
+                    <div style={{ padding: '2rem', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                      <h3 style={{ color: '#00e5ff' }}>{game.title}</h3>
+                      <p style={{ color: '#aaa', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                        {game.description}
+                      </p>
+                      <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
+                        <Link className="unity-button primary" to={game.link} style={{ width: '100%' }}>
+                          <Translate id="games.view_details">PROTOCOL INITIATE</Translate>
+                        </Link>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
-          </div>
-          
-          <div className="col col--6">
-            <div className="unity-card" style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.02)', borderStyle: 'dashed' }}>
-              <p style={{ color: '#444', letterSpacing: '2px' }}>[ CLASSIFIED PROJECT ]</p>
-              <p style={{ color: '#222', fontSize: '0.8rem' }}>Under Development</p>
-            </div>
-          </div>
+          ))}
         </div>
       </main>
     </Layout>
