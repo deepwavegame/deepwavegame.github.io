@@ -7,7 +7,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   url: 'https://deepwavegame.github.io',
-  baseUrl: '/wave0084.com/',
+  baseUrl: '/',
 
   organizationName: 'deepwavegame',
   projectName: 'wave0084.com',
@@ -15,11 +15,11 @@ const config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
-  
+
   markdown: {
     format: 'detect',
     mermaid: true,
-    preprocessor: ({filePath, fileContent}) => {
+    preprocessor: ({ filePath, fileContent }) => {
       return fileContent;
     },
     mdx1Compat: {
@@ -78,10 +78,10 @@ const config = {
           style: { filter: 'drop-shadow(0 0 5px #00e5ff)' },
         },
         items: [
-          {to: '/games', label: 'Games', position: 'left'},
-          {to: '/tools', label: 'Tools', position: 'left'},
-          {to: '/assets', label: 'Assets', position: 'left'},
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: '/games', label: 'Games', position: 'left' },
+          { to: '/tools', label: 'Tools', position: 'left' },
+          { to: '/assets', label: 'Assets', position: 'left' },
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             type: 'localeDropdown',
             position: 'right',

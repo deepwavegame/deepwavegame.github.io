@@ -2,8 +2,50 @@
   "homepage.tagline": {
     "message": "インディーホラースタジオ ＆ テクニカルソリューション"
   },
+  "homepage.cta.latest_game": {
+    "message": "最新プロジェクト"
+  },
+  "homepage.cta.explore_tools": {
+    "message": "ツールを探索"
+  },
+  "homepage.sections.about.title.part1": {
+    "message": "私たちは "
+  },
+  "homepage.sections.about.description": {
+    "message": "心理的ホラーと高性能な Unity ツールを専門とするテクニカルインディースタジオです。デジタルな恐怖とクリエイティブなワークフロー効率の限界を押し広げています。"
+  },
+  "homepage.sections.featured.title.part1": {
+    "message": "コア "
+  },
+  "homepage.features.games.title": {
+    "message": "ゲーム"
+  },
+  "homepage.features.games.desc": {
+    "message": "HDRP で構築された、深く雰囲気のあるホラー体験。"
+  },
+  "homepage.features.games.cta": {
+    "message": "今すぐプレイ"
+  },
+  "homepage.features.tools.title": {
+    "message": "ツール"
+  },
+  "homepage.features.tools.desc": {
+    "message": "自社の制作サイクルで使用されているプロフェッショナルな Unity パッケージ。"
+  },
+  "homepage.features.tools.cta": {
+    "message": "仕様を見る"
+  },
+  "homepage.features.assets.title": {
+    "message": "アセット"
+  },
+  "homepage.features.assets.desc": {
+    "message": "プロジェクト向けの高品質な 3D モデルと環境キット。"
+  },
+  "homepage.features.assets.cta": {
+    "message": "アセットを入手"
+  },
   "games.view_details": {
-    "message": "プロトコル開始"
+    "message": "技術仕様"
   },
   "tools.view_specs": {
     "message": "技術仕様"
@@ -11,23 +53,161 @@
   "tools.view_docs": {
     "message": "ドキュメント"
   },
+  "games.page.title.part1": {
+    "message": "プロジェクト"
+  },
+  "games.page.title.part2": {
+    "message": "リポジトリ"
+  },
+  "tools.page.title.part1": {
+    "message": "テクニカル"
+  },
+  "tools.page.title.part2": {
+    "message": "システム"
+  },
+  "assets.page.title.part1": {
+    "message": "アセット"
+  },
+  "assets.page.title.part2": {
+    "message": "レジストリ"
+  },
+  "assets.page.description": {
+    "message": "現代のレンダリングパイプライン向けに最適化されたプロダクション・グレードのアセット。高精度なモデル、PBR テクスチャ、空間オーディオキット。"
+  },
   "games.my-sister.title": {
     "message": "My Sister - 私の妹"
   },
+  "games.my-sister.subtitle": {
+    "message": "私の妹"
+  },
   "games.my-sister.description": {
     "message": "心理的一人称ホラー。行方不明の妹を探しながら、壊れた家の歪んだ記憶を探索します。極限の没入感を実現するために Unity HDRP で構築されています。"
+  },
+  "games.common.watch_trailer": {
+    "message": "トレーラーを見る"
+  },
+  "games.common.story_title": {
+    "message": "ストーリー"
+  },
+  "games.common.features_title": {
+    "message": "主な特徴"
+  },
+  "games.common.trailer_title": {
+    "message": "トレーラー"
+  },
+  "games.my-sister.story.p1": {
+    "message": "あなたは長年家を離れていた兄としてプレイします。ある日、亡き母からと思われる奇妙な手紙が届き、妹が助けを必要としていると告げられます。"
+  },
+  "games.my-sister.story.p2": {
+    "message": "不吉な予感を無視して、霧深い森の奥深くにある木造の家に戻ります。人影もなく、生命の音もなく、ただ血のメッセージと歪んだ記憶がゆっくりとあなたを飲み込んでいきます。"
+  },
+  "games.my-sister.story.quote": {
+    "message": "「私を置いていかないって約束したのに……」"
+  },
+  "games.my-sister.feature1.title": {
+    "message": "心霊的なグラフィック"
+  },
+  "games.my-sister.feature1.desc": {
+    "message": "Unity HDRP の高度なライティング技術を使用し、息が詰まるほどリアルで暗い雰囲気をもたらします。"
+  },
+  "games.my-sister.feature2.title": {
+    "message": "空間オーディオ"
+  },
+  "games.my-sister.feature2.desc": {
+    "message": "3D 空間オーディオシステムにより、あなたを追い詰める存在の足音や息遣いをはっきりと聞くことができます。"
+  },
+  "games.my-sister.feature3.title": {
+    "message": "心理パズル"
+  },
+  "games.my-sister.feature3.desc": {
+    "message": "ただ逃げるだけでなく、超常現象に基づいたパズルシステムを通じて、記憶を解き明かし、つなぎ合わせる必要があります。"
   },
   "tools.unity-smart-sheet.title": {
     "message": "Unity Smart Sheet"
   },
   "tools.unity-smart-sheet.description": {
-    "message": "Unity エディター内での強力なデータ管理。Google スプレッドシートを ScriptableObjects に直接インポート、編集、同期します。"
+    "message": "Unity エディター内での強力な data 管理。Google スプレッドシートを ScriptableObjects に直接インポート、編集、同期します。"
+  },
+  "tools.unity-smart-sheet.hero.desc": {
+    "message": "Unity エディター内でスプレッドシートインターフェースを使用した、ゲーム向けの包括的なデータ管理ソリューション。"
+  },
+  "tools.unity-smart-sheet.why.title": {
+    "message": "Unity Smart Sheet を選ぶ理由"
+  },
+  "tools.unity-smart-sheet.why.item1": {
+    "message": "Excel や Google スプレッドシートを開かずにデータを素早く編集できます。"
+  },
+  "tools.unity-smart-sheet.why.item2": {
+    "message": "データを ScriptableObject や JSON に自動的にシリアライズします。"
+  },
+  "tools.unity-smart-sheet.why.item3": {
+    "message": "Google スプレッドシート同期によるチームワークをサポート。"
+  },
+  "tools.unity-smart-sheet.why.item4": {
+    "message": "入力時にデータを検証します。"
+  },
+  "tools.unity-smart-sheet.specs.req": {
+    "message": "Unity 2021.3+ が必要"
+  },
+  "tools.unity-smart-sheet.specs.size": {
+    "message": "サイズ: 2.5 MB"
+  },
+  "tools.unity-smart-sheet.specs.version": {
+    "message": "現在のバージョン: v1.2.0"
   },
   "tools.simple-paint.title": {
     "message": "Simple Paint"
   },
   "tools.simple-paint.description": {
     "message": "Unity プロジェクト向けの軽量な 2D ペイント システム。プロトタイピングやゲーム内の描画メカニズムに最適です。"
+  },
+  "tools.simple-paint.feature.title": {
+    "message": "テクスチャに直接ペイント"
+  },
+  "tools.simple-paint.feature.desc": {
+    "message": "Simple Paint はシンプルな API を提供し、描画/ペイント機能をゲームに統合できます。壁への落書き、紙への署名、血痕の作成など、Simple Paint はスムーズに処理します。"
+  },
+  "tools.simple-paint.feature1.title": {
+    "message": "シェーダー最適化"
+  },
+  "tools.simple-paint.feature1.desc": {
+    "message": "描画に GPU を使用し、モバイルでも FPS が低下しないようにします。"
+  },
+  "tools.simple-paint.feature2.title": {
+    "message": "多様なブラシタイプ"
+  },
+  "tools.simple-paint.feature2.desc": {
+    "message": "テクスチャブラシをサポートし、リアルな描画エフェクトを作成できます。"
+  },
+  "tools.simple-paint.cta.desc": {
+    "message": "プロフェッショナルなペイントシステムを数分で Unity プロジェクトに統合できます。"
+  },
+  "tools.simple-paint.req1": {
+    "message": "Unity 2020.3 LTS 以上。"
+  },
+  "tools.simple-paint.req2": {
+    "message": "Built-in、URP、HDRP をサポート。"
+  },
+  "tools.simple-paint.req3": {
+    "message": "Windows、Mac、iOS、Android で動作。"
+  },
+  "tools.common.read_docs": {
+    "message": "ドキュメントを読む"
+  },
+  "tools.common.pricing_desc": {
+    "message": "一回払い。生涯アップデートサポート。"
+  },
+  "tools.common.buy_asset_store": {
+    "message": "ASSET STORE で購入"
+  },
+  "tools.common.buy_itch": {
+    "message": "ITCH.IO で購入"
+  },
+  "tools.common.get_started": {
+    "message": "今すぐ始める"
+  },
+  "tools.common.system_req": {
+    "message": "システム要件"
   },
   "assets.horror-pack.title": {
     "message": "ホラー環境パック Vol. 1"
@@ -36,6 +216,9 @@
     "message": "放棄された工業施設向けのモジュール式アセット。Unity および Unreal Engine 用の高品質な PBR テクスチャ。"
   },
   "assets.cta.acquire": {
-    "message": "今すぐ入手"
+    "message": "入手する"
+  },
+  "assets.common.price": {
+    "message": "価格"
   }
 }

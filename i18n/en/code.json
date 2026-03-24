@@ -1,0 +1,230 @@
+{
+  "homepage.tagline": {
+    "message": "Indie Horror Studio & Technical Solutions",
+    "description": "Tagline on the homepage"
+  },
+  "homepage.cta.latest_game": {
+    "message": "LATEST PROJECT",
+    "description": "Latest project button"
+  },
+  "homepage.cta.explore_tools": {
+    "message": "EXPLORE TOOLS",
+    "description": "Explore tools button"
+  },
+  "homepage.sections.about.title.part1": {
+    "message": "WE ARE ",
+    "description": "About section title part 1"
+  },
+  "homepage.sections.about.description": {
+    "message": "A technical indie studio specializing in psychological horror and high-performance Unity tools. We push the boundaries of digital fear and creative workflow efficiency.",
+    "description": "About description"
+  },
+  "homepage.sections.featured.title.part1": {
+    "message": "CORE ",
+    "description": "Featured section title part 1"
+  },
+  "homepage.features.games.title": {
+    "message": "Games"
+  },
+  "homepage.features.games.desc": {
+    "message": "Deep, atmospheric horror experiences built on HDRP."
+  },
+  "homepage.features.games.cta": {
+    "message": "Play Now"
+  },
+  "homepage.features.tools.title": {
+    "message": "Tools"
+  },
+  "homepage.features.tools.desc": {
+    "message": "Professional Unity packages used in our own production cycle."
+  },
+  "homepage.features.tools.cta": {
+    "message": "View Specs"
+  },
+  "homepage.features.assets.title": {
+    "message": "Assets"
+  },
+  "homepage.features.assets.desc": {
+    "message": "High-quality 3D models and environmental kits for your projects."
+  },
+  "homepage.features.assets.cta": {
+    "message": "Get Assets"
+  },
+  "games.view_details": {
+    "message": "SPECIFICATIONS"
+  },
+  "tools.view_specs": {
+    "message": "SPECIFICATIONS"
+  },
+  "tools.view_docs": {
+    "message": "DOCUMENTATION"
+  },
+  "games.page.title.part1": {
+    "message": "PROJECT"
+  },
+  "games.page.title.part2": {
+    "message": "REPOSITORY"
+  },
+  "tools.page.title.part1": {
+    "message": "TECHNICAL"
+  },
+  "tools.page.title.part2": {
+    "message": "SYSTEMS"
+  },
+  "assets.page.title.part1": {
+    "message": "ASSET"
+  },
+  "assets.page.title.part2": {
+    "message": "REGISTRY"
+  },
+  "assets.page.description": {
+    "message": "Production-grade assets optimized for modern rendering pipelines. High-fidelity models, PBR textures, and spatial audio kits."
+  },
+  "games.my-sister.title": {
+    "message": "My Sister - Em Gái Tôi"
+  },
+  "games.my-sister.subtitle": {
+    "message": "MY SISTER"
+  },
+  "games.my-sister.description": {
+    "message": "A psychological first-person horror. Explore the distorted memories of a broken home as you search for your missing sibling. Built on Unity HDRP for extreme immersion."
+  },
+  "games.common.watch_trailer": {
+    "message": "Watch Trailer"
+  },
+  "games.common.story_title": {
+    "message": "Story"
+  },
+  "games.common.features_title": {
+    "message": "Key Features"
+  },
+  "games.common.trailer_title": {
+    "message": "Trailer"
+  },
+  "games.my-sister.story.p1": {
+    "message": "You play as an older brother who has been away from home for many years. One day, you receive a strange letter supposedly from your late mother, saying that your sister needs help."
+  },
+  "games.my-sister.story.p2": {
+    "message": "Ignoring your bad premonitions, you return to the wooden house deep in the misty forest. No one, no sound of life, only blood messages and distorted memories are slowly consuming you."
+  },
+  "games.my-sister.story.quote": {
+    "message": "\"You promised never to leave me...\""
+  },
+  "games.my-sister.feature1.title": {
+    "message": "Haunting Graphics"
+  },
+  "games.my-sister.feature1.desc": {
+    "message": "Using advanced lighting technology on Unity HDRP, bringing a realistic and dark atmosphere to the point of suffocation."
+  },
+  "games.my-sister.feature2.title": {
+    "message": "Spatial Audio"
+  },
+  "games.my-sister.feature2.desc": {
+    "message": "3D spatial audio system allows you to clearly hear every footstep or breath of the force hunting you."
+  },
+  "games.my-sister.feature3.title": {
+    "message": "Psychological Puzzles"
+  },
+  "games.my-sister.feature3.desc": {
+    "message": "Not just running away, you need to find out and piece together memories through a puzzle system based on supernatural phenomena."
+  },
+  "tools.unity-smart-sheet.title": {
+    "message": "Unity Smart Sheet"
+  },
+  "tools.unity-smart-sheet.description": {
+    "message": "Powerful data management within Unity Editor. Import, edit, and sync Google Sheets directly to ScriptableObjects."
+  },
+  "tools.unity-smart-sheet.hero.desc": {
+    "message": "Comprehensive data management solution for games using Spreadsheet interface right in Unity Editor."
+  },
+  "tools.unity-smart-sheet.why.title": {
+    "message": "Why choose Unity Smart Sheet?"
+  },
+  "tools.unity-smart-sheet.why.item1": {
+    "message": "Quickly edit data without opening Excel or Google Sheets."
+  },
+  "tools.unity-smart-sheet.why.item2": {
+    "message": "Automatically Serialize data to ScriptableObject or JSON."
+  },
+  "tools.unity-smart-sheet.why.item3": {
+    "message": "Support teamwork via Google Sheets Sync."
+  },
+  "tools.unity-smart-sheet.why.item4": {
+    "message": "Data validation upon entry."
+  },
+  "tools.unity-smart-sheet.specs.req": {
+    "message": "Requires Unity 2021.3+"
+  },
+  "tools.unity-smart-sheet.specs.size": {
+    "message": "Size: 2.5 MB"
+  },
+  "tools.unity-smart-sheet.specs.version": {
+    "message": "Current Version: v1.2.0"
+  },
+  "tools.simple-paint.title": {
+    "message": "Simple Paint"
+  },
+  "tools.simple-paint.description": {
+    "message": "Lightweight 2D painting system for Unity projects. Perfect for prototyping and in-game drawing mechanics."
+  },
+  "tools.simple-paint.feature.title": {
+    "message": "Paint Directly on Textures"
+  },
+  "tools.simple-paint.feature.desc": {
+    "message": "Simple Paint provides a simple API so you can integrate drawing/painting features into your game. Whether it's painting on walls, signing paper, or creating bloodstains, Simple Paint handles it smoothly."
+  },
+  "tools.simple-paint.feature1.title": {
+    "message": "Shader Optimized"
+  },
+  "tools.simple-paint.feature1.desc": {
+    "message": "Uses GPU for drawing, ensuring FPS doesn't drop even on mobile."
+  },
+  "tools.simple-paint.feature2.title": {
+    "message": "Multiple Brush Types"
+  },
+  "tools.simple-paint.feature2.desc": {
+    "message": "Supports Texture Brushes, allowing you to create realistic drawing effects."
+  },
+  "tools.simple-paint.cta.desc": {
+    "message": "Integrate a professional painting system into your Unity project in minutes."
+  },
+  "tools.simple-paint.req1": {
+    "message": "Unity 2020.3 LTS or higher."
+  },
+  "tools.simple-paint.req2": {
+    "message": "Supports Built-in, URP and HDRP."
+  },
+  "tools.simple-paint.req3": {
+    "message": "Works on Windows, Mac, iOS and Android."
+  },
+  "tools.common.read_docs": {
+    "message": "Read Documentation"
+  },
+  "tools.common.pricing_desc": {
+    "message": "One-time payment. Lifetime updates support."
+  },
+  "tools.common.buy_asset_store": {
+    "message": "BUY ON ASSET STORE"
+  },
+  "tools.common.buy_itch": {
+    "message": "BUY ON ITCH.IO"
+  },
+  "tools.common.get_started": {
+    "message": "Get Started"
+  },
+  "tools.common.system_req": {
+    "message": "System Requirements"
+  },
+  "assets.horror-pack.title": {
+    "message": "Horror Environment Vol. 1"
+  },
+  "assets.horror-pack.description": {
+    "message": "Modular assets for abandoned industrial settings. High-quality PBR textures for Unity and Unreal Engine."
+  },
+  "assets.cta.acquire": {
+    "message": "ACQUIRE"
+  },
+  "assets.common.price": {
+    "message": "Price"
+  }
+}

@@ -11,7 +11,7 @@ export default function Games() {
       description="Deepwave Game Studio projects">
       <main className="container" style={{ padding: '6rem 0' }}>
         <h1 className="section-title">
-          <span>PROJECT</span> REPOSITORY
+          <Translate id="games.page.title.part1">PROJECT</Translate> <span><Translate id="games.page.title.part2">REPOSITORY</Translate></span>
         </h1>
         
         <div className="row" style={{ marginTop: '4rem' }}>

@@ -2,8 +2,50 @@
   "homepage.tagline": {
     "message": "独立恐怖工作室 & 技术解决方案"
   },
+  "homepage.cta.latest_game": {
+    "message": "最新项目"
+  },
+  "homepage.cta.explore_tools": {
+    "message": "探索工具"
+  },
+  "homepage.sections.about.title.part1": {
+    "message": "我们是 "
+  },
+  "homepage.sections.about.description": {
+    "message": "一家专注于心理恐怖和高性能 Unity 工具的技术独立工作室。我们不断突破数字恐惧和创意工作流效率的界限。"
+  },
+  "homepage.sections.featured.title.part1": {
+    "message": "核心 "
+  },
+  "homepage.features.games.title": {
+    "message": "游戏"
+  },
+  "homepage.features.games.desc": {
+    "message": "基于 HDRP 构建的深度、大气恐怖体验。"
+  },
+  "homepage.features.games.cta": {
+    "message": "立即游玩"
+  },
+  "homepage.features.tools.title": {
+    "message": "工具"
+  },
+  "homepage.features.tools.desc": {
+    "message": "在我们自己的生产周期中使用的专业 Unity 软件包。"
+  },
+  "homepage.features.tools.cta": {
+    "message": "查看规格"
+  },
+  "homepage.features.assets.title": {
+    "message": "资源"
+  },
+  "homepage.features.assets.desc": {
+    "message": "为您项目提供的高质量 3D 模型和环境套件。"
+  },
+  "homepage.features.assets.cta": {
+    "message": "获取资源"
+  },
   "games.view_details": {
-    "message": "启动协议"
+    "message": "技术规格"
   },
   "tools.view_specs": {
     "message": "技术规格"
@@ -11,11 +53,74 @@
   "tools.view_docs": {
     "message": "开发文档"
   },
+  "games.page.title.part1": {
+    "message": "项目"
+  },
+  "games.page.title.part2": {
+    "message": "库"
+  },
+  "tools.page.title.part1": {
+    "message": "技术"
+  },
+  "tools.page.title.part2": {
+    "message": "系统"
+  },
+  "assets.page.title.part1": {
+    "message": "资产"
+  },
+  "assets.page.title.part2": {
+    "message": "登记簿"
+  },
+  "assets.page.description": {
+    "message": "针对现代渲染管线优化的生产级资产。高保真模型、PBR 贴图和空间音频套件。"
+  },
   "games.my-sister.title": {
     "message": "My Sister - 我的妹妹"
   },
+  "games.my-sister.subtitle": {
+    "message": "我的妹妹"
+  },
   "games.my-sister.description": {
     "message": "心理第一人称恐怖。探索破碎家庭的扭曲记忆，寻找失踪的妹妹。基于 Unity HDRP 构建，极具沉浸感。"
+  },
+  "games.common.watch_trailer": {
+    "message": "观看预告片"
+  },
+  "games.common.story_title": {
+    "message": "故事"
+  },
+  "games.common.features_title": {
+    "message": "主要特点"
+  },
+  "games.common.trailer_title": {
+    "message": "预告片"
+  },
+  "games.my-sister.story.p1": {
+    "message": "你扮演一个离家多年的哥哥。一天，你收到一封据说是你已故母亲寄来的奇怪信件，说你的妹妹需要帮助。"
+  },
+  "games.my-sister.story.p2": {
+    "message": "无视你不祥的预感，你回到了迷雾森林深处的木屋。空无一人，没有生命的声音，只有血字信息和扭曲的记忆在慢慢吞噬你。"
+  },
+  "games.my-sister.story.quote": {
+    "message": "“你答应过永远不离开我的……”"
+  },
+  "games.my-sister.feature1.title": {
+    "message": "令人窒息的画面"
+  },
+  "games.my-sister.feature1.desc": {
+    "message": "在 Unity HDRP 上使用先进的照明技术，带来真实而黑暗的氛围，令人感到窒息。"
+  },
+  "games.my-sister.feature2.title": {
+    "message": "空间音频"
+  },
+  "games.my-sister.feature2.desc": {
+    "message": "3D 空间音频系统让你能清楚地听到追捕你的力量的每一个脚步声或呼吸声。"
+  },
+  "games.my-sister.feature3.title": {
+    "message": "心理谜题"
+  },
+  "games.my-sister.feature3.desc": {
+    "message": "不仅是逃跑，你还需要通过基于超自然现象的谜题系统找出并拼凑记忆。"
   },
   "tools.unity-smart-sheet.title": {
     "message": "Unity Smart Sheet"
@@ -23,11 +128,86 @@
   "tools.unity-smart-sheet.description": {
     "message": "Unity 编辑器内强大的数据管理。直接将 Google 表格导入、编辑并同步到 ScriptableObjects。"
   },
+  "tools.unity-smart-sheet.hero.desc": {
+    "message": "在 Unity 编辑器中使用电子表格界面的全面游戏数据管理解决方案。"
+  },
+  "tools.unity-smart-sheet.why.title": {
+    "message": "为什么选择 Unity Smart Sheet？"
+  },
+  "tools.unity-smart-sheet.why.item1": {
+    "message": "无需打开 Excel 或 Google 表格即可快速编辑数据。"
+  },
+  "tools.unity-smart-sheet.why.item2": {
+    "message": "自动将数据序列化为 ScriptableObject 或 JSON。"
+  },
+  "tools.unity-smart-sheet.why.item3": {
+    "message": "通过 Google 表格同步支持团队合作。"
+  },
+  "tools.unity-smart-sheet.why.item4": {
+    "message": "输入时进行数据验证。"
+  },
+  "tools.unity-smart-sheet.specs.req": {
+    "message": "需要 Unity 2021.3+"
+  },
+  "tools.unity-smart-sheet.specs.size": {
+    "message": "大小：2.5 MB"
+  },
+  "tools.unity-smart-sheet.specs.version": {
+    "message": "当前版本：v1.2.0"
+  },
   "tools.simple-paint.title": {
     "message": "Simple Paint"
   },
   "tools.simple-paint.description": {
     "message": "适用于 Unity 项目的轻量级 2D 绘图系统。非常适合原型设计和游戏内绘图机制。"
+  },
+  "tools.simple-paint.feature.title": {
+    "message": "直接在贴图上绘画"
+  },
+  "tools.simple-paint.feature.desc": {
+    "message": "Simple Paint 提供简单的 API，以便你可以将绘图/绘画功能集成到游戏中。无论是画在墙上、在纸上签名，还是制造血迹，Simple Paint 都能流畅处理。"
+  },
+  "tools.simple-paint.feature1.title": {
+    "message": "着色器优化"
+  },
+  "tools.simple-paint.feature1.desc": {
+    "message": "使用 GPU 进行绘图，确保即使在移动设备上也不会掉帧。"
+  },
+  "tools.simple-paint.feature2.title": {
+    "message": "多种画笔类型"
+  },
+  "tools.simple-paint.feature2.desc": {
+    "message": "支持贴图画笔，让你能够创造真实的绘图效果。"
+  },
+  "tools.simple-paint.cta.desc": {
+    "message": "在几分钟内将专业的绘画系统集成到你的 Unity 项目中。"
+  },
+  "tools.simple-paint.req1": {
+    "message": "Unity 2020.3 LTS 或更高版本。"
+  },
+  "tools.simple-paint.req2": {
+    "message": "支持 Built-in、URP 和 HDRP。"
+  },
+  "tools.simple-paint.req3": {
+    "message": "适用于 Windows、Mac、iOS 和 Android。"
+  },
+  "tools.common.read_docs": {
+    "message": "阅读文档"
+  },
+  "tools.common.pricing_desc": {
+    "message": "一次性付费。支持终身更新。"
+  },
+  "tools.common.buy_asset_store": {
+    "message": "在 ASSET STORE 购买"
+  },
+  "tools.common.buy_itch": {
+    "message": "在 ITCH.IO 购买"
+  },
+  "tools.common.get_started": {
+    "message": "立即开始"
+  },
+  "tools.common.system_req": {
+    "message": "系统要求"
   },
   "assets.horror-pack.title": {
     "message": "恐怖环境包 Vol. 1"
@@ -37,5 +217,8 @@
   },
   "assets.cta.acquire": {
     "message": "立即获取"
+  },
+  "assets.common.price": {
+    "message": "价格"
   }
 }

@@ -24,58 +24,109 @@
     "description": "Tiêu đề phần đặc trưng phần 1"
   },
   "homepage.features.games.title": {
-    "message": "Trò chơi",
-    "description": "Tiêu đề tính năng game"
+    "message": "Trò chơi"
   },
   "homepage.features.games.desc": {
-    "message": "Trải nghiệm kinh dị sâu sắc, không khí ám ảnh được xây dựng trên HDRP.",
-    "description": "Mô tả tính năng game"
+    "message": "Trải nghiệm kinh dị sâu sắc, không khí ám ảnh được xây dựng trên HDRP."
   },
   "homepage.features.games.cta": {
-    "message": "Chơi ngay",
-    "description": "Nút tính năng game"
+    "message": "Chơi ngay"
   },
   "homepage.features.tools.title": {
-    "message": "Công cụ",
-    "description": "Tiêu đề tính năng công cụ"
+    "message": "Công cụ"
   },
   "homepage.features.tools.desc": {
-    "message": "Các gói Unity chuyên nghiệp được sử dụng trong chính quy trình sản xuất của chúng tôi.",
-    "description": "Mô tả tính năng công cụ"
+    "message": "Các gói Unity chuyên nghiệp được sử dụng trong chính quy trình sản xuất của chúng tôi."
   },
   "homepage.features.tools.cta": {
-    "message": "Xem thông số",
-    "description": "Nút tính năng công cụ"
+    "message": "Xem thông số"
   },
   "homepage.features.assets.title": {
-    "message": "Tài nguyên",
-    "description": "Tiêu đề tính năng tài nguyên"
+    "message": "Tài nguyên"
   },
   "homepage.features.assets.desc": {
-    "message": "Mô hình 3D chất lượng cao và các bộ môi trường cho dự án của bạn.",
-    "description": "Mô tả tính năng tài nguyên"
+    "message": "Mô hình 3D chất lượng cao và các bộ môi trường cho dự án của bạn."
   },
   "homepage.features.assets.cta": {
-    "message": "Lấy tài nguyên",
-    "description": "Nút tính năng tài nguyên"
+    "message": "Lấy tài nguyên"
   },
   "games.view_details": {
-    "message": "KÍCH HOẠT GIAO THỨC",
-    "description": "Nút xem chi tiết game"
+    "message": "THÔNG SỐ KỸ THUẬT"
   },
   "tools.view_specs": {
-    "message": "THÔNG SỐ KỸ THUẬT",
-    "description": "Nút xem thông số công cụ"
+    "message": "THÔNG SỐ KỸ THUẬT"
   },
   "tools.view_docs": {
-    "message": "TÀI LIỆU HƯỚNG DẪN",
-    "description": "Nút xem tài liệu công cụ"
+    "message": "TÀI LIỆU HƯỚNG DẪN"
+  },
+  "games.page.title.part1": {
+    "message": "KHO LƯU TRỮ"
+  },
+  "games.page.title.part2": {
+    "message": "DỰ ÁN"
+  },
+  "tools.page.title.part1": {
+    "message": "HỆ THỐNG"
+  },
+  "tools.page.title.part2": {
+    "message": "KỸ THUẬT"
+  },
+  "assets.page.title.part1": {
+    "message": "DANH MỤC"
+  },
+  "assets.page.title.part2": {
+    "message": "TÀI NGUYÊN"
+  },
+  "assets.page.description": {
+    "message": "Các tài nguyên cấp độ sản xuất được tối ưu hóa cho các quy trình dựng hình hiện đại. Mô hình độ trung thực cao, kết cấu PBR và bộ âm thanh không gian."
   },
   "games.my-sister.title": {
     "message": "My Sister - Em Gái Tôi"
   },
+  "games.my-sister.subtitle": {
+    "message": "EM GÁI TÔI"
+  },
   "games.my-sister.description": {
     "message": "Một trò chơi kinh dị tâm lý góc nhìn thứ nhất. Khám phá những ký ức méo mó của một ngôi nhà đổ nát khi bạn tìm kiếm người em mất tích. Được xây dựng trên Unity HDRP cho trải nghiệm cực kỳ chân thực."
+  },
+  "games.common.watch_trailer": {
+    "message": "Xem Trailer"
+  },
+  "games.common.story_title": {
+    "message": "Câu chuyện"
+  },
+  "games.common.features_title": {
+    "message": "Đặc Điểm Nổi Bật"
+  },
+  "games.common.trailer_title": {
+    "message": "Trailer"
+  },
+  "games.my-sister.story.p1": {
+    "message": "Bạn vào vai một người anh trai xa nhà lâu năm. Một ngày, bạn nhận được một bức thư kì lạ được cho là từ người mẹ quá cố, nói rằng em gái bạn cần sự giúp đỡ."
+  },
+  "games.my-sister.story.p2": {
+    "message": "Bỏ qua những linh cảm chẳng lành, bạn trở về ngôi nhà gỗ nằm sâu trong cánh rừng sương mù. Không một bóng người, không một âm thanh sự sống, chỉ có những dòng tin nhắn bằng máu và những mảnh ký ức méo mó đang dần nuốt chửng bạn."
+  },
+  "games.my-sister.story.quote": {
+    "message": "\"Anh đã hứa sẽ không bao giờ bỏ rơi em...\""
+  },
+  "games.my-sister.feature1.title": {
+    "message": "Đồ Họa Ám Ảnh"
+  },
+  "games.my-sister.feature1.desc": {
+    "message": "Sử dụng công nghệ ánh sáng tiên tiến trên Unity HDRP, mang lại không gian chân thực và tăm tối đến nghẹt thở."
+  },
+  "games.my-sister.feature2.title": {
+    "message": "Âm Thanh Đa Chiều"
+  },
+  "games.my-sister.feature2.desc": {
+    "message": "Hệ thống âm thanh không gian (Spatial Audio) 3D cho phép bạn nghe rõ từng tiếng bước chân hay hơi thở của thế lực đang săn lùng bạn."
+  },
+  "games.my-sister.feature3.title": {
+    "message": "Giải Đố Tâm Lý"
+  },
+  "games.my-sister.feature3.desc": {
+    "message": "Không chỉ chạy trốn, bạn cần phải tìm hiểu và chắp vá những mảnh ký ức thông qua hệ thống giải đố dựa trên các hiện tượng siêu nhiên."
   },
   "tools.unity-smart-sheet.title": {
     "message": "Unity Smart Sheet"
@@ -83,11 +134,86 @@
   "tools.unity-smart-sheet.description": {
     "message": "Quản lý dữ liệu mạnh mẽ ngay trong Unity Editor. Nhập, chỉnh sửa và đồng bộ Google Sheets trực tiếp vào ScriptableObjects."
   },
+  "tools.unity-smart-sheet.hero.desc": {
+    "message": "Giải pháp quản lý dữ liệu toàn diện cho game bằng giao diện Spreadsheet ngay trong Unity Editor."
+  },
+  "tools.unity-smart-sheet.why.title": {
+    "message": "Tại sao chọn Unity Smart Sheet?"
+  },
+  "tools.unity-smart-sheet.why.item1": {
+    "message": "Chỉnh sửa dữ liệu nhanh chóng mà không cần mở Excel hay Google Sheets."
+  },
+  "tools.unity-smart-sheet.why.item2": {
+    "message": "Tự động Serialize dữ liệu sang ScriptableObject hoặc JSON."
+  },
+  "tools.unity-smart-sheet.why.item3": {
+    "message": "Hỗ trợ làm việc nhóm qua Google Sheets Sync."
+  },
+  "tools.unity-smart-sheet.why.item4": {
+    "message": "Validation dữ liệu ngay khi nhập."
+  },
+  "tools.unity-smart-sheet.specs.req": {
+    "message": "Yêu cầu Unity 2021.3+"
+  },
+  "tools.unity-smart-sheet.specs.size": {
+    "message": "Kích thước: 2.5 MB"
+  },
+  "tools.unity-smart-sheet.specs.version": {
+    "message": "Phiên bản hiện tại: v1.2.0"
+  },
   "tools.simple-paint.title": {
     "message": "Simple Paint"
   },
   "tools.simple-paint.description": {
     "message": "Hệ thống vẽ 2D gọn nhẹ cho các dự án Unity. Hoàn hảo cho việc tạo mẫu và các cơ chế vẽ trong trò chơi."
+  },
+  "tools.simple-paint.feature.title": {
+    "message": "Vẽ Trực Tiếp Lên Texture"
+  },
+  "tools.simple-paint.feature.desc": {
+    "message": "Simple Paint cung cấp API đơn giản để bạn có thể tích hợp tính năng vẽ vào trò chơi của mình. Cho dù đó là vẽ lên tường, ký tên lên giấy hay tạo ra các vết máu, Simple Paint đều xử lý mượt mà."
+  },
+  "tools.simple-paint.feature1.title": {
+    "message": "Tối Ưu Shader"
+  },
+  "tools.simple-paint.feature1.desc": {
+    "message": "Sử dụng GPU để vẽ, đảm bảo FPS không bị sụt giảm ngay cả trên mobile."
+  },
+  "tools.simple-paint.feature2.title": {
+    "message": "Nhiều Loại Cọ"
+  },
+  "tools.simple-paint.feature2.desc": {
+    "message": "Hỗ trợ Texture Brush, cho phép tạo ra các hiệu ứng vẽ chân thực."
+  },
+  "tools.simple-paint.cta.desc": {
+    "message": "Tích hợp hệ thống vẽ chuyên nghiệp vào dự án Unity của bạn chỉ trong vài phút."
+  },
+  "tools.simple-paint.req1": {
+    "message": "Unity 2020.3 LTS trở lên."
+  },
+  "tools.simple-paint.req2": {
+    "message": "Hỗ trợ Built-in, URP và HDRP."
+  },
+  "tools.simple-paint.req3": {
+    "message": "Hoạt động trên Windows, Mac, iOS và Android."
+  },
+  "tools.common.read_docs": {
+    "message": "Đọc Tài Liệu Hướng Dẫn"
+  },
+  "tools.common.pricing_desc": {
+    "message": "Thanh toán một lần. Hỗ trợ cập nhật trọn đời."
+  },
+  "tools.common.buy_asset_store": {
+    "message": "MUA TRÊN ASSET STORE"
+  },
+  "tools.common.buy_itch": {
+    "message": "MUA TRÊN ITCH.IO"
+  },
+  "tools.common.get_started": {
+    "message": "Bắt đầu ngay"
+  },
+  "tools.common.system_req": {
+    "message": "Yêu cầu hệ thống"
   },
   "assets.horror-pack.title": {
     "message": "Gói Môi Trường Kinh Dị Vol. 1"
@@ -97,5 +223,8 @@
   },
   "assets.cta.acquire": {
     "message": "SỞ HỮU NGAY"
+  },
+  "assets.common.price": {
+    "message": "Giá"
   }
 }

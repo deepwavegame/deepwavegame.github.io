@@ -4,35 +4,36 @@
  */
 
 :root {
-  --ifm-color-primary: #00e5ff; /* Ghostly Cyan */
+  --ifm-color-primary: #00e5ff;
+  /* Ghostly Cyan */
   --ifm-color-primary-dark: #00cce3;
   --ifm-color-primary-darker: #00c0d6;
   --ifm-color-primary-darkest: #009eb0;
   --ifm-color-primary-light: #33eaff;
   --ifm-color-primary-lighter: #4defff;
   --ifm-color-primary-lightest: #99f8ff;
-  
+
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 229, 255, 0.1);
-  
+
   /* Palette: Dark Slate (#1c1c1c), Deep Black (#0a0a0a) */
   --ifm-background-color: #0a0a0a;
   --ifm-background-surface-color: #1c1c1c;
   --ifm-color-content: #b0b0b0;
   --ifm-heading-color: #ffffff;
   --ifm-font-family-base: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  
+
   --ifm-navbar-background-color: #0a0a0a;
   --ifm-footer-background-color: #050505;
-  
+
   --ifm-menu-color: #888888;
   --ifm-menu-color-active: #00e5ff;
   --ifm-menu-color-background-active: rgba(0, 229, 255, 0.05);
   --ifm-menu-color-background-hover: rgba(255, 255, 255, 0.03);
-  
+
   --ifm-toc-border-color: #222222;
   --ifm-navbar-height: 4rem;
-  
+
   /* Border Radius: Minimal (2px - 4px) */
   --ifm-global-radius: 2px;
 }
@@ -167,16 +168,33 @@ body {
 }
 
 @keyframes noise-anim {
-  0% { clip: rect(10px, 9999px, 50px, 0); }
-  20% { clip: rect(30px, 9999px, 20px, 0); }
-  40% { clip: rect(60px, 9999px, 90px, 0); }
-  60% { clip: rect(10px, 9999px, 40px, 0); }
-  80% { clip: rect(80px, 9999px, 10px, 0); }
-  100% { clip: rect(40px, 9999px, 70px, 0); }
+  0% {
+    clip: rect(10px, 9999px, 50px, 0);
+  }
+
+  20% {
+    clip: rect(30px, 9999px, 20px, 0);
+  }
+
+  40% {
+    clip: rect(60px, 9999px, 90px, 0);
+  }
+
+  60% {
+    clip: rect(10px, 9999px, 40px, 0);
+  }
+
+  80% {
+    clip: rect(80px, 9999px, 10px, 0);
+  }
+
+  100% {
+    clip: rect(40px, 9999px, 70px, 0);
+  }
 }
 
 .mystery-bg {
-  background: 
+  background:
     linear-gradient(to bottom, rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 1)),
     url('https://images.unsplash.com/photo-1505634467193-703328080f5d?auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
@@ -217,28 +235,136 @@ body {
 }
 
 /* Brand Colors for External Links */
-.btn-steam { background-color: #171a21 !important; color: #ffffff !important; border-color: #171a21 !important; }
-.btn-steam:hover { background-color: #2a475e !important; box-shadow: 0 0 10px rgba(23, 26, 33, 0.5); }
+.btn-steam {
+  background-color: #171a21 !important;
+  color: #ffffff !important;
+  border-color: #171a21 !important;
+}
 
-.btn-itch { background-color: #fa5c5c !important; color: #ffffff !important; border-color: #fa5c5c !important; }
-.btn-itch:hover { background-color: #ff7373 !important; box-shadow: 0 0 10px rgba(250, 92, 92, 0.5); }
+.btn-steam:hover {
+  background-color: #2a475e !important;
+  box-shadow: 0 0 10px rgba(23, 26, 33, 0.5);
+}
 
-.btn-unity { background-color: #222c37 !important; color: #ffffff !important; border-color: #222c37 !important; }
-.btn-unity:hover { background-color: #3b4d61 !important; box-shadow: 0 0 10px rgba(34, 44, 55, 0.5); }
+.btn-itch {
+  background-color: #fa5c5c !important;
+  color: #ffffff !important;
+  border-color: #fa5c5c !important;
+}
 
-.btn-blender { background-color: #ea7600 !important; color: #ffffff !important; border-color: #ea7600 !important; }
-.btn-blender:hover { background-color: #ff8c1a !important; box-shadow: 0 0 10px rgba(234, 118, 0, 0.5); }
+.btn-itch:hover {
+  background-color: #ff7373 !important;
+  box-shadow: 0 0 10px rgba(250, 92, 92, 0.5);
+}
 
-.btn-cgtrader { background-color: #2bdec9 !important; color: #111111 !important; border-color: #2bdec9 !important; }
-.btn-cgtrader:hover { background-color: #4df2de !important; box-shadow: 0 0 10px rgba(43, 222, 201, 0.5); }
+.btn-unity {
+  background-color: #222c37 !important;
+  color: #ffffff !important;
+  border-color: #222c37 !important;
+}
 
-.btn-sm { padding: 0.4rem 0.8rem !important; font-size: 0.75rem !important; margin-right: 0.5rem; margin-bottom: 0.5rem; display: inline-flex; align-items: center; gap: 4px; }
+.btn-unity:hover {
+  background-color: #3b4d61 !important;
+  box-shadow: 0 0 10px rgba(34, 44, 55, 0.5);
+}
+
+.btn-blender {
+  background-color: #ea7600 !important;
+  color: #ffffff !important;
+  border-color: #ea7600 !important;
+}
+
+.btn-blender:hover {
+  background-color: #ff8c1a !important;
+  box-shadow: 0 0 10px rgba(234, 118, 0, 0.5);
+}
+
+.btn-cgtrader {
+  background-color: #2bdec9 !important;
+  color: #111111 !important;
+  border-color: #2bdec9 !important;
+}
+
+.btn-cgtrader:hover {
+  background-color: #4df2de !important;
+  box-shadow: 0 0 10px rgba(43, 222, 201, 0.5);
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem !important;
+  font-size: 0.75rem !important;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Modern Asset Enhancements */
+.asset-price-wrapper {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  padding: 0.5rem 0.5rem;
+  border-left: 3px solid var(--ifm-color-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.asset-price-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+.asset-price-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--ifm-color-primary);
+  font-weight: bold;
+}
+
+.asset-type-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  padding: 0.2rem 0.6rem;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 2;
+}
 
 @keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
 }
