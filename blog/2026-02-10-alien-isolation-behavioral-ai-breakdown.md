@@ -29,3 +29,4 @@ If you use the vents too much, the Alien will start searching them more frequent
 ### Technical Implementation
 
 The system is a masterpiece of **State Machine and Behavior Tree** integration. By using a "Director" to manage the pacing and a "Hunter" to handle the immediate threat, the developers created an enemy that feels terrifyingly intelligent while remaining within the bounds of a playable game. For any developer looking to build a "Stalker" AI, *Alien: Isolation* is the definitive blueprint.
+

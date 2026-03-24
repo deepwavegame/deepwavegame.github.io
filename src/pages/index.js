@@ -2,10 +2,10 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Translate, {translate} from '@docusaurus/Translate';
+import Translate, { translate } from '@docusaurus/Translate';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <header className="hero mystery-bg" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
@@ -18,7 +18,7 @@ function HomepageHeader() {
         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
           <Link
             className="unity-button primary"
-            to="/games/my-sister">
+            to="/games/lil-sis">
             <Translate id="homepage.cta.latest_game">LATEST PROJECT</Translate>
           </Link>
           <Link
@@ -33,7 +33,7 @@ function HomepageHeader() {
   );
 }
 
-function Feature({title, description, to, cta}) {
+function Feature({ title, description, to, cta }) {
   return (
     <div className="col col--4" style={{ marginBottom: '2rem' }}>
       <div className="unity-card" style={{ height: '100%' }}>
@@ -48,7 +48,7 @@ function Feature({title, description, to, cta}) {
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={`Home`}
@@ -63,13 +63,13 @@ export default function Home() {
             </h2>
             <p style={{ textAlign: 'center', maxWidth: '900px', margin: '0 auto', fontSize: '1.25rem', lineHeight: '1.8', color: '#b0b0b0' }}>
               <Translate id="homepage.sections.about.description">
-                A technical indie studio specializing in psychological horror and high-performance Unity tools. 
+                A technical indie studio specializing in psychological horror and high-performance Unity tools.
                 We push the boundaries of digital fear and creative workflow efficiency.
               </Translate>
             </p>
           </div>
         </section>
-        
+
         <section style={{ padding: '6rem 0', backgroundColor: '#0f0f0f' }}>
           <div className="container">
             <h2 className="section-title">
@@ -77,19 +77,19 @@ export default function Home() {
               <span>DYNAMICS</span>
             </h2>
             <div className="row">
-              <Feature 
+              <Feature
                 title={<Translate id="homepage.features.games.title">Games</Translate>}
                 description={<Translate id="homepage.features.games.desc">Deep, atmospheric horror experiences built on HDRP.</Translate>}
                 to="/games"
                 cta={<Translate id="homepage.features.games.cta">Play Now</Translate>}
               />
-              <Feature 
+              <Feature
                 title={<Translate id="homepage.features.tools.title">Tools</Translate>}
                 description={<Translate id="homepage.features.tools.desc">Professional Unity packages used in our own production cycle.</Translate>}
                 to="/tools"
                 cta={<Translate id="homepage.features.tools.cta">View Specs</Translate>}
               />
-              <Feature 
+              <Feature
                 title={<Translate id="homepage.features.assets.title">Assets</Translate>}
                 description={<Translate id="homepage.features.assets.desc">High-quality 3D models and environmental kits for your projects.</Translate>}
                 to="/assets"

@@ -15,7 +15,7 @@ In the past, high-quality motion capture (mocap) was a luxury reserved for AAA s
 
 ### The Rokoko Advantage
 
-Our primary tool for *My Sister* has been the **Rokoko Smartsuit Pro II**. Unlike optical systems that require cameras and specialized spaces, the Rokoko suit uses inertial sensors (IMUs). This allows us to capture animations anywhere—even in our cramped studio office.
+Our primary tool for *Lil Sis* has been the **Rokoko Smartsuit Pro II**. Unlike optical systems that require cameras and specialized spaces, the Rokoko suit uses inertial sensors (IMUs). This allows us to capture animations anywhere—even in our cramped studio office.
 
 The beauty of inertial mocap is the speed of iteration. We can act out a scene, record it, and retarget it to our character model in minutes. This allows our actors to experiment with the "shaky" and "contorted" movements that make our creatures so unsettling.
 
@@ -32,3 +32,4 @@ Mocap is rarely "plug and play." The data often requires cleaning to remove foot
 2.  **Layered Animation**: Add hand-keyed flourishes on top of the mocap data to emphasize specific "scary" movements.
 
 By combining these budget-friendly tools, we've been able to achieve a level of animation fidelity that previously would have cost hundreds of thousands of dollars. It's a testament to the "indie-fication" of high-end tech.
+

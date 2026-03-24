@@ -31,3 +31,4 @@ Implementing voice recognition in a horror game comes with significant challenge
 The true genius of *Phasmophobia* is that the ghost is *always* listening, even when you aren't using the Spirit Box. If you scream in panic, the ghost is more likely to hunt you. This turns the player's own fear response into a gameplay disadvantage.
 
 For indie devs, *Phasmophobia* is a reminder that the most immersive hardware we have is the one we've had all along: the player's own voice. By integrating it into the core loop, you create a unique, personal horror experience that feels alive.
+

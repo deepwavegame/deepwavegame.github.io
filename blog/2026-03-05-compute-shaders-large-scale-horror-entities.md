@@ -42,3 +42,4 @@ float3 pos = _EntityBuffer[instanceID].position;
 With this architecture, simulating 10,000 entities becomes trivial. The bottleneck shifts from CPU logic to GPU fill rate and vertex processing. To optimize further, we can implement **GPU Culling**, where the Compute Shader checks if an entity is within the camera frustum before deciding whether it should be rendered.
 
 This technique was used to great effect in titles like *A Plague Tale: Innocence* for their rat swarms. By leveraging Compute Shaders, indie developers can now achieve a level of scale that was previously reserved for AAA studios, creating truly overwhelming horror experiences.
+

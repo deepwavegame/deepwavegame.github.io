@@ -37,3 +37,4 @@ positionOS.xyz += offset;
 Vertex displacement is computationally cheaper than some might think, especially when handled entirely on the GPU. However, the biggest bottleneck is often **Shadow Mapping**. Displaced vertices must also be accounted for in the Shadow Caster pass, otherwise, the shadows will remain static while the mesh pulses, breaking the immersion. Ensure your Shader Graph has the "Shadow Caster" pass properly configured to use the same displacement logic.
 
 By layering these techniques with subsurface scattering and a high-quality specular map (to give that "wet" look), you can create environments that don't just look scary—they feel alive.
+

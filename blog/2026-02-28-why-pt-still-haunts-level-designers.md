@@ -30,3 +30,4 @@ From a technical standpoint, the "loop" is a clever bit of level streaming. As t
 The influence of *P.T.* can be seen in almost every "walking simulator" horror game that followed, from *Layers of Fear* to *Visage*. It proved that you don't need a massive map to create a massive sense of dread. By focusing on detail, sound, and the subversion of a safe space, level designers can create experiences that linger in the player's mind long after the console is turned off.
 
 *P.T.* remains a haunting reminder of what happens when level design and psychological manipulation are perfectly aligned. It's not just a hallway; it's a window into the player's own mounting anxiety.
+

@@ -74,13 +74,13 @@
   "assets.page.description": {
     "message": "Aset tingkat produksi yang dioptimalkan untuk pipa rendering modern. Model fidelitas tinggi, tekstur PBR, dan kit audio spasial."
   },
-  "games.my-sister.title": {
-    "message": "My Sister - Adik Perempuanku"
+  "games.lil-sis.title": {
+    "message": "Lil Sis - Adik Perempuanku"
   },
-  "games.my-sister.subtitle": {
+  "games.lil-sis.subtitle": {
     "message": "ADIK PEREMPUANKU"
   },
-  "games.my-sister.description": {
+  "games.lil-sis.description": {
     "message": "Horor psikologis sudut pandang pertama. Jelajahi kenangan menyimpang dari rumah yang hancur saat Anda mencari saudara Anda yang hilang. Dibangun di atas Unity HDRP untuk imersi ekstrem."
   },
   "games.common.watch_trailer": {
@@ -95,31 +95,31 @@
   "games.common.trailer_title": {
     "message": "Trailer"
   },
-  "games.my-sister.story.p1": {
+  "games.lil-sis.story.p1": {
     "message": "Anda bermain sebagai kakak laki-laki yang telah lama meninggalkan rumah. Suatu hari, Anda menerima surat aneh yang konon dari mendiang ibu Anda, yang mengatakan bahwa adik perempuan Anda membutuhkan bantuan."
   },
-  "games.my-sister.story.p2": {
+  "games.lil-sis.story.p2": {
     "message": "Mengabaikan firasat buruk Anda, Anda kembali ke rumah kayu jauh di dalam hutan berkabut. Tidak ada orang, tidak ada suara kehidupan, hanya pesan darah dan kenangan menyimpang yang perlahan memakan Anda."
   },
-  "games.my-sister.story.quote": {
+  "games.lil-sis.story.quote": {
     "message": "\"Kamu berjanji tidak akan pernah meninggalkanku...\""
   },
-  "games.my-sister.feature1.title": {
+  "games.lil-sis.feature1.title": {
     "message": "Grafis yang Menghantui"
   },
-  "games.my-sister.feature1.desc": {
+  "games.lil-sis.feature1.desc": {
     "message": "Menggunakan teknologi pencahayaan canggih di Unity HDRP, menghadirkan atmosfer yang realistis dan gelap hingga ke titik mencekik."
   },
-  "games.my-sister.feature2.title": {
+  "games.lil-sis.feature2.title": {
     "message": "Audio Spasial"
   },
-  "games.my-sister.feature2.desc": {
+  "games.lil-sis.feature2.desc": {
     "message": "Sistem audio spasial 3D memungkinkan Anda mendengar dengan jelas setiap langkah kaki atau napas dari kekuatan yang memburu Anda."
   },
-  "games.my-sister.feature3.title": {
+  "games.lil-sis.feature3.title": {
     "message": "Teka-teki Psikologis"
   },
-  "games.my-sister.feature3.desc": {
+  "games.lil-sis.feature3.desc": {
     "message": "Bukan sekadar melarikan diri, Anda perlu mencari tahu dan menyusun kembali ingatan melalui sistem teka-teki berdasarkan fenomena supernatural."
   },
   "tools.unity-smart-sheet.title": {

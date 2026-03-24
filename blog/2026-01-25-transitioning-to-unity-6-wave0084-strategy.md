@@ -1,6 +1,6 @@
 ---
 title: "Transitioning to Unity 6: Wave0084 Strategy"
-description: "Why we are moving our production pipeline to the latest Unity engine for \"My Sister\"."
+description: "Why we are moving our production pipeline to the latest Unity engine for \"Lil Sis\"."
 date: 2026-01-25
 slug: transitioning-to-unity-6-wave0084-strategy
 authors: [hoangnguyen]
@@ -11,13 +11,13 @@ tags: [studio-log, unity]
 
 ## Embracing the Future of Indie Horror
 
-At Wave0084, we've always been cautious about engine updates mid-production. However, the release of Unity 6 has brought a suite of features that are simply too impactful to ignore for our upcoming title, *My Sister*. This post outlines our technical rationale and the strategy we're employing to ensure a smooth transition.
+At Wave0084, we've always been cautious about engine updates mid-production. However, the release of Unity 6 has brought a suite of features that are simply too impactful to ignore for our upcoming title, *Lil Sis*. This post outlines our technical rationale and the strategy we're employing to ensure a smooth transition.
 
 ### Performance: The Core Driver
 
 The primary reason for our jump to Unity 6 is the significant improvement in the **Universal Render Pipeline (URP)**. Specifically, the introduction of **GPU Resident Drawer** and **Spatial Temporal Post-Processing (STP)** allows us to push much higher visual fidelity on target hardware like the Steam Deck and mid-range laptops.
 
-For *My Sister*, which relies heavily on dense environmental detail and complex lighting, the GPU Resident Drawer significantly reduces our CPU-side draw call overhead. This allows us to allocate more CPU cycles to our advanced AI systems without sacrificing frame rate.
+For *Lil Sis*, which relies heavily on dense environmental detail and complex lighting, the GPU Resident Drawer significantly reduces our CPU-side draw call overhead. This allows us to allocate more CPU cycles to our advanced AI systems without sacrificing frame rate.
 
 ### Graphics and Lighting
 
@@ -32,4 +32,5 @@ A transition like this is never without risk. Our strategy involves:
 2.  **Asset Audit**: Every shader and custom render feature is being audited for compatibility with the new Render Graph.
 3.  **Automated Testing**: We've expanded our suite of smoke tests to verify that lighting and physics remain consistent across the version jump.
 
-Transitioning to Unity 6 is an investment in the longevity and quality of *My Sister*. It allows us to build on a more stable, performant foundation, ensuring that players have the best possible experience when the game launches.
+Transitioning to Unity 6 is an investment in the longevity and quality of *Lil Sis*. It allows us to build on a more stable, performant foundation, ensuring that players have the best possible experience when the game launches.
+

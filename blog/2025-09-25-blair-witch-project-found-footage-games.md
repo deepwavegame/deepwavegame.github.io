@@ -31,3 +31,4 @@ Paradoxically, it takes a lot of technical work to make a game look "cheap." To 
 Found footage creates a strange duality. On one hand, the camera acts as a barrier, providing a sense of "safety" by being an observer. On the other hand, it makes the horror feel more personal and invasive. It's the "it's happening to *you*" feeling.
 
 In our own work at Wave0084, we use found-footage sequences to tell the "history" of a location. By switching the player's perspective to a low-fidelity, handheld view of a past event, we can build dread for what is waiting for them in the present. The Blair Witch isn't just about a movie; it's about the power of the lens to transform the mundane into the monstrous.
+

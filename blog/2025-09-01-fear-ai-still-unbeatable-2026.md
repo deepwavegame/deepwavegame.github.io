@@ -36,3 +36,4 @@ Building a GOAP system in Unity or Unreal is more accessible than ever.
 3.  **Blackboards**: Shared data structures that allow team members to share information about the player's last known position.
 
 The legacy of *F.E.A.R.* is that great AI isn't about being "hard" to beat; it's about being **believable**. By giving enemies goals and the tools to achieve them dynamically, you create a game where every encounter feels unique and every enemy feels like a thinking, breathing threat.
+

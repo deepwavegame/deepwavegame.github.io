@@ -30,3 +30,4 @@ Unity provides several options for spatial audio. For a professional horror titl
 In a "hide and seek" horror game, binaural audio is a gameplay mechanic. The player must listen for the subtle creak of a floorboard or the wet breath of a stalker to survive. By using **Audio Cues** that are specifically positioned behind the player, you trigger a primal "fight or flight" response.
 
 A pro tip for horror devs: use **Infrasound** (very low-frequency sounds, usually below 20Hz). While players might not "hear" it, these frequencies are known to cause feelings of anxiety and unease in humans. Layering these subtle tones into your binaural soundscape can elevate the tension without the player ever knowing why they feel so disturbed.
+

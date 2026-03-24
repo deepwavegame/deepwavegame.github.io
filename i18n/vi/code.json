@@ -80,13 +80,13 @@
   "assets.page.description": {
     "message": "Các tài nguyên cấp độ sản xuất được tối ưu hóa cho các quy trình dựng hình hiện đại. Mô hình độ trung thực cao, kết cấu PBR và bộ âm thanh không gian."
   },
-  "games.my-sister.title": {
-    "message": "My Sister - Em Gái Tôi"
+  "games.lil-sis.title": {
+    "message": "Em Gái Nhỏ"
   },
-  "games.my-sister.subtitle": {
-    "message": "EM GÁI TÔI"
+  "games.lil-sis.subtitle": {
+    "message": "LIL SIS"
   },
-  "games.my-sister.description": {
+  "games.lil-sis.description": {
     "message": "Một trò chơi kinh dị tâm lý góc nhìn thứ nhất. Khám phá những ký ức méo mó của một ngôi nhà đổ nát khi bạn tìm kiếm người em mất tích. Được xây dựng trên Unity HDRP cho trải nghiệm cực kỳ chân thực."
   },
   "games.common.watch_trailer": {
@@ -101,31 +101,31 @@
   "games.common.trailer_title": {
     "message": "Trailer"
   },
-  "games.my-sister.story.p1": {
+  "games.lil-sis.story.p1": {
     "message": "Bạn vào vai một người anh trai xa nhà lâu năm. Một ngày, bạn nhận được một bức thư kì lạ được cho là từ người mẹ quá cố, nói rằng em gái bạn cần sự giúp đỡ."
   },
-  "games.my-sister.story.p2": {
+  "games.lil-sis.story.p2": {
     "message": "Bỏ qua những linh cảm chẳng lành, bạn trở về ngôi nhà gỗ nằm sâu trong cánh rừng sương mù. Không một bóng người, không một âm thanh sự sống, chỉ có những dòng tin nhắn bằng máu và những mảnh ký ức méo mó đang dần nuốt chửng bạn."
   },
-  "games.my-sister.story.quote": {
+  "games.lil-sis.story.quote": {
     "message": "\"Anh đã hứa sẽ không bao giờ bỏ rơi em...\""
   },
-  "games.my-sister.feature1.title": {
+  "games.lil-sis.feature1.title": {
     "message": "Đồ Họa Ám Ảnh"
   },
-  "games.my-sister.feature1.desc": {
+  "games.lil-sis.feature1.desc": {
     "message": "Sử dụng công nghệ ánh sáng tiên tiến trên Unity HDRP, mang lại không gian chân thực và tăm tối đến nghẹt thở."
   },
-  "games.my-sister.feature2.title": {
+  "games.lil-sis.feature2.title": {
     "message": "Âm Thanh Đa Chiều"
   },
-  "games.my-sister.feature2.desc": {
+  "games.lil-sis.feature2.desc": {
     "message": "Hệ thống âm thanh không gian (Spatial Audio) 3D cho phép bạn nghe rõ từng tiếng bước chân hay hơi thở của thế lực đang săn lùng bạn."
   },
-  "games.my-sister.feature3.title": {
+  "games.lil-sis.feature3.title": {
     "message": "Giải Đố Tâm Lý"
   },
-  "games.my-sister.feature3.desc": {
+  "games.lil-sis.feature3.desc": {
     "message": "Không chỉ chạy trốn, bạn cần phải tìm hiểu và chắp vá những mảnh ký ức thông qua hệ thống giải đố dựa trên các hiện tượng siêu nhiên."
   },
   "tools.unity-smart-sheet.title": {
@@ -239,28 +239,76 @@
   "blog.page.subtitle": {
     "message": "Phân tích kỹ thuật, báo cáo thực địa về các thực thể kinh dị và nhật ký kỹ thuật của studio."
   },
-  "blog.post1.title": { "message": "Biến dạng Đỉnh (Vertex Displacement) Bậc cao cho Hiệu ứng Máu me" },
-  "blog.post1.desc": { "message": "Tạo các bề mặt biến dạng động bằng Shader Graph và URP cho các hiệu ứng kinh dị chân thực." },
-  "blog.post2.title": { "message": "Sương mù Thể tích (Volumetric Fog) trong URP: Phân tích Chuyên sâu" },
-  "blog.post2.desc": { "message": "Tối ưu hóa tán xạ khí quyển để tạo ra bầu không khí sương mù hoàn hảo mà không làm giảm hiệu năng." },
-  "blog.post3.title": { "message": "Âm thanh Binaural: Bí mật của Nỗi sợ Thực sự" },
-  "blog.post3.desc": { "message": "Cách triển khai âm thanh không gian HRTF trong Unity để khiến người chơi phải ngoảnh đầu trong đời thực." },
-  "blog.post4.title": { "message": "Scriptable Render Features Tùy chỉnh cho Hiệu ứng Glitch" },
-  "blog.post4.desc": { "message": "Sử dụng trình kết xuất URP để tạo ra các hiệu ứng hư hỏng kỹ thuật số và mất kiểm soát tâm lý cấp độ chuyên nghiệp." },
-  "blog.post5.title": { "message": "Compute Shaders cho Các Thực thể Kinh dị Quy mô lớn" },
-  "blog.post5.desc": { "message": "Mô phỏng hàng ngàn sinh vật bầy đàn bằng logic tính toán trên GPU." },
-  "blog.post6.title": { "message": "Tại sao \"P.T.\" Vẫn Ám ảnh Các Nhà Thiết kế Màn chơi" },
-  "blog.post6.desc": { "message": "Phân tích kỹ thuật về hành lang lặp lại và cách nó làm chủ tâm lý mệt mỏi do vòng lặp." },
-  "blog.post7.title": { "message": "Camera Resident Evil: Cố định so với Góc nhìn Ngang vai" },
-  "blog.post7.desc": { "message": "Phân tích cách góc nhìn camera quyết định nỗi sợ và sự chủ động của người chơi trong lịch sử game kinh dị." },
-  "blog.post8.title": { "message": "Subnautica: Nỗi sợ hãi từ Độ sâu Không xác định" },
-  "blog.post8.desc": { "message": "Xem xét hội chứng sợ biển sâu (thalassophobia) và thiết kế âm thanh như những nhân tố kinh dị chính." },
-  "blog.post9.title": { "message": "Alien Isolation: Phân tích AI Hành vi" },
-  "blog.post9.desc": { "message": "Cách Creative Assembly xây dựng hệ thống 'hai bộ não' cho nỗi kinh hoàng không theo kịch bản của Xenomorph." },
-  "blog.post10.title": { "message": "Âm thanh của Silent Hill: Nỗi kinh hoàng Công nghiệp của Akira Yamaoka" },
-  "blog.post10.desc": { "message": "Giải mã việc sử dụng tạp âm trắng và các mẫu âm thanh công nghiệp để tạo ra sự khó chịu." },
-  "blog.post11.title": { "message": "Chuyển dịch sang Unity 6: Chiến lược của Wave0084" },
-  "blog.post11.desc": { "message": "Tại sao chúng tôi chuyển quy trình sản xuất sang phiên bản Unity mới nhất cho dự án \"My Sister\"." },
-  "blog.post12.title": { "message": "Motion Capture với Ngân sách Indie" },
-  "blog.post12.desc": { "message": "Sử dụng Rokoko và các công cụ video AI để đạt được các chuyển động kinh dị thực tế." }
+  "blog.post1.title": {
+    "message": "Biến dạng Đỉnh (Vertex Displacement) Bậc cao cho Hiệu ứng Máu me"
+  },
+  "blog.post1.desc": {
+    "message": "Tạo các bề mặt biến dạng động bằng Shader Graph và URP cho các hiệu ứng kinh dị chân thực."
+  },
+  "blog.post2.title": {
+    "message": "Sương mù Thể tích (Volumetric Fog) trong URP: Phân tích Chuyên sâu"
+  },
+  "blog.post2.desc": {
+    "message": "Tối ưu hóa tán xạ khí quyển để tạo ra bầu không khí sương mù hoàn hảo mà không làm giảm hiệu năng."
+  },
+  "blog.post3.title": {
+    "message": "Âm thanh Binaural: Bí mật của Nỗi sợ Thực sự"
+  },
+  "blog.post3.desc": {
+    "message": "Cách triển khai âm thanh không gian HRTF trong Unity để khiến người chơi phải ngoảnh đầu trong đời thực."
+  },
+  "blog.post4.title": {
+    "message": "Scriptable Render Features Tùy chỉnh cho Hiệu ứng Glitch"
+  },
+  "blog.post4.desc": {
+    "message": "Sử dụng trình kết xuất URP để tạo ra các hiệu ứng hư hỏng kỹ thuật số và mất kiểm soát tâm lý cấp độ chuyên nghiệp."
+  },
+  "blog.post5.title": {
+    "message": "Compute Shaders cho Các Thực thể Kinh dị Quy mô lớn"
+  },
+  "blog.post5.desc": {
+    "message": "Mô phỏng hàng ngàn sinh vật bầy đàn bằng logic tính toán trên GPU."
+  },
+  "blog.post6.title": {
+    "message": "Tại sao \"P.T.\" Vẫn Ám ảnh Các Nhà Thiết kế Màn chơi"
+  },
+  "blog.post6.desc": {
+    "message": "Phân tích kỹ thuật về hành lang lặp lại và cách nó làm chủ tâm lý mệt mỏi do vòng lặp."
+  },
+  "blog.post7.title": {
+    "message": "Camera Resident Evil: Cố định so với Góc nhìn Ngang vai"
+  },
+  "blog.post7.desc": {
+    "message": "Phân tích cách góc nhìn camera quyết định nỗi sợ và sự chủ động của người chơi trong lịch sử game kinh dị."
+  },
+  "blog.post8.title": {
+    "message": "Subnautica: Nỗi sợ hãi từ Độ sâu Không xác định"
+  },
+  "blog.post8.desc": {
+    "message": "Xem xét hội chứng sợ biển sâu (thalassophobia) và thiết kế âm thanh như những nhân tố kinh dị chính."
+  },
+  "blog.post9.title": {
+    "message": "Alien Isolation: Phân tích AI Hành vi"
+  },
+  "blog.post9.desc": {
+    "message": "Cách Creative Assembly xây dựng hệ thống 'hai bộ não' cho nỗi kinh hoàng không theo kịch bản của Xenomorph."
+  },
+  "blog.post10.title": {
+    "message": "Âm thanh của Silent Hill: Nỗi kinh hoàng Công nghiệp của Akira Yamaoka"
+  },
+  "blog.post10.desc": {
+    "message": "Giải mã việc sử dụng tạp âm trắng và các mẫu âm thanh công nghiệp để tạo ra sự khó chịu."
+  },
+  "blog.post11.title": {
+    "message": "Chuyển dịch sang Unity 6: Chiến lược của Wave0084"
+  },
+  "blog.post11.desc": {
+    "message": "Tại sao chúng tôi chuyển quy trình sản xuất sang phiên bản Unity mới nhất cho dự án \"Lil Sis\"."
+  },
+  "blog.post12.title": {
+    "message": "Motion Capture với Ngân sách Indie"
+  },
+  "blog.post12.desc": {
+    "message": "Sử dụng Rokoko và các công cụ video AI để đạt được các chuyển động kinh dị thực tế."
+  }
 }

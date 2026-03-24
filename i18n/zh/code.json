@@ -74,13 +74,13 @@
   "assets.page.description": {
     "message": "针对现代渲染管线优化的生产级资产。高保真模型、PBR 贴图和空间音频套件。"
   },
-  "games.my-sister.title": {
-    "message": "My Sister - 我的妹妹"
+  "games.lil-sis.title": {
+    "message": "Lil Sis - 我的妹妹"
   },
-  "games.my-sister.subtitle": {
+  "games.lil-sis.subtitle": {
     "message": "我的妹妹"
   },
-  "games.my-sister.description": {
+  "games.lil-sis.description": {
     "message": "心理第一人称恐怖。探索破碎家庭的扭曲记忆，寻找失踪的妹妹。基于 Unity HDRP 构建，极具沉浸感。"
   },
   "games.common.watch_trailer": {
@@ -95,31 +95,31 @@
   "games.common.trailer_title": {
     "message": "预告片"
   },
-  "games.my-sister.story.p1": {
+  "games.lil-sis.story.p1": {
     "message": "你扮演一个离家多年的哥哥。一天，你收到一封据说是你已故母亲寄来的奇怪信件，说你的妹妹需要帮助。"
   },
-  "games.my-sister.story.p2": {
+  "games.lil-sis.story.p2": {
     "message": "无视你不祥的预感，你回到了迷雾森林深处的木屋。空无一人，没有生命的声音，只有血字信息和扭曲的记忆在慢慢吞噬你。"
   },
-  "games.my-sister.story.quote": {
+  "games.lil-sis.story.quote": {
     "message": "“你答应过永远不离开我的……”"
   },
-  "games.my-sister.feature1.title": {
+  "games.lil-sis.feature1.title": {
     "message": "令人窒息的画面"
   },
-  "games.my-sister.feature1.desc": {
+  "games.lil-sis.feature1.desc": {
     "message": "在 Unity HDRP 上使用先进的照明技术，带来真实而黑暗的氛围，令人感到窒息。"
   },
-  "games.my-sister.feature2.title": {
+  "games.lil-sis.feature2.title": {
     "message": "空间音频"
   },
-  "games.my-sister.feature2.desc": {
+  "games.lil-sis.feature2.desc": {
     "message": "3D 空间音频系统让你能清楚地听到追捕你的力量的每一个脚步声或呼吸声。"
   },
-  "games.my-sister.feature3.title": {
+  "games.lil-sis.feature3.title": {
     "message": "心理谜题"
   },
-  "games.my-sister.feature3.desc": {
+  "games.lil-sis.feature3.desc": {
     "message": "不仅是逃跑，你还需要通过基于超自然现象的谜题系统找出并拼凑记忆。"
   },
   "tools.unity-smart-sheet.title": {

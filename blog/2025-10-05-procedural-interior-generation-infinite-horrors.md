@@ -15,7 +15,7 @@ Procedural Generation (ProcGen) is often associated with vast open worlds or rog
 
 ### The Constraint-Based Approach
 
-For *My Sister*'s "Dreamscape" sequences, we use a **Constraint-Based Layout Generator**. Instead of purely random placement, we define a set of architectural rules:
+For *Lil Sis*'s "Dreamscape" sequences, we use a **Constraint-Based Layout Generator**. Instead of purely random placement, we define a set of architectural rules:
 - Bathrooms must be adjacent to bedrooms.
 - Hallways must eventually lead to a "hub" area.
 - Escape routes must always be at least two rooms away from the spawn point.
@@ -36,3 +36,4 @@ public void GenerateRoomLighting(Room room) {
 ### The Uncanny Valley of Architecture
 
 The goal of procedural horror interiors is to create something that looks "almost" right. By subtly breaking the rules of architecture—making a hallway slightly too long or a door slightly too small—you trigger the "Uncanny Valley" response in the player. They know something is wrong, even if they can't quite put their finger on it. This architectural gaslighting is a unique strength of procedural systems in the horror genre.
+

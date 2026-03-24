@@ -31,3 +31,4 @@ A raw photogrammetry scan is millions of polygons—far too heavy for real-time 
 In Unity's Universal Render Pipeline, these high-fidelity assets shine when combined with **Detail Maps** and **Decals**. By layering a photogrammetric "base" with procedural "grime" decals, we can create environments that feel unique and grounded in reality.
 
 Photogrammetry isn't about replacing artists; it's about giving them a more realistic starting point. It allows us to spend less time on the "grunt work" of modeling bricks and more time on the "art" of lighting and atmosphere.
+

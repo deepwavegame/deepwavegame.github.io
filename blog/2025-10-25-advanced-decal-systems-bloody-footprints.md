@@ -19,7 +19,7 @@ Unity's standard `Decal Projector` is powerful but can be expensive when used in
 
 ### The Solution: GPU-Driven Decal Atlasing
 
-For *My Sister*, we developed a custom decal system that bypasses the standard projectors for small, repetitive details like footprints.
+For *Lil Sis*, we developed a custom decal system that bypasses the standard projectors for small, repetitive details like footprints.
 
 1.  **The Atlas**: We store all our blood variations in a single high-res texture atlas.
 2.  **The Mesh Batcher**: Instead of a "Projector," we use a single mesh that is generated on the fly. When a footprint is created, we add its vertices to a `Dynamic Mesh`. This allows us to render hundreds of footprints in a **Single Draw Call**.
@@ -36,3 +36,4 @@ col.a *= alpha;
 ```
 
 This system allows us to have rooms covered in blood and footprints without the player ever noticing a dip in performance. It's a perfect example of how "technical tricks" can be used to support "narrative atmosphere."
+

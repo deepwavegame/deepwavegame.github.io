@@ -32,3 +32,4 @@ Unity's URP doesn't include a robust volumetric fog out of the box (unlike HDRP)
 In horror, fog isn't just about visibility; it's about what it *hides*. By dynamically adjusting fog density based on player location or sanity levels, you can create a shifting sense of claustrophobia. For example, as the player's "Fear" meter rises, the fog's `Extinction` coefficient can increase, pulling the "wall of mist" closer to the player.
 
 Performance-wise, always keep an eye on your **Overdraw**. Thick volumes of fog can overlap with other transparent effects (like particles), leading to significant GPU pressure. Balancing the Froxel resolution with the camera's far clip plane is the key to maintaining 60 FPS on mid-range hardware.
+

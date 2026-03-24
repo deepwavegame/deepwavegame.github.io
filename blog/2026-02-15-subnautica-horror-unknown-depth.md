@@ -28,3 +28,4 @@ From a technical perspective, the audio uses sophisticated **Occlusion and Rever
 ### Lessons for Horror Devs
 
 *Subnautica* teaches us that you don't need blood, guts, or jump scares to create fear. You just need to place the player in an environment where they are fundamentally out of their element and then use sound and scale to remind them of their own insignificance. For any indie horror dev, studying *Subnautica*'s "Void" is a lesson in the power of atmospheric dread.
+

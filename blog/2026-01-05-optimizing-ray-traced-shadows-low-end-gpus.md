@@ -32,3 +32,4 @@ Not every object needs ray-traced shadows all the time. We implemented a C# syst
 - **Light Intensity**: If a light source is too dim for shadows to be clearly visible, we fall back to shadow maps.
 
 These optimizations allow us to support ray tracing as an "Ultra" setting that is actually playable on mid-range hardware (like an RTX 3060), rather than it being a feature only accessible to a tiny fraction of our player base.
+

@@ -41,4 +41,5 @@ We don't want the `SanityManager` to know about every possible effect. Instead, 
 
 The golden rule of Sanity Systems is: **Never break the game.** A sanity effect that causes a real crash or a real loss of progress is a bug, not a feature. The goal is to make the player *think* the game is breaking.
 
-For *My Sister*, we've refined this by ensuring that all sanity effects are strictly visual or auditory. We want to gaslight the player's senses, not their patience. By building a system where "hallucinations" are just another layer of the rendering and audio stack, we can create a deep, unsettling experience that feels like the world itself is coming apart at the seams.
+For *Lil Sis*, we've refined this by ensuring that all sanity effects are strictly visual or auditory. We want to gaslight the player's senses, not their patience. By building a system where "hallucinations" are just another layer of the rendering and audio stack, we can create a deep, unsettling experience that feels like the world itself is coming apart at the seams.
+

@@ -74,13 +74,13 @@
   "assets.page.description": {
     "message": "現代のレンダリングパイプライン向けに最適化されたプロダクション・グレードのアセット。高精度なモデル、PBR テクスチャ、空間オーディオキット。"
   },
-  "games.my-sister.title": {
-    "message": "My Sister - 私の妹"
+  "games.lil-sis.title": {
+    "message": "Lil Sis - 私の妹"
   },
-  "games.my-sister.subtitle": {
+  "games.lil-sis.subtitle": {
     "message": "私の妹"
   },
-  "games.my-sister.description": {
+  "games.lil-sis.description": {
     "message": "心理的一人称ホラー。行方不明の妹を探しながら、壊れた家の歪んだ記憶を探索します。極限の没入感を実現するために Unity HDRP で構築されています。"
   },
   "games.common.watch_trailer": {
@@ -95,31 +95,31 @@
   "games.common.trailer_title": {
     "message": "トレーラー"
   },
-  "games.my-sister.story.p1": {
+  "games.lil-sis.story.p1": {
     "message": "あなたは長年家を離れていた兄としてプレイします。ある日、亡き母からと思われる奇妙な手紙が届き、妹が助けを必要としていると告げられます。"
   },
-  "games.my-sister.story.p2": {
+  "games.lil-sis.story.p2": {
     "message": "不吉な予感を無視して、霧深い森の奥深くにある木造の家に戻ります。人影もなく、生命の音もなく、ただ血のメッセージと歪んだ記憶がゆっくりとあなたを飲み込んでいきます。"
   },
-  "games.my-sister.story.quote": {
+  "games.lil-sis.story.quote": {
     "message": "「私を置いていかないって約束したのに……」"
   },
-  "games.my-sister.feature1.title": {
+  "games.lil-sis.feature1.title": {
     "message": "心霊的なグラフィック"
   },
-  "games.my-sister.feature1.desc": {
+  "games.lil-sis.feature1.desc": {
     "message": "Unity HDRP の高度なライティング技術を使用し、息が詰まるほどリアルで暗い雰囲気をもたらします。"
   },
-  "games.my-sister.feature2.title": {
+  "games.lil-sis.feature2.title": {
     "message": "空間オーディオ"
   },
-  "games.my-sister.feature2.desc": {
+  "games.lil-sis.feature2.desc": {
     "message": "3D 空間オーディオシステムにより、あなたを追い詰める存在の足音や息遣いをはっきりと聞くことができます。"
   },
-  "games.my-sister.feature3.title": {
+  "games.lil-sis.feature3.title": {
     "message": "心理パズル"
   },
-  "games.my-sister.feature3.desc": {
+  "games.lil-sis.feature3.desc": {
     "message": "ただ逃げるだけでなく、超常現象に基づいたパズルシステムを通じて、記憶を解き明かし、つなぎ合わせる必要があります。"
   },
   "tools.unity-smart-sheet.title": {

@@ -33,3 +33,4 @@ To recreate this in Unity, we use a **Custom Post-Processing Effect**.
 - This value is then used as an index for a **Gradient Map** (or a 1D Texture Ramp) to apply the green tint.
 
 *Outlast* proved that by limiting the player's vision through a technical lens, you can make them feel more connected to the world while simultaneously making them feel more vulnerable. The camcorder isn't just a tool; it's the player's only, fragile lifeline.
+

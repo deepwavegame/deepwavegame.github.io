@@ -30,3 +30,4 @@ However, the OTS view introduces its own brand of fear: **The Blind Spot**. Unli
 With *RE7*, the series moved to first-person, removing the "avatar" between the player and the horror. This is the most immersive perspective, but it also feels the most restrictive. You lose the situational awareness of the third-person views, making every creak and shadow feel personally threatening.
 
 In conclusion, there is no "correct" camera for horror. Fixed cameras excel at cinematic dread, OTS at tactical tension, and first-person at pure immersion. As developers, choosing our perspective is our first and most important step in defining the player's relationship with fear.
+

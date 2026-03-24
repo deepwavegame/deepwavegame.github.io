@@ -100,7 +100,7 @@ const blogPosts = [
   {
     id: 11,
     title: <Translate id="blog.post11.title">Transitioning to Unity 6: Wave0084 Strategy</Translate>,
-    description: <Translate id="blog.post11.desc">Why we are moving our production pipeline to the latest Unity engine for "My Sister".</Translate>,
+    description: <Translate id="blog.post11.desc">Why we are moving our production pipeline to the latest Unity engine for "Lil Sis".</Translate>,
     tag: 'STUDIO LOG',
     date: '2026-01-25',
     thumbnail: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80',

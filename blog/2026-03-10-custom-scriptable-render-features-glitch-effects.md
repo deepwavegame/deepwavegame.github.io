@@ -44,3 +44,4 @@ public override void Execute(ScriptableRenderContext context, ref RenderingData 
 The beauty of a custom Render Feature is how easily it can be tied to gameplay systems. By exposing a `glitchIntensity` parameter in the Render Feature, we can drive it from a "Sanity" or "Corruption" script in C#. As the player's sanity drops, we increase the frequency and amplitude of the block displacement and the severity of the chromatic aberration.
 
 By using a `ComputeBuffer` or a simple `GlobalFloat`, we can update these values once per frame on the GPU, ensuring that even the most chaotic visual meltdowns don't impact our CPU performance. This allows for a seamless transition from a clear image to a fractured, terrifying reality.
+

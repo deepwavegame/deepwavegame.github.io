@@ -30,3 +30,4 @@ The scarcity of light is directly tied to the Sanity system. Staying in the dark
 From a technical standpoint, *Amnesia* used a very focused lighting model. Shadows weren't just a visual effect; they were a gameplay volume. The game tracks the player's "exposure" to light sources to drive the sanity and stealth systems.
 
 For modern devs, the lesson of *Amnesia* is that **Vulnerability is the strongest weapon**. By taking away the player's tools and making their survival dependent on a depleting resource, you create a level of engagement that no amount of jump scares can match. Scarcity isn't just about difficulty; it's about making every choice feel heavy with consequence.
+

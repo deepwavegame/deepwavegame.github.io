@@ -41,3 +41,4 @@ When the game doesn't pause, the inventory becomes a source of tension. The play
 To keep the system performant, we use **ScriptableObjects** for item data and a **Messenger/Observer pattern** to update the UI. When an item is added to the `InventoryData` ScriptableObject, it fires an event that the `DiegeticInventory` listens for, updating the 3D representation without needing to poll every frame.
 
 By removing the "safety" of a paused menu and integrating the inventory into the game world, you force the player to stay engaged with the horror even when they are just trying to manage their resources. It's a small change that has a massive impact on the overall feel of the game.
+

@@ -80,13 +80,13 @@
   "assets.page.description": {
     "message": "Production-grade assets optimized for modern rendering pipelines. High-fidelity models, PBR textures, and spatial audio kits."
   },
-  "games.my-sister.title": {
-    "message": "My Sister - Em Gái Tôi"
+  "games.lil-sis.title": {
+    "message": "Lil Sis"
   },
-  "games.my-sister.subtitle": {
-    "message": "MY SISTER"
+  "games.lil-sis.subtitle": {
+    "message": "LIL SIS"
   },
-  "games.my-sister.description": {
+  "games.lil-sis.description": {
     "message": "A psychological first-person horror. Explore the distorted memories of a broken home as you search for your missing sibling. Built on Unity HDRP for extreme immersion."
   },
   "games.common.watch_trailer": {
@@ -101,31 +101,31 @@
   "games.common.trailer_title": {
     "message": "Trailer"
   },
-  "games.my-sister.story.p1": {
+  "games.lil-sis.story.p1": {
     "message": "You play as an older brother who has been away from home for many years. One day, you receive a strange letter supposedly from your late mother, saying that your sister needs help."
   },
-  "games.my-sister.story.p2": {
+  "games.lil-sis.story.p2": {
     "message": "Ignoring your bad premonitions, you return to the wooden house deep in the misty forest. No one, no sound of life, only blood messages and distorted memories are slowly consuming you."
   },
-  "games.my-sister.story.quote": {
+  "games.lil-sis.story.quote": {
     "message": "\"You promised never to leave me...\""
   },
-  "games.my-sister.feature1.title": {
+  "games.lil-sis.feature1.title": {
     "message": "Haunting Graphics"
   },
-  "games.my-sister.feature1.desc": {
+  "games.lil-sis.feature1.desc": {
     "message": "Using advanced lighting technology on Unity HDRP, bringing a realistic and dark atmosphere to the point of suffocation."
   },
-  "games.my-sister.feature2.title": {
+  "games.lil-sis.feature2.title": {
     "message": "Spatial Audio"
   },
-  "games.my-sister.feature2.desc": {
+  "games.lil-sis.feature2.desc": {
     "message": "3D spatial audio system allows you to clearly hear every footstep or breath of the force hunting you."
   },
-  "games.my-sister.feature3.title": {
+  "games.lil-sis.feature3.title": {
     "message": "Psychological Puzzles"
   },
-  "games.my-sister.feature3.desc": {
+  "games.lil-sis.feature3.desc": {
     "message": "Not just running away, you need to find out and piece together memories through a puzzle system based on supernatural phenomena."
   },
   "tools.unity-smart-sheet.title": {
@@ -239,28 +239,76 @@
   "blog.page.subtitle": {
     "message": "Technical deconstructions, field analysis of horror entities, and studio engineering logs."
   },
-  "blog.post1.title": { "message": "Advanced Vertex Displacement for Flesh & Gore" },
-  "blog.post1.desc": { "message": "Creating dynamic, squishy surfaces using Shader Graph and URP for visceral horror effects." },
-  "blog.post2.title": { "message": "Volumetric Fog in URP: A Deep Dive" },
-  "blog.post2.desc": { "message": "Optimizing atmospheric scattering for that perfect misty horror ambiance without killing performance." },
-  "blog.post3.title": { "message": "Binaural Audio: The Secret to True Fear" },
-  "blog.post3.desc": { "message": "How to implement HRTF spatial audio in Unity to make players turn their heads in real life." },
-  "blog.post4.title": { "message": "Custom Scriptable Render Features for Glitch Effects" },
-  "blog.post4.desc": { "message": "Using the URP renderer to create production-grade digital corruption and sanity effects." },
-  "blog.post5.title": { "message": "Compute Shaders for Large-Scale Horror Entities" },
-  "blog.post5.desc": { "message": "Simulating thousands of swarming creatures with GPU-bound logic." },
-  "blog.post6.title": { "message": "Why \"P.T.\" Still Haunts Level Designers" },
-  "blog.post6.desc": { "message": "A technical breakdown of the looping corridor and how it mastered psychological loop-fatigue." },
-  "blog.post7.title": { "message": "The Resident Evil Camera: Fixed vs. Over-the-Shoulder" },
-  "blog.post7.desc": { "message": "Analyzing how camera perspective dictates fear and player agency in horror history." },
-  "blog.post8.title": { "message": "Subnautica: The Horror of the Unknown Depth" },
-  "blog.post8.desc": { "message": "Examining thalassophobia and sound design as primary horror drivers in non-horror titles." },
-  "blog.post9.title": { "message": "Alien Isolation: Behavioral AI Breakdown" },
-  "blog.post9.desc": { "message": "How Creative Assembly built the two-brain system for the Xenomorph's unscripted terror." },
-  "blog.post10.title": { "message": "The Sound of Silent Hill: Akira Yamaoka's Industrial Dread" },
-  "blog.post10.desc": { "message": "Deconstructing the use of white noise and industrial samples to create discomfort." },
-  "blog.post11.title": { "message": "Transitioning to Unity 6: Wave0084 Strategy" },
-  "blog.post11.desc": { "message": "Why we are moving our production pipeline to the latest Unity engine for \"My Sister\"." },
-  "blog.post12.title": { "message": "Motion Capture on an Indie Budget" },
-  "blog.post12.desc": { "message": "Using Rokoko and AI video tools to achieve realistic horror animations." }
+  "blog.post1.title": {
+    "message": "Advanced Vertex Displacement for Flesh & Gore"
+  },
+  "blog.post1.desc": {
+    "message": "Creating dynamic, squishy surfaces using Shader Graph and URP for visceral horror effects."
+  },
+  "blog.post2.title": {
+    "message": "Volumetric Fog in URP: A Deep Dive"
+  },
+  "blog.post2.desc": {
+    "message": "Optimizing atmospheric scattering for that perfect misty horror ambiance without killing performance."
+  },
+  "blog.post3.title": {
+    "message": "Binaural Audio: The Secret to True Fear"
+  },
+  "blog.post3.desc": {
+    "message": "How to implement HRTF spatial audio in Unity to make players turn their heads in real life."
+  },
+  "blog.post4.title": {
+    "message": "Custom Scriptable Render Features for Glitch Effects"
+  },
+  "blog.post4.desc": {
+    "message": "Using the URP renderer to create production-grade digital corruption and sanity effects."
+  },
+  "blog.post5.title": {
+    "message": "Compute Shaders for Large-Scale Horror Entities"
+  },
+  "blog.post5.desc": {
+    "message": "Simulating thousands of swarming creatures with GPU-bound logic."
+  },
+  "blog.post6.title": {
+    "message": "Why \"P.T.\" Still Haunts Level Designers"
+  },
+  "blog.post6.desc": {
+    "message": "A technical breakdown of the looping corridor and how it mastered psychological loop-fatigue."
+  },
+  "blog.post7.title": {
+    "message": "The Resident Evil Camera: Fixed vs. Over-the-Shoulder"
+  },
+  "blog.post7.desc": {
+    "message": "Analyzing how camera perspective dictates fear and player agency in horror history."
+  },
+  "blog.post8.title": {
+    "message": "Subnautica: The Horror of the Unknown Depth"
+  },
+  "blog.post8.desc": {
+    "message": "Examining thalassophobia and sound design as primary horror drivers in non-horror titles."
+  },
+  "blog.post9.title": {
+    "message": "Alien Isolation: Behavioral AI Breakdown"
+  },
+  "blog.post9.desc": {
+    "message": "How Creative Assembly built the two-brain system for the Xenomorph's unscripted terror."
+  },
+  "blog.post10.title": {
+    "message": "The Sound of Silent Hill: Akira Yamaoka's Industrial Dread"
+  },
+  "blog.post10.desc": {
+    "message": "Deconstructing the use of white noise and industrial samples to create discomfort."
+  },
+  "blog.post11.title": {
+    "message": "Transitioning to Unity 6: Wave0084 Strategy"
+  },
+  "blog.post11.desc": {
+    "message": "Why we are moving our production pipeline to the latest Unity engine for \"Lil Sis\"."
+  },
+  "blog.post12.title": {
+    "message": "Motion Capture on an Indie Budget"
+  },
+  "blog.post12.desc": {
+    "message": "Using Rokoko and AI video tools to achieve realistic horror animations."
+  }
 }

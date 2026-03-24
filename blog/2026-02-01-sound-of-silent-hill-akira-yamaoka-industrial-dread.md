@@ -31,3 +31,4 @@ To achieve this "Yamaoka style" in modern games:
 3.  **Silence as a Tool**: Yamaoka knew when to let the sound drop out entirely. Sudden silence after a period of intense noise is one of the most effective ways to make a player feel exposed.
 
 Akira Yamaoka's work reminds us that in horror, the goal of audio isn't always to be "heard"—it's to be felt in the pit of the stomach.
+

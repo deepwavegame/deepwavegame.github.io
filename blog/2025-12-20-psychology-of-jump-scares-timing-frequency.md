@@ -31,3 +31,4 @@ At Wave0084, we use heart rate monitors and skin conductance sensors during play
 One of the most effective ways to manage the "Goldilocks" zone is the **False Scare**. This is when the game builds tension (a slamming door, a sudden shadow) but with no immediate threat. This resets the player's "threat detection" and makes them even more vulnerable to the *actual* scare that follows a few moments later.
 
 By varying the frequency and timing—sometimes delaying the scare by several seconds longer than the player expects—you break their internal "fear rhythm." This unpredictability is the key to moving beyond the cheap jump scare and into the realm of true, lasting psychological impact.
+
