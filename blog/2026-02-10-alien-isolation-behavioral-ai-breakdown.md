@@ -3,8 +3,8 @@ title: "Alien Isolation: Behavioral AI Breakdown"
 description: "How Creative Assembly built the two-brain system for the Xenomorph's unscripted terror."
 date: 2026-02-10
 slug: alien-isolation-behavioral-ai-breakdown
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [vuminh]
+tags: [ai, horror-design]
 ---
 
 ![Alien Isolation AI](https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=80)

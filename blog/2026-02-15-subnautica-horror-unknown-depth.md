@@ -3,8 +3,8 @@ title: "Subnautica: The Horror of the Unknown Depth"
 description: "Examining thalassophobia and sound design as primary horror drivers in non-horror titles."
 date: 2026-02-15
 slug: subnautica-horror-unknown-depth
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [hoangnguyen]
+tags: [horror-design, audio]
 ---
 
 ![Subnautica Depth](https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=1200&q=80)

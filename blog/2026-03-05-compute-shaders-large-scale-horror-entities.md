@@ -3,8 +3,8 @@ title: "Compute Shaders for Large-Scale Horror Entities"
 description: "Simulating thousands of swarming creatures with GPU-bound logic."
 date: 2026-03-05
 slug: compute-shaders-large-scale-horror-entities
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [unity, tech-art]
 ---
 
 ![Compute Shaders Swarm](https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80)

@@ -3,8 +3,8 @@ title: "Volumetric Fog in URP: A Deep Dive"
 description: "Optimizing atmospheric scattering for that perfect misty horror ambiance without killing performance."
 date: 2026-03-20
 slug: volumetric-fog-urp-deep-dive
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [urp, shader]
 ---
 
 ![Volumetric Fog](https://images.unsplash.com/photo-1475139441338-693e7dbe20b6?auto=format&fit=crop&w=1200&q=80)

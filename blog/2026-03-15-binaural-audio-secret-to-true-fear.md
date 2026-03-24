@@ -3,8 +3,8 @@ title: "Binaural Audio: The Secret to True Fear"
 description: "How to implement HRTF spatial audio in Unity to make players turn their heads in real life."
 date: 2026-03-15
 slug: binaural-audio-secret-to-true-fear
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [audio, unity]
 ---
 
 ![Binaural Audio](https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80)

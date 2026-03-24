@@ -3,8 +3,8 @@ title: "Advanced Decal Systems for Bloody Footprints"
 description: "Optimizing thousands of dynamic decals in Unity."
 date: 2025-10-25
 slug: advanced-decal-systems-bloody-footprints
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [unity, tech-art]
 ---
 
 ![Decals](https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?auto=format&fit=crop&w=1200&q=80)

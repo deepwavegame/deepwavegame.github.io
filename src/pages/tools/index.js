@@ -38,10 +38,10 @@ export default function Tools() {
 
                   <div style={{ marginTop: '2rem' }}>
                     <div style={{ display: 'flex', gap: '1rem' }}>
-                      <Link className="unity-button primary" to={tool.docs} style={{ flex: 1 }}>
+                      <Link className="unity-button" to={tool.links.docs} style={{ flex: 1 }}>
                         <Translate id="tools.view_docs">DOCUMENTATION</Translate>
                       </Link>
-                      <Link className="unity-button" to={tool.link} style={{ flex: 1 }}>
+                      <Link className="unity-button primary" to={tool.links.page} style={{ flex: 1 }}>
                         <Translate id="tools.view_specs">SPECIFICATIONS</Translate>
                       </Link>
                     </div>

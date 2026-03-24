@@ -3,8 +3,8 @@ title: "Procedural Interior Generation for Infinite Horrors"
 description: "Building a dungeon crawler with scary, believable layouts."
 date: 2025-10-05
 slug: procedural-interior-generation-infinite-horrors
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [unity, level-design]
 ---
 
 ![Procedural Interiors](https://images.unsplash.com/photo-1481016570479-9ebb633d13ec?auto=format&fit=crop&w=1200&q=80)

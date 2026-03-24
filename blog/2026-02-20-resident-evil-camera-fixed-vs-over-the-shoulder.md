@@ -3,8 +3,8 @@ title: "The Resident Evil Camera: Fixed vs. Over-the-Shoulder"
 description: "Analyzing how camera perspective dictates fear and player agency in horror history."
 date: 2026-02-20
 slug: resident-evil-camera-fixed-vs-over-the-shoulder
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [hoangnguyen]
+tags: [horror-design]
 ---
 
 ![Resident Evil Camera](https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&w=1200&q=80)

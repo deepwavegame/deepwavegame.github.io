@@ -1,19 +1,27 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
-
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
-
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
-
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+unity:
+  label: Unity
+  description: Technical deep dives into Unity Engine.
+shader:
+  label: Shader
+  description: Graphics programming and visual effects.
+horror-design:
+  label: Horror Design
+  description: Analysis of horror mechanics and atmosphere.
+urp:
+  label: URP
+  description: Universal Render Pipeline specific content.
+ai:
+  label: AI
+  description: Artificial Intelligence and behavioral systems.
+audio:
+  label: Audio
+  description: Spatial sound and atmospheric audio design.
+studio-log:
+  label: Studio Log
+  description: Internal updates from Wave0084.
+level-design:
+  label: Level Design
+  description: Environment and structural design analysis.
+tech-art:
+  label: Tech Art
+  description: Intersection of art and technical implementation.

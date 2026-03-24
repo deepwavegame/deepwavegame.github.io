@@ -3,8 +3,8 @@ title: "Amnesia: The Dark Descent - Resource Scarcity Analysis"
 description: "How limited light sources create constant tension."
 date: 2025-11-25
 slug: amnesia-resource-scarcity-analysis
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [hoangnguyen]
+tags: [horror-design]
 ---
 
 ![Amnesia Lantern](https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80)

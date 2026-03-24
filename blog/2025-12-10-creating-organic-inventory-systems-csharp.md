@@ -3,8 +3,8 @@ title: "Creating 'Organic' Inventory Systems in C#"
 description: "Designing diagetic UIs like Dead Space for deep immersion."
 date: 2025-12-10
 slug: creating-organic-inventory-systems-csharp
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [unity]
 ---
 
 ![Inventory System](https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80)

@@ -209,6 +209,9 @@
   "tools.common.buy_itch": {
     "message": "MUA TRÊN ITCH.IO"
   },
+  "tools.common.buy_blender_market": {
+    "message": "MUA TRÊN BLENDER MARKET"
+  },
   "tools.common.get_started": {
     "message": "Bắt đầu ngay"
   },

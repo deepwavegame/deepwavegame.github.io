@@ -3,8 +3,8 @@ title: "Building a Sanity System: Coding Eternal Darkness"
 description: "C# architectures for gradual player character degradation."
 date: 2025-09-15
 slug: building-sanity-system-coding-eternal-darkness
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [unity, ai]
 ---
 
 ![Sanity System](https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&w=1200&q=80)

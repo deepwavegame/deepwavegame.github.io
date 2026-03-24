@@ -209,6 +209,9 @@
   "tools.common.buy_itch": {
     "message": "BUY ON ITCH.IO"
   },
+  "tools.common.buy_blender_market": {
+    "message": "BUY ON BLENDER MARKET"
+  },
   "tools.common.get_started": {
     "message": "Get Started"
   },

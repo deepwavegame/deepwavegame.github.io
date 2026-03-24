@@ -3,8 +3,8 @@ title: "Custom Scriptable Render Features for Glitch Effects"
 description: "Using the URP renderer to create production-grade digital corruption and sanity effects."
 date: 2026-03-10
 slug: custom-scriptable-render-features-glitch-effects
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [urp, unity]
 ---
 
 ![Glitch Effects](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80)

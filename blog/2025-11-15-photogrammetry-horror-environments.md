@@ -3,8 +3,8 @@ title: "Photogrammetry for Horror Environments"
 description: "Capturing real-world decay and bringing it into Unity."
 date: 2025-11-15
 slug: photogrammetry-horror-environments
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [tech-art, unity]
 ---
 
 ![Photogrammetry](https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80)

@@ -3,8 +3,8 @@ title: "Why \"P.T.\" Still Haunts Level Designers"
 description: "A technical breakdown of the looping corridor and how it mastered psychological loop-fatigue."
 date: 2026-02-28
 slug: why-pt-still-haunts-level-designers
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [hoangnguyen]
+tags: [level-design, horror-design]
 ---
 
 ![PT Corridor](https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=1200&q=80)

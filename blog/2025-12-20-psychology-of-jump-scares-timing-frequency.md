@@ -3,8 +3,8 @@ title: "The Psychology of Jump Scares: Timing & Frequency"
 description: "Using biometric data to find the 'Goldilocks' zone of player fear."
 date: 2025-12-20
 slug: psychology-of-jump-scares-timing-frequency
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [hoangnguyen]
+tags: [horror-design]
 ---
 
 ![Jump Scares](https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=1200&q=80)

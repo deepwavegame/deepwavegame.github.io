@@ -3,8 +3,8 @@ title: "Optimizing Ray-Traced Shadows for Low-End GPUs"
 description: "Techniques for hybrid rendering in HDRP to maintain 60FPS."
 date: 2026-01-05
 slug: optimizing-ray-traced-shadows-low-end-gpus
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [unity, tech-art]
 ---
 
 ![Ray Tracing](https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80)

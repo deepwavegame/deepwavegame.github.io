@@ -3,8 +3,8 @@ title: "Motion Capture on an Indie Budget"
 description: "Using Rokoko and AI video tools to achieve realistic horror animations."
 date: 2026-01-15
 slug: motion-capture-on-indie-budget
-authors: [yangshun]
-tags: [STUDIO LOG]
+authors: [hoangnguyen]
+tags: [studio-log, tech-art]
 ---
 
 ![Motion Capture](https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1200&q=80)

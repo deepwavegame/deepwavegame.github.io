@@ -3,8 +3,8 @@ title: "F.E.A.R. AI: Still Unbeatable in 2026?"
 description: "A deep dive into GOAP (Goal Oriented Action Planning)."
 date: 2025-09-01
 slug: fear-ai-still-unbeatable-2026
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [vuminh]
+tags: [ai, unity]
 ---
 
 ![FEAR AI](https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=1200&q=80)

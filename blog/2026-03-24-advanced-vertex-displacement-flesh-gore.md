@@ -3,8 +3,8 @@ title: "Advanced Vertex Displacement for Flesh & Gore"
 description: "Creating dynamic, squishy surfaces using Shader Graph and URP for visceral horror effects."
 date: 2026-03-24
 slug: advanced-vertex-displacement-flesh-gore
-authors: [yangshun]
-tags: [ENGINEERING]
+authors: [vuminh]
+tags: [shader, tech-art]
 ---
 
 ![Flesh and Gore](https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&fit=crop&w=1200&q=80)

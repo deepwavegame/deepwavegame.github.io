@@ -3,8 +3,8 @@ title: "Phasmophobia: The Power of Voice Recognition"
 description: "How interacting with ghosts through speech changed indie horror."
 date: 2025-10-15
 slug: phasmophobia-power-voice-recognition
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [hoangnguyen]
+tags: [horror-design, unity]
 ---
 
 ![Phasmophobia Voice](https://images.unsplash.com/photo-1516280440614-37939bbdd4f1?auto=format&fit=crop&w=1200&q=80)

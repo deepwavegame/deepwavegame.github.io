@@ -3,8 +3,8 @@ title: "The Blair Witch Project: Found Footage in Games"
 description: "Adapting cinematic tropes to interactive media."
 date: 2025-09-25
 slug: blair-witch-project-found-footage-games
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [hoangnguyen]
+tags: [horror-design]
 ---
 
 ![Blair Witch](https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80)

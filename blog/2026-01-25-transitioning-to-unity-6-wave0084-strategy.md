@@ -3,8 +3,8 @@ title: "Transitioning to Unity 6: Wave0084 Strategy"
 description: "Why we are moving our production pipeline to the latest Unity engine for \"My Sister\"."
 date: 2026-01-25
 slug: transitioning-to-unity-6-wave0084-strategy
-authors: [yangshun]
-tags: [STUDIO LOG]
+authors: [hoangnguyen]
+tags: [studio-log, unity]
 ---
 
 ![Unity 6](https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80)

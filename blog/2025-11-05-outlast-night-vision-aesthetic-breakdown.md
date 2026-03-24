@@ -3,8 +3,8 @@ title: "Outlast: The Night Vision Aesthetic Breakdown"
 description: "Post-processing secrets of the iconic green-tinted fear."
 date: 2025-11-05
 slug: outlast-night-vision-aesthetic-breakdown
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [vuminh]
+tags: [tech-art, horror-design]
 ---
 
 ![Outlast Night Vision](https://images.unsplash.com/photo-1500462859194-885d16244837?auto=format&fit=crop&w=1200&q=80)

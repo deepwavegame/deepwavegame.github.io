@@ -3,8 +3,8 @@ title: "Wave0084 Studio: Year in Review 2025"
 description: "Milestones, failures, and the path to 2026."
 date: 2025-12-31
 slug: wave0084-studio-year-in-review-2025
-authors: [yangshun]
-tags: [STUDIO LOG]
+authors: [hoangnguyen]
+tags: [studio-log]
 ---
 
 ![Year in Review](https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80)

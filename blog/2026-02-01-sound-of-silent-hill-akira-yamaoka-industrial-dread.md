@@ -3,8 +3,8 @@ title: "The Sound of Silent Hill: Akira Yamaoka's Industrial Dread"
 description: "Deconstructing the use of white noise and industrial samples to create discomfort."
 date: 2026-02-01
 slug: sound-of-silent-hill-akira-yamaoka-industrial-dread
-authors: [yangshun]
-tags: [FIELD ANALYSIS]
+authors: [vuminh]
+tags: [audio, horror-design]
 ---
 
 ![Silent Hill Sound](https://images.unsplash.com/photo-1516280440614-37939bbdd4f1?auto=format&fit=crop&w=1200&q=80)
