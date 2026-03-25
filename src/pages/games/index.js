@@ -17,50 +17,61 @@ export default function Games() {
         <div className="row" style={{ marginTop: '4rem' }}>
           {games.map((game) => (
             <div className="col col--6" key={game.id} style={{ marginBottom: '2rem' }}>
-              <div className="unity-card" style={{ padding: '0', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                {game.status === 'development' ? (
-                  <div style={{
+              <div className="unity-card" style={{ padding: '0', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+                {game.isUnderDevelopment && (
+                    <div style={{
+                      position: 'absolute',
+                      top: '1rem',
+                      right: '1rem',
+                      backgroundColor: '#ff3d00',
+                      color: 'white',
+                      padding: '0.2rem 0.6rem',
+                      fontSize: '0.7rem',
+                      fontWeight: 'bold',
+                      borderRadius: '2px',
+                      zIndex: 2,
+                      boxShadow: '0 0 10px rgba(255, 61, 0, 0.5)'
+                    }}>
+                      UNDER DEVELOPMENT
+                    </div>
+                  )}
+
+                <div style={{
                     height: '300px',
                     backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url(${game.thumbnail})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                     display: 'flex',
-                    flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    borderBottom: '1px solid #222'
-                  }}>
-                    <p style={{ color: '#7a7a7a', letterSpacing: '2px' }}>{game.title}</p>
-                    <p style={{ color: '#272727', fontSize: '0.8rem' }}>{game.description}</p>
-                  </div>
-                ) : (
-                  <>
-                    <div style={{
-                      height: '300px',
-                      backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url(${game.thumbnail})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderBottom: '1px solid #222'
-                    }}>
-                      <h2 className="horror-title" style={{ fontSize: '3rem', letterSpacing: '8px' }}>
-                        {game.id.toUpperCase().replace('-', ' ')}
-                      </h2>
-                    </div>
-                    <div style={{ padding: '2rem', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                      <h3 style={{ color: '#00e5ff' }}>{game.title}</h3>
-                      <p style={{ color: '#aaa', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                        {game.description}
-                      </p>
+                    borderBottom: '1px solid #222',
+                    filter: game.isUnderDevelopment ? 'grayscale(100%)' : 'none'
+                }}>
+                    <h2 className="horror-title" style={{ fontSize: '3rem', letterSpacing: '8px', opacity: game.isUnderDevelopment ? 0.3 : 1 }}>
+                    {game.id.toUpperCase().replace('-', ' ')}
+                    </h2>
+                </div>
+                
+                <div style={{ padding: '2rem', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                    <h3 style={{ color: game.isUnderDevelopment ? '#666' : '#00e5ff' }}>{game.title}</h3>
+                    <p style={{ color: '#aaa', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                    {game.description}
+                    </p>
 
-                      <div style={{ marginTop: 'auto', paddingTop: '1rem' }}>
-                        <Link className="unity-button primary" to={game.link} style={{ width: '100%' }}>
-                          <Translate id="games.view_details">SPECIFICATIONS</Translate>
-                        </Link>
-                      </div>
+                    <div style={{ marginTop: 'auto', paddingTop: '1rem' }}>
+                    <Link 
+                        className="unity-button primary" 
+                        to={game.isUnderDevelopment ? `/news/tags/${game.blogTag}` : game.link} 
+                        style={{ width: '100%' }}
+                    >
+                        {game.isUnderDevelopment ? (
+                            <Translate id="games.view_devlogs">VIEW DEVELOPMENT LOGS</Translate>
+                        ) : (
+                            <Translate id="games.view_details">SPECIFICATIONS</Translate>
+                        )}
+                    </Link>
                     </div>
-                  </>
-                )}
+                </div>
               </div>
             </div>
           ))}

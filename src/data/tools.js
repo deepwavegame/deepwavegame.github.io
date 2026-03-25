@@ -26,6 +26,8 @@ const tools = [
       size: '2.5 MB',
       requirement: 'Unity 2021.3+',
     },
+    isUnderDevelopment: false,
+    blogTag: 'infinite-corrugated-roof',
     features: [
       {
         title: <Translate id="tools.infinite-corrugated-roof.f1.t">Spline Deformation</Translate>,
@@ -60,6 +62,8 @@ const tools = [
       size: '1.2 MB',
       requirement: 'Unity 2020.3 LTS+',
     },
+    isUnderDevelopment: true,
+    blogTag: 'simple-paint',
     features: [
       {
         title: <Translate id="tools.simple-paint.f1.t">GPU Acceleration</Translate>,
@@ -89,6 +93,8 @@ const tools = [
       size: '0.5 MB',
       requirement: 'Blender 3.6 - 4.1',
     },
+    isUnderDevelopment: true,
+    blogTag: 'horror-exporter',
     features: [
       {
         title: <Translate id="tools.horror-exporter.f1.t">Auto-LOD</Translate>,

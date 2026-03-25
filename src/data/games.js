@@ -14,6 +14,8 @@ const games = [
     steam: 'https://store.steampowered.com/app/example',
     itch: 'https://deepwavegame.itch.io/lil-sis',
     status: 'released',
+    isUnderDevelopment: true,
+    blogTag: 'lil-sis',
     thumbnail: 'https://images.unsplash.com/photo-1505634467193-703328080f5d?auto=format&fit=crop&w=800&q=80',
   },
   {
@@ -22,6 +24,8 @@ const games = [
     description: 'Under Development',
     link: '#',
     status: 'development',
+    isUnderDevelopment: true,
+    blogTag: 'classified',
     thumbnail: null,
   }
 ];

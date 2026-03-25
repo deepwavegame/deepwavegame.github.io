@@ -1,4 +1,5 @@
-# Product Overview: Infinite Corrugated Roof
+# Overview:
+
 
 ## Summary
 Infinite Corrugated Roof is a professional-grade procedural tool for Unity designed to generate highly customizable, high-performance corrugated roofing and fencing systems. Ideal for industrial, residential, or post-apocalyptic environments, this tool automates the creation of complex geometry while maintaining optimal performance.
@@ -7,6 +8,9 @@ Infinite Corrugated Roof is a professional-grade procedural tool for Unity desig
 The Infinite Corrugated Roof (ICR) package provides an intuitive, spline-based workflow to create realistic corrugated surfaces in seconds. Built on a clean, SOLID-based architecture, ICR allows artists to focus on design while the system handles geometry calculation, UV mapping, and LOD management.
 
 Whether you are building a vast industrial warehouse or a small weathered shed, ICR offers the flexibility to customize every aspect of your roof—from wave profiles to structural weathering. The integrated modifier system includes spline deformation for curved surfaces and procedural noise for realistic surface imperfections.
+
+- [Documentation](./intro.md) (Available)
+- [Demo](#) (Under Development)
 
 ### Key Workflow Advantages:
 - Artistic Control: Intuitive scene-view handles and real-time parameter updates.

@@ -95,6 +95,9 @@
   "games.common.trailer_title": {
     "message": "预告片"
   },
+  "games.view_devlogs": {
+    "message": "查看开发日志"
+  },
   "games.lil-sis.story.p1": {
     "message": "你扮演一个离家多年的哥哥。一天，你收到一封据说是你已故母亲寄来的奇怪信件，说你的妹妹需要帮助。"
   },

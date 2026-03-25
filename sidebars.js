@@ -14,6 +14,7 @@ const sidebars = {
         slug: '/infinite-corrugated-roof',
       },
       items: [
+        'tools/infinite-corrugated-roof/product-overview',
         'tools/infinite-corrugated-roof/intro',
         'tools/infinite-corrugated-roof/getting-started',
         'tools/infinite-corrugated-roof/editor-guide',

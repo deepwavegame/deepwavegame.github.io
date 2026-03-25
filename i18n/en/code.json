@@ -101,6 +101,9 @@
   "games.common.trailer_title": {
     "message": "Trailer"
   },
+  "games.view_devlogs": {
+    "message": "VIEW DEVELOPMENT LOGS"
+  },
   "games.lil-sis.story.p1": {
     "message": "You play as an older brother who has been away from home for many years. One day, you receive a strange letter supposedly from your late mother, saying that your sister needs help."
   },

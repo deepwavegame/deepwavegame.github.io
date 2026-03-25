@@ -95,6 +95,9 @@
   "games.common.trailer_title": {
     "message": "トレーラー"
   },
+  "games.view_devlogs": {
+    "message": "開発ログを見る"
+  },
   "games.lil-sis.story.p1": {
     "message": "あなたは長年家を離れていた兄としてプレイします。ある日、亡き母からと思われる奇妙な手紙が届き、妹が助けを必要としていると告げられます。"
   },
