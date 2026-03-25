@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://deepwavegame.github.io/news</id>
+    <title>Wave0084 Studio Blog</title>
+    <updated>2026-03-24T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://deepwavegame.github.io/news"/>
+    <subtitle>Wave0084 Studio Blog</subtitle>
+    <icon>https://deepwavegame.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Advanced Vertex Displacement for Flesh & Gore]]></title>
+        <id>https://deepwavegame.github.io/news/advanced-vertex-displacement-flesh-gore</id>
+        <link href="https://deepwavegame.github.io/news/advanced-vertex-displacement-flesh-gore"/>
+        <updated>2026-03-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Creating dynamic, squishy surfaces using Shader Graph and URP for visceral horror effects.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Flesh and Gore" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-art-of-visceral-realism">The Art of Visceral Realism<a href="https://deepwavegame.github.io/news/advanced-vertex-displacement-flesh-gore#the-art-of-visceral-realism" class="hash-link" aria-label="Direct link to The Art of Visceral Realism" title="Direct link to The Art of Visceral Realism" translate="no">​</a></h2>
+<p>In modern horror game development, the "feel" of an environment is often just as important as its visual fidelity. When it comes to organic, fleshy surfaces—think of the pulsating walls in a biological nightmare or the squishy impact of a weapon on a monster—standard static meshes often fall short. This is where <strong>Advanced Vertex Displacement</strong> comes into play.</p>
+<p>Using Unity's Universal Render Pipeline (URP) and Shader Graph, we can move beyond simple texture swaps and into the realm of dynamic, responsive geometry. By manipulating vertex positions in real-time, we create an illusion of depth and movement that feels unsettlingly real.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-mathematics-of-pulsation">The Mathematics of Pulsation<a href="https://deepwavegame.github.io/news/advanced-vertex-displacement-flesh-gore#the-mathematics-of-pulsation" class="hash-link" aria-label="Direct link to The Mathematics of Pulsation" title="Direct link to The Mathematics of Pulsation" translate="no">​</a></h3>
+<p>The core of a good "flesh" shader is the combination of multiple sine waves operating at different frequencies and amplitudes. We don't want a uniform pulse; that feels mechanical. Instead, we use a <strong>Noise-Driven Displacement</strong> approach. By sampling a Perlin or Simplex noise texture and using it to offset the vertex normal, we achieve that irregular, organic heaving that characterizes living tissue.</p>
+<div class="language-hlsl codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-hlsl codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">// Conceptual logic for vertex offset</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">float3 offset = normal * noiseValue * displacementStrength;</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">positionOS.xyz += offset;</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="implementing-in-urp-shader-graph">Implementing in URP Shader Graph<a href="https://deepwavegame.github.io/news/advanced-vertex-displacement-flesh-gore#implementing-in-urp-shader-graph" class="hash-link" aria-label="Direct link to Implementing in URP Shader Graph" title="Direct link to Implementing in URP Shader Graph" translate="no">​</a></h3>
+<ol>
+<li class=""><strong>Vertex Position Node</strong>: Start by getting the object-space position.</li>
+<li class=""><strong>Normal Vector Node</strong>: Displacement should almost always happen along the vertex normal to maintain the volume's integrity.</li>
+<li class=""><strong>Time-Based Noise</strong>: Use a <code>Time</code> node multiplied by a speed constant to scroll a 3D noise function.</li>
+<li class=""><strong>Tessellation (Optional)</strong>: For high-end hardware, adding hardware tessellation allows for much finer detail without requiring incredibly dense base meshes.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="performance-considerations">Performance Considerations<a href="https://deepwavegame.github.io/news/advanced-vertex-displacement-flesh-gore#performance-considerations" class="hash-link" aria-label="Direct link to Performance Considerations" title="Direct link to Performance Considerations" translate="no">​</a></h3>
+<p>Vertex displacement is computationally cheaper than some might think, especially when handled entirely on the GPU. However, the biggest bottleneck is often <strong>Shadow Mapping</strong>. Displaced vertices must also be accounted for in the Shadow Caster pass, otherwise, the shadows will remain static while the mesh pulses, breaking the immersion. Ensure your Shader Graph has the "Shadow Caster" pass properly configured to use the same displacement logic.</p>
+<p>By layering these techniques with subsurface scattering and a high-quality specular map (to give that "wet" look), you can create environments that don't just look scary—they feel alive.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="Shader" term="Shader"/>
+        <category label="Tech Art" term="Tech Art"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Volumetric Fog in URP: A Deep Dive]]></title>
+        <id>https://deepwavegame.github.io/news/volumetric-fog-urp-deep-dive</id>
+        <link href="https://deepwavegame.github.io/news/volumetric-fog-urp-deep-dive"/>
+        <updated>2026-03-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Optimizing atmospheric scattering for that perfect misty horror ambiance without killing performance.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1475139441338-693e7dbe20b6?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Volumetric Fog" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-atmosphere-of-dread">The Atmosphere of Dread<a href="https://deepwavegame.github.io/news/volumetric-fog-urp-deep-dive#the-atmosphere-of-dread" class="hash-link" aria-label="Direct link to The Atmosphere of Dread" title="Direct link to The Atmosphere of Dread" translate="no">​</a></h2>
+<p>Fog is a staple of the horror genre, famously used in <em>Silent Hill</em> to mask hardware limitations. Today, however, fog is a deliberate stylistic and atmospheric choice. <strong>Volumetric Fog</strong>—fog that interacts with light sources and casts shadows—is the gold standard for creating "thick" atmosphere.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="raymarching-the-engine-of-volume">Raymarching: The Engine of Volume<a href="https://deepwavegame.github.io/news/volumetric-fog-urp-deep-dive#raymarching-the-engine-of-volume" class="hash-link" aria-label="Direct link to Raymarching: The Engine of Volume" title="Direct link to Raymarching: The Engine of Volume" translate="no">​</a></h3>
+<p>Most volumetric fog systems in modern engines like Unity URP rely on <strong>Raymarching</strong>. The shader "marches" a ray from the camera into the scene, sampling the light and density at various points along that ray.</p>
+<p>The challenge is the sheer number of samples required. A naive implementation will tank the frame rate. To optimize this, we use a <strong>Froxel-based approach</strong> (Frustum Voxels). By dividing the camera frustum into a 3D grid of voxels, we can pre-calculate the lighting for each voxel once per frame and then simply sample that grid during the main rendering pass.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="optimizing-for-urp">Optimizing for URP<a href="https://deepwavegame.github.io/news/volumetric-fog-urp-deep-dive#optimizing-for-urp" class="hash-link" aria-label="Direct link to Optimizing for URP" title="Direct link to Optimizing for URP" translate="no">​</a></h3>
+<p>Unity's URP doesn't include a robust volumetric fog out of the box (unlike HDRP). To implement this effectively, we use <strong>Scriptable Render Features</strong>.</p>
+<ol>
+<li class=""><strong>Downsampling</strong>: Render the volumetric effect at a lower resolution (e.g., half or quarter res) and then upsample it using a bilateral filter to preserve edges.</li>
+<li class=""><strong>Temporal Reprojection</strong>: Use data from the previous frame to "fill in the blanks," allowing for fewer samples per frame while maintaining a smooth look.</li>
+<li class=""><strong>Phase Function</strong>: Implementing a Henyey-Greenstein phase function allows for realistic forward and backward scattering, making the fog "glow" when a light source is behind it.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="strategic-implementation">Strategic Implementation<a href="https://deepwavegame.github.io/news/volumetric-fog-urp-deep-dive#strategic-implementation" class="hash-link" aria-label="Direct link to Strategic Implementation" title="Direct link to Strategic Implementation" translate="no">​</a></h3>
+<p>In horror, fog isn't just about visibility; it's about what it <em>hides</em>. By dynamically adjusting fog density based on player location or sanity levels, you can create a shifting sense of claustrophobia. For example, as the player's "Fear" meter rises, the fog's <code>Extinction</code> coefficient can increase, pulling the "wall of mist" closer to the player.</p>
+<p>Performance-wise, always keep an eye on your <strong>Overdraw</strong>. Thick volumes of fog can overlap with other transparent effects (like particles), leading to significant GPU pressure. Balancing the Froxel resolution with the camera's far clip plane is the key to maintaining 60 FPS on mid-range hardware.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="URP" term="URP"/>
+        <category label="Shader" term="Shader"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Binaural Audio: The Secret to True Fear]]></title>
+        <id>https://deepwavegame.github.io/news/binaural-audio-secret-to-true-fear</id>
+        <link href="https://deepwavegame.github.io/news/binaural-audio-secret-to-true-fear"/>
+        <updated>2026-03-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How to implement HRTF spatial audio in Unity to make players turn their heads in real life.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Binaural Audio" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="hearing-the-unseen">Hearing the Unseen<a href="https://deepwavegame.github.io/news/binaural-audio-secret-to-true-fear#hearing-the-unseen" class="hash-link" aria-label="Direct link to Hearing the Unseen" title="Direct link to Hearing the Unseen" translate="no">​</a></h2>
+<p>In horror, what the player <em>doesn't</em> see is often more terrifying than what they do. Sound is the primary tool for building this "unseen" threat. While standard stereo panning provides some directionality, <strong>Binaural Audio</strong> (using Head-Related Transfer Functions, or HRTF) creates a true 3D soundscape that tricks the brain into perceiving sounds as coming from specific points in 3D space—including above, below, and behind.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-science-of-hrtf">The Science of HRTF<a href="https://deepwavegame.github.io/news/binaural-audio-secret-to-true-fear#the-science-of-hrtf" class="hash-link" aria-label="Direct link to The Science of HRTF" title="Direct link to The Science of HRTF" translate="no">​</a></h3>
+<p>HRTF accounts for how the human ear, head, and torso filter sound based on its arrival angle. Our brains use these subtle changes in frequency and timing to locate a sound source. By applying these filters to digital audio in real-time, we can simulate a sound originating from anywhere around the player's head.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="implementing-in-unity">Implementing in Unity<a href="https://deepwavegame.github.io/news/binaural-audio-secret-to-true-fear#implementing-in-unity" class="hash-link" aria-label="Direct link to Implementing in Unity" title="Direct link to Implementing in Unity" translate="no">​</a></h3>
+<p>Unity provides several options for spatial audio. For a professional horror title, relying solely on the built-in spatializer is often insufficient.</p>
+<ol>
+<li class=""><strong>Oculus Spatializer or SteamAudio</strong>: These plugins offer robust HRTF implementations that work across various platforms. They allow for advanced features like <strong>Acoustic Propagation</strong>.</li>
+<li class=""><strong>Real-time Occlusion</strong>: If a monster is behind a door, the sound shouldn't just be quieter; it should be muffled. Using low-pass filters driven by raycasts from the audio source to the listener is essential for immersion.</li>
+<li class=""><strong>Reverb Zones</strong>: Dynamic reverb that changes based on the volume of the room (e.g., a small tiled bathroom vs. a massive vaulted cathedral) adds a sense of "place" to the audio.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-psychological-impact">The Psychological Impact<a href="https://deepwavegame.github.io/news/binaural-audio-secret-to-true-fear#the-psychological-impact" class="hash-link" aria-label="Direct link to The Psychological Impact" title="Direct link to The Psychological Impact" translate="no">​</a></h3>
+<p>In a "hide and seek" horror game, binaural audio is a gameplay mechanic. The player must listen for the subtle creak of a floorboard or the wet breath of a stalker to survive. By using <strong>Audio Cues</strong> that are specifically positioned behind the player, you trigger a primal "fight or flight" response.</p>
+<p>A pro tip for horror devs: use <strong>Infrasound</strong> (very low-frequency sounds, usually below 20Hz). While players might not "hear" it, these frequencies are known to cause feelings of anxiety and unease in humans. Layering these subtle tones into your binaural soundscape can elevate the tension without the player ever knowing why they feel so disturbed.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="Audio" term="Audio"/>
+        <category label="Unity" term="Unity"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Custom Scriptable Render Features for Glitch Effects]]></title>
+        <id>https://deepwavegame.github.io/news/custom-scriptable-render-features-glitch-effects</id>
+        <link href="https://deepwavegame.github.io/news/custom-scriptable-render-features-glitch-effects"/>
+        <updated>2026-03-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Using the URP renderer to create production-grade digital corruption and sanity effects.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Glitch Effects" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="disrupting-reality">Disrupting Reality<a href="https://deepwavegame.github.io/news/custom-scriptable-render-features-glitch-effects#disrupting-reality" class="hash-link" aria-label="Direct link to Disrupting Reality" title="Direct link to Disrupting Reality" translate="no">​</a></h2>
+<p>The "glitch" aesthetic has become synonymous with psychological horror and tech-noir. Whether it's the screen tearing of a found-footage camera or the visual degradation of a character losing their mind, these effects need to be more than just a simple overlay. To achieve high-performance, high-fidelity glitching in Unity's Universal Render Pipeline (URP), we must leverage <strong>Scriptable Render Features</strong>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-not-just-post-processing">Why Not Just Post-Processing?<a href="https://deepwavegame.github.io/news/custom-scriptable-render-features-glitch-effects#why-not-just-post-processing" class="hash-link" aria-label="Direct link to Why Not Just Post-Processing?" title="Direct link to Why Not Just Post-Processing?" translate="no">​</a></h3>
+<p>While Unity's Post-Processing Stack is powerful, it can be restrictive when you need to inject custom logic into specific parts of the rendering pipeline. Scriptable Render Features allow us to:</p>
+<ul>
+<li class="">Draw specific objects with custom shaders.</li>
+<li class="">Create multiple passes with intermediate textures.</li>
+<li class="">Execute logic before or after specific URP events (e.g., After Transparent, Before Post-Processing).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="building-the-glitch-pass">Building the Glitch Pass<a href="https://deepwavegame.github.io/news/custom-scriptable-render-features-glitch-effects#building-the-glitch-pass" class="hash-link" aria-label="Direct link to Building the Glitch Pass" title="Direct link to Building the Glitch Pass" translate="no">​</a></h3>
+<p>A convincing digital glitch usually consists of three core components:</p>
+<ol>
+<li class=""><strong>Chromatic Aberration</strong>: Splitting the RGB channels. In a glitch, this should be jittery and non-uniform.</li>
+<li class=""><strong>Block Displacement</strong>: Shifting random rectangular segments of the screen horizontally.</li>
+<li class=""><strong>Scanline Interferences</strong>: Adding subtle horizontal lines and "static" noise.</li>
+</ol>
+<p>In our custom <code>ScriptableRenderPass</code>, we grab the <code>cameraColorTarget</code>, blit it to a temporary render texture using our "Glitch Shader," and then blit it back.</p>
+<div class="language-csharp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-csharp codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">{</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    CommandBuffer cmd = CommandBufferPool.Get("GlitchPass");</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    // Execution logic here...</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    context.ExecuteCommandBuffer(cmd);</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    CommandBufferPool.Release(cmd);</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">}</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="driving-the-sanity-meter">Driving the Sanity Meter<a href="https://deepwavegame.github.io/news/custom-scriptable-render-features-glitch-effects#driving-the-sanity-meter" class="hash-link" aria-label="Direct link to Driving the Sanity Meter" title="Direct link to Driving the Sanity Meter" translate="no">​</a></h3>
+<p>The beauty of a custom Render Feature is how easily it can be tied to gameplay systems. By exposing a <code>glitchIntensity</code> parameter in the Render Feature, we can drive it from a "Sanity" or "Corruption" script in C#. As the player's sanity drops, we increase the frequency and amplitude of the block displacement and the severity of the chromatic aberration.</p>
+<p>By using a <code>ComputeBuffer</code> or a simple <code>GlobalFloat</code>, we can update these values once per frame on the GPU, ensuring that even the most chaotic visual meltdowns don't impact our CPU performance. This allows for a seamless transition from a clear image to a fractured, terrifying reality.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="URP" term="URP"/>
+        <category label="Unity" term="Unity"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Compute Shaders for Large-Scale Horror Entities]]></title>
+        <id>https://deepwavegame.github.io/news/compute-shaders-large-scale-horror-entities</id>
+        <link href="https://deepwavegame.github.io/news/compute-shaders-large-scale-horror-entities"/>
+        <updated>2026-03-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Simulating thousands of swarming creatures with GPU-bound logic.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Compute Shaders Swarm" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-power-of-the-swarm">The Power of the Swarm<a href="https://deepwavegame.github.io/news/compute-shaders-large-scale-horror-entities#the-power-of-the-swarm" class="hash-link" aria-label="Direct link to The Power of the Swarm" title="Direct link to The Power of the Swarm" translate="no">​</a></h2>
+<p>There is something primal about the fear of being overwhelmed by numbers. A single monster is a threat, but a swarm of thousands of scuttling insects or shadows is a nightmare. Traditionally, simulating thousands of individual AI entities would crush the CPU. To achieve this in real-time, we must move the simulation to the GPU using <strong>Compute Shaders</strong>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="gpgpu-beyond-rendering">GPGPU: Beyond Rendering<a href="https://deepwavegame.github.io/news/compute-shaders-large-scale-horror-entities#gpgpu-beyond-rendering" class="hash-link" aria-label="Direct link to GPGPU: Beyond Rendering" title="Direct link to GPGPU: Beyond Rendering" translate="no">​</a></h3>
+<p>Compute Shaders allow us to use the massive parallel processing power of the GPU for non-rendering tasks—in this case, flocking behavior and physics. By storing our entity data (position, rotation, velocity) in a <code>StructuredBuffer</code>, we can update thousands of entities simultaneously in a single dispatch call.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-boids-algorithm">The Boids Algorithm<a href="https://deepwavegame.github.io/news/compute-shaders-large-scale-horror-entities#the-boids-algorithm" class="hash-link" aria-label="Direct link to The Boids Algorithm" title="Direct link to The Boids Algorithm" translate="no">​</a></h3>
+<p>For a convincing swarm, we use a modified <strong>Boids algorithm</strong>. Each entity follows three simple rules:</p>
+<ol>
+<li class=""><strong>Separation</strong>: Avoid crowding neighbors.</li>
+<li class=""><strong>Alignment</strong>: Steer towards the average heading of neighbors.</li>
+<li class=""><strong>Cohesion</strong>: Steer towards the average position of neighbors.</li>
+</ol>
+<p>In a horror context, we add a fourth rule: <strong>Targeting/Avoidance</strong>. The swarm should actively move toward the player or avoid light sources.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="rendering-the-swarm">Rendering the Swarm<a href="https://deepwavegame.github.io/news/compute-shaders-large-scale-horror-entities#rendering-the-swarm" class="hash-link" aria-label="Direct link to Rendering the Swarm" title="Direct link to Rendering the Swarm" translate="no">​</a></h3>
+<p>Once the Compute Shader has updated the positions in the <code>StructuredBuffer</code>, we don't want to send that data back to the CPU (which is slow). Instead, we use <strong>GPU Instancing</strong>. We provide the buffer directly to a specialized vertex shader that positions the meshes based on the data already sitting in GPU memory.</p>
+<div class="language-hlsl codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-hlsl codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">// In the vertex shader</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">StructuredBuffer&lt;EntityData&gt; _EntityBuffer;</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">uint instanceID = UNITY_GET_INSTANCE_ID(v);</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">float3 pos = _EntityBuffer[instanceID].position;</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="performance-and-scale">Performance and Scale<a href="https://deepwavegame.github.io/news/compute-shaders-large-scale-horror-entities#performance-and-scale" class="hash-link" aria-label="Direct link to Performance and Scale" title="Direct link to Performance and Scale" translate="no">​</a></h3>
+<p>With this architecture, simulating 10,000 entities becomes trivial. The bottleneck shifts from CPU logic to GPU fill rate and vertex processing. To optimize further, we can implement <strong>GPU Culling</strong>, where the Compute Shader checks if an entity is within the camera frustum before deciding whether it should be rendered.</p>
+<p>This technique was used to great effect in titles like <em>A Plague Tale: Innocence</em> for their rat swarms. By leveraging Compute Shaders, indie developers can now achieve a level of scale that was previously reserved for AAA studios, creating truly overwhelming horror experiences.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="Unity" term="Unity"/>
+        <category label="Tech Art" term="Tech Art"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Why "P.T." Still Haunts Level Designers]]></title>
+        <id>https://deepwavegame.github.io/news/why-pt-still-haunts-level-designers</id>
+        <link href="https://deepwavegame.github.io/news/why-pt-still-haunts-level-designers"/>
+        <updated>2026-02-28T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A technical breakdown of the looping corridor and how it mastered psychological loop-fatigue.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="PT Corridor" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-genius-of-the-infinite-loop">The Genius of the Infinite Loop<a href="https://deepwavegame.github.io/news/why-pt-still-haunts-level-designers#the-genius-of-the-infinite-loop" class="hash-link" aria-label="Direct link to The Genius of the Infinite Loop" title="Direct link to The Genius of the Infinite Loop" translate="no">​</a></h2>
+<p>When Hideo Kojima released <em>P.T.</em> (Playable Teaser) in 2014, it changed the landscape of horror games forever. Despite being a single hallway, it managed to evoke more terror than many sprawling open-world titles. For level designers, <em>P.T.</em> is a masterclass in <strong>Psychological Loop-Fatigue</strong> and spatial manipulation.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-power-of-the-mundane">The Power of the Mundane<a href="https://deepwavegame.github.io/news/why-pt-still-haunts-level-designers#the-power-of-the-mundane" class="hash-link" aria-label="Direct link to The Power of the Mundane" title="Direct link to The Power of the Mundane" translate="no">​</a></h3>
+<p>The environment of <em>P.T.</em> is aggressively normal. A cluttered L-shaped hallway, a bathroom, and a radio. By using high-fidelity assets and realistic lighting, the designers grounded the player in a recognizable reality. This grounding is essential; the more "normal" a space feels, the more impactful the subtle deviations become.</p>
+<p>As the player loops through the hallway, the deviations start small: a swinging light, a cockroach on the wall, a slightly different radio broadcast. This is <strong>Iterative Environmental Storytelling</strong>. The player becomes intimately familiar with every inch of the space, making them hyper-aware of any change, no matter how minute.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="masterful-pacing-and-scripting">Masterful Pacing and Scripting<a href="https://deepwavegame.github.io/news/why-pt-still-haunts-level-designers#masterful-pacing-and-scripting" class="hash-link" aria-label="Direct link to Masterful Pacing and Scripting" title="Direct link to Masterful Pacing and Scripting" translate="no">​</a></h3>
+<p><em>P.T.</em> doesn't rely on traditional jump scares (though it has them). Instead, it uses the loop to build unbearable tension. The "puzzle" elements—like looking through a hole in the wall or finding hidden picture fragments—require the player to interact deeply with the environment.</p>
+<p>From a technical standpoint, the "loop" is a clever bit of level streaming. As the player exits through the basement door, they are seamlessly teleported back to the start of the hallway. Each loop increment triggers a new set of scripted events and material swaps, effectively turning a single static asset into a dynamic, evolving narrative device.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="legacy-in-level-design">Legacy in Level Design<a href="https://deepwavegame.github.io/news/why-pt-still-haunts-level-designers#legacy-in-level-design" class="hash-link" aria-label="Direct link to Legacy in Level Design" title="Direct link to Legacy in Level Design" translate="no">​</a></h3>
+<p>The influence of <em>P.T.</em> can be seen in almost every "walking simulator" horror game that followed, from <em>Layers of Fear</em> to <em>Visage</em>. It proved that you don't need a massive map to create a massive sense of dread. By focusing on detail, sound, and the subversion of a safe space, level designers can create experiences that linger in the player's mind long after the console is turned off.</p>
+<p><em>P.T.</em> remains a haunting reminder of what happens when level design and psychological manipulation are perfectly aligned. It's not just a hallway; it's a window into the player's own mounting anxiety.</p>]]></content>
+        <author>
+            <name>Hoang Nguyen</name>
+            <uri>https://wave0084.com</uri>
+        </author>
+        <category label="Level Design" term="Level Design"/>
+        <category label="Horror Design" term="Horror Design"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The Resident Evil Camera: Fixed vs. Over-the-Shoulder]]></title>
+        <id>https://deepwavegame.github.io/news/resident-evil-camera-fixed-vs-over-the-shoulder</id>
+        <link href="https://deepwavegame.github.io/news/resident-evil-camera-fixed-vs-over-the-shoulder"/>
+        <updated>2026-02-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Analyzing how camera perspective dictates fear and player agency in horror history.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Resident Evil Camera" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-eye-of-the-beholder">The Eye of the Beholder<a href="https://deepwavegame.github.io/news/resident-evil-camera-fixed-vs-over-the-shoulder#the-eye-of-the-beholder" class="hash-link" aria-label="Direct link to The Eye of the Beholder" title="Direct link to The Eye of the Beholder" translate="no">​</a></h2>
+<p>The <em>Resident Evil</em> franchise has undergone several radical shifts in perspective, from the cinematic fixed cameras of the original trilogy to the revolutionary over-the-shoulder (OTS) view of <em>RE4</em>, and finally the first-person intimacy of <em>RE7</em> and <em>Village</em>. Each shift wasn't just a technical upgrade; it was a fundamental change in how the game delivers horror.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="fixed-camera-the-directors-control">Fixed Camera: The Director's Control<a href="https://deepwavegame.github.io/news/resident-evil-camera-fixed-vs-over-the-shoulder#fixed-camera-the-directors-control" class="hash-link" aria-label="Direct link to Fixed Camera: The Director's Control" title="Direct link to Fixed Camera: The Director's Control" translate="no">​</a></h3>
+<p>The fixed camera angles of early <em>RE</em> titles were born out of technical necessity (rendering 3D characters over pre-rendered 2D backgrounds). However, Capcom turned this limitation into a strength. By controlling exactly what the player can and cannot see, the designers acted as film directors.</p>
+<p>Fixed angles allow for <strong>Off-Screen Horror</strong>. You can hear a zombie moaning just around the corner, but the camera refuses to show it to you. This creates a sense of vulnerability and claustrophobia. The "tank controls" further emphasized this, making the player feel slightly clumsy and disconnected from their character, heightening the panic during encounters.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="over-the-shoulder-the-agency-of-action">Over-the-Shoulder: The Agency of Action<a href="https://deepwavegame.github.io/news/resident-evil-camera-fixed-vs-over-the-shoulder#over-the-shoulder-the-agency-of-action" class="hash-link" aria-label="Direct link to Over-the-Shoulder: The Agency of Action" title="Direct link to Over-the-Shoulder: The Agency of Action" translate="no">​</a></h3>
+<p><em>Resident Evil 4</em> moved the camera behind Leon S. Kennedy's shoulder, changing the series from survival horror to action horror. This perspective gives the player much more agency. You can aim precisely, look around freely, and feel more "in" the world.</p>
+<p>However, the OTS view introduces its own brand of fear: <strong>The Blind Spot</strong>. Unlike the fixed camera, which might show the whole room, the OTS view restricts your vision to what's directly in front of you. Horror in <em>RE4</em> and its successors often comes from being flanked or surrounded, forcing the player to constantly scan their environment.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="first-person-the-death-of-the-avatar">First-Person: The Death of the Avatar<a href="https://deepwavegame.github.io/news/resident-evil-camera-fixed-vs-over-the-shoulder#first-person-the-death-of-the-avatar" class="hash-link" aria-label="Direct link to First-Person: The Death of the Avatar" title="Direct link to First-Person: The Death of the Avatar" translate="no">​</a></h3>
+<p>With <em>RE7</em>, the series moved to first-person, removing the "avatar" between the player and the horror. This is the most immersive perspective, but it also feels the most restrictive. You lose the situational awareness of the third-person views, making every creak and shadow feel personally threatening.</p>
+<p>In conclusion, there is no "correct" camera for horror. Fixed cameras excel at cinematic dread, OTS at tactical tension, and first-person at pure immersion. As developers, choosing our perspective is our first and most important step in defining the player's relationship with fear.</p>]]></content>
+        <author>
+            <name>Hoang Nguyen</name>
+            <uri>https://wave0084.com</uri>
+        </author>
+        <category label="Horror Design" term="Horror Design"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Subnautica: The Horror of the Unknown Depth]]></title>
+        <id>https://deepwavegame.github.io/news/subnautica-horror-unknown-depth</id>
+        <link href="https://deepwavegame.github.io/news/subnautica-horror-unknown-depth"/>
+        <updated>2026-02-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Examining thalassophobia and sound design as primary horror drivers in non-horror titles.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Subnautica Depth" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="terror-in-the-deep-blue">Terror in the Deep Blue<a href="https://deepwavegame.github.io/news/subnautica-horror-unknown-depth#terror-in-the-deep-blue" class="hash-link" aria-label="Direct link to Terror in the Deep Blue" title="Direct link to Terror in the Deep Blue" translate="no">​</a></h2>
+<p><em>Subnautica</em> is ostensibly a survival-crafting game about exploring a beautiful alien ocean. Yet, ask any player about their experience, and they will likely describe it as one of the most terrifying games they've ever played. This "accidental" horror is a result of a perfect storm of environmental design and <strong>Thalassophobia</strong> (the fear of the ocean or deep, vast bodies of water).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-scale-of-the-void">The Scale of the Void<a href="https://deepwavegame.github.io/news/subnautica-horror-unknown-depth#the-scale-of-the-void" class="hash-link" aria-label="Direct link to The Scale of the Void" title="Direct link to The Scale of the Void" translate="no">​</a></h3>
+<p>The brilliance of <em>Subnautica</em>'s horror lies in its use of scale. When you swim over the edge of a reef into the "Dead Zone," where the seafloor drops away into infinite darkness, the game triggers a visceral response. The lack of visual landmarks makes the player feel small and exposed. In the open ocean, you are not the apex predator; you are prey.</p>
+<p>This is <strong>Environmental Vulnerability</strong>. Unlike traditional horror games that use tight corridors to create fear, <em>Subnautica</em> uses vast, open spaces where danger could come from any direction—including below.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="sound-design-the-roar-in-the-dark">Sound Design: The Roar in the Dark<a href="https://deepwavegame.github.io/news/subnautica-horror-unknown-depth#sound-design-the-roar-in-the-dark" class="hash-link" aria-label="Direct link to Sound Design: The Roar in the Dark" title="Direct link to Sound Design: The Roar in the Dark" translate="no">​</a></h3>
+<p>The soundscape of <em>Subnautica</em> is doing 90% of the heavy lifting. The game uses distance-based audio and low-frequency rumbles to signal the presence of "Leviathan" class creatures long before you see them. The muffled, watery audio creates a sense of isolation, while the sudden, echoing roar of a Reaper Leviathan is designed to trigger a primal fear response.</p>
+<p>From a technical perspective, the audio uses sophisticated <strong>Occlusion and Reverb</strong> models to simulate how sound travels through water. The way a sound's high frequencies are rolled off over distance perfectly mimics the physical properties of the ocean, adding to the realism and, by extension, the terror.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="lessons-for-horror-devs">Lessons for Horror Devs<a href="https://deepwavegame.github.io/news/subnautica-horror-unknown-depth#lessons-for-horror-devs" class="hash-link" aria-label="Direct link to Lessons for Horror Devs" title="Direct link to Lessons for Horror Devs" translate="no">​</a></h3>
+<p><em>Subnautica</em> teaches us that you don't need blood, guts, or jump scares to create fear. You just need to place the player in an environment where they are fundamentally out of their element and then use sound and scale to remind them of their own insignificance. For any indie horror dev, studying <em>Subnautica</em>'s "Void" is a lesson in the power of atmospheric dread.</p>]]></content>
+        <author>
+            <name>Hoang Nguyen</name>
+            <uri>https://wave0084.com</uri>
+        </author>
+        <category label="Horror Design" term="Horror Design"/>
+        <category label="Audio" term="Audio"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Alien Isolation: Behavioral AI Breakdown]]></title>
+        <id>https://deepwavegame.github.io/news/alien-isolation-behavioral-ai-breakdown</id>
+        <link href="https://deepwavegame.github.io/news/alien-isolation-behavioral-ai-breakdown"/>
+        <updated>2026-02-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How Creative Assembly built the two-brain system for the Xenomorph's unscripted terror.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Alien Isolation AI" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-stalker-in-the-vents">The Stalker in the Vents<a href="https://deepwavegame.github.io/news/alien-isolation-behavioral-ai-breakdown#the-stalker-in-the-vents" class="hash-link" aria-label="Direct link to The Stalker in the Vents" title="Direct link to The Stalker in the Vents" translate="no">​</a></h2>
+<p><em>Alien: Isolation</em> features one of the most sophisticated AI systems in gaming history. Unlike the scripted enemies found in many horror titles, the Xenomorph feels like a sentient, learning hunter. This wasn't achieved through a single complex algorithm, but through a clever "Two-Brain" system that balances gameplay fairness with terrifying unpredictability.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-macro-brain-and-the-micro-brain">The Macro Brain and the Micro Brain<a href="https://deepwavegame.github.io/news/alien-isolation-behavioral-ai-breakdown#the-macro-brain-and-the-micro-brain" class="hash-link" aria-label="Direct link to The Macro Brain and the Micro Brain" title="Direct link to The Macro Brain and the Micro Brain" translate="no">​</a></h3>
+<p>Creative Assembly designed the Alien's AI using two distinct layers:</p>
+<ol>
+<li class=""><strong>The Macro Brain (The Director)</strong>: This "brain" always knows exactly where the player is. However, it doesn't tell the Alien. Instead, it gives the Alien "hints" or "search areas." If the player has been safe for too long, the Director might tell the Alien to head toward the player's general vicinity to keep the tension high. This ensures the player never feels truly safe without making the AI feel like it's "cheating."</li>
+<li class=""><strong>The Micro Brain (The Hunter)</strong>: This is the AI that actually controls the Alien's body. It perceives the world through a set of sensors: sight, sound, and "touch" (collision). It has no direct knowledge of the player's position unless it hears a noise or catches a glimpse of them.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-learning-tree">The Learning Tree<a href="https://deepwavegame.github.io/news/alien-isolation-behavioral-ai-breakdown#the-learning-tree" class="hash-link" aria-label="Direct link to The Learning Tree" title="Direct link to The Learning Tree" translate="no">​</a></h3>
+<p>One of the most unsettling features of the Alien is its ability to "learn." The AI features a massive <strong>Behavior Tree</strong> with over 100 nodes. Many of these nodes are locked at the start of the game. As the player uses certain items—like the flamethrower or noise makers—the AI unlocks nodes that allow it to counter those strategies.</p>
+<p>If you use the vents too much, the Alien will start searching them more frequently. If you use the flamethrower, it will learn to back off and wait for you to run out of fuel. This creates a dynamic "arms race" between the player and the AI, preventing the game from becoming predictable.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="technical-implementation">Technical Implementation<a href="https://deepwavegame.github.io/news/alien-isolation-behavioral-ai-breakdown#technical-implementation" class="hash-link" aria-label="Direct link to Technical Implementation" title="Direct link to Technical Implementation" translate="no">​</a></h3>
+<p>The system is a masterpiece of <strong>State Machine and Behavior Tree</strong> integration. By using a "Director" to manage the pacing and a "Hunter" to handle the immediate threat, the developers created an enemy that feels terrifyingly intelligent while remaining within the bounds of a playable game. For any developer looking to build a "Stalker" AI, <em>Alien: Isolation</em> is the definitive blueprint.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="AI" term="AI"/>
+        <category label="Horror Design" term="Horror Design"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The Sound of Silent Hill: Akira Yamaoka's Industrial Dread]]></title>
+        <id>https://deepwavegame.github.io/news/sound-of-silent-hill-akira-yamaoka-industrial-dread</id>
+        <link href="https://deepwavegame.github.io/news/sound-of-silent-hill-akira-yamaoka-industrial-dread"/>
+        <updated>2026-02-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Deconstructing the use of white noise and industrial samples to create discomfort.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1516280440614-37939bbdd4f1?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Silent Hill Sound" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-music-of-the-macabre">The Music of the Macabre<a href="https://deepwavegame.github.io/news/sound-of-silent-hill-akira-yamaoka-industrial-dread#the-music-of-the-macabre" class="hash-link" aria-label="Direct link to The Music of the Macabre" title="Direct link to The Music of the Macabre" translate="no">​</a></h2>
+<p>While many horror games rely on orchestral stings and dissonant strings, the <em>Silent Hill</em> series took a different path. Composer Akira Yamaoka pioneered a soundscape built on <strong>Industrial Noise, Trip-Hop, and Ambient Textures</strong>. His work isn't just a soundtrack; it's a character in its own right, fundamental to the series' psychological weight.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-beauty-of-noise">The Beauty of Noise<a href="https://deepwavegame.github.io/news/sound-of-silent-hill-akira-yamaoka-industrial-dread#the-beauty-of-noise" class="hash-link" aria-label="Direct link to The Beauty of Noise" title="Direct link to The Beauty of Noise" translate="no">​</a></h3>
+<p>Yamaoka's secret weapon is the use of non-musical sounds. In the "Otherworld" of <em>Silent Hill</em>, the music is often replaced by the sound of clanging metal, grinding gears, and static white noise. These sounds are inherently abrasive to the human ear, triggering a sense of "sensory overload" and discomfort.</p>
+<p>By mixing these harsh industrial samples with haunting, melancholic melodies, Yamaoka creates a <strong>Cognitive Dissonance</strong>. The player is simultaneously repulsed by the noise and drawn in by the sadness of the melody. This perfectly mirrors the themes of the series: the intersection of personal guilt and physical decay.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-radio-a-technical-masterstroke">The Radio: A Technical Masterstroke<a href="https://deepwavegame.github.io/news/sound-of-silent-hill-akira-yamaoka-industrial-dread#the-radio-a-technical-masterstroke" class="hash-link" aria-label="Direct link to The Radio: A Technical Masterstroke" title="Direct link to The Radio: A Technical Masterstroke" translate="no">​</a></h3>
+<p>Perhaps the most iconic audio element in <em>Silent Hill</em> is the radio. When a monster is nearby, the player's radio emits a burst of static. From a design perspective, this is a genius move. It turns a "warning system" into a source of anxiety. The louder the static, the closer the danger, but because the static is so loud and chaotic, it masks the actual sound of the monster, making it harder to pinpoint its location.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="implementation-techniques">Implementation Techniques<a href="https://deepwavegame.github.io/news/sound-of-silent-hill-akira-yamaoka-industrial-dread#implementation-techniques" class="hash-link" aria-label="Direct link to Implementation Techniques" title="Direct link to Implementation Techniques" translate="no">​</a></h3>
+<p>To achieve this "Yamaoka style" in modern games:</p>
+<ol>
+<li class=""><strong>Bit-Crushing</strong>: Apply bit-crushers to ambient loops to give them a "lo-fi," degraded quality.</li>
+<li class=""><strong>Layered Ambience</strong>: Don't use a single loop. Layer multiple asynchronous loops of industrial noise (steam hisses, metal scrapes) to ensure the soundscape never repeats in a predictable way.</li>
+<li class=""><strong>Silence as a Tool</strong>: Yamaoka knew when to let the sound drop out entirely. Sudden silence after a period of intense noise is one of the most effective ways to make a player feel exposed.</li>
+</ol>
+<p>Akira Yamaoka's work reminds us that in horror, the goal of audio isn't always to be "heard"—it's to be felt in the pit of the stomach.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="Audio" term="Audio"/>
+        <category label="Horror Design" term="Horror Design"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Transitioning to Unity 6: Wave0084 Strategy]]></title>
+        <id>https://deepwavegame.github.io/news/transitioning-to-unity-6-wave0084-strategy</id>
+        <link href="https://deepwavegame.github.io/news/transitioning-to-unity-6-wave0084-strategy"/>
+        <updated>2026-01-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Why we are moving our production pipeline to the latest Unity engine for "Lil Sis".]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Unity 6" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="embracing-the-future-of-indie-horror">Embracing the Future of Indie Horror<a href="https://deepwavegame.github.io/news/transitioning-to-unity-6-wave0084-strategy#embracing-the-future-of-indie-horror" class="hash-link" aria-label="Direct link to Embracing the Future of Indie Horror" title="Direct link to Embracing the Future of Indie Horror" translate="no">​</a></h2>
+<p>At Wave0084, we've always been cautious about engine updates mid-production. However, the release of Unity 6 has brought a suite of features that are simply too impactful to ignore for our upcoming title, <em>Lil Sis</em>. This post outlines our technical rationale and the strategy we're employing to ensure a smooth transition.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="performance-the-core-driver">Performance: The Core Driver<a href="https://deepwavegame.github.io/news/transitioning-to-unity-6-wave0084-strategy#performance-the-core-driver" class="hash-link" aria-label="Direct link to Performance: The Core Driver" title="Direct link to Performance: The Core Driver" translate="no">​</a></h3>
+<p>The primary reason for our jump to Unity 6 is the significant improvement in the <strong>Universal Render Pipeline (URP)</strong>. Specifically, the introduction of <strong>GPU Resident Drawer</strong> and <strong>Spatial Temporal Post-Processing (STP)</strong> allows us to push much higher visual fidelity on target hardware like the Steam Deck and mid-range laptops.</p>
+<p>For <em>Lil Sis</em>, which relies heavily on dense environmental detail and complex lighting, the GPU Resident Drawer significantly reduces our CPU-side draw call overhead. This allows us to allocate more CPU cycles to our advanced AI systems without sacrificing frame rate.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="graphics-and-lighting">Graphics and Lighting<a href="https://deepwavegame.github.io/news/transitioning-to-unity-6-wave0084-strategy#graphics-and-lighting" class="hash-link" aria-label="Direct link to Graphics and Lighting" title="Direct link to Graphics and Lighting" translate="no">​</a></h3>
+<p>Unity 6's enhancements to <strong>Adaptive Probe Volumes (APV)</strong> are a game-changer for horror. Achieving realistic, moody lighting in dynamic environments has always been a struggle. APV allows for much faster iteration times and better light leakage prevention, which is crucial for maintaining the "darkness" that defines our aesthetic.</p>
+<p>We are also leveraging the new <strong>Render Graph</strong> API. This gives our technical artists granular control over the rendering pipeline, allowing us to implement the "Sanity Glitch" effects (discussed in a previous post) more efficiently and with less boilerplate code.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-migration-strategy">The Migration Strategy<a href="https://deepwavegame.github.io/news/transitioning-to-unity-6-wave0084-strategy#the-migration-strategy" class="hash-link" aria-label="Direct link to The Migration Strategy" title="Direct link to The Migration Strategy" translate="no">​</a></h3>
+<p>A transition like this is never without risk. Our strategy involves:</p>
+<ol>
+<li class=""><strong>Isolated Branching</strong>: The engine upgrade is handled in a dedicated Git branch, separate from the main production line.</li>
+<li class=""><strong>Asset Audit</strong>: Every shader and custom render feature is being audited for compatibility with the new Render Graph.</li>
+<li class=""><strong>Automated Testing</strong>: We've expanded our suite of smoke tests to verify that lighting and physics remain consistent across the version jump.</li>
+</ol>
+<p>Transitioning to Unity 6 is an investment in the longevity and quality of <em>Lil Sis</em>. It allows us to build on a more stable, performant foundation, ensuring that players have the best possible experience when the game launches.</p>]]></content>
+        <author>
+            <name>Hoang Nguyen</name>
+            <uri>https://wave0084.com</uri>
+        </author>
+        <category label="Studio Log" term="Studio Log"/>
+        <category label="Unity" term="Unity"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Motion Capture on an Indie Budget]]></title>
+        <id>https://deepwavegame.github.io/news/motion-capture-on-indie-budget</id>
+        <link href="https://deepwavegame.github.io/news/motion-capture-on-indie-budget"/>
+        <updated>2026-01-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Using Rokoko and AI video tools to achieve realistic horror animations.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Motion Capture" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="bringing-humanity-to-the-horrific">Bringing Humanity to the Horrific<a href="https://deepwavegame.github.io/news/motion-capture-on-indie-budget#bringing-humanity-to-the-horrific" class="hash-link" aria-label="Direct link to Bringing Humanity to the Horrific" title="Direct link to Bringing Humanity to the Horrific" translate="no">​</a></h2>
+<p>In the past, high-quality motion capture (mocap) was a luxury reserved for AAA studios with massive optical rigs. For an indie studio like Wave0084, animating complex human movements—especially the jittery, unnatural movements required for horror—by hand is an enormous time sink. Fortunately, the rise of "budget" mocap solutions has leveled the playing field.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-rokoko-advantage">The Rokoko Advantage<a href="https://deepwavegame.github.io/news/motion-capture-on-indie-budget#the-rokoko-advantage" class="hash-link" aria-label="Direct link to The Rokoko Advantage" title="Direct link to The Rokoko Advantage" translate="no">​</a></h3>
+<p>Our primary tool for <em>Lil Sis</em> has been the <strong>Rokoko Smartsuit Pro II</strong>. Unlike optical systems that require cameras and specialized spaces, the Rokoko suit uses inertial sensors (IMUs). This allows us to capture animations anywhere—even in our cramped studio office.</p>
+<p>The beauty of inertial mocap is the speed of iteration. We can act out a scene, record it, and retarget it to our character model in minutes. This allows our actors to experiment with the "shaky" and "contorted" movements that make our creatures so unsettling.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="augmenting-with-ai">Augmenting with AI<a href="https://deepwavegame.github.io/news/motion-capture-on-indie-budget#augmenting-with-ai" class="hash-link" aria-label="Direct link to Augmenting with AI" title="Direct link to Augmenting with AI" translate="no">​</a></h3>
+<p>While IMU suits are great for body movement, they struggle with fine detail like fingers and facial expressions. To fill these gaps, we've integrated AI-based video analysis tools like <strong>Radical AI</strong> and <strong>Move.ai</strong>.</p>
+<p>By filming a reference video alongside the mocap data, we can use these AI tools to extract finger movements and subtle head tilts that the suit might miss. For facial capture, we use the <strong>Apple ARKit</strong> via a standard iPhone, which provides surprisingly high-fidelity blendshape data that maps directly onto our characters in Unity.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-processing-the-performance">Post-Processing the Performance<a href="https://deepwavegame.github.io/news/motion-capture-on-indie-budget#post-processing-the-performance" class="hash-link" aria-label="Direct link to Post-Processing the Performance" title="Direct link to Post-Processing the Performance" translate="no">​</a></h3>
+<p>Mocap is rarely "plug and play." The data often requires cleaning to remove foot sliding or jitters. We use <strong>Autodesk MotionBuilder</strong> and Unity's <strong>Animation Rigging</strong> package to:</p>
+<ol>
+<li class=""><strong>IK Pass</strong>: Ensure feet stay firmly planted on the ground.</li>
+<li class=""><strong>Layered Animation</strong>: Add hand-keyed flourishes on top of the mocap data to emphasize specific "scary" movements.</li>
+</ol>
+<p>By combining these budget-friendly tools, we've been able to achieve a level of animation fidelity that previously would have cost hundreds of thousands of dollars. It's a testament to the "indie-fication" of high-end tech.</p>]]></content>
+        <author>
+            <name>Hoang Nguyen</name>
+            <uri>https://wave0084.com</uri>
+        </author>
+        <category label="Studio Log" term="Studio Log"/>
+        <category label="Tech Art" term="Tech Art"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Optimizing Ray-Traced Shadows for Low-End GPUs]]></title>
+        <id>https://deepwavegame.github.io/news/optimizing-ray-traced-shadows-low-end-gpus</id>
+        <link href="https://deepwavegame.github.io/news/optimizing-ray-traced-shadows-low-end-gpus"/>
+        <updated>2026-01-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Techniques for hybrid rendering in HDRP to maintain 60FPS.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Ray Tracing" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-shadow-of-the-next-gen">The Shadow of the Next Gen<a href="https://deepwavegame.github.io/news/optimizing-ray-traced-shadows-low-end-gpus#the-shadow-of-the-next-gen" class="hash-link" aria-label="Direct link to The Shadow of the Next Gen" title="Direct link to The Shadow of the Next Gen" translate="no">​</a></h2>
+<p>Ray tracing (RT) offers unparalleled realism, especially in horror where shadows are a primary narrative tool. However, the performance cost is often prohibitive for players without high-end RTX hardware. At Wave0084, we've developed a <strong>Hybrid Shadow System</strong> that brings the benefits of ray-traced shadows to a wider audience.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-hybrid-approach">The Hybrid Approach<a href="https://deepwavegame.github.io/news/optimizing-ray-traced-shadows-low-end-gpus#the-hybrid-approach" class="hash-link" aria-label="Direct link to The Hybrid Approach" title="Direct link to The Hybrid Approach" translate="no">​</a></h3>
+<p>The core idea is simple: only use ray tracing where it matters most. For distant objects or subtle secondary shadows, we stick with traditional shadow maps. For hero objects and close-range shadows, we enable RT.</p>
+<p>In Unity's High Definition Render Pipeline (HDRP), we use <strong>Ray Tracing Quality Levels</strong>.</p>
+<ol>
+<li class=""><strong>Denoising</strong>: The most expensive part of RT is often the denoising pass. By using a more aggressive, lower-resolution denoiser, we can significantly reduce the GPU load while maintaining the "soft" look of ray-traced shadows.</li>
+<li class=""><strong>Max Ray Length</strong>: By capping the distance a ray can travel, we prevent the GPU from calculating shadows for objects far outside the player's immediate focus.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="resolution-scaling-and-stp">Resolution Scaling and STP<a href="https://deepwavegame.github.io/news/optimizing-ray-traced-shadows-low-end-gpus#resolution-scaling-and-stp" class="hash-link" aria-label="Direct link to Resolution Scaling and STP" title="Direct link to Resolution Scaling and STP" translate="no">​</a></h3>
+<p>We also leverage <strong>Spatial Temporal Post-Processing (STP)</strong>. By rendering the ray-traced shadow pass at half the native resolution and then using STP to upsample and sharpen the result, we can achieve nearly identical visual quality at a fraction of the cost.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="dynamic-lod-for-rt">Dynamic LOD for RT<a href="https://deepwavegame.github.io/news/optimizing-ray-traced-shadows-low-end-gpus#dynamic-lod-for-rt" class="hash-link" aria-label="Direct link to Dynamic LOD for RT" title="Direct link to Dynamic LOD for RT" translate="no">​</a></h3>
+<p>Not every object needs ray-traced shadows all the time. We implemented a C# system that dynamically toggles the <code>Ray Tracing</code> flag on mesh renderers based on:</p>
+<ul>
+<li class=""><strong>Distance from Camera</strong>: Only objects within 10 meters receive RT shadows.</li>
+<li class=""><strong>Light Intensity</strong>: If a light source is too dim for shadows to be clearly visible, we fall back to shadow maps.</li>
+</ul>
+<p>These optimizations allow us to support ray tracing as an "Ultra" setting that is actually playable on mid-range hardware (like an RTX 3060), rather than it being a feature only accessible to a tiny fraction of our player base.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="Unity" term="Unity"/>
+        <category label="Tech Art" term="Tech Art"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Wave0084 Studio: Year in Review 2025]]></title>
+        <id>https://deepwavegame.github.io/news/wave0084-studio-year-in-review-2025</id>
+        <link href="https://deepwavegame.github.io/news/wave0084-studio-year-in-review-2025"/>
+        <updated>2025-12-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Milestones, failures, and the path to 2026.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Year in Review" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a-year-of-shadows-and-light">A Year of Shadows and Light<a href="https://deepwavegame.github.io/news/wave0084-studio-year-in-review-2025#a-year-of-shadows-and-light" class="hash-link" aria-label="Direct link to A Year of Shadows and Light" title="Direct link to A Year of Shadows and Light" translate="no">​</a></h2>
+<p>As 2025 comes to a close, we at Wave0084 find ourselves looking back on a year of incredible growth, technical challenges, and significant milestones. It has been a year defined by the development of our flagship horror title, <em>Lil Sis</em>, and our commitment to pushing the boundaries of indie horror.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="major-milestones">Major Milestones<a href="https://deepwavegame.github.io/news/wave0084-studio-year-in-review-2025#major-milestones" class="hash-link" aria-label="Direct link to Major Milestones" title="Direct link to Major Milestones" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>The Vertical Slice</strong>: In June, we completed the "Vertical Slice" of <em>Lil Sis</em>. This was a 15-minute playable segment that featured all our core systems: the Sanity-driven rendering, the Binaural audio, and the "Stalker" AI. This demo was instrumental in securing our latest round of funding.</li>
+<li class=""><strong>Engine Transition</strong>: As discussed in our previous log, we made the bold decision to migrate to Unity 6. While it was a month of "technical debt" hell, the performance gains and new lighting features have already paid for themselves.</li>
+<li class=""><strong>Community Growth</strong>: Our developer blog has seen a 300% increase in readership this year. Engaging with other developers and horror fans has provided us with invaluable feedback and motivation.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="lessons-learned-the-hard-way">Lessons Learned (The Hard Way)<a href="https://deepwavegame.github.io/news/wave0084-studio-year-in-review-2025#lessons-learned-the-hard-way" class="hash-link" aria-label="Direct link to Lessons Learned (The Hard Way)" title="Direct link to Lessons Learned (The Hard Way)" translate="no">​</a></h3>
+<p>No year is without its failures. Our initial attempt at a procedural level generation system for the "Dreamscape" sequences proved to be too "gamey" and broke the atmosphere. We had to scrap three months of work and pivot back to a hand-crafted, modular approach. It was a painful lesson in <strong>Pacing vs. Replayability</strong>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-path-to-2026">The Path to 2026<a href="https://deepwavegame.github.io/news/wave0084-studio-year-in-review-2025#the-path-to-2026" class="hash-link" aria-label="Direct link to The Path to 2026" title="Direct link to The Path to 2026" translate="no">​</a></h3>
+<p>Our goals for the coming year are clear:</p>
+<ol>
+<li class=""><strong>Full Content Production</strong>: Moving from "systems" to "content." 2026 is about building out the remaining five chapters of <em>Lil Sis</em>.</li>
+<li class=""><strong>Voice and Motion Capture</strong>: Finalizing our performances using the budget-mocap pipeline we've refined this year.</li>
+<li class=""><strong>Public Beta</strong>: We aim to have a playable demo available for the public by late 2026.</li>
+</ol>
+<p>We want to thank our community and our fellow developers for being part of this journey. The indie horror scene is more vibrant than ever, and we're proud to be a part of it. See you in the fog!</p>]]></content>
+        <author>
+            <name>Hoang Nguyen</name>
+            <uri>https://wave0084.com</uri>
+        </author>
+        <category label="Studio Log" term="Studio Log"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The Psychology of Jump Scares: Timing & Frequency]]></title>
+        <id>https://deepwavegame.github.io/news/psychology-of-jump-scares-timing-frequency</id>
+        <link href="https://deepwavegame.github.io/news/psychology-of-jump-scares-timing-frequency"/>
+        <updated>2025-12-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Using biometric data to find the 'Goldilocks' zone of player fear.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Jump Scares" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="beyond-the-cheap-thrill">Beyond the Cheap Thrill<a href="https://deepwavegame.github.io/news/psychology-of-jump-scares-timing-frequency#beyond-the-cheap-thrill" class="hash-link" aria-label="Direct link to Beyond the Cheap Thrill" title="Direct link to Beyond the Cheap Thrill" translate="no">​</a></h2>
+<p>The jump scare is often criticized as a "cheap" way to elicit a reaction. However, when used correctly, it is a vital tool in the horror developer's arsenal. The difference between a "cheap" scare and a "masterful" one lies in <strong>Psychological Conditioning</strong> and the "Goldilocks" zone of player arousal.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-anatomy-of-a-scare">The Anatomy of a Scare<a href="https://deepwavegame.github.io/news/psychology-of-jump-scares-timing-frequency#the-anatomy-of-a-scare" class="hash-link" aria-label="Direct link to The Anatomy of a Scare" title="Direct link to The Anatomy of a Scare" translate="no">​</a></h3>
+<p>A jump scare consists of three phases:</p>
+<ol>
+<li class=""><strong>The Wind-up</strong>: A period of rising tension or, conversely, a period of forced calm.</li>
+<li class=""><strong>The Trigger</strong>: The sudden visual or auditory stimulus.</li>
+<li class=""><strong>The Release</strong>: The immediate aftermath where the player's adrenaline spikes.</li>
+</ol>
+<p>The mistake many devs make is focusing only on the Trigger. In reality, the Wind-up is what determines the effectiveness of the scare. If the player is constantly bombarded with scares, they become desensitized—a phenomenon known as <strong>Habituation</strong>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="biometric-feedback-in-playtesting">Biometric Feedback in Playtesting<a href="https://deepwavegame.github.io/news/psychology-of-jump-scares-timing-frequency#biometric-feedback-in-playtesting" class="hash-link" aria-label="Direct link to Biometric Feedback in Playtesting" title="Direct link to Biometric Feedback in Playtesting" translate="no">​</a></h3>
+<p>At Wave0084, we use heart rate monitors and skin conductance sensors during playtests to measure player "Fear levels." What we've found is that the most effective scares occur when the player's heart rate has just started to plateau after a period of tension. If the player's heart rate is already at its peak, a jump scare often results in frustration rather than fear.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-false-scare-technique">The "False Scare" Technique<a href="https://deepwavegame.github.io/news/psychology-of-jump-scares-timing-frequency#the-false-scare-technique" class="hash-link" aria-label="Direct link to The &quot;False Scare&quot; Technique" title="Direct link to The &quot;False Scare&quot; Technique" translate="no">​</a></h3>
+<p>One of the most effective ways to manage the "Goldilocks" zone is the <strong>False Scare</strong>. This is when the game builds tension (a slamming door, a sudden shadow) but with no immediate threat. This resets the player's "threat detection" and makes them even more vulnerable to the <em>actual</em> scare that follows a few moments later.</p>
+<p>By varying the frequency and timing—sometimes delaying the scare by several seconds longer than the player expects—you break their internal "fear rhythm." This unpredictability is the key to moving beyond the cheap jump scare and into the realm of true, lasting psychological impact.</p>]]></content>
+        <author>
+            <name>Hoang Nguyen</name>
+            <uri>https://wave0084.com</uri>
+        </author>
+        <category label="Horror Design" term="Horror Design"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Creating 'Organic' Inventory Systems in C#]]></title>
+        <id>https://deepwavegame.github.io/news/creating-organic-inventory-systems-csharp</id>
+        <link href="https://deepwavegame.github.io/news/creating-organic-inventory-systems-csharp"/>
+        <updated>2025-12-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Designing diagetic UIs like Dead Space for deep immersion.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Inventory System" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="breaking-the-fourth-wall">Breaking the Fourth Wall<a href="https://deepwavegame.github.io/news/creating-organic-inventory-systems-csharp#breaking-the-fourth-wall" class="hash-link" aria-label="Direct link to Breaking the Fourth Wall" title="Direct link to Breaking the Fourth Wall" translate="no">​</a></h2>
+<p>In horror, immersion is everything. The moment a player opens a flat, 2D menu that pauses the game, the tension is broken. They are reminded that they are playing a game. To solve this, many modern horror titles (most famously <em>Dead Space</em>) use <strong>Diegetic User Interfaces</strong>—UIs that exist within the world of the game.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="architecting-a-diegetic-inventory">Architecting a Diegetic Inventory<a href="https://deepwavegame.github.io/news/creating-organic-inventory-systems-csharp#architecting-a-diegetic-inventory" class="hash-link" aria-label="Direct link to Architecting a Diegetic Inventory" title="Direct link to Architecting a Diegetic Inventory" translate="no">​</a></h3>
+<p>Building an "organic" inventory system in C# requires a different approach than a standard HUD. Instead of a Canvas-based UI, we use 3D objects and World-Space Canvases attached to the player's character or a handheld device.</p>
+<div class="language-csharp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-csharp codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">public class DiegeticInventory : MonoBehaviour {</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    [SerializeField] private Transform _uiHologramAnchor;</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    [SerializeField] private InventoryData _data;</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    public void ToggleInventory() {</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        // Logic to animate the hologram in/out</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">        // Ensure the game does NOT pause!</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">}</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-challenge-of-real-time-interaction">The Challenge of Real-Time Interaction<a href="https://deepwavegame.github.io/news/creating-organic-inventory-systems-csharp#the-challenge-of-real-time-interaction" class="hash-link" aria-label="Direct link to The Challenge of Real-Time Interaction" title="Direct link to The Challenge of Real-Time Interaction" translate="no">​</a></h3>
+<p>When the game doesn't pause, the inventory becomes a source of tension. The player must manage their items while potentially being hunted. This requires:</p>
+<ol>
+<li class=""><strong>Streamlined UX</strong>: Actions like "Quick Heal" or "Reload" must be intuitive so the player doesn't fumble while panicked.</li>
+<li class=""><strong>Physical Presence</strong>: The inventory "screen" should cast light on the player's face and the environment, reinforcing its place in the world.</li>
+<li class=""><strong>Animation Integration</strong>: The player character should look down at their device or backpack, creating a visual cue for the player's vulnerability.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="c-best-practices-the-data-driven-approach">C# Best Practices: The Data-Driven Approach<a href="https://deepwavegame.github.io/news/creating-organic-inventory-systems-csharp#c-best-practices-the-data-driven-approach" class="hash-link" aria-label="Direct link to C# Best Practices: The Data-Driven Approach" title="Direct link to C# Best Practices: The Data-Driven Approach" translate="no">​</a></h3>
+<p>To keep the system performant, we use <strong>ScriptableObjects</strong> for item data and a <strong>Messenger/Observer pattern</strong> to update the UI. When an item is added to the <code>InventoryData</code> ScriptableObject, it fires an event that the <code>DiegeticInventory</code> listens for, updating the 3D representation without needing to poll every frame.</p>
+<p>By removing the "safety" of a paused menu and integrating the inventory into the game world, you force the player to stay engaged with the horror even when they are just trying to manage their resources. It's a small change that has a massive impact on the overall feel of the game.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="Unity" term="Unity"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Amnesia: The Dark Descent - Resource Scarcity Analysis]]></title>
+        <id>https://deepwavegame.github.io/news/amnesia-resource-scarcity-analysis</id>
+        <link href="https://deepwavegame.github.io/news/amnesia-resource-scarcity-analysis"/>
+        <updated>2025-11-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How limited light sources create constant tension.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Amnesia Lantern" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="fear-of-the-dark">Fear of the Dark<a href="https://deepwavegame.github.io/news/amnesia-resource-scarcity-analysis#fear-of-the-dark" class="hash-link" aria-label="Direct link to Fear of the Dark" title="Direct link to Fear of the Dark" translate="no">​</a></h2>
+<p><em>Amnesia: The Dark Descent</em> is widely credited with revitalizing the survival horror genre by stripping the player of any means of combat. However, the true source of its terror isn't just the monsters; it's the <strong>Economy of Light</strong>. By making light a finite, dwindling resource, Frictional Games created a constant, underlying layer of stress that defines the entire experience.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-tinderbox-economy">The Tinderbox Economy<a href="https://deepwavegame.github.io/news/amnesia-resource-scarcity-analysis#the-tinderbox-economy" class="hash-link" aria-label="Direct link to The Tinderbox Economy" title="Direct link to The Tinderbox Economy" translate="no">​</a></h3>
+<p>In <em>Amnesia</em>, light comes from two sources: tinderboxes (for stationary candles and torches) and oil (for the player's portable lantern). Both are scarce. This creates a compelling risk-reward loop:</p>
+<ul>
+<li class="">Do I light this candle to maintain my sanity, knowing I might need that tinderbox later?</li>
+<li class="">Do I keep my lantern on to see the path ahead, or save the oil for when I'm truly lost?</li>
+</ul>
+<p>This is <strong>Resource-Driven Pacing</strong>. The player's progress is dictated not just by their skill at avoiding monsters, but by their ability to manage their supplies. Running out of oil in a dark, monster-infested dungeon isn't just a failure state; it's a terrifying psychological ordeal.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="sanity-as-a-gameplay-mechanic">Sanity as a Gameplay Mechanic<a href="https://deepwavegame.github.io/news/amnesia-resource-scarcity-analysis#sanity-as-a-gameplay-mechanic" class="hash-link" aria-label="Direct link to Sanity as a Gameplay Mechanic" title="Direct link to Sanity as a Gameplay Mechanic" translate="no">​</a></h3>
+<p>The scarcity of light is directly tied to the Sanity system. Staying in the dark causes the player's vision to distort and their movement to become sluggish. This forces the player out of their comfort zone. You <em>must</em> seek out light, even if that light makes you more visible to the things prowling in the shadows.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="technical-implementation-of-darkness">Technical Implementation of Darkness<a href="https://deepwavegame.github.io/news/amnesia-resource-scarcity-analysis#technical-implementation-of-darkness" class="hash-link" aria-label="Direct link to Technical Implementation of Darkness" title="Direct link to Technical Implementation of Darkness" translate="no">​</a></h3>
+<p>From a technical standpoint, <em>Amnesia</em> used a very focused lighting model. Shadows weren't just a visual effect; they were a gameplay volume. The game tracks the player's "exposure" to light sources to drive the sanity and stealth systems.</p>
+<p>For modern devs, the lesson of <em>Amnesia</em> is that <strong>Vulnerability is the strongest weapon</strong>. By taking away the player's tools and making their survival dependent on a depleting resource, you create a level of engagement that no amount of jump scares can match. Scarcity isn't just about difficulty; it's about making every choice feel heavy with consequence.</p>]]></content>
+        <author>
+            <name>Hoang Nguyen</name>
+            <uri>https://wave0084.com</uri>
+        </author>
+        <category label="Horror Design" term="Horror Design"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Photogrammetry for Horror Environments]]></title>
+        <id>https://deepwavegame.github.io/news/photogrammetry-horror-environments</id>
+        <link href="https://deepwavegame.github.io/news/photogrammetry-horror-environments"/>
+        <updated>2025-11-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Capturing real-world decay and bringing it into Unity.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Photogrammetry" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-texture-of-decay">The Texture of Decay<a href="https://deepwavegame.github.io/news/photogrammetry-horror-environments#the-texture-of-decay" class="hash-link" aria-label="Direct link to The Texture of Decay" title="Direct link to The Texture of Decay" translate="no">​</a></h2>
+<p>Horror lives in the details: the peeling wallpaper of an abandoned asylum, the rusted hinges of a cellar door, the moss-covered stone of a graveyard. Hand-authoring these "messy" textures can be incredibly time-consuming. This is why <strong>Photogrammetry</strong>—the process of creating 3D meshes and textures from photographs—has become a cornerstone of our environment pipeline at Wave0084.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="capturing-the-real-world">Capturing the Real World<a href="https://deepwavegame.github.io/news/photogrammetry-horror-environments#capturing-the-real-world" class="hash-link" aria-label="Direct link to Capturing the Real World" title="Direct link to Capturing the Real World" translate="no">​</a></h3>
+<p>The process begins with a high-resolution camera and a lot of patience. We look for real-world locations that exhibit the kind of "natural chaos" that is hard to simulate. Using tools like <strong>RealityCapture</strong> or <strong>Metashape</strong>, we process hundreds of photos into a high-poly mesh.</p>
+<p>For horror, the "imperfections" are what we're after. The way a piece of wood has rotted or the specific pattern of a blood-like stain on concrete. Photogrammetry captures these nuances with a level of fidelity that "clean" procedural textures often lack.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-game-ready-pipeline">The Game-Ready Pipeline<a href="https://deepwavegame.github.io/news/photogrammetry-horror-environments#the-game-ready-pipeline" class="hash-link" aria-label="Direct link to The Game-Ready Pipeline" title="Direct link to The Game-Ready Pipeline" translate="no">​</a></h3>
+<p>A raw photogrammetry scan is millions of polygons—far too heavy for real-time rendering. Our pipeline involves:</p>
+<ol>
+<li class=""><strong>Retopology</strong>: Creating a clean, low-poly version of the scan.</li>
+<li class=""><strong>Baking</strong>: Transferring the high-poly detail onto the low-poly mesh via Normal and Displacement maps.</li>
+<li class=""><strong>Delighting</strong>: This is the most critical step. Photos contain baked-in lighting information. We use tools like <strong>Unity's ArtEngine</strong> or <strong>Adobe Sampler</strong> to remove this lighting, resulting in "PBR-ready" Albedo maps that react correctly to our game's dynamic lights.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="integrating-with-urp">Integrating with URP<a href="https://deepwavegame.github.io/news/photogrammetry-horror-environments#integrating-with-urp" class="hash-link" aria-label="Direct link to Integrating with URP" title="Direct link to Integrating with URP" translate="no">​</a></h3>
+<p>In Unity's Universal Render Pipeline, these high-fidelity assets shine when combined with <strong>Detail Maps</strong> and <strong>Decals</strong>. By layering a photogrammetric "base" with procedural "grime" decals, we can create environments that feel unique and grounded in reality.</p>
+<p>Photogrammetry isn't about replacing artists; it's about giving them a more realistic starting point. It allows us to spend less time on the "grunt work" of modeling bricks and more time on the "art" of lighting and atmosphere.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="Tech Art" term="Tech Art"/>
+        <category label="Unity" term="Unity"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Outlast: The Night Vision Aesthetic Breakdown]]></title>
+        <id>https://deepwavegame.github.io/news/outlast-night-vision-aesthetic-breakdown</id>
+        <link href="https://deepwavegame.github.io/news/outlast-night-vision-aesthetic-breakdown"/>
+        <updated>2025-11-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Post-processing secrets of the iconic green-tinted fear.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1500462859194-885d16244837?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Outlast Night Vision" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="seeing-in-the-dark">Seeing in the Dark<a href="https://deepwavegame.github.io/news/outlast-night-vision-aesthetic-breakdown#seeing-in-the-dark" class="hash-link" aria-label="Direct link to Seeing in the Dark" title="Direct link to Seeing in the Dark" translate="no">​</a></h2>
+<p><em>Outlast</em> is famous for its "Found Footage" aesthetic, specifically the green-tinted night vision of the player's camcorder. This isn't just a stylistic choice; it's a core gameplay mechanic that fundamentally changes how the player perceives the environment. Let's break down the technical layers that make this effect so iconic.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-layers-of-the-effect">The Layers of the Effect<a href="https://deepwavegame.github.io/news/outlast-night-vision-aesthetic-breakdown#the-layers-of-the-effect" class="hash-link" aria-label="Direct link to The Layers of the Effect" title="Direct link to The Layers of the Effect" translate="no">​</a></h3>
+<p>A convincing night vision effect is more than just a green color filter. In <em>Outlast</em>, it's a combination of several post-processing passes:</p>
+<ol>
+<li class=""><strong>Luminance Boost</strong>: The scene is rendered with a very high exposure, blowing out the highlights to simulate how real night vision tubes intensify light.</li>
+<li class=""><strong>Monochromatic Grading</strong>: The entire image is mapped to a specific green-to-black color ramp.</li>
+<li class=""><strong>Film Grain and Noise</strong>: High-frequency digital noise is added to simulate the sensor noise of a camera operating in low light.</li>
+<li class=""><strong>Vignetting and Distortions</strong>: Subtle lens distortion and a heavy vignette create a sense of looking through a viewfinder, increasing the player's feeling of claustrophobia.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-eyes-of-the-enemy">The "Eyes" of the Enemy<a href="https://deepwavegame.github.io/news/outlast-night-vision-aesthetic-breakdown#the-eyes-of-the-enemy" class="hash-link" aria-label="Direct link to The &quot;Eyes&quot; of the Enemy" title="Direct link to The &quot;Eyes&quot; of the Enemy" translate="no">​</a></h3>
+<p>One of the most terrifying aspects of <em>Outlast</em>'s night vision is how it handles reflections. Enemies' eyes are given a high-intensity emissive material that only appears bright when viewed through the camcorder. This creates the "glow-in-the-dark" look of a predator's eyes, allowing the player to spot threats in pitch-black areas—at the cost of their limited battery life.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="implementation-in-urp">Implementation in URP<a href="https://deepwavegame.github.io/news/outlast-night-vision-aesthetic-breakdown#implementation-in-urp" class="hash-link" aria-label="Direct link to Implementation in URP" title="Direct link to Implementation in URP" translate="no">​</a></h3>
+<p>To recreate this in Unity, we use a <strong>Custom Post-Processing Effect</strong>.</p>
+<ul>
+<li class="">We use a <code>Full Screen Pass</code> in the Render Feature.</li>
+<li class="">The shader samples the camera texture and applies a <code>Dot(color, float3(0.3, 0.59, 0.11))</code> to get the grayscale value.</li>
+<li class="">This value is then used as an index for a <strong>Gradient Map</strong> (or a 1D Texture Ramp) to apply the green tint.</li>
+</ul>
+<p><em>Outlast</em> proved that by limiting the player's vision through a technical lens, you can make them feel more connected to the world while simultaneously making them feel more vulnerable. The camcorder isn't just a tool; it's the player's only, fragile lifeline.</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="Tech Art" term="Tech Art"/>
+        <category label="Horror Design" term="Horror Design"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Advanced Decal Systems for Bloody Footprints]]></title>
+        <id>https://deepwavegame.github.io/news/advanced-decal-systems-bloody-footprints</id>
+        <link href="https://deepwavegame.github.io/news/advanced-decal-systems-bloody-footprints"/>
+        <updated>2025-10-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Optimizing thousands of dynamic decals in Unity.]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Decals" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-trail-of-terror">The Trail of Terror<a href="https://deepwavegame.github.io/news/advanced-decal-systems-bloody-footprints#the-trail-of-terror" class="hash-link" aria-label="Direct link to The Trail of Terror" title="Direct link to The Trail of Terror" translate="no">​</a></h2>
+<p>Bloody footprints are a staple of horror storytelling. They guide the player, build tension, and tell a silent story of a struggle. However, in a game where both the player and the monsters can leave dynamic trails, managing thousands of decals can quickly become a performance nightmare.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-problem-with-standard-decals">The Problem with Standard Decals<a href="https://deepwavegame.github.io/news/advanced-decal-systems-bloody-footprints#the-problem-with-standard-decals" class="hash-link" aria-label="Direct link to The Problem with Standard Decals" title="Direct link to The Problem with Standard Decals" translate="no">​</a></h3>
+<p>Unity's standard <code>Decal Projector</code> is powerful but can be expensive when used in high quantities. Each projector is essentially a specialized camera pass. If you have 500 bloody footprints in a hallway, you're looking at a significant hit to your draw calls and GPU fill rate.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-solution-gpu-driven-decal-atlasing">The Solution: GPU-Driven Decal Atlasing<a href="https://deepwavegame.github.io/news/advanced-decal-systems-bloody-footprints#the-solution-gpu-driven-decal-atlasing" class="hash-link" aria-label="Direct link to The Solution: GPU-Driven Decal Atlasing" title="Direct link to The Solution: GPU-Driven Decal Atlasing" translate="no">​</a></h3>
+<p>For <em>Lil Sis</em>, we developed a custom decal system that bypasses the standard projectors for small, repetitive details like footprints.</p>
+<ol>
+<li class=""><strong>The Atlas</strong>: We store all our blood variations in a single high-res texture atlas.</li>
+<li class=""><strong>The Mesh Batcher</strong>: Instead of a "Projector," we use a single mesh that is generated on the fly. When a footprint is created, we add its vertices to a <code>Dynamic Mesh</code>. This allows us to render hundreds of footprints in a <strong>Single Draw Call</strong>.</li>
+<li class=""><strong>Projector-Less Projection</strong>: We use a custom shader that performs the projection logic in the vertex shader. By passing the ground's normal and position data, we can "shrink-wrap" the footprint mesh to the surface.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="fade-out-and-memory-management">Fade-out and Memory Management<a href="https://deepwavegame.github.io/news/advanced-decal-systems-bloody-footprints#fade-out-and-memory-management" class="hash-link" aria-label="Direct link to Fade-out and Memory Management" title="Direct link to Fade-out and Memory Management" translate="no">​</a></h3>
+<p>To prevent memory leaks, we use a <strong>Circular Buffer</strong> for our decals. When the buffer is full, the oldest footprint simply fades out and its vertices are repurposed for the newest one.</p>
+<div class="language-hlsl codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-hlsl codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#bfc7d5"><span class="token plain">// In the decal shader</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">float alpha = smoothstep(_MaxLifetime, _MinLifetime, v.age);</span><br></span><span class="token-line" style="color:#bfc7d5"><span class="token plain">col.a *= alpha;</span><br></span></code></pre></div></div>
+<p>This system allows us to have rooms covered in blood and footprints without the player ever noticing a dip in performance. It's a perfect example of how "technical tricks" can be used to support "narrative atmosphere."</p>]]></content>
+        <author>
+            <name>Thang Le</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="Unity" term="Unity"/>
+        <category label="Tech Art" term="Tech Art"/>
+    </entry>
+</feed>

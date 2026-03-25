@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwave0084_com=globalThis.webpackChunkwave0084_com||[]).push([[5721],{1454(a){a.exports=JSON.parse('{"metadata":{"permalink":"/ja/news","page":1,"postsPerPage":10,"totalPages":3,"totalCount":25,"nextPage":"/ja/news/page/2","blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
