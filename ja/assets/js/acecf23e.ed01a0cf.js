@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwave0084_com=globalThis.webpackChunkwave0084_com||[]).push([[1903],{1912(a){a.exports=JSON.parse('{"blogBasePath":"/ja/news","blogTitle":"Blog","authorsListPath":"/ja/news/authors"}')}}]);
