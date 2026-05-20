@@ -1,0 +1,100 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--f-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none !important;
+  cursor: pointer;
+  border-radius: var(--r-1);
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background-color 0.2s, border-color 0.2s, box-shadow 0.25s, color 0.2s;
+  position: relative;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.label { display: inline-block; }
+.icon { display: inline-flex; align-items: center; }
+
+/* Sizes */
+.size-sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.7rem;
+}
+.size-md {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.78rem;
+}
+.size-lg {
+  padding: 1rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+/* Variants */
+.variant-default {
+  background-color: var(--c-bg-3);
+  border-color: var(--c-border-2);
+  color: var(--c-text-0);
+}
+.variant-default:hover {
+  background-color: var(--c-bg-4);
+  border-color: var(--c-border-3);
+}
+
+.variant-primary {
+  background-color: var(--c-accent);
+  border-color: var(--c-accent);
+  color: var(--c-bg-0);
+}
+.variant-primary:hover {
+  background-color: #33e0ff;
+  box-shadow: 0 0 24px var(--c-accent-glow);
+  color: var(--c-bg-0);
+}
+
+.variant-ghost {
+  background: transparent;
+  border-color: var(--c-border-2);
+  color: var(--c-text-1);
+}
+.variant-ghost:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  background: var(--c-accent-soft);
+}
+
+.variant-outline {
+  background: transparent;
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+.variant-outline:hover {
+  background: var(--c-accent);
+  color: var(--c-bg-0);
+}
+
+.variant-danger {
+  background-color: transparent;
+  border-color: var(--c-danger);
+  color: var(--c-danger);
+}
+.variant-danger:hover {
+  background-color: var(--c-danger);
+  color: var(--c-text-0);
+}
+
+/* Modifiers */
+.block { width: 100%; }
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+.dashed { border-style: dashed; }

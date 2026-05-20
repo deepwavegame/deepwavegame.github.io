@@ -1,55 +1,92 @@
 import React from 'react';
-import Layout from '@theme/Layout';
-import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate';
+import { Card, StatList, Badge } from '@site/src/components/ui';
+import { FeatureCard } from '@site/src/components/cards';
+import styles from './Shared.module.css';
 
-export function ToolSpecs({ specs }) {
+export function ToolSpecs({ specs, actions, isUnderDevelopment }) {
+  const specItems = [
+    specs.version && { label: 'VERSION', value: specs.version },
+    specs.requirement && { label: 'REQUIRES', value: specs.requirement },
+    specs.size && { label: 'SIZE', value: specs.size },
+  ].filter(Boolean);
+
   return (
-    <div className="unity-card" style={{ position: 'sticky', top: '100px', backgroundColor: '#1e1e1e', border: '1px solid var(--ifm-color-primary)' }}>
-      <h3 style={{ textAlign: 'center', color: 'var(--ifm-color-primary)', fontSize: '2rem', margin: '1rem 0' }}>{specs.price}</h3>
-      <p style={{ textAlign: 'center', fontSize: '0.8rem', color: '#888' }}>
-        <Translate id="tools.common.pricing_desc">One-time payment. Lifetime updates support.</Translate>
-      </p>
+    <Card hoverable={false} accent className={styles.specCard}>
+      {isUnderDevelopment ? (
+        <div className={styles.devBanner}>
+          <span className={styles.devDot} />
+          UNDER DEVELOPMENT
+        </div>
+      ) : (
+        <>
+          <div className={styles.priceWrap}>
+            <span className={styles.priceLabel}>PRICE</span>
+            <span className={styles.price}>{specs.price}</span>
+          </div>
+          <p className={styles.priceNote}>
+            <Translate id="tools.common.pricing_desc">One-time payment. Lifetime updates support.</Translate>
+          </p>
+        </>
+      )}
 
-      <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #333' }}>
-        <h4 style={{ fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1rem' }}>Technical Specs</h4>
-        <ul style={{ fontSize: '0.85rem', color: '#aaa', listStyle: 'none', padding: 0 }}>
-          <li style={{ marginBottom: '0.5rem' }}><strong>Req:</strong> {specs.requirement}</li>
-          <li style={{ marginBottom: '0.5rem' }}><strong>Size:</strong> {specs.size}</li>
-          <li style={{ marginBottom: '0.5rem' }}><strong>Ver:</strong> {specs.version}</li>
-        </ul>
+      <div className={styles.divider}>
+        <span>TECH SPECS</span>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '1.5rem' }}>
-        {specs.buyButtons}
+      <StatList items={specItems} />
+
+      <div className={styles.actions}>
+        {actions}
       </div>
-    </div>
+    </Card>
   );
 }
 
-export function ToolHeader({ title, tagline }) {
+export function ToolHeader({ title, tagline, type, isUnderDevelopment }) {
   return (
-    <header style={{ marginBottom: '4rem' }}>
-      <h1 style={{ fontSize: '3.5rem', color: '#ffffff', marginBottom: '0.5rem' }}>{title}</h1>
-      <p style={{ fontSize: '1.4rem', color: 'var(--ifm-color-primary)', fontWeight: '300' }}>{tagline}</p>
+    <header className={styles.header}>
+      <div className={styles.headerMeta}>
+        <Badge tone="accent">{type}</Badge>
+        {isUnderDevelopment && <Badge tone="warn" pulse>DEV PHASE</Badge>}
+      </div>
+      <h1 className={styles.title}>{title}</h1>
+      <p className={styles.tagline}>{tagline}</p>
     </header>
   );
 }
 
 export function ToolFeatures({ features }) {
   return (
-    <div style={{ marginTop: '3rem' }}>
-      <h2 className="section-title" style={{ textAlign: 'left', fontSize: '1.5rem' }}>CORE <span>FEATURES</span></h2>
+    <div className={styles.features}>
+      <div className={styles.featuresHeader}>
+        <span className={styles.featuresKicker}>// CORE_FEATURES</span>
+        <span className={styles.featuresLine} />
+      </div>
       <div className="row">
-        {features.map((f, idx) => (
-          <div className="col col--6" key={idx} style={{ marginBottom: '1rem' }}>
-            <div className="unity-card" style={{ height: '100%' }}>
-              <h4 style={{ color: 'var(--ifm-color-primary)' }}>{f.title}</h4>
-              <p style={{ fontSize: '0.9rem', color: '#aaa' }}>{f.desc}</p>
-            </div>
+        {features.map((f, i) => (
+          <div className="col col--6" key={i} style={{ marginBottom: '1rem' }}>
+            <FeatureCard index={i + 1} title={f.title} description={f.description} />
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+export function ToolPreview({ thumbnail, label, dim }) {
+  return (
+    <div className={styles.preview}>
+      {thumbnail && (
+        <img
+          src={thumbnail}
+          alt=""
+          className={styles.previewImg}
+          style={{ opacity: dim ? 0.2 : 0.4 }}
+        />
+      )}
+      <div className={styles.previewLabel}>{label}</div>
+      <div className={styles.previewGrid} />
     </div>
   );
 }

@@ -31,17 +31,17 @@ const tools = [
     features: [
       {
         title: <Translate id="tools.infinite-corrugated-roof.f1.t">Spline Deformation</Translate>,
-        desc: <Translate id="tools.infinite-corrugated-roof.f1.d">Bend and shape roofs along complex paths using Unity Splines.</Translate>
+        description: <Translate id="tools.infinite-corrugated-roof.f1.d">Bend and shape roofs along complex paths using Unity Splines.</Translate>,
       },
       {
         title: <Translate id="tools.infinite-corrugated-roof.f2.t">Procedural Noise</Translate>,
-        desc: <Translate id="tools.infinite-corrugated-roof.f2.d">Add realistic surface imperfections and weathering effects.</Translate>
+        description: <Translate id="tools.infinite-corrugated-roof.f2.d">Add realistic surface imperfections and weathering effects.</Translate>,
       },
       {
         title: <Translate id="tools.infinite-corrugated-roof.f3.t">Multi-LOD System</Translate>,
-        desc: <Translate id="tools.infinite-corrugated-roof.f3.d">Optimized for performance with built-in 3-level LOD and FBX baking.</Translate>
+        description: <Translate id="tools.infinite-corrugated-roof.f3.d">Optimized for performance with built-in 3-level LOD and FBX baking.</Translate>,
       },
-    ]
+    ],
   },
   {
     id: 'simple-paint',
@@ -67,13 +67,13 @@ const tools = [
     features: [
       {
         title: <Translate id="tools.simple-paint.f1.t">GPU Acceleration</Translate>,
-        desc: <Translate id="tools.simple-paint.f1.d">Smooth painting even on mobile devices.</Translate>
+        description: <Translate id="tools.simple-paint.f1.d">Smooth painting even on mobile devices.</Translate>,
       },
       {
         title: <Translate id="tools.simple-paint.f2.t">Custom Brushes</Translate>,
-        desc: <Translate id="tools.simple-paint.f2.d">Support for texture-based brush stamps.</Translate>
+        description: <Translate id="tools.simple-paint.f2.d">Support for texture-based brush stamps.</Translate>,
       },
-    ]
+    ],
   },
   {
     id: 'blender-horror-exporter',
@@ -83,6 +83,7 @@ const tools = [
     description: <Translate id="tools.horror-exporter.description">One-click export with optimized LODs, material assignments, and collider generation for Unity/Unreal.</Translate>,
     thumbnail: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
     links: {
+      page: '/tools/blender-horror-exporter',
       blenderMarket: 'https://blendermarket.com/products/example',
       itch: 'https://deepwavegame.itch.io/horror-exporter',
       docs: '#',
@@ -98,14 +99,16 @@ const tools = [
     features: [
       {
         title: <Translate id="tools.horror-exporter.f1.t">Auto-LOD</Translate>,
-        desc: <Translate id="tools.horror-exporter.f1.d">Generate optimized mesh levels automatically.</Translate>
+        description: <Translate id="tools.horror-exporter.f1.d">Generate optimized mesh levels automatically.</Translate>,
       },
       {
         title: <Translate id="tools.horror-exporter.f2.t">PBR Mapping</Translate>,
-        desc: <Translate id="tools.horror-exporter.f2.d">One-click material conversion for HDRP/URP.</Translate>
+        description: <Translate id="tools.horror-exporter.f2.d">One-click material conversion for HDRP/URP.</Translate>,
       },
-    ]
-  }
+    ],
+  },
 ];
 
 export default tools;
+
+export const getTool = (id) => tools.find((t) => t.id === id);

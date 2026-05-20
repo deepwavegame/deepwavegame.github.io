@@ -1,0 +1,44 @@
+.card {
+  background: var(--c-bg-2);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.index {
+  font-family: var(--f-mono);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--c-accent);
+  letter-spacing: -1px;
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--c-accent), transparent);
+}
+
+.title {
+  font-size: 1.05rem;
+  color: var(--c-text-0);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.desc {
+  color: var(--c-text-2);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0;
+}

@@ -1,0 +1,64 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--r-1);
+  border: 1px solid;
+  line-height: 1;
+}
+
+.default {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--c-text-2);
+  border-color: var(--c-border-2);
+}
+
+.accent {
+  background: var(--c-accent-soft);
+  color: var(--c-accent);
+  border-color: var(--c-accent);
+}
+
+.danger {
+  background: rgba(255, 45, 79, 0.08);
+  color: var(--c-danger);
+  border-color: var(--c-danger);
+}
+
+.warn {
+  background: rgba(255, 138, 0, 0.08);
+  color: var(--c-warn);
+  border-color: var(--c-warn);
+}
+
+.success {
+  background: rgba(74, 222, 128, 0.08);
+  color: var(--c-success);
+  border-color: var(--c-success);
+}
+
+.muted {
+  background: transparent;
+  color: var(--c-text-3);
+  border-color: var(--c-border-1);
+}
+
+.pulse::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}

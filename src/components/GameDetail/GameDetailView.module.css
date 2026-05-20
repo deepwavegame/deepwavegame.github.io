@@ -1,0 +1,60 @@
+.specsRow {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.storyCard {
+  background: var(--c-bg-3);
+  padding: 2.5rem !important;
+  border-left: 2px solid var(--c-accent) !important;
+}
+
+.storyParagraph {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--c-text-1);
+  margin-bottom: 1.25rem;
+}
+
+.storyQuote {
+  font-family: var(--f-mono);
+  color: var(--c-danger);
+  font-style: italic;
+  font-size: 1.15rem;
+  text-align: center;
+  margin: 2rem 0 0;
+  padding: 1rem;
+  border-top: 1px dashed var(--c-border-2);
+  letter-spacing: 1px;
+}
+
+.trailerFrame {
+  background-color: var(--c-bg-0);
+  border: 1px solid var(--c-border-2);
+  padding-bottom: 56.25%;
+  position: relative;
+  overflow: hidden;
+}
+
+.trailerFrame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0) 50%, rgba(0,217,255,0.02) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+.trailerPlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-mono);
+  color: var(--c-text-3);
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+}

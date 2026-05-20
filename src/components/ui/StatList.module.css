@@ -1,0 +1,30 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--c-border-1);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: var(--c-text-3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.value {
+  color: var(--c-text-0);
+  font-weight: 600;
+}
