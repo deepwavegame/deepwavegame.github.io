@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0.6rem 0;
-  border-bottom: 1px dashed var(--c-border-1);
+  border-bottom: 1px dashed var(--c-border-2);
 }
 
 .item:last-child {
@@ -25,6 +25,7 @@
 }
 
 .value {
-  color: var(--c-text-0);
-  font-weight: 600;
+  color: var(--c-accent);
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--c-accent-glow);
 }

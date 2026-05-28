@@ -52,10 +52,11 @@
   background-color: var(--c-accent);
   border-color: var(--c-accent);
   color: var(--c-bg-0);
+  box-shadow: 0 0 18px var(--c-accent-soft);
 }
 .variant-primary:hover {
-  background-color: #33e0ff;
-  box-shadow: 0 0 24px var(--c-accent-glow);
+  background-color: #5cf8e0;
+  box-shadow: 0 0 28px var(--c-accent-glow), inset 0 0 12px rgba(0, 6, 10, 0.2);
   color: var(--c-bg-0);
 }
 

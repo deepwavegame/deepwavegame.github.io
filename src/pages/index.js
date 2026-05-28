@@ -1,38 +1,50 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import { Button, Hero, Section, SectionTitle, Card, StatList } from '@site/src/components/ui';
-import { FeatureCard } from '@site/src/components/cards';
 import studio from '@site/src/data/studio';
 
-function PillarTile({ pillar }) {
+const DEPTHS = ['-2 100', '-6 400', '-10 902'];
+
+function ContactTile({ pillar }) {
+  const depth = DEPTHS[pillar.index - 1] || '-8 400';
   return (
     <div className="col col--4" style={{ marginBottom: '1.5rem' }}>
-      <Card className="pillar-card">
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '1.25rem' }}>
+      <Card className="contact-card" hoverable>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          marginBottom: '1.4rem',
+          fontFamily: 'var(--f-mono)',
+          fontSize: '0.66rem',
+          letterSpacing: '2px',
+          color: 'var(--c-text-3)',
+        }}>
           <span style={{
-            fontFamily: 'var(--f-mono)',
-            color: 'var(--c-accent)',
-            fontSize: '1.4rem',
-            fontWeight: 800,
-          }}>
-            {String(pillar.index).padStart(2, '0')}
-          </span>
-          <span style={{ flexGrow: 1, height: 1, background: 'linear-gradient(90deg, var(--c-accent), transparent)' }} />
+            width: '8px', height: '8px', borderRadius: '50%',
+            background: 'var(--c-accent)', boxShadow: '0 0 10px var(--c-accent)',
+          }} />
+          <span>CONTACT_{String(pillar.index).padStart(2, '0')}</span>
+          <span style={{ flexGrow: 1, height: 1, background: 'linear-gradient(90deg, var(--c-border-2), transparent)' }} />
+          <span style={{ color: 'var(--c-accent)' }}>{depth}m</span>
         </div>
+
         <h3 style={{
+          fontFamily: 'var(--f-display)',
           color: 'var(--c-text-0)',
           textTransform: 'uppercase',
           letterSpacing: '2px',
-          fontSize: '1.2rem',
-          marginBottom: '0.75rem',
+          fontSize: '1.45rem',
+          marginBottom: '0.85rem',
+          textShadow: '0 0 18px var(--c-accent-glow)',
         }}>
           {pillar.title}
         </h3>
-        <p style={{ color: 'var(--c-text-2)', minHeight: '64px', lineHeight: 1.7, fontSize: '0.9rem' }}>
+        <p style={{ color: 'var(--c-text-2)', minHeight: '72px', lineHeight: 1.75, fontSize: '0.9rem' }}>
           {pillar.description}
         </p>
         <div style={{ marginTop: '1.5rem' }}>
-          <Button to={pillar.to} variant="primary" block size="md">
+          <Button to={pillar.to} variant="outline" block size="md" icon={<span aria-hidden>&#9660;</span>}>
             {pillar.cta}
           </Button>
         </div>
@@ -65,19 +77,40 @@ export default function Home() {
         <SectionTitle kicker={studio.about.kicker} accent={studio.about.accent}>
           {studio.about.title}
         </SectionTitle>
-        <p style={{
-          textAlign: 'center',
-          maxWidth: '780px',
-          margin: '0 auto 3rem',
-          fontSize: '1.1rem',
-          lineHeight: 1.8,
-          color: 'var(--c-text-2)',
-        }}>
-          {studio.about.body}
-        </p>
+
+        <div style={{ maxWidth: '820px', margin: '0 auto' }}>
+          <div style={{
+            fontFamily: 'var(--f-mono)',
+            fontSize: '0.66rem',
+            letterSpacing: '3px',
+            color: 'var(--c-text-3)',
+            textAlign: 'center',
+            marginBottom: '1.2rem',
+          }}>
+            &#9656; INCOMING TRANSMISSION &mdash; SIGNAL LOCK 100%
+          </div>
+          <p style={{
+            textAlign: 'center',
+            fontSize: '1.12rem',
+            lineHeight: 1.9,
+            color: 'var(--c-text-1)',
+            margin: '0 auto 3rem',
+            position: 'relative',
+            paddingLeft: '1.5rem',
+            borderLeft: '2px solid var(--c-accent)',
+          }}>
+            {studio.about.body}
+          </p>
+        </div>
 
         <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-          <Card bordered hoverable={false} style={{ background: 'transparent' }}>
+          <Card bordered hoverable={false} style={{ background: 'rgba(8,24,33,0.5)' }}>
+            <div style={{
+              fontFamily: 'var(--f-mono)', fontSize: '0.6rem', letterSpacing: '3px',
+              color: 'var(--c-text-3)', marginBottom: '0.5rem', textTransform: 'uppercase',
+            }}>
+              // VESSEL TELEMETRY
+            </div>
             <StatList items={studio.stats} />
           </Card>
         </div>
@@ -87,9 +120,15 @@ export default function Home() {
         <SectionTitle kicker={studio.pillars.kicker} accent={studio.pillars.accent}>
           {studio.pillars.title}
         </SectionTitle>
+        <div style={{
+          textAlign: 'center', fontFamily: 'var(--f-mono)', fontSize: '0.68rem',
+          letterSpacing: '3px', color: 'var(--c-text-3)', margin: '-2rem 0 2.5rem',
+        }}>
+          &#9656; 03 CONTACTS DETECTED ON SONAR &mdash; SELECT TO DESCEND
+        </div>
         <div className="row">
           {studio.pillars.items.map((p) => (
-            <PillarTile key={p.index} pillar={p} />
+            <ContactTile key={p.index} pillar={p} />
           ))}
         </div>
       </Section>

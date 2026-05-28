@@ -42,7 +42,7 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0,0,0,0) 50%, rgba(0,217,255,0.02) 50%);
+    linear-gradient(rgba(0,0,0,0) 50%, rgba(47,245,214,0.025) 50%);
   background-size: 100% 4px;
   pointer-events: none;
 }

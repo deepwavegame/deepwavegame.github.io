@@ -1,165 +1,241 @@
 /**
- * WAVE0084 STUDIO — Indie Horror Studio Theme
- * Design tokens + base styles only. Components own their own CSS modules.
+ * WAVE0084 STUDIO — "ABYSSAL SIGNAL"
+ * A deep-sea hydrophone / sonar transmission interface.
+ * Crushing black, bioluminescent light, marine snow, pressure readouts.
+ * Design tokens + base atmosphere. Components own their CSS modules.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap');
+
 :root {
-  /* === Palette: Obsidian + Blood + Ice === */
-  --c-bg-0: #050505;
-  --c-bg-1: #0a0a0a;
-  --c-bg-2: #0f0f0f;
-  --c-bg-3: #141414;
-  --c-bg-4: #1a1a1a;
+  /* === Palette: Abyssal Void + Bioluminescence === */
+  --c-bg-0: #00060a;   /* the crush depth — deepest void */
+  --c-bg-1: #03090e;
+  --c-bg-2: #061018;
+  --c-bg-3: #081821;
+  --c-bg-4: #0c2230;
 
-  --c-border-0: #161616;
-  --c-border-1: #1f1f1f;
-  --c-border-2: #2a2a2a;
-  --c-border-3: #3a3a3a;
+  --c-border-0: #0a1a22;
+  --c-border-1: #103039;
+  --c-border-2: #17454f;
+  --c-border-3: #205f6c;
 
-  --c-text-0: #ffffff;
-  --c-text-1: #d4d4d4;
-  --c-text-2: #8a8a8a;
-  --c-text-3: #555555;
-  --c-text-4: #333333;
+  --c-text-0: #e9fdff;   /* cold abyssal white */
+  --c-text-1: #b6d6da;
+  --c-text-2: #6d989e;
+  --c-text-3: #436067;
+  --c-text-4: #25434a;
 
-  --c-accent: #00d9ff;
-  --c-accent-dim: #008a9e;
-  --c-accent-soft: rgba(0, 217, 255, 0.08);
-  --c-accent-glow: rgba(0, 217, 255, 0.25);
+  /* Bioluminescence */
+  --c-accent: #2ff5d6;          /* primary biolum teal */
+  --c-accent-dim: #14a892;
+  --c-accent-soft: rgba(47, 245, 214, 0.07);
+  --c-accent-glow: rgba(47, 245, 214, 0.32);
 
-  --c-danger: #ff2d4f;
-  --c-warn: #ff8a00;
-  --c-success: #4ade80;
+  --c-sonar: #1fb6ff;           /* sonar ping blue */
+  --c-sonar-soft: rgba(31, 182, 255, 0.08);
+  --c-lure: #c8ff45;            /* anglerfish lure — rare/alert highlight */
+
+  --c-danger: #ff3b5c;          /* contact / hazard */
+  --c-warn: #ffb020;
+  --c-success: #2ff5d6;
 
   /* Brand colors */
-  --c-steam: #171a21;
+  --c-steam: #0e1c24;
   --c-itch: #fa5c5c;
-  --c-unity: #222c37;
+  --c-unity: #0c2230;
   --c-blender: #ea7600;
   --c-cgtrader: #2bdec9;
 
   /* Typography */
   --f-sans: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --f-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-  --f-display: 'Inter', 'Segoe UI', sans-serif;
+  --f-display: 'Syne', 'Inter', 'Segoe UI', sans-serif;
 
   /* Spacing scale */
-  --s-1: 4px;
-  --s-2: 8px;
-  --s-3: 12px;
-  --s-4: 16px;
-  --s-5: 24px;
-  --s-6: 32px;
-  --s-7: 48px;
-  --s-8: 64px;
-  --s-9: 96px;
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
 
-  /* Radius */
+  /* Radius — abyssal interface is mostly hard-edged */
   --r-0: 0;
   --r-1: 2px;
   --r-2: 4px;
 
   /* Shadows */
-  --sh-soft: 0 4px 20px rgba(0, 0, 0, 0.8);
-  --sh-glow: 0 0 30px var(--c-accent-glow);
+  --sh-soft: 0 4px 30px rgba(0, 0, 0, 0.85);
+  --sh-glow: 0 0 32px var(--c-accent-glow);
 
   /* Docusaurus overrides */
   --ifm-color-primary: var(--c-accent);
   --ifm-color-primary-dark: var(--c-accent-dim);
-  --ifm-color-primary-darker: #007587;
-  --ifm-color-primary-darkest: #005c6b;
-  --ifm-color-primary-light: #33e0ff;
-  --ifm-color-primary-lighter: #66e8ff;
-  --ifm-color-primary-lightest: #99f0ff;
+  --ifm-color-primary-darker: #0f8d7a;
+  --ifm-color-primary-darkest: #0a6b5d;
+  --ifm-color-primary-light: #5cf8e0;
+  --ifm-color-primary-lighter: #85faea;
+  --ifm-color-primary-lightest: #aefbf1;
 
   --ifm-background-color: var(--c-bg-1);
   --ifm-background-surface-color: var(--c-bg-3);
   --ifm-color-content: var(--c-text-1);
   --ifm-heading-color: var(--c-text-0);
+  --ifm-heading-font-family: var(--f-display);
   --ifm-font-family-base: var(--f-sans);
   --ifm-font-family-monospace: var(--f-mono);
 
-  --ifm-navbar-background-color: rgba(5, 5, 5, 0.85);
+  --ifm-navbar-background-color: rgba(0, 6, 10, 0.82);
   --ifm-footer-background-color: var(--c-bg-0);
 
   --ifm-menu-color: var(--c-text-2);
   --ifm-menu-color-active: var(--c-accent);
   --ifm-menu-color-background-active: var(--c-accent-soft);
-  --ifm-menu-color-background-hover: rgba(255, 255, 255, 0.03);
+  --ifm-menu-color-background-hover: rgba(47, 245, 214, 0.04);
 
+  --ifm-link-color: var(--c-accent);
   --ifm-toc-border-color: var(--c-border-1);
   --ifm-navbar-height: 4rem;
   --ifm-global-radius: var(--r-1);
-  --docusaurus-highlighted-code-line-bg: rgba(0, 217, 255, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(47, 245, 214, 0.1);
 }
 
 [data-theme='dark'] {
   --ifm-color-primary: var(--c-accent);
 }
 
-/* === Base === */
+/* === Base: descending into the deep === */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--c-bg-1);
+  background-color: var(--c-bg-0);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(31, 182, 255, 0.06), transparent 60%),
+    linear-gradient(180deg, #04121a 0%, #020a10 35%, #00060a 100%);
+  background-attachment: fixed;
   color: var(--c-text-1);
   -webkit-font-smoothing: antialiased;
   font-feature-settings: 'ss01', 'cv11';
 }
 
-/* Subtle film grain overlay across whole site */
+/* Caustic shimmer + faint sonar grid drifting across the whole abyss */
 body::before {
+  content: '';
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(47, 245, 214, 0.05), transparent 22%),
+    radial-gradient(circle at 78% 65%, rgba(31, 182, 255, 0.05), transparent 26%),
+    radial-gradient(circle at 50% 90%, rgba(47, 245, 214, 0.03), transparent 30%);
+  filter: blur(4px);
+  animation: caustic-drift 26s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+/* Marine snow — detritus drifting down through the water column */
+body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 9999;
-  opacity: 0.025;
+  z-index: 1;
   background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(200, 245, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 34% 62%, rgba(200, 245, 255, 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 58% 8%, rgba(200, 245, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 76% 44%, rgba(200, 245, 255, 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 90% 78%, rgba(200, 245, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 22% 88%, rgba(200, 245, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 46% 34%, rgba(200, 245, 255, 0.3), transparent);
+  background-size: 100% 700px;
+  opacity: 0.35;
+  animation: marine-snow 14s linear infinite;
 }
+
+@keyframes marine-snow {
+  0% { background-position: 0 -700px; }
+  100% { background-position: 60px 700px; }
+}
+
+@keyframes caustic-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(2%, 1.5%, 0) scale(1.05); }
+  100% { transform: translate3d(-1.5%, -1%, 0) scale(1.02); }
+}
+
+/* Keep real content above the atmosphere layers */
+#__docusaurus { position: relative; z-index: 2; }
 
 ::selection {
   background: var(--c-accent);
   color: var(--c-bg-0);
+  text-shadow: none;
 }
 
-/* === Navbar === */
+/* Headings carry the display face */
+h1, h2, h3, .markdown h1, .markdown h2, .markdown h3 {
+  font-family: var(--f-display);
+  letter-spacing: -0.5px;
+}
+
+/* === Navbar: submarine console bar === */
 .navbar {
-  border-bottom: 1px solid var(--c-border-1);
-  box-shadow: none;
-  backdrop-filter: blur(12px) saturate(140%);
-  background-color: rgba(5, 5, 5, 0.7) !important;
+  border-bottom: 1px solid var(--c-border-2);
+  box-shadow: 0 1px 0 0 var(--c-accent-soft), 0 8px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(14px) saturate(150%);
+  background-color: rgba(0, 6, 10, 0.7) !important;
+  position: relative;
+}
+
+/* bioluminescent depth line under the navbar */
+.navbar::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-accent), var(--c-sonar), transparent);
+  opacity: 0.6;
+  animation: depth-line 6s ease-in-out infinite;
+}
+
+@keyframes depth-line {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.7; }
 }
 
 .navbar__title {
-  font-weight: 900;
-  letter-spacing: 3px;
+  font-family: var(--f-mono);
+  font-weight: 800;
+  letter-spacing: 4px;
   color: var(--c-text-0) !important;
   font-size: 0.95rem;
+  text-shadow: 0 0 12px var(--c-accent-glow);
 }
 
 .navbar__item {
-  font-size: 0.85rem;
-  letter-spacing: 1px;
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   font-weight: 600;
 }
 
 .navbar__link {
   color: var(--c-text-2);
-  transition: color 0.2s;
+  transition: color 0.2s, text-shadow 0.2s;
+  position: relative;
 }
 
 .navbar__link:hover {
-  color: var(--c-text-0);
+  color: var(--c-accent);
+  text-shadow: 0 0 10px var(--c-accent-glow);
 }
 
 .navbar__link--active {
   color: var(--c-accent) !important;
+  text-shadow: 0 0 10px var(--c-accent-glow);
 }
 
 .header-github-link::before {
@@ -178,7 +254,7 @@ body::before {
   background-color: var(--c-accent);
 }
 
-/* === Footer === */
+/* === Footer: deep console === */
 .footer {
   background-color: var(--c-bg-0) !important;
   border-top: 1px solid var(--c-border-1);
@@ -243,49 +319,61 @@ body::before {
   letter-spacing: 1px;
 }
 
-/* === Sidebar/docs === */
+/* === Sidebar / docs === */
 .menu__link--active {
   border-left: 2px solid var(--c-accent);
   border-radius: 0;
 }
 
+.markdown a { color: var(--c-accent); }
+
 /* === Brand button colors (kept for utility) === */
 .brand-steam { background: var(--c-steam) !important; color: #fff !important; border-color: var(--c-steam) !important; }
-.brand-steam:hover { background: #2a475e !important; }
+.brand-steam:hover { background: #16323f !important; }
 .brand-itch { background: var(--c-itch) !important; color: #fff !important; border-color: var(--c-itch) !important; }
 .brand-itch:hover { background: #ff7373 !important; }
 .brand-unity { background: var(--c-unity) !important; color: #fff !important; border-color: var(--c-unity) !important; }
-.brand-unity:hover { background: #3b4d61 !important; }
+.brand-unity:hover { background: #16414c !important; }
 .brand-blender { background: var(--c-blender) !important; color: #fff !important; border-color: var(--c-blender) !important; }
 .brand-blender:hover { background: #ff8c1a !important; }
-.brand-cgtrader { background: var(--c-cgtrader) !important; color: #111 !important; border-color: var(--c-cgtrader) !important; }
+.brand-cgtrader { background: var(--c-cgtrader) !important; color: #04121a !important; border-color: var(--c-cgtrader) !important; }
 .brand-cgtrader:hover { background: #4df2de !important; }
 
-/* === Animations === */
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+/* === Animations (shared) === */
+@keyframes sonar-ping {
+  0%   { transform: scale(0.2); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 var(--c-accent-glow); }
-  50% { box-shadow: 0 0 20px 4px var(--c-accent-glow); }
+@keyframes sonar-sweep {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @keyframes flicker {
   0%, 100% { opacity: 1; }
   41% { opacity: 1; }
-  42% { opacity: 0.8; }
+  42% { opacity: 0.78; }
   43% { opacity: 1; }
-  45% { opacity: 0.3; }
+  45% { opacity: 0.35; }
   46% { opacity: 1; }
 }
 
-@keyframes scan-line-move {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 100vh; }
+@keyframes biolum-pulse {
+  0%, 100% { text-shadow: 0 0 12px var(--c-accent-glow); }
+  50% { text-shadow: 0 0 28px var(--c-accent-glow), 0 0 6px var(--c-accent); }
+}
+
+@keyframes drift-up {
+  0%   { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 /* === Utility globals === */
 .mono { font-family: var(--f-mono); }
 .tag-label { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--c-text-3); }
+.biolum { color: var(--c-accent); text-shadow: 0 0 12px var(--c-accent-glow); }
+
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after, .navbar::after { animation: none !important; }
+}
