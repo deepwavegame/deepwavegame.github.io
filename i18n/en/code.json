@@ -164,40 +164,46 @@
   "tools.infinite-corrugated-roof.specs.version": {
     "message": "Current Version: v1.2.0"
   },
-  "tools.simple-paint.title": {
-    "message": "Simple Paint"
+  "tools.simple-painter.title": {
+    "message": "Simple Painter"
   },
-  "tools.simple-paint.description": {
-    "message": "Lightweight 2D painting system for Unity projects. Perfect for prototyping and in-game drawing mechanics."
+  "tools.simple-painter.description": {
+    "message": "GPU-accelerated runtime paint system for Unity. Features real-time fluid simulation, multi-channel PBR painting, and zero-allocation GPU command pipeline."
   },
-  "tools.simple-paint.feature.title": {
-    "message": "Paint Directly on Textures"
+  "tools.simple-painter.feature.title": {
+    "message": "Paint Directly on 3D Surfaces"
   },
-  "tools.simple-paint.feature.desc": {
-    "message": "Simple Paint provides a simple API so you can integrate drawing/painting features into your game. Whether it's painting on walls, signing paper, or creating bloodstains, Simple Paint handles it smoothly."
+  "tools.simple-painter.feature.desc": {
+    "message": "Simple Painter provides a powerful GPU pipeline to paint on any 3D surface at runtime. With multi-channel PBR support, fluid simulation, and zero-allocation design, it handles everything from graffiti to blood splatters with studio-grade quality."
   },
-  "tools.simple-paint.feature1.title": {
-    "message": "Shader Optimized"
+  "tools.simple-painter.feature1.title": {
+    "message": "GPU Command Pipeline"
   },
-  "tools.simple-paint.feature1.desc": {
-    "message": "Uses GPU for drawing, ensuring FPS doesn't drop even on mobile."
+  "tools.simple-painter.feature1.desc": {
+    "message": "Singleton PaintEngine batches all GPU commands into a single CommandBuffer for maximum rendering performance."
   },
-  "tools.simple-paint.feature2.title": {
-    "message": "Multiple Brush Types"
+  "tools.simple-painter.feature2.title": {
+    "message": "Real-time Fluid Simulation"
   },
-  "tools.simple-paint.feature2.desc": {
-    "message": "Supports Texture Brushes, allowing you to create realistic drawing effects."
+  "tools.simple-painter.feature2.desc": {
+    "message": "Three tiers of GPU fluid physics: FluidShallow, FluidViscous, and full MLS-MPM FluidParticle."
   },
-  "tools.simple-paint.cta.desc": {
-    "message": "Integrate a professional painting system into your Unity project in minutes."
+  "tools.simple-painter.feature3.title": {
+    "message": "Multi-Channel PBR"
   },
-  "tools.simple-paint.req1": {
-    "message": "Unity 2020.3 LTS or higher."
+  "tools.simple-painter.feature3.desc": {
+    "message": "Paint Albedo, Normal, Metallic, and Roughness simultaneously with per-layer blend modes."
   },
-  "tools.simple-paint.req2": {
+  "tools.simple-painter.cta.desc": {
+    "message": "Integrate a professional GPU paint system into your Unity project in minutes."
+  },
+  "tools.simple-painter.req1": {
+    "message": "Unity 2021.3 LTS or higher."
+  },
+  "tools.simple-painter.req2": {
     "message": "Supports Built-in, URP and HDRP."
   },
-  "tools.simple-paint.req3": {
+  "tools.simple-painter.req3": {
     "message": "Works on Windows, Mac, iOS and Android."
   },
   "tools.common.read_docs": {

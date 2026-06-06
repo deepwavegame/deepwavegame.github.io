@@ -25,18 +25,31 @@ const sidebars = {
     },
   ],
 
-  // Sidebar cho Simple Paint
-  simplePaintSidebar: [
+  // Sidebar cho Simple Painter
+  simplePainterSidebar: [
     {
       type: 'category',
-      label: 'Simple Paint',
+      label: 'Simple Painter',
       link: {
         type: 'generated-index',
-        title: 'Simple Paint Documentation',
-        description: 'Hướng dẫn sử dụng toàn diện cho Simple Paint Blender addon.',
-        slug: '/simple-paint',
+        title: 'Simple Painter Documentation',
+        description: 'Tài liệu toàn diện cho Simple Painter — GPU-accelerated paint system cho Unity.',
+        slug: '/simple-painter',
       },
-      items: ['tools/simple-paint/intro'],
+      items: [
+        'tools/simple-painter/product-overview',
+        'tools/simple-painter/intro',
+        'tools/simple-painter/getting-started',
+        'tools/simple-painter/architecture',
+        'tools/simple-painter/paint-engine',
+        'tools/simple-painter/paint-surface',
+        'tools/simple-painter/channels-layers',
+        'tools/simple-painter/triggers-strokes',
+        'tools/simple-painter/tools-brushes',
+        'tools/simple-painter/committers-fluid',
+        'tools/simple-painter/api-reference',
+        'tools/simple-painter/best-practices',
+      ],
     },
   ],
 };
