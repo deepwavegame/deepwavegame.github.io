@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwave0084_com=globalThis.webpackChunkwave0084_com||[]).push([[5216],{9969(a,e,s){s.r(e),s.d(e,{default:()=>n});s(6540);var u=s(6347),c=s(4848);function n(){return(0,c.jsx)(u.rd,{to:"/news"})}}}]);
