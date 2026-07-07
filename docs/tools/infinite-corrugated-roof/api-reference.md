@@ -2,52 +2,57 @@
 id: api-reference
 title: API Reference
 sidebar_position: 5
+description: Script the Infinite Corrugated Roof component — every parameter is a public field; call Rebuild() to apply changes, plus baked-mesh helpers.
+keywords:
+  - infinite corrugated roof api
+  - roof rebuild unity
+  - procedural roof scripting
 ---
 
 # API Reference
 
-The ICR system is designed to be fully extensible. Use the following classes and methods to integrate the tool into your custom scripts or tools.
+Every parameter is a public field on `InfiniteCorrugatedRoof`, so it can be changed from
+code. After changing values, call `Rebuild()` to apply them.
 
-## 🚀 Main Entry Point: `InfiniteCorrugatedRoof`
+## Public methods
 
-The primary component for managing and generating roofs.
+| Member | Description |
+| --- | --- |
+| `void Rebuild()` | Regenerates all three LOD meshes from the current settings |
+| `bool ShouldUseBakedMesh()` | `true` when a baked FBX is assigned and should be shown instead of procedural geometry |
+| `bool TryApplyBakedMeshes()` | Applies the LOD meshes found in `bakedFbxAsset`; returns `false` if any LOD mesh is missing |
+| `Mesh GetProceduralMesh(int lodIndex)` | Returns the generated mesh for a given LOD index (0–2) |
 
-### Public Methods
-
-- `Rebuild()`: Force the tool to recalculate the entire roof and update the meshes for all LODs.
-- `GetProceduralMesh(int lodIndex)`: Returns the generated `Mesh` object for the specified LOD index (0-2).
-- `ShouldUseBakedMesh()`: Returns `true` if the tool is currently configured to show a baked FBX asset instead of procedural geometry.
-- `TryApplyBakedMeshes()`: Attempts to load and apply meshes from the assigned `bakedFbxAsset`.
-
-## 📦 Data Structures
-
-### `BuildSettings`
-A snapshot of all parameters required for a single generation pass.
-- **Fields:** `PanelWidth`, `PanelLength`, `Rows`, `Columns`, `WaveCountPerPanel`, `WaveAmplitude`, etc.
-
-### `PanelSpec`
-Defines the unique attributes of a single panel within the grid.
-- **Fields:** `Rotation`, `GapOffset`, `Color`, `TexIndex`, `TexOrientation`.
-
-## 🧬 Core Interface: `IRoofGenerator`
-Implement this interface to create your own custom roof generation algorithms.
+## Example
 
 ```csharp
-public interface IRoofGenerator
-{
-    void Generate(Mesh mesh, int lodIndex, BuildContext context);
-}
+var roof = GetComponent<InfiniteCorrugatedRoof>();
+roof.columnCount = 6;
+roof.rowCount = 3;
+roof.randomSeed = 42;
+roof.corrugationAmplitude = 0.05f;
+roof.Rebuild();
 ```
 
-### Extending the Generator
-1. Create a class that implements `IRoofGenerator`.
-2. In `InfiniteCorrugatedRoof.cs`, swap the default `_generator` instance for your custom implementation.
+## Commonly scripted fields
 
-## 🛠 Static Utilities
+See the [Editor Guide](./editor-guide.md) for the full list. The fields you'll reach for
+most from code:
 
-- **`CutUtility.ApplyCut`**: Calculates global-to-local clipping logic.
-- **`NoiseUtility.ApplyNoise`**: Optimized Perlin-based displacement.
-- **`SplineUtility.ApplySpline`**: Handles path-deformation and world-space bending.
+| Field | Purpose |
+| --- | --- |
+| `columnCount`, `rowCount` | Grid size |
+| `panelWidth`, `panelLength`, `verticalOverlap` | Panel dimensions & overlap |
+| `wavesPerPanel`, `corrugationAmplitude`, `waveProfile` | Corrugation shape |
+| `lengthSegmentsPerPanel`, `sheetThickness` | Mesh resolution & depth |
+| `wearLevel`, `verticalTiling`, `verticalOffset`, `panelColorIndex` | Texture atlas mapping |
+| `randomSeed` | Deterministic seed for all randomization |
+
+:::tip Runtime changes need Rebuild()
+The automatic live rebuild only runs in Edit Mode. In Play Mode, set your fields and then
+call `roof.Rebuild()` once to apply them.
+:::
 
 ---
+
 *Next: [Advanced Features](./advanced-features.md)*

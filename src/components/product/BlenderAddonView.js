@@ -2,16 +2,16 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Translate from '@docusaurus/Translate';
 import { Button, Section } from '@site/src/components/ui';
-import { ToolHeader, ToolSpecs, ToolFeatures, ToolPreview } from './Shared';
+import { ToolHeader, ToolSpecs, ToolFeatures, ToolPreview } from './parts';
 
-export default function UnityPackageView({ tool }) {
+export default function BlenderAddonView({ tool }) {
   const dev = tool.isUnderDevelopment;
 
   const actions = (
     <>
-      {!dev && tool.links.assetStore && (
-        <Button to={tool.links.assetStore} brand="unity" block size="md">
-          <Translate id="tools.common.buy_asset_store">BUY ON ASSET STORE</Translate>
+      {!dev && tool.links.blenderMarket && (
+        <Button to={tool.links.blenderMarket} brand="blender" block size="md">
+          <Translate id="tools.common.buy_blender_market">BUY ON BLENDER MARKET</Translate>
         </Button>
       )}
       {!dev && tool.links.itch && (
@@ -19,7 +19,7 @@ export default function UnityPackageView({ tool }) {
           <Translate id="tools.common.buy_itch">BUY ON ITCH.IO</Translate>
         </Button>
       )}
-      {tool.links.docs && (
+      {tool.links.docs && tool.links.docs !== '#' && (
         <Button to={tool.links.docs} variant="ghost" block size="md">
           <Translate id="tools.common.read_docs">DOCUMENTATION</Translate>
         </Button>
@@ -42,7 +42,7 @@ export default function UnityPackageView({ tool }) {
             <ToolPreview
               thumbnail={tool.thumbnail}
               dim={dev}
-              label={dev ? '[ CLASSIFIED_PREVIEW ]' : '[ PREVIEW_ACTIVE ]'}
+              label="[ BLENDER_ADDON_LOADED ]"
             />
 
             <div style={{ marginTop: '2.5rem', color: 'var(--c-text-1)', lineHeight: 1.8, fontSize: '1.02rem' }}>

@@ -45,7 +45,7 @@
   gap: 8px;
   padding: 1rem;
   border: 1px dashed var(--c-warn);
-  background: rgba(255, 138, 0, 0.05);
+  background: rgba(176, 128, 32, 0.06);
   color: var(--c-warn);
   font-family: var(--f-mono);
   font-size: 0.78rem;
@@ -67,23 +67,8 @@
   50% { opacity: 0.2; }
 }
 
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.specsDivider {
   margin: 1.5rem 0 0.75rem;
-  font-family: var(--f-mono);
-  font-size: 0.62rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--c-text-3);
-}
-
-.divider::before, .divider::after {
-  content: '';
-  flex-grow: 1;
-  height: 1px;
-  background: var(--c-border-1);
 }
 
 .actions {
@@ -126,27 +111,7 @@
 
 .features { margin-top: 3rem; }
 
-.featuresHeader {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.featuresKicker {
-  font-family: var(--f-mono);
-  font-size: 0.75rem;
-  letter-spacing: 3px;
-  color: var(--c-accent);
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.featuresLine {
-  flex-grow: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--c-accent), transparent);
-}
+.featuresHeader { margin-bottom: 1.5rem; }
 
 .preview {
   background: var(--c-bg-0);
@@ -181,9 +146,9 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(rgba(47,245,214,0.07), rgba(47,245,214,0.07)) 0 0/100% 1px no-repeat,
-    linear-gradient(rgba(47,245,214,0.07), rgba(47,245,214,0.07)) 0 100%/100% 1px no-repeat,
-    linear-gradient(rgba(47,245,214,0.07), rgba(47,245,214,0.07)) 0 0/1px 100% no-repeat,
-    linear-gradient(rgba(47,245,214,0.07), rgba(47,245,214,0.07)) 100% 0/1px 100% no-repeat;
+    linear-gradient(rgba(209, 11, 26, 0.12), rgba(209, 11, 26, 0.12)) 0 0/100% 1px no-repeat,
+    linear-gradient(rgba(209, 11, 26, 0.12), rgba(209, 11, 26, 0.12)) 0 100%/100% 1px no-repeat,
+    linear-gradient(rgba(209, 11, 26, 0.12), rgba(209, 11, 26, 0.12)) 0 0/1px 100% no-repeat,
+    linear-gradient(rgba(209, 11, 26, 0.12), rgba(209, 11, 26, 0.12)) 100% 0/1px 100% no-repeat;
   pointer-events: none;
 }

@@ -1,172 +1,86 @@
 ---
 id: channels-layers
-title: Channels & Layers
+title: Canvas, Channels & Layers
 sidebar_position: 7
+description: PaintCanvas hosts a stack of PaintChannels (Color, Scalar, Normal), each with its own layers, opacity, blend modes and an optional simulation buffer.
+keywords:
+  - paint canvas unity
+  - paint channel layer
+  - pbr blend modes unity
+  - multi channel painting
 ---
 
-# 📚 Channels & Layers
+# Canvas, Channels & Layers
 
-Multi-channel PBR painting with per-channel blend modes and multi-layer compositing.
+`PaintCanvas` is the main entry-point component. It hosts a list of `PaintChannel` entries,
+discovers and manages one or many `Paintable` targets, and drives the whole system by
+broadcasting lifecycle phases (`Initialize`, `Update`, `Reset`, `Clear`, `SourceChanged`)
+down through its channel/layer tree every frame.
 
----
+## Channels (ChannelDefinition)
 
-## 📝 ChannelDefinition (ScriptableObject)
-
-Each channel is defined by a `ChannelDefinition` asset specifying what material property it controls:
+Each **channel** is authored as a `ChannelDefinition` asset:
 
 | Field | Description |
-|-------|-------------|
-| `ShaderProperty` | Material texture slot name (e.g. `_MainTex`, `_BumpMap`) |
-| `ValueType` | `Color`, `Normal`, or `Scalar` |
-| `ChannelMask` | Which RGBA components to write (flags) |
-| `IsSRGB` | Whether to use sRGB color space (Color only) |
-| `EnableDynamicsTarget` | Allocates RT1 for fluid simulation velocity+mass |
+| --- | --- |
+| **Value Type** | `Color`, `Scalar`, or `Normal` |
+| **Shader Property / Keyword** | The target material property the channel drives |
+| **Default Value** | Fallback value used before anything is painted |
+| **Simulation Primary** | Optional — allocates a second buffer for fluid-dynamics data (velocity + mass) |
 
-### Creating a ChannelDefinition
+Because the shader property is fully configurable, a channel can drive albedo, a
+metallic/smoothness mask, a normal map, or any other property your material exposes.
 
-Right-click in the **Project** window:
-
-**Create → Deepwave / Simple Painter / Channel Definition**
-
-:::info Common Configurations
-
-| Channel | ShaderProperty | ValueType | ChannelMask | IsSRGB |
-|---------|----------------|-----------|-------------|--------|
-| Albedo | `_MainTex` | Color | RGBA | ✅ |
-| Normal | `_BumpMap` | Normal | RGBA | ❌ |
-| Metallic | `_MetallicGlossMap` | Scalar | R | ❌ |
-| Roughness | `_MetallicGlossMap` | Scalar | A | ❌ |
-
+:::warning Simulation Primary
+Enable **Simulation Primary** only on the channel that drives the
+[fluid-viscous committer](./committers-fluid.md). It allocates an extra render target for
+velocity + mass, so enabling it needlessly wastes GPU memory.
 :::
 
-:::warning EnableDynamicsTarget
-Set `EnableDynamicsTarget = true` only on the **primary** channel that drives fluid simulation. This allocates an additional `RT1` render target for velocity+mass data. Enabling it unnecessarily wastes GPU memory.
-:::
+## Layers (PaintLayer)
 
----
+Each channel owns an independent stack of **layers** (`PaintLayer`): visibility, opacity,
+an optional starting texture, and a blend mode. Blend modes are tracked **separately per
+value type**, so switching a channel's type never misinterprets a setting that belonged to
+a different family:
 
-## 🎨 PaintChannel
+| Value type | Blend modes |
+| --- | --- |
+| **Color** | Normal, Multiply, Add, Min, Max, Screen, Overlay, Soft Light |
+| **Scalar** | Normal, Multiply, Add, Min, Max |
+| **Normal** | Lerp, RNM (Reoriented Normal Mapping), UDN, Whiteout, Overlay, Max Slope, Subtract |
 
-A runtime instance linked to a `ChannelDefinition`. Contains multiple `PaintLayer`s and a `ScratchBuffer`.
+## Compositing
 
-```csharp
-// Lấy channel từ surface
-var channel = paintSurface.GetChannel(albedoChannelDef);
-
-// Truy cập danh sách layers
-var layers = channel.Layers;
-
-// Đặt layer đang hoạt động để vẽ
-channel.ActiveLayerIndex = 2;
-
-// Đánh dấu channel cần re-composition
-channel.SetDirty();
-```
-
-:::tip SetDirty
-Call `SetDirty()` whenever you programmatically modify a channel's layers (visibility, opacity, blend mode). This triggers the `ChannelGroup` to enqueue a `ChannelCompositeCommand` for re-compositing.
-:::
-
----
-
-## 🗂️ PaintLayer
-
-Each layer owns a GPU `ManagedRenderTarget` and has independent visibility, opacity, blend mode, and an optional initial texture:
-
-| Property | Description |
-|----------|-------------|
-| `IsVisible` | Toggle layer visibility (triggers re-composition) |
-| `Opacity` | Layer opacity, 0–1 |
-| `ColorBlendMode` | Blend mode for Color channels |
-| `ScalarBlendMode` | Blend mode for Scalar channels |
-| `NormalBlendMode` | Blend mode for Normal channels |
-| `InitTexture` | Optional starting texture (applied on Reset) |
-
-:::info Blend Mode Types
-Blend modes are **type-specific** to prevent invalid combinations:
-- **Color**: Normal, Multiply, Add, Min, Max, Screen, Overlay, SoftLight
-- **Scalar**: Normal, Multiply, Add, Min, Max
-- **Normal**: Lerp, RNM, UDN, Whiteout, Overlay, MaxSlope, Subtract
-:::
-
----
-
-## ✏️ ScratchBuffer
-
-The "draft" layer holding the current brush stroke before it's committed:
-
-- **RT0 (Visual)** — The painted value (what you see during the stroke)
-- **RT1 (Dynamics)** — Optional simulation target (velocity + mass for fluid effects). Only allocated when `EnableDynamicsTarget = true`
-- **`BlendDeposition`** — Positive values add coverage, negative values erase. Set by the committer.
-
-```
-Stroke in progress:
-┌─────────────────────────────────────┐
-│  RT0 (Visual)  │  RT1 (Dynamics)   │
-│  Color/Normal  │  Velocity + Mass  │
-│  values        │  (optional)       │
-└─────────────────────────────────────┘
-         │ BlendDeposition (+1 = draw, -1 = erase)
-         ▼
-    PaintLayer (persistent)
-```
-
----
-
-## 🔄 Compositing Flow
-
-:::tip How Compositing Works
-When a channel is dirty, `ChannelGroup` enqueues a `ChannelCompositeCommand` during the **Composition** phase. It composites:
-
-1. **Origin texture** (the original material texture)
-2. **+ All visible layers** (bottom to top, with per-layer blend modes)
-3. **+ Scratch buffer** (the current in-progress stroke)
-4. **→ Final composite render target** (set on the material)
-
-This happens every frame that a channel is marked dirty, ensuring real-time visual feedback during painting.
-:::
-
-### Compositing Order
+Every frame a dirty channel is composited: the origin texture, then all visible layers
+(bottom to top, each with its blend mode and opacity), then the in-progress scratch stroke,
+producing the final texture set on the material.
 
 ```mermaid
 graph TD
-    A["Origin Texture<br/>(original material)"] --> E["ChannelCompositeCommand"]
-    B["Layer 0<br/>(IsVisible, Opacity, BlendMode)"] --> E
-    C["Layer 1<br/>(IsVisible, Opacity, BlendMode)"] --> E
-    D["ScratchBuffer<br/>(current stroke)"] --> E
-    E --> F["Final Composite RT<br/>(set on material)"]
+    A["Origin texture"] --> E["Composite"]
+    B["Layer 0 · blend · opacity"] --> E
+    C["Layer 1 · blend · opacity"] --> E
+    D["Scratch buffer · current stroke"] --> E
+    E --> F["Final texture → material"]
+```
+
+## Multi-object canvas switching
+
+At runtime, a canvas can register multiple `Paintable` targets and `Switch()` the active
+one — useful for customizers with several parts or characters — reusing the same render
+textures rather than reallocating GPU memory per switch:
+
+```csharp
+// Switch the active paintable by index or by reference.
+paintCanvas.Switch(1);
+paintCanvas.Switch(otherPaintable);
+
+// Restore or wipe the current canvas.
+paintCanvas.Reset();  // back to each layer's starting texture
+paintCanvas.Clear();  // wipe to the default background
 ```
 
 ---
 
-## 💡 Usage Examples
-
-### Adding a New Layer at Runtime
-
-```csharp
-// Lấy channel và thêm layer mới
-var channel = paintSurface.GetChannel(albedoChannelDef);
-
-// Đặt opacity và blend mode cho layer mới
-var layer = channel.Layers[channel.Layers.Count - 1];
-layer.Opacity = 0.8f;
-layer.ColorBlendMode = ColorBlendMode.Multiply;
-
-// Đánh dấu channel dirty để kích hoạt re-composition
-channel.SetDirty();
-```
-
-### Toggling Layer Visibility
-
-```csharp
-// Ẩn/hiện layer — tự động trigger re-composition
-var layer = channel.Layers[0];
-layer.IsVisible = !layer.IsVisible;
-```
-
----
-
-<div style={{display: 'flex', justifyContent: 'space-between', marginTop: '2rem'}}>
-  <a href="paint-surface">← Previous: PaintSurface</a>
-  <span></span>
-</div>
+*Next: [Input & Stroke Methods](./triggers-strokes.md)*

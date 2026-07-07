@@ -10,5 +10,29 @@
   },
   "nav.item.label.Blog": {
     "message": "ブログ"
+  },
+  "title": {
+    "message": "WAVE0084",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Wave0084 Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Games": {
+    "message": "Games",
+    "description": "Navbar item with label Games"
+  },
+  "item.label.Tools": {
+    "message": "Tools",
+    "description": "Navbar item with label Tools"
+  },
+  "item.label.Assets": {
+    "message": "Assets",
+    "description": "Navbar item with label Assets"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
   }
 }

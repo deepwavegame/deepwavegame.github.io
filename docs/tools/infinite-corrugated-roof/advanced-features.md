@@ -2,51 +2,83 @@
 id: advanced-features
 title: Advanced Features
 sidebar_position: 6
+description: Spline deformation, angled edge cuts and one-click FBX baking for Infinite Corrugated Roof — optional workflows that ship static, deterministic geometry.
+keywords:
+  - roof spline deformation
+  - fbx bake unity roof
+  - corrugated roof cuts
+  - spline roof unity
 ---
 
 # Advanced Features
 
-This section provides in-depth information about the advanced tools and workflows available in ICR.
+## Spline path deformation
 
-## 🧬 Spline Path Deformation
+When the **Unity Splines** package (2.1.0+) is installed, a **Spline Path** field appears
+under Modifiers. Assign a `SplineContainer` and enable it to bend the roof along the path.
 
-The Spline modifier allows you to bend the entire roofing system along a complex path.
+| Mode | Behaviour |
+| --- | --- |
+| `DeformSmooth` | The full panel surface follows the spline curvature |
+| `DeformFlat` | Each panel stays flat but is leveled to its center point on the spline |
+| `RigidFollow` | Panels stay rigid and are placed and oriented along the spline like segments of a chain |
 
-### Key Modes:
-- **X-axis Follow:** The roof is deformed based on the X-coordinate of its vertices relative to the spline length.
-- **Y-axis Follow:** The roof follows the path along its length.
+Without the Splines package installed, this section is hidden and has no effect on the
+build.
 
-:::tip Path Smoothness
-To achieve smooth results on curved paths, ensure that you increase the **Segments per Panel** in the Mesh Settings.
+:::tip Path smoothness
+For smooth results on tight curves with `DeformSmooth`, increase
+`lengthSegmentsPerPanel` in the Mesh settings so there is enough geometry to bend.
 :::
 
-## 🌫 Surface Noise & Randomization
+## Angled edge cuts
 
-Add organic imperfections and realism with the procedural noise engine.
+The **Cut Settings** trim the roof rectangle with an angled line at the start and/or end
+edge — ideal for gables and sloped roof ends:
 
-- **Vertex Displacement:** Noise is applied in local space before spline deformation, ensuring it "follows" the geometry correctly.
-- **Panel Jitter:** Small, randomized offsets in position and rotation prevent the "perfect" look of tiled assets.
-- **Random Seed:** Any change to the seed will completely refresh all randomized elements while maintaining the overall layout.
+- **Mode** — `Horizontal` cuts the whole panel straight; `Diagonal` follows the cut angle
+  per vertex.
+- **Start / End Angle** — the cut angle at each edge; the sign selects which side the cut
+  pivots from.
 
-## ✂️ Global Cutting System
+Cuts are applied during vertex generation, so changing the angles is non-destructive — the
+full grid is always regenerated from your parameters.
 
-Define precise clipping regions across your entire roof grid.
+## FBX baking & optimization
 
-- **Non-destructive:** Cuts are calculated during the vertex generation pass. You can change cut boundaries without losing data.
-- **Coordinate System:** Boundaries (Min X, Max X, Min Y, Max Y) are expressed in normalized global space (0 to 1). 
-  - *Example: Setting Max X to 0.5 will cut the entire roof exactly in half along its width.*
+When the **FBX Exporter** package (5.0.0+) is installed, the **System & Export** section
+adds baking tools:
 
-## 🏗 FBX Export & Optimization Workflow
+- **New** — bakes the current roof to a new FBX file and assigns it as the Target Asset.
+- **Bake Geometry to Asset** — re-bakes into the currently assigned FBX asset (generates
+  LOD0, LOD1, LOD2 meshes inside it).
+- **Preview Baked Mesh** — displays the baked FBX instead of the procedural mesh.
 
-For high-performance production, you should convert your procedural roofs into static FBX assets.
+### Recommended workflow
 
-### Workflow:
-1. **Design:** Adjust all parameters until the roof looks perfect in the scene.
-2. **Create Asset:** In the **System & Export** section, click **New** to create a target FBX file in your project.
-3. **Bake:** Click **Bake Geometry to Asset**. This will generate 3 separate meshes (LOD0, LOD1, LOD2) and save them inside the FBX.
-4. **Switch to Preview:** Enable **Preview Baked Mesh**. The `InfiniteCorrugatedRoof` component will stop generating procedural geometry and instead display the meshes from the FBX.
-5. **Prefabbing:** You can now safely drag your GameObject into a Prefab or move the FBX asset to other scenes.
+1. **Design** — adjust all parameters until the roof looks right in the scene.
+2. **Create the asset** — click **New** to make a target FBX in your project.
+3. **Bake** — click **Bake Geometry to Asset** to write the three LOD meshes into the FBX.
+4. **Preview** — enable **Preview Baked Mesh** to display the baked asset.
+5. **Ship** — drop the GameObject into a Prefab or move the FBX to other scenes.
 
-:::info Baked Mesh Format
-The exported FBX includes vertex positions, normals, tangents, and a single set of UVs. It is optimized for standard Unity materials.
+:::warning Why bake?
+Baking removes the runtime generation cost and produces a static mesh you can ship, batch,
+or hand off to another artist. At Play Mode / runtime, if a baked asset is assigned, ICR
+**always** displays it instead of generating procedurally — keeping builds fast and
+deterministic.
 :::
+
+## Troubleshooting
+
+| Symptom | Cause / Fix |
+| --- | --- |
+| Roof looks flat, no waves | Check `corrugationAmplitude` and that `waveProfile` has more than one keyframe |
+| Visible seam between columns | Panels overlap by exactly one wave by design — check `verticalTiling` / `verticalOffset` if the material tiles differently |
+| Spline Path section missing | Install **Unity Splines** (2.1.0+) via the Package Manager |
+| Baking tools missing / disabled | Install the **FBX Exporter** (5.0.0+) via the Package Manager |
+| Editing settings does nothing in Play Mode | Live rebuild runs only in Edit Mode; call `Rebuild()` manually at runtime |
+
+---
+
+*Back to [Overview](./product-overview.md) · buy on the [Unity Asset Store](https://assetstore.unity.com/packages/tools/modeling/infinite-corrugated-roof-357650).*

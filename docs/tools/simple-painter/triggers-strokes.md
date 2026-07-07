@@ -1,122 +1,84 @@
 ---
 id: triggers-strokes
-title: Triggers & Strokes
+title: Input & Stroke Methods
 sidebar_position: 8
+description: Five input devices (Mouse, Pen, Touch, Collision, Particle) feed six stroke methods (Direct, Dot, Drag Dot, Line, Bezier, Anchored), with dynamic parameters driven by pressure, distance, speed, time or random.
+keywords:
+  - unity paint input
+  - stroke methods unity
+  - pressure sensitive painting
+  - bezier stroke unity
+  - collision paint unity
 ---
 
-# 🎯 Triggers & Strokes
+# Input & Stroke Methods
 
-Simple Painter separates **input detection** (Triggers) from **stroke interpolation** (Stroke Methods), allowing you to mix and match any trigger with any stroke behavior.
+Simple Painter separates **input detection** (which device starts a stroke) from **stroke
+shaping** (which rays become stamps), so you can mix and match any input device with any
+stroke method.
 
-## 🔫 Triggers
+## Input devices
 
-All triggers inherit from the abstract `PaintTrigger` base class and are responsible for detecting user input and emitting stroke events to the painting pipeline.
+All input sources share one `PaintInput` base and feed the same stamp pipeline. Engagement
+is device-native — each subclass decides for itself when a stroke begins, updates and ends.
 
-### PaintTriggerRaycast
+| Device | Trigger | Notes |
+| --- | --- | --- |
+| **Mouse** | Configurable paint button (default left click) | Always reports full pressure; optional live hover-preview of the brush footprint |
+| **Pen** | Stylus tip contact | Reads genuine analog pressure from the hardware |
+| **Touch** | Primary touch contact | Single-touch (one active pointer) |
+| **Collision** | Physics collision enter / stay / exit | Min & max impact-speed thresholds, with an impact-speed → pressure response curve |
+| **Particle** | Particle-system collision events | One short stroke per collision callback; exposes a settable `Pressure` property external systems can drive |
 
-Screen-space pointer or screen-center (FPS) input using Unity's new Input System. Ideal for first-person and third-person painting scenarios.
+Mouse, Pen and Touch share a common screen-ray base with configurable camera, paint layer
+mask, max ray distance, and an option to ignore strokes that start over UI. Every stamp
+also carries an **alignment** — either **Surface** (flush against the mesh normal) or
+**View** (billboarded to face the camera) — selectable per stroke asset.
 
-- Supports both pointer position and fixed screen-center modes
-- Automatically handles camera raycasting against paintable surfaces
-- Configurable input action references for press/release
+## Stroke methods
 
-### PaintTriggerCollision
+The stroke method decides *which* rays become stamps. Every method shares raycasting,
+per-stroke random seeding, and a smoothed drag-speed tracker.
 
-Physics 3D collision-based triggering, perfect for **tire tracks**, **scratch marks**, and **drag effects**.
+| Method | Behaviour | Emits |
+| --- | --- | --- |
+| **Direct** | Deposits a stamp at the raw cursor position every update — no smoothing or spacing gate | Continuous trail |
+| **Dot** | Places exactly one stamp on press; dragging or holding adds nothing | Single dab |
+| **Drag Dot** | Re-stamps at the live cursor position every update until release | Following dab |
+| **Line** | Rebuilds an evenly spaced straight line from the press anchor to the live cursor each frame | Rubber-band line |
+| **Bezier** | Fits a quadratic Bezier curve through a sliding 3-ray window and tessellates it into evenly spaced stamps | Smoothed curve trail |
+| **Anchored** | Pins one decal at the press point and grows/rotates it as the cursor drags away | Resizable decal |
 
-- Filters impacts by **minimum impact speed** threshold
-- Supports **surface layer mask** to restrict which surfaces receive paint
-- Processes `OnCollisionEnter`, `OnCollisionStay`, and `OnCollisionExit` events
+Line and Bezier both support additional **spacing**, **jitter** (randomised stamp
+position) and **dash** patterns. Every stroke asset also exposes **Size** and **Rotation**
+as dynamic parameters.
 
-### PaintTriggerParticle
+## Dynamic parameters
 
-Particle system collision integration that processes all impacts as a **single burst stroke**.
+Size, Rotation, Jitter and other values are driven by a shared `DrawDynamics` evaluator.
+Each can be a flat constant, or vary by one of five modes — remapped through an animation
+curve and clamped to a min/max range:
 
-- Hooks into `OnParticleCollision` events
-- Batches all particle impacts in a single frame into one stroke
-- Great for splatter effects, rain drips, and environmental painting
+| Mode | Driven by |
+| --- | --- |
+| **Pressure** | Pen/mouse/collision pressure |
+| **Distance** | Distance travelled along the stroke |
+| **Speed** | Smoothed drag speed |
+| **Time** | Elapsed stroke time |
+| **Random** | Per-stamp random value (seeded per stroke) |
 
-## 🔄 Trigger Lifecycle
+This is what powers pressure-sensitive width, speed-based thinning, or randomised scatter
+brushes.
 
-All triggers follow the same three-phase lifecycle by calling protected methods on the base `PaintTrigger` class:
+## Hot-swapping at runtime
+
+The stroke asset assigned to a `PaintInput` can be swapped live, so a single Tool GameObject
+can flip between, say, a Line stroke and a Bezier stroke without re-wiring components:
 
 ```csharp
-// Bắt đầu nét vẽ — khởi tạo stroke mới với ray và collider mục tiêu
-EmitBegin(ray, targetCollider);
-
-// Cập nhật vị trí stroke mỗi frame
-EmitUpdate(ray);
-
-// Kết thúc nét vẽ — finalize và commit stroke
-EmitEnd();
+paintInput.SwitchStroke(bezierStrokeConfig);
 ```
-
-:::info
-Each trigger auto-resolves its `IStrokeSampler` from the same `GameObject` or a parent in the hierarchy. When the trigger's `OnDisable` is called, it automatically invokes `EmitEnd()` to ensure no stroke is left dangling.
-:::
 
 ---
 
-## ✏️ Stroke Methods
-
-Stroke methods control **how stamps are interpolated** between input samples. Each method produces a different visual character.
-
-### BezierMethod
-
-Quadratic Bézier curve interpolation that produces **smooth, natural strokes**. The curve is fitted through the last three input samples, creating organic brush paths even with coarse input sampling.
-
-### LineMethod
-
-Draws a **straight line** from the anchor point to the current position. The line is regenerated each frame, making it ideal for rulers, guides, and technical drawing tools.
-
-### DotMethod
-
-Places a **single stamp per update** with no interpolation between samples. Use this for stippling, pointillism, or any effect where discrete stamps are desired.
-
-### AnchoredMethod
-
-**Anchors at the click point** — dragging controls the size and rotation of the stamp. Perfect for placing decals, logos, or precisely-sized stamps.
-
-## 🔀 Switching Stroke Methods at Runtime
-
-The `StrokeSampler` MonoBehaviour wraps a `StrokeMethodConfig` (ScriptableObject), enabling hot-swap at runtime:
-
-```csharp
-// Chuyển đổi config stroke — thay đổi hành vi nét vẽ mà không cần tạo lại component
-strokeSampler.SwitchConfig(newBezierConfig);
-```
-
-:::tip
-Always use `SwitchConfig()` to change stroke behavior instead of mutating the ScriptableObject asset directly. This ensures proper state cleanup between configurations.
-:::
-
-## 📊 StrokeMethodConfig Properties
-
-Each property supports multiple **Dynamic Modes** for procedural variation:
-
-| Property | Range | Dynamic Modes |
-|:---|:---|:---|
-| **Size** | `0` – `10` | Constant, Distance, Speed, Time, Random |
-| **Alpha** | `0` – `1` | Constant, Distance, Speed, Time, Random |
-| **RotateAngle** | `-180°` – `180°` | Constant, Distance, Speed, Time, Random |
-| **BrushDynamics** | `0` – `1` | Constant, Distance, Speed, Time, Random |
-
-### Additional Configuration
-
-- **StampShape:** Defines the shape mask applied to each stamp (circle, square, custom texture).
-- **StampAlignmentConfig:** Controls how stamps orient relative to the stroke direction or surface normal.
-- **TextureMapping:** Configures how the brush texture is sampled and mapped onto each stamp.
-
-## ⚙️ Stamp Generation Pipeline
-
-The stamp generation process follows **5 sequential steps** inside `BaseStrokeMethod.TryRecordStamp()`:
-
-1. **Sample Input** — Read the current ray/position from the trigger
-2. **Interpolate Path** — Apply the stroke method's interpolation algorithm (Bézier, Line, etc.)
-3. **Spacing Check** — Determine if enough distance/time has passed to place a new stamp
-4. **Apply Dynamics** — Evaluate all dynamic property curves (Size, Alpha, Rotation, BrushDynamics)
-5. **Record StampData** — Write the final `StampData` struct into the surface's `StampBatch`
-
----
-
-*Previous: [Channels & Layers](./channels-layers.md)* | *Next: [Tools & Brushes](./tools-brushes.md)*
+*Next: [Paint Tools & Ink](./tools-brushes.md)*

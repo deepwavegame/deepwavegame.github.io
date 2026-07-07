@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import { Button, Hero, Section, SectionTitle, Card, StatList } from '@site/src/components/ui';
+import { Button, Hero, Section, SectionTitle, Card, StatList, Kicker } from '@site/src/components/ui';
 import studio from '@site/src/data/studio';
 
 const SIGILS = ['SIG · I', 'SIG · II', 'SIG · III'];
@@ -82,15 +82,8 @@ export default function Home() {
         </SectionTitle>
 
         <div style={{ maxWidth: '820px', margin: '0 auto' }}>
-          <div style={{
-            fontFamily: 'var(--f-mono)',
-            fontSize: '0.66rem',
-            letterSpacing: '4px',
-            color: 'var(--c-text-3)',
-            textAlign: 'center',
-            marginBottom: '1.4rem',
-          }}>
-            &#10013; ORATIO PRIMA &mdash; FROM THE WORKSHOP
+          <div style={{ marginBottom: '1.4rem' }}>
+            <Kicker align="center" cross tone="muted">ORATIO PRIMA &mdash; FROM THE WORKSHOP</Kicker>
           </div>
           <p style={{
             textAlign: 'left',
@@ -110,12 +103,8 @@ export default function Home() {
 
         <div style={{ maxWidth: '720px', margin: '0 auto' }}>
           <Card bordered hoverable={false} style={{ background: 'rgba(10,8,7,0.7)' }}>
-            <div style={{
-              fontFamily: 'var(--f-mono)', fontSize: '0.62rem', letterSpacing: '4px',
-              color: 'var(--c-accent-wet)', marginBottom: '0.7rem', textTransform: 'uppercase',
-              textShadow: '0 0 6px var(--c-accent-glow)',
-            }}>
-              &#10013; LEDGER OF THE WORKSHOP
+            <div style={{ marginBottom: '0.7rem' }}>
+              <Kicker cross tone="accent">LEDGER OF THE WORKSHOP</Kicker>
             </div>
             <StatList items={studio.stats} />
           </Card>
@@ -126,11 +115,8 @@ export default function Home() {
         <SectionTitle kicker={studio.pillars.kicker} accent={studio.pillars.accent}>
           {studio.pillars.title}
         </SectionTitle>
-        <div style={{
-          textAlign: 'center', fontFamily: 'var(--f-mono)', fontSize: '0.7rem',
-          letterSpacing: '4px', color: 'var(--c-text-3)', margin: '-2rem 0 2.8rem',
-        }}>
-          &#10013; THREE OFFERINGS LAID UPON THE ALTAR &mdash; CHOOSE ONE
+        <div style={{ margin: '-2rem 0 2.8rem' }}>
+          <Kicker align="center" cross tone="muted">THREE OFFERINGS LAID UPON THE ALTAR &mdash; CHOOSE ONE</Kicker>
         </div>
         <div className="row">
           {studio.pillars.items.map((p) => (

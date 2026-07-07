@@ -1,7 +1,7 @@
 import React from 'react';
 import { getTool } from '@site/src/data/tools';
-import ToolPageDispatcher from '@site/src/components/Tools/ToolPageDispatcher';
+import ToolPage from '@site/src/components/product';
 
 export default function InfiniteCorrugatedRoofPage() {
-  return <ToolPageDispatcher tool={getTool('infinite-corrugated-roof')} />;
+  return <ToolPage tool={getTool('infinite-corrugated-roof')} />;
 }

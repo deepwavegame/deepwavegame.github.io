@@ -2,185 +2,105 @@
 id: getting-started
 title: Getting Started
 sidebar_position: 3
+description: Build a paintable object in Unity with Simple Painter in seven steps — Paintable, PaintCanvas, a committer, and a Paint Tool made of an input device, a stroke and an ink config.
+keywords:
+  - simple painter setup
+  - unity runtime painting tutorial
+  - paintable unity
+  - paint canvas unity
 ---
 
-# 🚀 Getting Started
+# Getting Started
 
-Get painting in minutes with this step-by-step setup guide.
+A minimal paintable object needs a handful of components split across two roles: the
+**canvas** (what gets painted) and the **tool** (what does the painting).
 
----
+## Installation
 
-## 📦 Installation
+1. Buy and download **Simple Paint 3D** from the
+   [Unity Asset Store](https://assetstore.unity.com/packages/tools/painting/simple-paint-3d-375642).
+2. In Unity, open **Window → Package Manager → My Assets**, then **Import** the package.
+3. When prompted, also import its dependency **`com.deepwave.core`**.
 
-### Via Unity Package Manager (UPM)
-
-1. Open **Window → Package Manager** in Unity
-2. Click the **+** button → **Add package from git URL...**
-3. Enter the package URL:
-
-```
-https://github.com/deepwavegame/com.deepwave.simplepainter.git
-```
-
-4. Click **Add** and wait for the import to complete
-
-### Via Local Import
-
-1. Download the package `.tgz` or clone the repository
-2. Open **Window → Package Manager**
-3. Click **+** → **Add package from disk...**
-4. Navigate to the `package.json` file and select it
-
-:::info Dependencies
-SimplePainter requires the **Unity Input System** package for `PaintTriggerRaycast`. The Package Manager will prompt you to install it if missing.
+:::tip Try before you build
+Two playable WebGL demos are available on itch.io —
+[demo 1](https://deepwave.itch.io/simple-painter-unity-demo) and
+[demo 2](https://deepwave.itch.io/simple-painter-unity-demo-2).
 :::
 
----
+## The 7-step setup
 
-## 🎯 Minimal Scene Setup
+### 1 — Make the object paintable
 
-Follow these 7 steps to create your first paintable scene:
+Add a `Paintable` component to the `Renderer` you want to paint. Set its **Texture Size**
+(the resolution of every paint buffer for that object) and **Submesh Index**. It works
+with regular meshes and with `SkinnedMeshRenderer` alike.
 
-### Step 1 — Create a ChannelDefinition Asset
+### 2 — Add the Canvas
 
-Right-click in the **Project** window and select:
+Add a `PaintCanvas` component on the same object or a parent. Populate its **Channels**
+list — one `PaintChannel` per material property you want to paint (e.g. Albedo, Normal,
+Metallic), each pointing at a `ChannelDefinition` asset and holding one or more
+`PaintLayer` entries.
 
-**Create → Deepwave / Simple Painter / Channel Definition**
+### 3 — Add a Committer
 
-Set the `ShaderProperty` to `_MainTex` to paint on the main albedo texture.
+On the same GameObject as the canvas, add `StandardCommitter` for instant painting, or
+`FluidViscousCommitter` for physically-simulated wet paint (which needs a primary channel
+binding).
 
-### Step 2 — Add PaintSurface + Paintable to Your Mesh
+### 4 — Build the Tool
 
-Select your mesh object in the scene and add:
-- **PaintSurface** component
-- **Paintable** component (auto-resolved if on the same GameObject)
+On whichever object should receive player input, add `PaintTool` together with one
+`PaintInput` and a `PaintDrawer`:
 
-Then add your `ChannelDefinition` to the surface's channel list.
+- `MousePaintInput`, `PenPaintInput`, `TouchPaintInput`, `CollisionPaintInput` or
+  `ParticlePaintInput`.
 
-:::tip Auto-Resolution
-`PaintSurface` auto-resolves a `Paintable` from the same GameObject. You can also have multiple `Paintable` objects sharing one surface for multi-mesh painting.
-:::
+`PaintTool` auto-resolves both the input and the drawer from the same GameObject if left
+unassigned.
 
-### Step 3 — Add StrokeSampler
+### 5 — Assign a Stroke
 
-Add `StrokeSampler` to a **controller** GameObject. Assign a `StrokeMethodConfig` ScriptableObject (e.g., the included **Bezier** config).
+Create a stroke asset and assign it to the `PaintInput`:
 
-### Step 4 — Add PaintTriggerRaycast
+`DirectStrokeConfig`, `DotStrokeConfig`, `DragDotStrokeConfig`, `LineStrokeConfig`,
+`BezierStrokeConfig`, or `AnchoredStrokeConfig`.
 
-Add `PaintTriggerRaycast` to the **same controller** object. Configure the Input Actions for paint and pointer input.
+### 6 — Assign an Ink Configuration
 
-### Step 5 — Add StandardBrush
+Create a tool asset — `StandardBrushConfig`, `EraseConfig`, `FillMeshConfig`, or
+`PickConfig` — configure its ink channel list (colour/value, texture, intensity) and
+assign it to the `PaintDrawer`.
 
-Add `StandardBrush` to the **same controller** object. Reference the `PaintSurface` and add a channel entry for your `ChannelDefinition`.
+### 7 — Optional: Seam Fixing & Progress
 
-### Step 6 — Add StandardCommitter
+Add `PaintEnvironment` next to the `Paintable` for automatic UV seam fixing on
+multi-island meshes, and/or `PaintProgressTracker` to measure paint completion at runtime.
 
-Add `StandardCommitter` to the **same controller** object. Reference the `PaintSurface`.
-
-### Step 7 — Press Play! 🎉
-
-Enter Play mode and paint on your mesh!
-
----
-
-## 🔄 Component Relationship Diagram
+## How the pieces connect
 
 ```mermaid
 graph LR
-    subgraph Controller["🎮 Controller GameObject"]
-        PTR["PaintTriggerRaycast"]
-        SS["StrokeSampler"]
-        SB["StandardBrush"]
-        SC["StandardCommitter"]
+    subgraph Tool["Paint Tool GameObject"]
+        PI["PaintInput<br/>(Mouse / Pen / Touch / …)"]
+        PD["PaintDrawer<br/>(brush / erase / fill / pick)"]
+        PT["PaintTool"]
     end
-
-    subgraph Mesh["🧊 Paintable Mesh"]
-        P["Paintable"]
-        PS["PaintSurface"]
+    subgraph Canvas["Canvas GameObject"]
+        PC["PaintCanvas<br/>(channels + layers)"]
+        CM["Committer<br/>(Standard / FluidViscous)"]
     end
-
-    PTR -->|"emits rays"| SS
-    SS -->|"generates stamps"| P
-    SB -->|"reads StampBatch"| PS
-    SB -->|"draws to ScratchBuffer"| PS
-    SC -->|"commits to layers"| PS
-    P --- PS
+    P["Paintable<br/>(Renderer)"]
+    PT --> PI --> PD --> CM --> PC --> P
 ```
 
-:::info Pull-Based Design
-Tools don't receive events — they *poll* the surface's `StampBatch` every frame. The surface clears its batch in `LateUpdate` after all consumers have processed it.
+:::tip Hot-swappable by design
+`PaintInput.SwitchStroke(...)` and `PaintDrawer.SwitchConfig(...)` can be called at
+runtime, so a single Tool GameObject can flip between a brush and an eraser, or a Line
+stroke and a Bezier stroke, without re-wiring components.
 :::
 
 ---
 
-## 🌊 Adding Fluid Simulation
-
-To enable fluid simulation on your paintable surface:
-
-```csharp
-// 1. Add a PaintEnvironment to the paintable object
-// 2. Replace StandardCommitter with a SimulationPaintCommitter variant
-// 3. Assign the PaintEnvironment to the PaintSurface:
-paintSurface.PaintEnvironment = environment;
-
-// 4. Enable dynamics on your ChannelDefinition (EnableDynamicsTarget = true)
-// 5. Configure PBR channel bindings on the committer
-//    (primary color channel + secondary smoothness/metallic/normal)
-```
-
-:::warning Enable DynamicsTarget
-If you're using a `SimulationPaintCommitter`, make sure the primary `ChannelDefinition` has `EnableDynamicsTarget = true`. Without it, the simulation won't have a velocity+mass buffer to work with.
-:::
-
----
-
-## 🎨 Multi-Channel PBR Painting
-
-Paint across multiple PBR channels simultaneously:
-
-```csharp
-// Create multiple ChannelDefinition assets:
-//   Albedo   → _MainTex  (Color)
-//   Normal   → _BumpMap  (Normal)
-//   Metallic → _MetallicGlossMap (Scalar, mask: R)
-//   Roughness → _MetallicGlossMap (Scalar, mask: A)
-
-// Add all channels to PaintSurface
-// Add matching ToolChannels to StandardBrush
-// Toggle channels at runtime:
-brush.Channels[0].Intensity = 1.0f;  // Albedo ON
-brush.Channels[1].Intensity = 0.0f;  // Normal OFF
-```
-
-:::tip Channel Masks
-Multiple channels can target the same shader property with different `ChannelMask` values. For example, Metallic writes to the R channel and Roughness writes to the A channel of `_MetallicGlossMap`.
-:::
-
----
-
-## 🔀 Runtime Switching
-
-Swap configurations and targets at runtime without destroying objects:
-
-```csharp
-// Switch stroke method
-strokeSampler.SwitchConfig(bezierConfig);
-
-// Switch paintable target
-paintSurface.Switch(otherPaintable);
-
-// Reset / Clear the surface
-paintSurface.Reset();  // Restore InitTexture
-paintSurface.Clear();  // Wipe to default background
-```
-
-:::tip Swap Configs, Don't Mutate Assets
-Use `strokeSampler.SwitchConfig(newConfig)` to change stroke behavior. This avoids mutating shared ScriptableObject assets and lets users revert by selecting another config.
-:::
-
----
-
-<div style={{display: 'flex', justifyContent: 'space-between', marginTop: '2rem'}}>
-  <a href="product-overview">← Previous: Overview</a>
-  <a href="architecture">Next: Architecture Overview →</a>
-</div>
+*Next: [Architecture & Execution Order](./architecture.md)*

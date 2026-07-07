@@ -2,35 +2,44 @@
 id: intro
 title: Introduction
 sidebar_position: 1
+description: Infinite Corrugated Roof (ICR) is a live, procedural corrugated-metal roof generator for Unity built on a single component with instant Inspector rebuilds and automatic LODs.
+keywords:
+  - infinite corrugated roof
+  - procedural roof unity
+  - corrugated sheet generator
+  - unity environment tool
 ---
 
 # Infinite Corrugated Roof
 
-**Infinite Corrugated Roof (ICR)** is a professional-grade procedural tool for Unity designed to generate highly customizable, high-performance corrugated roofing systems. Whether you need a simple shed roof or a complex industrial complex, ICR provides the flexibility and power to create it with ease.
+**Infinite Corrugated Roof (ICR)** is a procedural tool for Unity that generates highly
+customizable corrugated metal roofs — from a simple shed to a sprawling industrial complex
+— directly on one component. There is no "Generate" button to press: every field rebuilds
+the roof immediately in Edit Mode, so what you see is always up to date.
 
-:::info
-This tool is optimized for both real-time performance and high-fidelity offline rendering, featuring a robust multi-LOD system and integrated baking tools.
+:::info Live editing, zero GC
+Geometry buffers are reused between rebuilds, so dragging Inspector sliders does not create
+garbage-collector pressure — the roof can be tweaked freely without frame-rate hitches.
 :::
 
-## 🏗 Key Features
+## Key features
 
-- **Infinite Scalability:** Generate roofs of any size using a grid-based panel system.
-- **Dynamic Wave Profiles:** Fully customize the corrugation shape using Unity's `AnimationCurve`.
-- **Advanced Modifiers:**
-  - **Spline Deform:** Bend roofs along complex paths using the Unity Splines package.
-  - **Procedural Noise:** Add realistic surface imperfections and weathering.
-  - **Global Cutting:** Define precise edges and cutouts using a global coordinate system.
-- **Commercial-Ready Workflow:**
-  - **LOD Support:** Built-in 3-level LOD system for optimal performance.
-  - **FBX Export:** Bake procedural geometry directly to FBX assets for optimization or external editing.
-  - **Zero GC Runtime:** Engineered for efficiency with minimal memory allocation during regeneration.
+- **Grid-based generation** — a scalable panel system for any roof size, with automatic
+  column overlap (one wave) and row overlap.
+- **Dynamic wave profiles** — fully customize the corrugation cross-section with a standard
+  `AnimationCurve`.
+- **Modifiers** — Perlin surface noise, per-panel jitter/tilt, angled edge cuts, and
+  optional spline deformation.
+- **Texture atlas weathering** — 8 wear levels let one material span clean metal to heavy
+  rust.
+- **Commercial-ready workflow** — automatic 3-level LOD, one-click FBX baking, and a
+  deterministic `randomSeed`.
 
-## 🎯 Project Vision
+## Compatibility
 
-The goal of ICR is to bridge the gap between static 3D assets and complex procedural systems. It offers:
-- **Artistic Control:** Intuitive handles and parameters for designers.
-- **Technical Excellence:** Clean, SOLID-based architecture for developers.
-- **Performance:** Native-level speed in geometry calculation and mesh updates.
+Unity 2021.3 LTS or newer, on Built-in, URP or HDRP. The Unity Splines and FBX Exporter
+packages are optional and only unlock their respective sections when installed.
 
 ---
+
 *Next: [Getting Started](./getting-started.md)*

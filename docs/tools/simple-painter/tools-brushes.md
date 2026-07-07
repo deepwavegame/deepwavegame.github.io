@@ -1,79 +1,63 @@
 ---
 id: tools-brushes
-title: Tools & Brushes
+title: Paint Tools & Ink
 sidebar_position: 9
+description: Four paint tools ship with Simple Painter — Standard Brush, Erase, Fill Mesh and Pick — selected by the InkConfig assigned to the PaintDrawer and hot-swappable at runtime.
+keywords:
+  - unity paint brush
+  - flood fill mesh unity
+  - eyedropper paint unity
+  - ink channel unity
 ---
 
-# 🖌️ Tools & Brushes
+# Paint Tools & Ink
 
-Tools are the final stage of the painting pipeline — they poll the surface's `StampBatch` each frame and dispatch GPU draw commands to the `PaintEngine`.
+`PaintDrawer` runs exactly one active tool at a time, selected by whichever `InkConfig`
+asset is assigned to it — and that asset can be hot-swapped at runtime via `SwitchConfig`.
+Four tool families ship in the package.
 
-:::info Pull-Based Design
-Tools don't receive events — they **poll** the surface's `StampBatch` every frame. The surface clears its batch in `LateUpdate` after all consumers have processed it. This decouples tools from triggers and allows multiple tools to read the same batch.
-:::
+## The four tools
 
-## 🏗️ Tool Hierarchy
+| Tool | Asset | What it does |
+| --- | --- | --- |
+| **Standard Brush** | `StandardBrushConfig` | Stamps colour/value onto the active channels using a procedural shape (*None*, soft-edged *Circle*, or a custom *Texture* mask) with adjustable hardness, plus an optional texture atlas (grid size + dynamically chosen cell) |
+| **Erase** | `EraseConfig` | Reuses the brush's shape/footprint but writes a signed "lift" instead of colour, always targeting every active channel |
+| **Fill Mesh** | `FillMeshConfig` | A bucket/flood-fill tool with four bounded scopes: whole connected solid, single UV island, crease-bounded smooth patch, or a single triangle |
+| **Pick** | `PickConfig` | A non-destructive eyedropper — asynchronously reads the already-committed layer at the clicked point and raises a C# event with the sampled values |
 
-```
-BaseTool (abstract)
-├── StandardTool
-│   └── StandardBrush          — Default painting brush
-└── ForceTool
-    ├── DirectionalForceBrush  — Force in fixed UV-space direction
-    ├── RadialForceBrush       — Radial push/pull with optional swirl
-    └── TextureForceBrush      — Texture-driven force field
-```
+## Shared footprint controls
 
-- **BaseTool** defines the abstract interface for all tools, including stamp processing and GPU dispatch.
-- **StandardTool / StandardBrush** handles color, normal, and PBR channel painting.
-- **ForceTool** and its subclasses apply **velocity/force fields** to fluid simulation layers.
+Every Standard-family tool (Brush, Erase, Fill Mesh) shares the same underlying footprint
+controls:
 
----
+- **Facing Angle** — culls stamps on faces angled away from the brush, so thin
+  double-sided meshes don't get painted through.
+- **Projection Depth** — limits how deep a stamp reaches along its axis.
+- **Wrapping** — controls how the footprint wraps around edges.
+- **Additive Alpha** — accumulates alpha within a single stroke.
 
-## 🎨 StandardBrush Channels
+## Ink channels
 
-The `StandardBrush` exposes an array of **channels**, each controlling a different PBR texture layer. Configure channels programmatically for dynamic painting:
+Colour/value data itself lives in **Ink Channels** — one per target `ChannelDefinition` —
+each with:
+
+- its own **value** (a constant colour or a gradient),
+- an optional **stamp texture**,
+- an **intensity** multiplier, and
+- a **deposition rate** — how much material is added or removed per stroke (also used as
+  the per-step rate for simulation brushes).
 
 ```csharp
-// Cấu hình channel — thiết lập brush vẽ màu đỏ với texture tùy chỉnh
-var channel = brush.Channels[0];
-channel.Intensity = 1.0f;
-channel.Value.ColorValue = Color.red;
-channel.Texture = myBrushTexture;
-channel.Value.ValueMode = ValueMode.Dynamic;
+// Swap the active tool at runtime (brush → eraser, etc.).
+paintDrawer.SwitchConfig(eraseConfig);
 ```
 
-Each channel supports:
-
-- **Intensity** — Strength of the paint application (`0` – `1`)
-- **Value** — The color or scalar value to paint, with configurable `ValueMode`
-- **Texture** — Optional brush texture mask for stamp shape
-- **Blend Mode** — Per-channel blend mode (Normal, Multiply, Add, etc.)
-
----
-
-## 💨 ForceBrush Shader Passes
-
-Force brushes drive fluid simulation by writing velocity data into force textures. Each brush type maps to a specific shader pass:
-
-| Brush Type | Pass | Description |
-|:---|:---:|:---|
-| **RadialForceBrush** (Push) | 0 | Push fluid outward from stamp center |
-| **RadialForceBrush** (Push + Swirl) | 1 | Push outward with rotational component |
-| **RadialForceBrush** (Pull) | 2 | Pull fluid inward toward stamp center |
-| **RadialForceBrush** (Pull + Swirl) | 3 | Pull inward with rotational component |
-| **DirectionalForceBrush** | 4 | Apply force in a fixed UV-space direction |
-
-:::tip
-Use **Push + Swirl** (Pass 1) for realistic paint mixing effects. The swirl component adds rotational turbulence that prevents uniform radial spreading.
+:::tip One tool, many channels
+A single brush can write several PBR channels at once — add one ink channel per
+`ChannelDefinition` you want the stroke to affect (e.g. albedo + normal + roughness), each
+with its own value and intensity.
 :::
 
-## 🔧 Tool Configuration Best Practices
-
-- Tools are designed to be **one active at a time** — disable all tools before enabling the selected one.
-- Each tool reads from the surface's `StampBatch`, so ensure the surface is properly activated before the tool processes stamps.
-- Force brushes only affect surfaces that have an active **fluid simulation committer** attached.
-
 ---
 
-*Previous: [Triggers & Strokes](./triggers-strokes.md)* | *Next: [Committers & Fluid Simulation](./committers-fluid.md)*
+*Next: [Committers & Fluid Simulation](./committers-fluid.md)*

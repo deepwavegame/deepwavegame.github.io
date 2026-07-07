@@ -8,7 +8,7 @@ const studio = {
   kicker: 'EST. MMXXIV · ORDO INDEPENDENS',
   hero: {
     title: 'WAVE0084',
-    subtitle: <Translate id="homepage.tagline">A reliquary of cursed code. We carve fear into engines and machine-saints from dead frequencies.</Translate>,
+    subtitle: <Translate id="homepage.hero.subtitle">A reliquary of cursed code. We carve fear into engines and machine-saints from dead frequencies.</Translate>,
     kicker: 'IN NOMINE — VIGIL OPEN',
     backgroundImage: null,
   },

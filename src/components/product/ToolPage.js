@@ -3,7 +3,10 @@ import { TOOL_TYPES } from '@site/src/data/tools';
 import UnityPackageView from './UnityPackageView';
 import BlenderAddonView from './BlenderAddonView';
 
-export default function ToolPageDispatcher({ tool }) {
+/**
+ * Renders the correct product detail view for a tool based on its type.
+ */
+export default function ToolPage({ tool }) {
   if (!tool) return <div>Tool not found.</div>;
 
   switch (tool.type) {
