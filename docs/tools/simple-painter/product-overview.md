@@ -2,107 +2,68 @@
 id: product-overview
 title: Overview
 sidebar_position: 1
+description: Simple Painter (Simple Paint 3D) is a runtime 3D texture-painting toolkit for Unity — multi-channel PBR painting, layers, six stroke methods, five input devices and physically-simulated fluid paint.
+keywords:
+  - unity texture painting
+  - runtime paint tool unity
+  - simple paint 3d
+  - PBR channel painting
+  - unity fluid paint
 ---
 
-# 🎨 SimplePainter — Overview
+# Simple Painter — Overview
 
-**SimplePainter** is a GPU-accelerated runtime paint system for Unity, designed for high-performance interactive painting experiences.
+**Simple Painter** (listed on the Unity Asset Store as **Simple Paint 3D**) is a runtime
+3D texture-painting toolkit for Unity. It lets a game, a configurator, or an editor tool
+paint directly onto meshes while the game is running — not just a flat colour, but any
+PBR material channel (albedo, metallic, smoothness, normal maps and more), composited
+through a multi-layer system similar to a digital image editor.
 
-| | |
-|---|---|
-| **Package ID** | `com.deepwave.simplepainter` |
-| **Architecture** | Two-tier: GPU Command Pipeline + Paint Node Hierarchy |
-| **Key Features** | Fluid Simulation · Multi-Channel PBR · Zero-Allocation Design |
-
----
-
-## 📖 Description
-
-SimplePainter provides a comprehensive, production-ready painting framework built on two core pillars:
-
-1. **GPU Command Pipeline** — A singleton `PaintEngine` that collects, sorts, and batch-executes all GPU commands in a single `CommandBuffer` per frame during `LateUpdate`.
-2. **Paint Node Hierarchy** — A composite tree of `IPaintNode` objects where `PaintSurface` (root) broadcasts `PaintContext` depth-first through channels, layers, and scratch buffers.
-
-The system features real-time fluid simulation (3 tiers), multi-channel PBR painting, and a zero-allocation design using CRTP object pooling.
-
----
-
-## 🔗 Links
-
-- 📚 [Getting Started](getting-started.md) — Set up your first paintable scene
-- 🏗️ [Architecture Overview](architecture.md) — Deep dive into the two-tier design
-- 🔧 [PaintEngine Reference](paint-engine.md) — GPU command dispatcher details
-- 🎨 [PaintSurface Reference](paint-surface.md) — Root component and paintable management
-- 📚 [Channels & Layers](channels-layers.md) — Multi-channel PBR compositing
-
----
-
-## ⚡ Key Workflow Advantages
-
-### 🖥️ GPU Batched Rendering
-
-All paint operations are collected as `ICommand` objects and executed in a single `CommandBuffer` during `LateUpdate`. This minimizes GPU state changes and maximizes throughput.
-
-### 🎨 Multi-Channel PBR Painting
-
-Paint across multiple material channels simultaneously — Albedo, Normal, Metallic, Roughness — with independent blend modes and per-channel control.
-
-### 🌊 3-Tier Fluid Simulation
-
-Three levels of real-time GPU fluid simulation, trading cost vs. fidelity:
-
-| Tier | Name | Cost | Description |
-|------|------|------|-------------|
-| 1 | **FluidShallow** | ⚡ Lowest | Height-field gravity flow, UNorm8 precision |
-| 2 | **FluidViscous** | ⚡⚡ Medium | SPH solver with cohesive droplets, color advection |
-| 3 | **FluidParticle** | ⚡⚡⚡ Highest | Full MLS-MPM particle dynamics, R32G32B32A32_SFloat |
-
-### ♻️ Zero-Allocation Design
-
-`PooledCommand<TSelf>` uses the Curiously Recurring Template Pattern (CRTP) for zero-allocation command reuse. `CommandBufferPool` reuses Unity `CommandBuffer` instances.
-
----
-
-## 🔬 Technical Details
-
-### Procedural Features
-
-- **Stamp Shapes**: None (full quad), Circle (procedural soft-edge), Texture (custom mask)
-- **Texture Mapping**: Decal, TiledUV, World, Local projection modes
-- **Stroke Dynamics**: Size, Alpha, Rotation, BrushDynamics — each modulated by Distance, Speed, Time, Random, or Pressure
-
-### Modifiers & Strategy Pattern
-
-- `IShaderBinder<TInput>` decouples shader state setup from commands
-- Hot-swappable stroke methods: Bezier, Line, Dot, Anchored
-- Hot-swappable tools: StandardBrush, ForceBrush (Directional, Radial, Texture)
-- Hot-swappable committers: Standard, FluidShallow, FluidViscous, FluidParticle
-
-### Optimization
-
-- Single GPU submission per frame via `Graphics.ExecuteCommandBuffer`
-- Phase-ordered command buckets (Setup → Process → Draw → Commit → Composition)
-- Object pooling for all commands and command buffers
-- Async GPU readback for progress tracking
-
----
-
-## 📋 Requirements
-
-| Requirement | Details |
-|---|---|
-| **Unity Version** | 2021.3 LTS or later |
-| **Render Pipelines** | Built-in, URP, HDRP |
-| **Platforms** | Windows, macOS, iOS, Android |
-| **Dependencies** | Unity Input System (for `PaintTriggerRaycast`) |
-
-:::info Platform Support
-SimplePainter auto-detects the active render pipeline (`RenderPipelineType`: BuiltIn, URP, HDRP) and configures shader keywords accordingly.
+:::info Built from small, swappable modules
+A **Paint Tool** is assembled from three independent pieces — an **input device**, a
+**stroke method**, and an **ink/paint method**. A separate **committer** then bakes the
+result into a channel's layer stack — either instantly, or through a physically-simulated
+wet-paint process.
 :::
 
+## What ships in the package
+
+| | |
+| --- | --- |
+| **Runtime modules** | 10 |
+| **Paint tools** | 4 — Brush, Erase, Fill Mesh, Pick |
+| **Stroke methods** | 6 — Direct, Dot, Drag Dot, Line, Bezier, Anchored |
+| **Input devices** | 5 — Mouse, Pen, Touch, Collision, Particle |
+| **Channel types** | 3 — Color, Scalar, Normal |
+| **Unity** | 2021.3 or newer · Built-in, URP & HDRP |
+| **Dependency** | `com.deepwave.core` |
+
+## Highlights
+
+- **Multi-channel PBR painting** — paint Color, Scalar (metallic/smoothness/AO…) and
+  Normal channels independently, each bound to any shader property you define.
+- **Photoshop-style layers** — every channel holds its own stack of layers with
+  visibility, opacity, a starting texture and a per-data-type blend mode.
+- **Five input devices & six stroke methods** — all feeding one shared, hot-swappable
+  stroke pipeline.
+- **Physically-simulated fluid paint** — an optional viscous committer with adhesion,
+  viscosity, cohesive pressure, gravity flow and evaporation.
+- **Animated & skinned mesh support** — paint directly on moving characters; the live
+  pose is baked automatically.
+- **Automatic UV seam fixing** — strokes bleed correctly across UV islands instead of
+  stopping at the cut.
+- **Paint progress tracking** — measure how much of a channel has been painted or erased,
+  masked to the real UV footprint.
+- **Performance-first GPU pipeline** — one pooled command buffer per frame, reused render
+  textures, Job System raycasting and async GPU readbacks.
+
+## Where to go next
+
+- [Introduction](./intro.md) — the modular pipeline in one page
+- [Getting Started](./getting-started.md) — build a paintable object in 7 steps
+- [Architecture & Execution Order](./architecture.md) — how a stroke flows through the frame
+- [API Reference](./api-reference.md) — key components, methods and events
+
 ---
 
-<div style={{display: 'flex', justifyContent: 'space-between', marginTop: '2rem'}}>
-  <span></span>
-  <a href="getting-started">Next: Getting Started →</a>
-</div>
+*Buy on the [Unity Asset Store](https://assetstore.unity.com/packages/tools/painting/simple-paint-3d-375642) · try the [playable demo](https://deepwave.itch.io/simple-painter-unity-demo).*

@@ -2,145 +2,88 @@
 id: api-reference
 title: API Reference
 sidebar_position: 11
+description: The public runtime surface of Simple Painter — key components, hot-swap methods, blend-mode enums, and the PaintProgressTracker events.
+keywords:
+  - simple painter api
+  - paint canvas switch
+  - paint progress tracker
+  - unity paint events
 ---
 
-# 📖 API Reference
+# API Reference
 
-Comprehensive reference for Simple Painter's public API surface — interfaces, enums, data structures, blend modes, and environment configuration.
+The public runtime surface you interact with from game code. Marketing copy aside, these
+are the components, methods, enums and events that actually ship.
 
----
+## Key components & methods
 
-## 🔌 Core Interfaces
+| Component | Members you call at runtime |
+| --- | --- |
+| `PaintCanvas` | `Switch(int index)` / `Switch(Paintable)` — change active target · `Reset()` — restore starting textures · `Clear()` — wipe to background |
+| `PaintInput` (base) | `SwitchStroke(StrokeConfig)` — hot-swap the stroke asset |
+| `PaintDrawer` | `SwitchConfig(InkConfig)` — hot-swap the active tool (brush ↔ erase ↔ fill ↔ pick) |
+| `Paintable` | Texture Size, Submesh Index; wraps a `Renderer` (mesh or `SkinnedMeshRenderer`) |
+| `PaintableLink` | Forwards proxy-collider raycast hits back to a shared `Paintable` |
+| `PaintEnvironment` | UV seam fixing + gravity/turbulence flow field |
+| `PaintProgressTracker` | `Progress`, `DonePixels`, `TotalPixels`, `OnUpdated` event; static `GlobalProgress`, `AllReady` |
+| `PaintEngine` | `EnqueueCommand(ICommand)` — enqueue a pooled GPU command |
 
-| Interface | Description |
-|:---|:---|
-| `ICommand` | Base interface for all GPU paint commands dispatched to the `PaintEngine` |
-| `IPaintNode` | Node in the paint hierarchy — handles activation, deactivation, and lifecycle |
-| `IPaintBehaviour` | Extends `IPaintNode` with Unity MonoBehaviour integration |
-| `IPaintContainer` | Container that manages child `IPaintNode` instances and propagates state |
-| `IPaintCommitter` | Commits processed stamp data to target textures (direct or simulation) |
-| `IStrokeSampler` | Samples and interpolates input into `StampData` using a stroke method |
-| `ITool` | Polls `StampBatch` from surfaces and dispatches GPU draw commands |
-| `IShaderBinder<T>` | Generic interface for binding typed data to shader properties |
-
----
-
-## 🏷️ Key Enums
+## Key enums
 
 | Enum | Values |
-|:---|:---|
-| `StampShapeMode` | Circle, Square, Custom |
-| `StrokePhase` | Begin, Update, End |
-| `TextureMappingMode` | Stretch, Tile, FitWidth, FitHeight |
-| `DynamicMode` | Constant, Distance, Speed, Time, Random |
-| `ValueMode` | Static, Dynamic |
-| `TargetTextureType` | Albedo, Normal, Metallic, Roughness, Height, Emission |
-| `TextureBitDepth` | UNorm8, UNorm16, SFloat16, SFloat32 |
-| `NormalInputMode` | ObjectSpace, TangentSpace |
+| --- | --- |
+| `ChannelValueType` | Color, Scalar, Normal |
+| `DynamicMode` | Constant, Pressure, Distance, Speed, Time, Random |
+| Stamp alignment | Surface, View |
+| Brush shape | None, Circle, Texture |
+| Fill scope | Connected solid, UV island, Crease patch, Single triangle |
 | `RenderPipelineType` | BuiltIn, URP, HDRP |
 
----
+## Blend modes
 
-## 📐 StampData Struct
+Blend modes are typed to the channel's value type so an invalid combination can't be
+selected:
 
-The `StampData` struct is the core data unit passed through the painting pipeline — from stroke sampler to tool to committer.
+| Value type | Blend modes |
+| --- | --- |
+| **Color** | Normal, Multiply, Add, Min, Max, Screen, Overlay, Soft Light |
+| **Scalar** | Normal, Multiply, Add, Min, Max |
+| **Normal** | Lerp, RNM, UDN, Whiteout, Overlay, Max Slope, Subtract |
 
-| Field | Type | Description |
-|:---|:---|:---|
-| `InverseMatrix` | `Matrix4x4` | Inverse transform matrix for UV-space stamp placement |
-| `WorldPosition` | `Vector3` | World-space position of the stamp |
-| `Velocity` | `Vector2` | Stroke velocity in UV-space (used by fluid force brushes) |
-| `Opacity` | `float` | Final opacity after dynamics evaluation (`0` – `1`) |
-| `BrushDynamics` | `float` | Dynamics intensity value (`0` – `1`) |
-| `Shape` | `StampShapeMode` | Shape mask applied to this stamp |
-| `Phase` | `StrokePhase` | Current phase: `Begin`, `Update`, or `End` |
+## Progress tracking events
 
----
+`PaintProgressTracker` reports how much of a channel's active layer has been painted
+(**Fill** mode) or erased (**Erase** mode) against a reference value on a chosen colour
+channel (R/G/B/A):
 
-## 🎨 Blend Modes
+```csharp
+void OnEnable()  => tracker.OnUpdated += HandleProgress;
+void OnDisable() => tracker.OnUpdated -= HandleProgress;
 
-### Color Blend Modes
+void HandleProgress()
+{
+    float pct = tracker.Progress;            // 0–1 for this tracker
+    float all = PaintProgressTracker.GlobalProgress; // aggregate across the scene
+    if (PaintProgressTracker.AllReady) { /* every tracker done */ }
+}
+```
 
-Used for Albedo, Emission, and other color-based channels:
+- Counting can be restricted to the real paintable surface via an auto-generated UV-island
+  mask, a custom mask texture, or left unmasked.
+- Readback is fully asynchronous (non-blocking `AsyncGPUReadback`) with a configurable
+  downsample factor and minimum interval, so tracking many objects stays cheap.
 
-| Mode | Description |
-|:---|:---|
-| **Normal** | Standard alpha-composite blending |
-| **Multiply** | Darkens by multiplying base and blend colors |
-| **Add** | Brightens by adding blend color to base |
-| **Min** | Takes the minimum of base and blend per channel |
-| **Max** | Takes the maximum of base and blend per channel |
-| **Screen** | Inverse multiply — lightens the base color |
-| **Overlay** | Combines Multiply and Screen based on base luminance |
-| **SoftLight** | Subtle tonal adjustment similar to Overlay but softer |
-
-### Scalar Blend Modes
-
-Used for Metallic, Roughness, and Height channels:
-
-| Mode | Description |
-|:---|:---|
-| **Normal** | Direct replacement weighted by opacity |
-| **Multiply** | Multiplies base and blend values |
-| **Add** | Adds blend value to base |
-| **Min** | Takes the minimum value |
-| **Max** | Takes the maximum value |
-
-### Normal Blend Modes
-
-Used for Normal map channels:
-
-| Mode | Description |
-|:---|:---|
-| **Lerp** | Linear interpolation between base and detail normal |
-| **RNM** | Reoriented Normal Mapping — most physically accurate |
-| **UDN** | Unreal Developer Network method — fast approximation |
-| **Whiteout** | Whiteout blending — strong detail preservation |
-| **Overlay** | Overlay-style normal blending |
-| **MaxSlope** | Takes the steeper slope per texel |
-| **Subtract** | Subtracts detail normal from base |
-
-:::warning
-Simulation committers (FluidShallow, FluidViscous, FluidParticle) always force `NormalBlendMode.MaxSlope` regardless of the channel's configured blend mode. This ensures fluid flow correctly accumulates surface displacement.
+:::caution Always unsubscribe
+Subscribe to `OnUpdated` in `OnEnable` and unsubscribe in `OnDisable`. Failing to
+unsubscribe causes null-reference exceptions and leaks when objects are destroyed.
 :::
 
----
+## The Pick tool
 
-## 🌍 PaintEnvironment
-
-The `PaintEnvironment` component provides **environmental forces** that affect fluid simulation behavior through a **FlowField** texture.
-
-### FlowField Texture Records
-
-The FlowField texture encodes four data channels:
-
-| Record | Channel | Description |
-|:---|:---:|:---|
-| **Seam Linking** | R | UV seam connectivity data for cross-seam fluid flow |
-| **Border Padding** | G | Distance-to-border field for edge handling |
-| **Anti-Gravity Flow** | B | Overrides gravity direction for upward/sideways flow |
-| **External Forces** | A | Additional force field from external sources |
-
-### Environment Features
-
-| Feature | Description |
-|:---|:---|
-| **Gravity** | Directional gravity force affecting all fluid simulation |
-| **Wind** | Directional wind force applied to fluid surfaces |
-| **Perturbation** | Procedural noise-based disturbance for organic motion |
-| **External Forces** | User-defined force textures injected into the simulation |
-
-### Bake Update Modes
-
-| Mode | Description |
-|:---|:---|
-| **Once** | Bakes the FlowField once on initialization — use for **static** environments |
-| **Always** | Re-bakes the FlowField every frame — use for **dynamic** environments with moving objects |
-
-:::tip
-Use `Once` mode for static scenes to save GPU bandwidth. Switch to `Always` only when environment geometry changes at runtime (e.g., destructible walls).
-:::
+`PickConfig` drives a non-destructive eyedropper: it asynchronously reads the committed
+layer at the clicked point and raises a C# event carrying the sampled values — wire that
+event up to update a UI colour swatch or feed the value back into a brush.
 
 ---
 
-*Previous: [Committers & Fluid Simulation](./committers-fluid.md)* | *Next: [Best Practices](./best-practices.md)*
+*Next: [Platform, Performance & FAQ](./best-practices.md)*

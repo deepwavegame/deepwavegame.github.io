@@ -2,106 +2,62 @@
 id: committers-fluid
 title: Committers & Fluid Simulation
 sidebar_position: 10
+description: A committer bakes the in-progress stroke into a layer — instantly with the Standard committer, or through a physically-simulated wet-paint process with the Fluid Viscous committer.
+keywords:
+  - fluid paint simulation unity
+  - viscous paint committer
+  - wet paint unity
+  - paint committer
 ---
 
-# 🌊 Committers & Fluid Simulation
+# Committers & Fluid Simulation
 
-Committers are responsible for **writing paint data** from the tool's output into the surface's texture layers. Simple Painter provides both direct and simulation-based committers.
+A **committer** bakes the in-progress scratch stroke into a channel's active layer. The
+package ships two families.
 
-## 📦 Committer Hierarchy
+## Direct / Standard committer
 
-```
-BasePaintCommitter (abstract)
-├── DirectPaintCommitter
-│   └── StandardCommitter          — Default direct painting
-└── SimulationPaintCommitter
-    ├── FluidShallowCommitter      — Height-field gravity flow
-    ├── FluidViscousCommitter      — SPH viscous solver
-    └── FluidParticleCommitter     — Full MLS-MPM simulation
-```
+Commits a finished stroke straight into the paint layer the moment it ends. No
+time-stepping, no physics: what you draw is what lands. This is the default — add
+`StandardCommitter` for instant painting.
 
-- **DirectPaintCommitter** writes paint data immediately to the target texture — no simulation step.
-- **SimulationPaintCommitter** routes paint data through a fluid simulation before committing to the texture.
+## Simulation / Fluid Viscous committer
 
----
+Runs an iterative, fixed-timestep simulation on the scratch buffer across multiple frames
+before baking it in, adding genuine physically-modelled behaviour:
 
-## ✍️ Deposition
+- **Adhesion / yield pinning** — thin films and small droplets stay pinned in place until
+  accumulated mass exceeds an adhesion threshold.
+- **Viscosity** — velocity is blended between neighbouring texels.
+- **Cohesive pressure** — dense clusters are pulled together.
+- **Gravity via flow field** — once mass exceeds the threshold, paint flows downhill along
+  the surface's gravity direction, supplied by the
+  [seam-fixing flow field](./paint-surface.md#gravity-and-turbulence-field).
+- **Evaporation** and **absorption / drain** — wet paint dries and drains over time.
 
-The `Deposition` property (float, range `-1` to `1`) controls the committer's write behavior:
+Colour and coverage are carried directly from the painted data rather than synthesised, so
+**what you paint is what flows**.
+
+:::info Requires a primary channel
+The Fluid Viscous committer needs a channel flagged **Simulation Primary** (which allocates
+its velocity + mass buffer) and reads the gravity flow field from a
+[`PaintEnvironment`](./paint-surface.md#seam-fixing-with-paintenvironment).
+:::
+
+## Derived PBR channels
+
+Simulation committers can also derive **secondary PBR channels** — for example a
+bump/normal or roughness channel — from the simulated paint thickness, using a per-channel
+dry ↔ wet response curve (with its own gamma, normal strength, and an optional stylised
+"water look" tint), each committed at an independently tunable ratio.
 
 ```csharp
-// Chế độ deposition — dương để vẽ, âm để xóa, zero để tạm dừng commit
-standardCommitter.Deposition = 1.0f;   // Draw — deposit paint onto the surface
-standardCommitter.Deposition = -1.0f;  // Erase — remove paint from the surface
-standardCommitter.Deposition = 0.0f;   // No commit — stamps are processed but nothing is written
+// Swap committers at runtime — instant painting → wet fluid paint.
+// (Both live on the canvas GameObject; enable the one you want active.)
+standardCommitter.enabled = false;
+fluidViscousCommitter.enabled = true;
 ```
 
-:::tip
-Use intermediate values (e.g., `0.5f`) for semi-transparent layering. Negative fractional values create subtle eraser effects that partially reveal underlying layers.
-:::
-
 ---
 
-## 🧪 Fluid Simulation
-
-Simple Painter offers **three simulation tiers**, each trading off between performance cost and physical fidelity.
-
-### FluidShallow — Lowest Cost
-
-- **Height-field gravity flow** with a single fragment shader pass
-- Uses `UNorm8` texture format for minimal memory footprint
-- Supports **adhesion** and **surface tension** parameters
-- Ideal for thin paint drips, ink bleeding, and simple gravity effects
-
-### FluidViscous — Medium Cost
-
-- **SPH (Smoothed Particle Hydrodynamics)** solver with `7×7` or `9×9` kernels
-- Full **color advection** — fluid carries pigment as it flows
-- **Sub-texel tracking** for smooth motion below pixel resolution
-- **Signed pressure** field enables both expansion and compression behaviors
-
-### FluidParticle — Highest Fidelity
-
-- Full **MLS-MPM** (Moving Least Squares Material Point Method) solver
-- Uses `R32G32B32A32_SFloat` texture format for maximum precision
-- **Self-spawn** — particles can generate new particles during simulation
-- Full **gravity**, **viscosity**, and **fluid pressure** simulation
-- Best for thick paint, mud, and realistic fluid behavior
-
-:::info
-Each tier runs entirely on the GPU. The simulation textures are internal and never read back to the CPU, maintaining the zero-allocation guarantee.
-:::
-
----
-
-## ⚙️ Simulation Pipeline Per Frame
-
-The simulation runs in **5 sequential steps** each frame:
-
-1. **Setup** — Initialize simulation textures and bind parameters for the current frame
-2. **Simulate** — Execute the fluid solver passes (gravity, pressure, advection)
-3. **BakeAll** — Convert simulation state into paintable color/normal/PBR data
-4. **CommitAll** — Write the baked results into the surface's target textures
-5. **DrainFluid** — Apply evaporation and cleanup to prepare for the next frame
-
----
-
-## 📊 SimulationPaintCommitterConfig
-
-| Property | Default | Description |
-|:---|:---:|:---|
-| **UseTimeout** | `true` | Stop simulation after no input for a duration |
-| **Timeout** | `5s` | Seconds of inactivity before simulation halts |
-| **FixedTimestep** | `0.016s` | Physics timestep — `60 Hz` by default |
-| **MaxStepsPerFrame** | `2` | Maximum simulation steps per frame (`1` – `8`) |
-| **ForceScale** | `0.04` | Global multiplier for all force inputs |
-| **Evaporation** | `0.001` | Mass loss rate per simulation step |
-| **EffectScale** | `1.0` | Spatial scale factor for simulation effects |
-
-:::warning
-Setting **MaxStepsPerFrame** above `4` can cause significant frame drops on mobile GPUs. Profile your target platform before increasing this value.
-:::
-
----
-
-*Previous: [Tools & Brushes](./tools-brushes.md)* | *Next: [API Reference](./api-reference.md)*
+*Next: [API Reference](./api-reference.md)*

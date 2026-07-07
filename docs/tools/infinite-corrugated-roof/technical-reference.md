@@ -1,44 +1,55 @@
 ---
 id: technical-reference
-title: Technical Reference
+title: LOD & Performance
 sidebar_position: 4
+description: How Infinite Corrugated Roof builds three LOD meshes, its screen-relative transition heights, and why live editing produces no garbage-collector pressure.
+keywords:
+  - roof LOD unity
+  - procedural mesh performance
+  - LODGroup roof
+  - zero gc mesh generation
 ---
 
-# Technical Architecture
+# LOD & Performance
 
-ICR is built using a modular, service-oriented architecture to ensure maintainability and high performance.
+## The generation pipeline
 
-## 🧱 Core Modules
+When the roof rebuilds (on any Inspector change in Edit Mode, or a `Rebuild()` call), it
+runs the same ordered pipeline:
 
-- **Core (`Deepwave.ICR.Core`):** Defines the `IRoofGenerator` interface, decoupling the high-level system from the generation logic.
-- **Data (`Deepwave.ICR.Data`):** Contains immutable and serializable settings objects (e.g., `BuildSettings`, `BuildContext`).
-- **Generation (`Deepwave.ICR.Generation`):** The engine of the tool.
-  - `LayoutPlanner`: Calculates the position and attributes of every panel in the grid.
-  - `WaveBuilder`: Pre-calculates the shared cross-section (wave profile) for all panels.
-  - `PanelBuilder`: Constructs the geometry for a single panel.
-  - `MeshBuilder`: Orchestrates the entire process, including LOD management and buffer allocation.
-- **Utilities (`Deepwave.ICR.Utilities`):** Optimized helpers for Splines, Noise, and Cutting.
+1. **Sanitize** — validate all parameters (e.g. reset an invalid wave curve to a safe default).
+2. **Cache the spline** — if a `SplineContainer` is assigned, pre-sample its path for fast lookup.
+3. **Plan the layout** — determine each panel's position, jitter and texture attributes across the grid.
+4. **Pre-calculate the wave** — sample the `AnimationCurve` once into a shared cross-section reused by every panel.
+5. **Build geometry ×3 LODs** — for each panel: apply edge cuts, surface noise and spline
+   deformation, then compute UVs and vertex colours.
+6. **Apply buffers** — update the Unity `Mesh` buffers and refresh the `MeshRenderer`.
 
-## 🔄 Generation Lifecycle
+## Three LODs, managed automatically
 
-When `Rebuild()` is called, the system follows these steps:
+Three LOD meshes (LOD0–LOD2) are generated and assigned to an automatically managed
+`LODGroup`. Distant LODs use fewer wave keyframes and fewer length segments, and drop
+interior geometry that would not be visible at that distance.
 
-1. **Initialization:** Set up internal references and renderer components.
-2. **Sanitization:** Validate all user parameters to prevent invalid geometry.
-3. **Spline Cache Update:** If a spline is assigned, pre-calculate its path for fast lookup.
-4. **Layout Planning:** Iterate through rows and columns to determine the `PanelSpec` for each panel (position, random jitter, texture offsets).
-5. **Wave Pre-calculation:** Sample the `AnimationCurve` to create a list of `SectionPoints` shared across all panels.
-6. **Geometry Pass (x3 LODs):**
-   - For each panel:
-     - Apply **Global Cuts** (clipping geometry).
-     - Apply **Surface Noise** (vertex displacement).
-     - Apply **Spline Deformation** (world-space bending).
-     - Compute UVs and Vertex Colors (painting and masking).
-7. **Buffer Application:** Update the Unity `Mesh` buffers and refresh the `MeshRenderer`.
+| LOD | Screen-relative transition height |
+| --- | --- |
+| LOD0 → LOD1 | `0.85` |
+| LOD1 → LOD2 | `0.45` |
+| LOD2 → culled | `0.01` |
 
-:::note Memory Optimization
-ICR uses pre-allocated buffers and avoids the use of `Linq` or heavy `new` allocations during the main generation loops to minimize GC pressure.
+## Zero-GC live editing
+
+Geometry buffers are **reused between rebuilds**, so adjusting sliders in the Inspector
+does not generate garbage-collector pressure — the roof can be tweaked freely without
+frame-rate hitches. The generation loops avoid `Linq` and per-panel allocations for the
+same reason.
+
+:::note Runtime behaviour
+Live rebuild on field change only runs in **Edit Mode**. At runtime, call `Rebuild()`
+manually after changing fields — or, better, ship a baked FBX (see
+[Advanced Features](./advanced-features.md)) so no generation happens at runtime at all.
 :::
 
 ---
+
 *Next: [API Reference](./api-reference.md)*

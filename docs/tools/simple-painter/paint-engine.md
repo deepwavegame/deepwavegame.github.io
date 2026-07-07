@@ -1,85 +1,87 @@
 ---
 id: paint-engine
-title: PaintEngine
+title: PaintEngine & Performance
 sidebar_position: 5
+description: PaintEngine records every GPU paint operation into one pooled command buffer per frame, bucketed into five ordered phases, with object pooling, Job System raycasting and async GPU readback.
+keywords:
+  - paint engine unity
+  - command buffer pool
+  - zero allocation painting
+  - gpu paint pipeline
 ---
 
-# 🔧 PaintEngine
+# PaintEngine & Performance
 
-The singleton GPU command dispatcher. Collects commands during the frame and executes them in one batch.
+Simple Painter is built around a single-pass-per-frame command architecture rather than
+scattered per-draw calls. `PaintEngine` is the GPU command dispatcher: it collects
+commands during the frame and executes them in one batch.
 
----
+## One command buffer per frame
 
-## ⚙️ How It Works
+Every frame, the engine runs a five-step cycle:
 
-Every frame during `LateUpdate`, the engine executes a 5-step cycle:
-
-1. **Get CommandBuffer** — Obtains a `CommandBuffer` from the pool
-2. **Iterate Phases** — Processes commands in order: **Setup → Process → Draw → Commit → Composition**
-3. **Record Commands** — For each phase, records all commands into the buffer (with profiler markers)
-4. **Execute** — Calls `Graphics.ExecuteCommandBuffer` — **one single GPU submission**
-5. **Cleanup** — Releases the buffer back to the pool and disposes all commands (returns to object pools)
+1. **Get a CommandBuffer** from the pool.
+2. **Iterate phases** in order — Setup → Process → Draw → Commit → Composition.
+3. **Record commands** for each phase into the buffer (each phase wrapped in a profiler marker).
+4. **Execute** with a single `Graphics.ExecuteCommandBuffer` call.
+5. **Cleanup** — release the buffer to the pool and dispose all commands back to their object pools.
 
 ```mermaid
 graph LR
-    A["CommandBufferPool<br/>.Get()"] --> B["Setup<br/>Phase"]
-    B --> C["Process<br/>Phase"]
-    C --> D["Draw<br/>Phase"]
-    D --> E["Commit<br/>Phase"]
-    E --> F["Composition<br/>Phase"]
-    F --> G["Graphics.Execute<br/>CommandBuffer"]
-    G --> H["Pool.Release()<br/>+ Dispose All"]
+    A["CommandBufferPool.Get()"] --> B["Setup"]
+    B --> C["Process"]
+    C --> D["Draw"]
+    D --> E["Commit"]
+    E --> F["Composition"]
+    F --> G["Graphics.ExecuteCommandBuffer"]
+    G --> H["Pool.Release() + dispose"]
 ```
 
-:::info Single Submission
-All paint operations across all surfaces, channels, and layers are batched into a **single** `Graphics.ExecuteCommandBuffer` call per frame. This minimizes GPU state changes and maximizes throughput.
+:::info Frames with no paint activity submit nothing
+Every GPU operation is a small, object-pooled command bucketed into one of five ordered
+phases, recorded once and submitted with a single execute call. If nothing was painted
+this frame, no command buffer is submitted at all.
 :::
 
----
+## Enqueuing commands
 
-## 📝 Enqueuing Commands
-
-Any system can enqueue a GPU command from anywhere during the frame:
+Any system can enqueue a GPU command during the frame. Commands are typically rented from
+an object pool, so this is zero-allocation:
 
 ```csharp
-// Enqueue bất kỳ command nào vào pipeline
-PaintEngine.EnqueueCommand(myCommand);
-
-// Command thường được lấy từ object pool (zero allocation):
-var cmd = StandardDrawCommand.Get(visualRT, dynamicsRT, stamps, ...);
+// Rent a command from its pool instead of allocating a new one.
+var cmd = StandardDrawCommand.Get(visualRT, dynamicsRT, stamps);
 PaintEngine.EnqueueCommand(cmd);
+// After execution the command is disposed back to its pool automatically.
 ```
 
-:::tip Object Pool Pattern
-Commands are typically obtained from object pools via static `Get()` methods. After execution, `PaintEngine` calls `Dispose()` on each command, returning it to its pool automatically.
-:::
+## Pooling throughout
 
----
+- **Commands, command buffers, materials, shared meshes and solid-colour textures** are
+  all rented and reused instead of allocated per frame.
+- **Render-texture pooling** — persistent simulation buffers are only reallocated when
+  their format/size actually changes; short-lived scratch buffers route through Unity's
+  native temporary render-texture pool; ping-pong buffer pairs standardise multi-pass
+  simulation steps.
+- **Guaranteed VRAM teardown** — every pooled render texture and cached solid texture is
+  explicitly released when the paint engine shuts down.
 
-## 📊 CommandPhase Execution Order
+## Batch raycasting & async readback
 
-Each phase has a pre-allocated bucket with a fixed initial capacity. The bucket grows if needed, but the defaults are tuned for typical usage:
+- **Job System batch raycasting** — dense per-frame stroke sampling (e.g. a fast Bezier
+  stroke) automatically switches from a plain loop to parallel, job-scheduled raycasts once
+  the batch is large enough to benefit.
+- **Async GPU readback** — the Pick tool and Progress Tracker both use non-blocking
+  `AsyncGPUReadback` exclusively, so sampling colours or measuring coverage never stalls
+  the main thread.
+- **Cross-platform format fallback** — render-target format selection automatically
+  degrades from floating-point to normalized formats on platforms without float-blend
+  support (e.g. WebGL without the relevant extension).
 
-| Phase | Bucket Size | Purpose |
-|-------|-------------|---------|
-| `Setup` | 4 | Global setup, flow field baking, geometry data prep |
-| `Process` | 8 | Fluid simulation physics steps |
-| `Draw` | 128 | Brush stamp rendering onto ScratchBuffers |
-| `Commit` | 16 | Scratch → persistent layer blending |
-| `Composition` | 4 | Final compositing of all layers to material textures |
+## Profiler markers
 
-:::tip Why These Bucket Sizes?
-- **Draw (128)** is the largest because each brush stroke can generate many stamp draw commands
-- **Setup/Composition (4)** are small because there's typically one per surface
-- **Process (8)** covers multiple fluid simulation substeps
-- **Commit (16)** handles per-channel commits across multiple surfaces
-:::
-
----
-
-## 🔍 Profiler Integration
-
-Each `CommandPhase` is wrapped in a Unity Profiler marker, making it easy to identify GPU bottlenecks:
+Each phase is wrapped in a Unity Profiler marker, making GPU bottlenecks easy to spot in
+the **Profiler** and **Frame Debugger**:
 
 ```
 SimplePainter.Setup
@@ -89,35 +91,11 @@ SimplePainter.Commit
 SimplePainter.Composition
 ```
 
-:::info Profiler Markers
-Use Unity's **Frame Debugger** and **Profiler** to inspect which commands are executing in each phase. This is invaluable for optimizing fluid simulation step counts and brush complexity.
+:::caution Command lifecycle
+`PaintEngine.EnqueueCommand()` must be called from the main thread. Never reuse a command
+after enqueuing it — the engine takes ownership and disposes pooled commands after execution.
 :::
 
 ---
 
-## 🏊 CommandBufferPool
-
-The `CommandBufferPool` reuses Unity `CommandBuffer` objects to avoid GC allocations:
-
-- `Get()` — Returns a pooled `CommandBuffer` (or creates one if the pool is empty)
-- `Release()` — Returns the buffer to the pool after `ExecuteCommandBuffer`
-- Buffers are automatically cleared before reuse
-
----
-
-## ⚠️ Important Notes
-
-:::warning Thread Safety
-`PaintEngine.EnqueueCommand()` must be called from the **main thread** only. Commands are processed synchronously during `LateUpdate`.
-:::
-
-:::caution Command Lifecycle
-Never reuse a command after it has been enqueued. The engine takes ownership and will call `Dispose()` after execution, returning pooled commands to their object pools.
-:::
-
----
-
-<div style={{display: 'flex', justifyContent: 'space-between', marginTop: '2rem'}}>
-  <a href="architecture">← Previous: Architecture Overview</a>
-  <a href="paint-surface">Next: PaintSurface →</a>
-</div>
+*Next: [Paintable & Seam Fixing](./paint-surface.md)*

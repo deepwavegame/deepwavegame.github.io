@@ -71,7 +71,7 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/products/tools/simple-painter/thumbnail.jpg',
       navbar: {
         title: 'WAVE0084',
         logo: {

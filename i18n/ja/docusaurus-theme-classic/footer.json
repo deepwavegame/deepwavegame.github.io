@@ -34,5 +34,73 @@
   },
   "footer.link.label.Terms of Service": {
     "message": "利用規約"
+  },
+  "link.title.Products": {
+    "message": "Products",
+    "description": "The title of the footer links column with title=Products in the footer"
+  },
+  "link.title.Resources": {
+    "message": "Resources",
+    "description": "The title of the footer links column with title=Resources in the footer"
+  },
+  "link.title.Community": {
+    "message": "Community",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.Legal": {
+    "message": "Legal",
+    "description": "The title of the footer links column with title=Legal in the footer"
+  },
+  "link.item.label.Games": {
+    "message": "Games",
+    "description": "The label of footer link with label=Games linking to /games"
+  },
+  "link.item.label.Unity Tools": {
+    "message": "Unity Tools",
+    "description": "The label of footer link with label=Unity Tools linking to /tools"
+  },
+  "link.item.label.3D Assets": {
+    "message": "3D Assets",
+    "description": "The label of footer link with label=3D Assets linking to /assets"
+  },
+  "link.item.label.Documentation": {
+    "message": "Documentation",
+    "description": "The label of footer link with label=Documentation linking to /docs/tools/infinite-corrugated-roof/intro"
+  },
+  "link.item.label.Dev Blog": {
+    "message": "Dev Blog",
+    "description": "The label of footer link with label=Dev Blog linking to /news"
+  },
+  "link.item.label.Support": {
+    "message": "Support",
+    "description": "The label of footer link with label=Support linking to mailto:support@wave0084.com"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "The label of footer link with label=Discord linking to https://discord.gg/wave0084"
+  },
+  "link.item.label.Twitter / X": {
+    "message": "Twitter / X",
+    "description": "The label of footer link with label=Twitter / X linking to https://twitter.com/wave0084"
+  },
+  "link.item.label.YouTube": {
+    "message": "YouTube",
+    "description": "The label of footer link with label=YouTube linking to https://youtube.com/@wave0084"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/deepwavegame"
+  },
+  "link.item.label.Privacy Policy": {
+    "message": "Privacy Policy",
+    "description": "The label of footer link with label=Privacy Policy linking to /privacy"
+  },
+  "link.item.label.Terms of Service": {
+    "message": "Terms of Service",
+    "description": "The label of footer link with label=Terms of Service linking to /terms"
+  },
+  "copyright": {
+    "message": "Copyright © 2026 WAVE0084 STUDIO. All Rights Reserved.",
+    "description": "The footer copyright"
   }
 }

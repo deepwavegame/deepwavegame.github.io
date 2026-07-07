@@ -1,42 +1,60 @@
-# Overview
+---
+id: product-overview
+title: Overview
+sidebar_position: 1
+description: Infinite Corrugated Roof generates production-ready corrugated metal roofs in Unity from a single component — live panels, curve wave profiles, weathering, spline deformation, 3-level LOD and FBX baking.
+keywords:
+  - unity corrugated roof
+  - procedural roof generator
+  - corrugated metal unity
+  - industrial roof asset
+  - LOD roof unity
+---
 
+# Infinite Corrugated Roof — Overview
 
-## Summary
-Infinite Corrugated Roof is a professional-grade procedural tool for Unity designed to generate highly customizable, high-performance corrugated roofing and fencing systems. Ideal for industrial, residential, or post-apocalyptic environments, this tool automates the creation of complex geometry while maintaining optimal performance.
+**Infinite Corrugated Roof (ICR)** generates a corrugated metal roof as a grid of
+overlapping panels directly on the `InfiniteCorrugatedRoof` component. Every parameter —
+panel count, wave shape, wear, jitter, cuts — is edited live in the Inspector, and the
+mesh rebuilds instantly. Three levels of detail (LOD) are generated and managed
+automatically.
 
-## Description
-The Infinite Corrugated Roof (ICR) package provides an intuitive, spline-based workflow to create realistic corrugated surfaces in seconds. Built on a clean, SOLID-based architecture, ICR allows artists to focus on design while the system handles geometry calculation, UV mapping, and LOD management.
+:::info No external tools required
+Splines and FBX baking are optional add-ons. Out of the box, ICR needs nothing beyond a
+material.
+:::
 
-Whether you are building a vast industrial warehouse or a small weathered shed, ICR offers the flexibility to customize every aspect of your roof—from wave profiles to structural weathering. The integrated modifier system includes spline deformation for curved surfaces and procedural noise for realistic surface imperfections.
+## What it does
 
-- [Documentation](./intro.md) (Available)
-- [Demo](#) (Under Development)
+- **Grid of overlapping panels** — size a roof to any building; columns overlap by one
+  corrugation wave and rows overlap like real installed sheets.
+- **Curve-driven wave profiles** — any `AnimationCurve` cross-section (round, trapezoidal,
+  asymmetric) plus Perlin surface noise for weathering.
+- **Believable per-panel variation** — jitter, tilt/yaw, length variance and a texture
+  atlas of 8 wear levels keep the roof from looking tiled.
+- **Optional spline deformation** — bend the roof along a `SplineContainer` with three
+  modes (Unity Splines package).
+- **Automatic 3-level LOD** — a managed `LODGroup` keeps distant roofs cheap.
+- **One-click FBX baking** — ship a static, deterministic mesh for final builds (FBX
+  Exporter package).
+- **Deterministic** — a single `randomSeed` reproduces the exact same roof every time.
 
-### Key Workflow Advantages:
-- Artistic Control: Intuitive scene-view handles and real-time parameter updates.
-- Performance: Native-level speed in geometry calculation with zero garbage collection (GC) at runtime.
-- Optimization: Built-in multi-level LOD system and automated FBX baking tools.
+## Specs
 
-## Technical Details
+| | |
+| --- | --- |
+| **Unity** | 2021.3 LTS or newer |
+| **Render pipelines** | Built-in, URP & HDRP (sample materials for URP and HDRP) |
+| **Optional** | Unity Splines 2.1.0+ · FBX Exporter 5.0.0+ |
+| **Dependencies** | None required |
 
-### Procedural Features:
-- Grid-Based Generation: Scalable panel system for any roof size.
-- Dynamic Profiles: Customize corrugation shapes using standard AnimationCurves.
-- Spline Deformation: Bend and shape geometry along complex paths using the Unity Splines package.
-- Global Coordinate Cutting: Define precise edges and cutouts without destructive mesh editing.
+## Where to go next
 
-### Modifiers & Effects:
-- Procedural Noise: Add realistic dents, weathering, and surface variations.
-- Smart UV Mapping: Automatic tileable UVs optimized for PBR materials.
-- Integrated Vertex Colors: Pre-computed data for advanced shader effects like rust and moss.
+- [Introduction](./intro.md) · [Getting Started](./getting-started.md)
+- [Editor Guide](./editor-guide.md) — every Inspector field
+- [Advanced Features](./advanced-features.md) — splines, cuts, FBX baking
+- [API Reference](./api-reference.md) — scripting the component
 
-### Optimization & Export:
-- Multi-LOD Support: Automated generation of 3 LOD levels (High, Mid, Low).
-- FBX Baker: One-click export of procedural geometry to standard FBX assets for external optimization or static batching.
-- SRP Compatibility: Supports Built-in Render Pipeline, URP, and HDRP.
+---
 
-### Requirements:
-- Unity 2021.3 LTS or higher.
-- Unity Splines package (optional, for spline-based deformation).
-- Unity FBX Exporter (optional).
-- No external dependencies or DLLs required.
+*Buy on the [Unity Asset Store](https://assetstore.unity.com/packages/tools/modeling/infinite-corrugated-roof-357650).*

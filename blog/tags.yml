@@ -25,3 +25,15 @@ level-design:
 tech-art:
   label: Tech Art
   description: Intersection of art and technical implementation.
+simple-paint:
+  label: Simple Paint 3D
+  description: Devlogs for the Simple Painter runtime paint toolkit.
+horror-exporter:
+  label: Horror Exporter
+  description: Devlogs for the Blender horror asset exporter.
+lil-sis:
+  label: Lil Sis
+  description: Development updates for the game Lil Sis.
+classified:
+  label: Classified
+  description: Redacted studio projects.

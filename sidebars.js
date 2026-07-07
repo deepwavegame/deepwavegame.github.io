@@ -10,7 +10,8 @@ const sidebars = {
       link: {
         type: 'generated-index',
         title: 'Infinite Corrugated Roof Documentation',
-        description: 'Hướng dẫn sử dụng toàn diện cho Infinite Corrugated Roof plugin.',
+        description:
+          'Complete documentation for Infinite Corrugated Roof — a live, procedural corrugated-metal roof generator for Unity with automatic LODs and FBX baking.',
         slug: '/infinite-corrugated-roof',
       },
       items: [
@@ -33,7 +34,8 @@ const sidebars = {
       link: {
         type: 'generated-index',
         title: 'Simple Painter Documentation',
-        description: 'Tài liệu toàn diện cho Simple Painter — GPU-accelerated paint system cho Unity.',
+        description:
+          'Complete documentation for Simple Painter (Simple Paint 3D) — a runtime 3D texture-painting toolkit for Unity with multi-channel PBR painting, layers and fluid paint.',
         slug: '/simple-painter',
       },
       items: [

@@ -1,182 +1,94 @@
 ---
 id: best-practices
-title: Best Practices
+title: Platform, Performance & FAQ
 sidebar_position: 12
+description: Platform and render-pipeline support, the performance architecture behind Simple Painter, runtime tips, and frequently asked questions.
+keywords:
+  - simple painter performance
+  - unity paint webgl
+  - runtime paint faq
+  - urp hdrp painting
 ---
 
-# ✅ Best Practices
+# Platform, Performance & FAQ
 
-Essential patterns and guidelines for building robust, performant painting systems with Simple Painter.
+## Platform & render-pipeline support
 
----
+| | Details |
+| --- | --- |
+| **Unity version** | 2021.3 or newer |
+| **Dependency** | `com.deepwave.core` |
+| **Render pipelines** | Built-in, URP and HDRP — built on Unity's standard `CommandBuffer` / `Graphics.Blit` rendering; a detector identifies the active pipeline at runtime |
+| **Rendering formats** | Automatic format resolution with a documented fallback path for platforms lacking floating-point render-target support (relevant for WebGL) |
 
-## 1. Swap Configs, Don't Mutate Assets
+## Performance architecture
 
-:::tip
-Use `strokeSampler.SwitchConfig(newConfig)` to change stroke behavior at runtime instead of modifying the `StrokeMethodConfig` ScriptableObject directly.
-:::
+Simple Painter is built around a single-pass-per-frame command architecture rather than
+scattered per-draw calls:
 
-Mutating a ScriptableObject asset affects **all references** to that asset across your project. `SwitchConfig()` properly tears down the previous method's state and initializes the new one:
+- **One command buffer per frame** — every GPU operation is a pooled command bucketed into
+  five ordered phases (Setup → Process → Draw → Commit → Composition), recorded once and
+  submitted with a single execute call; frames with no paint activity submit nothing.
+- **Pooling throughout** — commands, command buffers, materials, shared meshes and
+  solid-colour textures are all rented and reused.
+- **Render-texture pooling** — persistent simulation buffers reallocate only when their
+  format/size changes; scratch buffers use Unity's temporary RT pool; ping-pong pairs
+  standardise multi-pass simulation.
+- **Job System batch raycasting** — dense stroke sampling switches to parallel job-scheduled
+  raycasts once the batch is large enough to benefit.
+- **Async GPU readback** — Pick and Progress Tracker use non-blocking `AsyncGPUReadback`, so
+  they never stall the main thread.
+- **Guaranteed VRAM teardown** — every pooled render texture and cached solid texture is
+  released on shutdown.
 
-```csharp
-// ✅ Đúng — chuyển config an toàn, không ảnh hưởng asset gốc
-strokeSampler.SwitchConfig(newBezierConfig);
+See [PaintEngine & Performance](./paint-engine.md) for the full breakdown.
 
-// ❌ Sai — thay đổi trực tiếp asset ảnh hưởng tất cả references
-strokeSampler.Config.Size = 5.0f;
-```
+## Runtime tips
 
----
+- **Hot-swap, don't mutate assets.** Use `PaintInput.SwitchStroke(...)` and
+  `PaintDrawer.SwitchConfig(...)` to change behaviour at runtime instead of editing the
+  shared ScriptableObject, which would affect every reference.
+- **One tool active at a time.** A `PaintDrawer` runs exactly one ink config; swap it
+  rather than stacking tools.
+- **Size buffers per object.** Set each `Paintable`'s Texture Size to match how close the
+  camera gets — background props rarely need 2048².
+- **Add `PaintEnvironment` for seams and fluid.** It fixes UV-seam bleeding and provides the
+  gravity flow field the fluid-viscous committer needs.
 
-## 2. Activate/Deactivate Lifecycle
+## Frequently asked questions
 
-:::tip
-Always call `paintable.Activate()` before painting and `paintable.Deactivate()` when done. This ensures GPU resources are properly allocated and released.
-:::
+**Can I paint more than colour — like metallic, roughness or normal maps?**
+Yes. Painting is organised around *channels*, each bound to any shader property and typed as
+Color, Scalar or Normal, each with its own layer stack.
 
-The `Activate()` / `Deactivate()` pattern manages the lifecycle of internal render textures, command buffers, and simulation state:
+**Does it support layers, like an image editor?**
+Yes — every channel holds visibility/opacity/starting-texture/blend-mode layers (8 blend
+modes for Color, 5 for Scalar, 7 for Normal).
 
-```csharp
-// Khởi tạo tài nguyên GPU trước khi vẽ
-paintable.Activate();
+**Can I paint on an animated or skinned character?**
+Yes. `Paintable` bakes the live `SkinnedMeshRenderer` pose once per frame, and
+`PaintableLink` lets bone-following proxy colliders forward hits to the real target.
 
-// ... perform painting operations ...
+**Is there a wet-paint or fluid effect?**
+Yes, via the Fluid Viscous committer — adhesion, viscosity, cohesive pressure, gravity flow
+and evaporation, running as an iterative GPU simulation.
 
-// Giải phóng tài nguyên khi hoàn tất
-paintable.Deactivate();
-```
+**What happens at UV seams?**
+With the optional `PaintEnvironment`, seams are detected geometrically and paint bleeds
+correctly across islands instead of stopping at the cut.
 
----
+**Can I measure how much of an object has been painted?**
+Yes, with `PaintProgressTracker` — a live 0–100% ratio (fill or erase), optionally masked to
+the real UV footprint, with an event and scene-wide aggregation.
 
-## 3. Clean Up State
+**Which input devices are supported?**
+Mouse, pressure-sensitive Pen, Touch (single-touch), physics Collision impacts, and
+Particle-system collisions.
 
-:::tip
-Clear brush textures, null out `PaintEnvironment`, and disable unused triggers when switching tools or exiting paint mode. Leaked references prevent GPU resources from being reclaimed.
-:::
-
-```csharp
-// Dọn dẹp state — tránh rò rỉ tài nguyên GPU
-foreach (var channel in brush.Channels)
-{
-    channel.Texture = null;
-}
-paintSurface.Environment = null;
-trigger.enabled = false;
-```
-
----
-
-## 4. One Active Tool at a Time
-
-:::tip
-Disable **all** tools and triggers first, then enable only the selected one. Multiple active tools reading the same `StampBatch` will produce duplicate paint strokes.
-:::
-
-```csharp
-// Tắt tất cả tools trước, sau đó bật tool được chọn
-void SwitchTool(BaseTool targetTool)
-{
-    foreach (var tool in allTools)
-        tool.enabled = false;
-    foreach (var trigger in allTriggers)
-        trigger.enabled = false;
-
-    targetTool.enabled = true;
-    targetTool.Trigger.enabled = true;
-}
-```
-
----
-
-## 5. Cache Physics Results
-
-:::tip
-Perform a **single raycast per frame** and cache the `Paintable` and `PaintSurface` references by instance ID. Repeated raycasts and `GetComponent` calls are the most common performance bottleneck in painting systems.
-:::
-
-```csharp
-// Cache kết quả physics — tránh raycast và GetComponent lặp lại mỗi frame
-private int _cachedInstanceId;
-private PaintSurface _cachedSurface;
-
-void UpdatePaint(RaycastHit hit)
-{
-    int id = hit.collider.GetInstanceID();
-    if (id != _cachedInstanceId)
-    {
-        _cachedInstanceId = id;
-        _cachedSurface = hit.collider.GetComponentInParent<PaintSurface>();
-    }
-    // Use _cachedSurface...
-}
-```
+**Can I paint several objects with one canvas?**
+Yes — a single `PaintCanvas` registers multiple `Paintable` targets and switches the active
+one via `Switch(index)`, reusing the same GPU buffers.
 
 ---
 
-## 6. UI Guard Pattern
-
-:::tip
-Use an `_isUpdatingUI` flag or `SetIsOnWithoutNotify()` to prevent UI callbacks from triggering painting logic during programmatic UI updates.
-:::
-
-Without this guard, changing a slider value from code triggers its `OnValueChanged` callback, which may re-enter painting logic:
-
-```csharp
-// UI guard — ngăn callback vòng lặp khi cập nhật UI từ code
-private bool _isUpdatingUI;
-
-void RefreshUI()
-{
-    _isUpdatingUI = true;
-    sizeSlider.value = currentSize;
-    colorToggle.SetIsOnWithoutNotify(isActive);
-    _isUpdatingUI = false;
-}
-
-void OnSizeChanged(float value)
-{
-    if (_isUpdatingUI) return;
-    brush.Channels[0].Size = value;
-}
-```
-
----
-
-## 7. Subscribe/Unsubscribe in OnEnable/OnDisable
-
-:::caution
-Always subscribe to events in `OnEnable` and unsubscribe in `OnDisable`. This is critical for `PaintProgressTracker.OnUpdated` and `ToggleEventMapping` — failing to unsubscribe causes **null reference exceptions** and **memory leaks** when objects are destroyed.
-:::
-
-```csharp
-void OnEnable()
-{
-    // Đăng ký sự kiện khi component được bật
-    progressTracker.OnUpdated += HandleProgressUpdated;
-}
-
-void OnDisable()
-{
-    // Hủy đăng ký khi component bị tắt — tránh memory leak
-    progressTracker.OnUpdated -= HandleProgressUpdated;
-}
-```
-
----
-
-## 8. Enable DynamicsTarget for Fluid Simulation
-
-:::warning
-When using fluid simulation committers, the primary `ChannelDefinition` **must** have `EnableDynamicsTarget = true`. Without this, the simulation has no target texture to write velocity and force data into, and fluid effects will silently fail.
-:::
-
-```csharp
-// Bắt buộc cho fluid simulation — bật dynamics target trên channel chính
-channelDefinition.EnableDynamicsTarget = true;
-```
-
-Ensure this is set **before** calling `Activate()` on the paintable surface. Changing it after activation requires a full deactivate/reactivate cycle.
-
----
-
-*Previous: [API Reference](./api-reference.md)*
+*Buy on the [Unity Asset Store](https://assetstore.unity.com/packages/tools/painting/simple-paint-3d-375642).*

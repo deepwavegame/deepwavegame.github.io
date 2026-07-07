@@ -2,25 +2,33 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Translate from '@docusaurus/Translate';
 import { Button, Section } from '@site/src/components/ui';
-import { ToolHeader, ToolSpecs, ToolFeatures, ToolPreview } from './Shared';
+import ProductSeo from '@site/src/lib/seo';
+import { ToolHeader, ToolSpecs, ToolFeatures, ToolPreview } from './parts';
 
-export default function BlenderAddonView({ tool }) {
+export default function UnityPackageView({ tool }) {
   const dev = tool.isUnderDevelopment;
+  const { links = {} } = tool;
 
   const actions = (
     <>
-      {!dev && tool.links.blenderMarket && (
-        <Button to={tool.links.blenderMarket} brand="blender" block size="md">
-          <Translate id="tools.common.buy_blender_market">BUY ON BLENDER MARKET</Translate>
+      {!dev && links.assetStore && (
+        <Button to={links.assetStore} brand="unity" block size="md">
+          <Translate id="tools.common.buy_asset_store">BUY ON ASSET STORE</Translate>
         </Button>
       )}
-      {!dev && tool.links.itch && (
-        <Button to={tool.links.itch} brand="itch" block size="md">
+      {!dev &&
+        links.demos?.map((demo) => (
+          <Button key={demo.href} to={demo.href} brand="itch" block size="md">
+            {demo.label}
+          </Button>
+        ))}
+      {!dev && links.itch && (
+        <Button to={links.itch} brand="itch" block size="md">
           <Translate id="tools.common.buy_itch">BUY ON ITCH.IO</Translate>
         </Button>
       )}
-      {tool.links.docs && tool.links.docs !== '#' && (
-        <Button to={tool.links.docs} variant="ghost" block size="md">
+      {links.docs && links.docs !== '#' && (
+        <Button to={links.docs} variant="ghost" block size="md">
           <Translate id="tools.common.read_docs">DOCUMENTATION</Translate>
         </Button>
       )}
@@ -33,7 +41,8 @@ export default function BlenderAddonView({ tool }) {
   );
 
   return (
-    <Layout title={tool.title} description={typeof tool.tagline === 'string' ? tool.tagline : ''}>
+    <Layout title={tool.title} description={tool.seo?.description || ''}>
+      <ProductSeo tool={tool} />
       <Section tone="deeper" spacing="lg">
         <div className="row">
           <div className="col col--8">
@@ -42,7 +51,7 @@ export default function BlenderAddonView({ tool }) {
             <ToolPreview
               thumbnail={tool.thumbnail}
               dim={dev}
-              label="[ BLENDER_ADDON_LOADED ]"
+              label={dev ? '[ CLASSIFIED_PREVIEW ]' : '[ PREVIEW_ACTIVE ]'}
             />
 
             <div style={{ marginTop: '2.5rem', color: 'var(--c-text-1)', lineHeight: 1.8, fontSize: '1.02rem' }}>

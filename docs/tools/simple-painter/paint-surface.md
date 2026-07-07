@@ -1,112 +1,69 @@
 ---
 id: paint-surface
-title: PaintSurface
+title: Paintable & Seam Fixing
 sidebar_position: 6
+description: Mark a Renderer as paintable, paint on animated SkinnedMeshRenderers, forward hits from proxy colliders with PaintableLink, and stitch UV seams with PaintEnvironment.
+keywords:
+  - paintable unity
+  - paint skinned mesh
+  - uv seam fix unity
+  - paintable link
+  - paint environment
 ---
 
-# 🎨 PaintSurface
+# Paintable & Seam Fixing
 
-The root component that manages paintable objects, channels, and the broadcast lifecycle.
+## The Paintable component
 
----
+The `Paintable` component marks a `Renderer` as paintable and configures its **Submesh
+Index** and per-object **Texture Size** (the resolution of every paint buffer for that
+object). It stays a pure geometry wrapper — it knows nothing about the canvas; the canvas
+discovers it and injects its draw-target bridge automatically.
 
-## 🛠️ Required Setup
+:::info One canvas, many paintables
+A single [`PaintCanvas`](./channels-layers.md) can register several `Paintable` targets and
+switch the active one at runtime, reusing the same GPU buffers instead of reallocating.
+:::
 
-Add `PaintSurface` to a GameObject. It auto-resolves a `Paintable` from the same object. You can have multiple `Paintable` objects sharing one surface (e.g., different mesh parts of a character).
+## Animated & skinned meshes
 
-:::tip Multiple Paintables
-A single `PaintSurface` can manage multiple `Paintable` objects — useful for multi-mesh models where you want consistent painting across body parts, armor pieces, etc.
+Painting on animated characters is supported directly. If the component finds a
+`SkinnedMeshRenderer`, it bakes the live animated pose into a mesh once per frame (shared
+across every reader that frame) so stamps project correctly onto a moving, deforming
+surface.
+
+### PaintableLink — proxy colliders
+
+The companion `PaintableLink` component lets you place lightweight proxy colliders — for
+example capsules parented to bones — that forward their raycast hits back to one shared
+`Paintable`. A rig can then have cheap, animated hit volumes without each one needing its
+own paint buffers.
+
+## Seam fixing with PaintEnvironment
+
+UV-mapped meshes almost always cut a continuous surface into separate "islands" in texture
+space, which normally shows up as a visible gap or hard edge when painting across that cut.
+The optional `PaintEnvironment` component removes this automatically:
+
+1. A geometric analyzer walks every triangle edge and finds pairs that share the same 3D
+   position but different UV coordinates — the exact signature of a UV seam.
+2. Matched seam pairs are turned into a stitching mesh, baked once into a **flow-field**
+   texture that also pads each island's border.
+3. The paint compositor consults this flow field whenever a channel is composited, so
+   strokes bleed correctly across islands instead of stopping dead at the seam.
+
+### Gravity and turbulence field
+
+The same flow-field texture optionally carries a directional **gravity + turbulence**
+field — a configurable gravity vector, gust and micro-noise perturbation, and optional
+influence from a normal map. This is what the
+[Fluid Viscous committer](./committers-fluid.md) follows when paint flows across a surface.
+
+:::tip When do I need PaintEnvironment?
+Add it whenever you paint across UV seams (most real meshes), or whenever you use the
+fluid-viscous committer — the fluid solver reads its gravity flow field.
 :::
 
 ---
 
-## 🧩 Paintable Component
-
-`Paintable` requires `Renderer` + `MeshFilter` on the same GameObject. It holds the per-frame `StampBatch` and manages activation lifecycle:
-
-```csharp
-// Kích hoạt paintable target — gọi Surface.Switch(this)
-paintable.Activate();
-
-// Hủy kích hoạt khi hoàn tất — gọi Surface.SetSource(null)
-paintable.Deactivate();
-```
-
-:::info Activation Lifecycle
-- `Activate()` calls `Surface.Switch(this)` — switches the surface to paint on this mesh
-- `Deactivate()` calls `Surface.SetSource(null)` — disconnects the paintable from the surface
-- Always call `Activate()` before painting and `Deactivate()` when done
-:::
-
----
-
-## 🔀 Switching Paintable Sources
-
-Multiple `Paintable` objects can register with one surface. Switch between them at runtime:
-
-```csharp
-// Chuyển đổi bằng index
-paintSurface.Switch(0);
-
-// Chuyển đổi bằng tham chiếu trực tiếp
-paintSurface.Switch(targetPaintable);
-
-// Cho UnityEvents (chấp nhận Paintable, GameObject, hoặc Component)
-paintSurface.SwitchFromEvent(someObject);
-```
-
-:::tip SwitchFromEvent
-`SwitchFromEvent(Object)` accepts a `Paintable`, `GameObject`, or `Component`. It will resolve the `Paintable` automatically — perfect for wiring up in the Inspector via UnityEvents.
-:::
-
----
-
-## 📋 Key Properties
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `TextureSize` | `Vector2Int` | Resolution of all paint textures (default 1024×1024) |
-| `Paintables` | `List<Paintable>` | All registered paintable objects |
-| `PaintEnvironment` | `PaintEnvironment` | Optional flow field / environment context |
-| `SessionData` | `StampBatch` | Current frame's accumulated stamp data |
-
----
-
-## 🔄 Lifecycle Management
-
-`PaintSurface` broadcasts `PaintPhase` events depth-first through the node hierarchy:
-
-| Phase | When Triggered | Effect |
-|-------|----------------|--------|
-| `Initialize` | First `Paintable` assigned | Allocates GPU resources, creates channel tree |
-| `Update` | Every frame during painting | Processes stamp data, updates dirty channels |
-| `Reset` | `paintSurface.Reset()` called | Restores all layers to their `InitTexture` |
-| `Clear` | `paintSurface.Clear()` called | Wipes all layers to default background |
-| `SourceChanged` | `Switch()` called | Re-binds to new `Paintable` mesh data |
-
-```csharp
-// Khôi phục về trạng thái ban đầu
-paintSurface.Reset();  // Restore InitTexture trên mỗi layer
-
-// Xóa toàn bộ bề mặt
-paintSurface.Clear();  // Wipe về nền mặc định
-```
-
----
-
-## ⚠️ Best Practices
-
-:::warning Activate / Deactivate Lifecycle
-Always call `paintable.Activate()` before painting and `paintable.Deactivate()` when done. This properly switches the surface source and manages GPU resources. Forgetting to deactivate can cause resource leaks.
-:::
-
-:::tip Clean Up State
-When switching between features, clear brush textures (`brush.Channels[0].Texture = null`), null out `PaintEnvironment`, and disable unused triggers. This prevents state leakage between painting sessions.
-:::
-
----
-
-<div style={{display: 'flex', justifyContent: 'space-between', marginTop: '2rem'}}>
-  <a href="paint-engine">← Previous: PaintEngine</a>
-  <a href="channels-layers">Next: Channels & Layers →</a>
-</div>
+*Next: [Canvas, Channels & Layers](./channels-layers.md)*
