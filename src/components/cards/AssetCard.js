@@ -1,5 +1,4 @@
 import React from 'react';
-import Translate from '@docusaurus/Translate';
 import { Card, CardBody, CardMedia, Button, Badge } from '@site/src/components/ui';
 import styles from './AssetCard.module.css';
 
@@ -26,9 +25,7 @@ export default function AssetCard({ asset }) {
         <p className={styles.desc}>{asset.description}</p>
 
         <div className={styles.priceBar}>
-          <span className={styles.priceLabel}>
-            <Translate id="assets.common.price">PRICE</Translate>
-          </span>
+          <span className={styles.priceLabel}>PRICE</span>
           <span className={styles.priceValue}>{asset.price}</span>
         </div>
 

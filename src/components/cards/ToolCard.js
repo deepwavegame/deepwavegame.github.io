@@ -1,5 +1,4 @@
 import React from 'react';
-import Translate from '@docusaurus/Translate';
 import { Card, CardBody, CardMedia, Button, Badge, StatusBadge } from '@site/src/components/ui';
 import styles from './ToolCard.module.css';
 
@@ -32,20 +31,14 @@ export default function ToolCard({ tool }) {
         </div>
 
         <div className={styles.actions}>
-          {dev ? (
-            <Button to={`/news/tags/${tool.blogTag}`} variant="ghost" dashed block>
-              <Translate id="tools.view_devlogs">DEV LOGS</Translate>
+          {tool.links.docs && tool.links.docs !== '#' && (
+            <Button to={tool.links.docs} variant="ghost" size="md">
+              DOCS
             </Button>
-          ) : (
-            <>
-              <Button to={tool.links.docs} variant="ghost" size="md">
-                <Translate id="tools.view_docs">DOCS</Translate>
-              </Button>
-              <Button to={tool.links.page} variant="primary" size="md">
-                <Translate id="tools.view_specs">DETAILS</Translate>
-              </Button>
-            </>
           )}
+          <Button to={tool.links.page} variant={dev ? 'ghost' : 'primary'} size="md">
+            DETAILS
+          </Button>
         </div>
       </CardBody>
     </Card>

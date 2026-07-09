@@ -1,10 +1,8 @@
 import React from 'react';
-import Translate from '@docusaurus/Translate';
 import { Card, CardBody, CardMedia, Button, StatusBadge } from '@site/src/components/ui';
 import styles from './GameCard.module.css';
 
 export default function GameCard({ game }) {
-  const dev = game.isUnderDevelopment;
   const classified = game.status === 'classified' || game.status === 'development';
 
   return (
@@ -37,17 +35,8 @@ export default function GameCard({ game }) {
         <p className={styles.desc}>{game.description}</p>
 
         <div className={styles.actions}>
-          <Button
-            to={dev ? `/news/tags/${game.blogTag}` : game.link}
-            variant={dev ? 'ghost' : 'primary'}
-            block
-            size="md"
-          >
-            {dev ? (
-              <Translate id="games.view_devlogs">VIEW DEV LOGS</Translate>
-            ) : (
-              <Translate id="games.view_details">VIEW PROJECT</Translate>
-            )}
+          <Button to={game.link} variant="primary" block size="md">
+            VIEW PROJECT
           </Button>
         </div>
       </CardBody>

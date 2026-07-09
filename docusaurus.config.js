@@ -1,5 +1,5 @@
 // @ts-check
-// Note: Chỉnh sửa cấu hình Docusaurus cho Wave0084 Studio - Phiên bản Nâng cấp
+// Docusaurus config for Wave0084 Studio — Windows 95 desktop theme.
 
 const config = {
   title: 'Wave0084 Studio',
@@ -19,25 +19,10 @@ const config = {
   markdown: {
     format: 'detect',
     mermaid: true,
-    preprocessor: ({ filePath, fileContent }) => {
-      return fileContent;
-    },
     mdx1Compat: {
       comments: true,
       admonitions: true,
       headingIds: true,
-    },
-  },
-
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'vi', 'zh', 'ja', 'id'],
-    localeConfigs: {
-      en: { label: 'English' },
-      vi: { label: 'Tiếng Việt' },
-      zh: { label: '中文' },
-      ja: { label: '日本語' },
-      id: { label: 'Bahasa Indonesia' },
     },
   },
 
@@ -49,13 +34,9 @@ const config = {
         docs: {
           path: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: 'docs', // Giữ route mặc định cho docs chung hoặc tool chính
+          routeBasePath: 'docs',
         },
-        blog: {
-          showReadingTime: true,
-          routeBasePath: 'news', // Tránh xung đột với /src/pages/blog/
-          onUntruncatedBlogPosts: 'ignore',
-        },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -67,7 +48,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       colorMode: {
-        defaultMode: 'dark',
+        defaultMode: 'light',
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
@@ -77,17 +58,11 @@ const config = {
         logo: {
           alt: 'Wave0084 Logo',
           src: 'img/logo.svg',
-          style: { filter: 'drop-shadow(0 0 5px #00e5ff)' },
         },
         items: [
           { to: '/games', label: 'Games', position: 'left' },
           { to: '/tools', label: 'Tools', position: 'left' },
           { to: '/assets', label: 'Assets', position: 'left' },
-          { to: '/news', label: 'Blog', position: 'left' },
-          {
-            type: 'localeDropdown',
-            position: 'right',
-          },
           {
             href: 'https://github.com/deepwavegame',
             position: 'right',
@@ -110,8 +85,7 @@ const config = {
           {
             title: 'Resources',
             items: [
-              { label: 'Documentation', to: '/docs/tools/infinite-corrugated-roof/intro' },
-              { label: 'Dev Blog', to: '/news' },
+              { label: 'Documentation', to: '/docs/tools/simple-painter/intro' },
               { label: 'Support', href: 'mailto:support@wave0084.com' },
             ],
           },

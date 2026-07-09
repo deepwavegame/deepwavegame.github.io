@@ -1,6 +1,5 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import Translate from '@docusaurus/Translate';
 import { Button, Section } from '@site/src/components/ui';
 import ProductSeo from '@site/src/lib/seo';
 import { ToolHeader, ToolSpecs, ToolFeatures, ToolPreview } from './parts';
@@ -13,7 +12,7 @@ export default function UnityPackageView({ tool }) {
     <>
       {!dev && links.assetStore && (
         <Button to={links.assetStore} brand="unity" block size="md">
-          <Translate id="tools.common.buy_asset_store">BUY ON ASSET STORE</Translate>
+          BUY ON ASSET STORE
         </Button>
       )}
       {!dev &&
@@ -24,17 +23,12 @@ export default function UnityPackageView({ tool }) {
         ))}
       {!dev && links.itch && (
         <Button to={links.itch} brand="itch" block size="md">
-          <Translate id="tools.common.buy_itch">BUY ON ITCH.IO</Translate>
+          BUY ON ITCH.IO
         </Button>
       )}
       {links.docs && links.docs !== '#' && (
         <Button to={links.docs} variant="ghost" block size="md">
-          <Translate id="tools.common.read_docs">DOCUMENTATION</Translate>
-        </Button>
-      )}
-      {dev && (
-        <Button to={`/news/tags/${tool.blogTag}`} variant="outline" block size="md">
-          <Translate id="tools.view_devlogs">VIEW DEV LOGS</Translate>
+          DOCUMENTATION
         </Button>
       )}
     </>
@@ -51,7 +45,7 @@ export default function UnityPackageView({ tool }) {
             <ToolPreview
               thumbnail={tool.thumbnail}
               dim={dev}
-              label={dev ? '[ CLASSIFIED_PREVIEW ]' : '[ PREVIEW_ACTIVE ]'}
+              label={dev ? '[ PREVIEW NOT AVAILABLE ]' : '[ PREVIEW ]'}
             />
 
             <div style={{ marginTop: '2.5rem', color: 'var(--c-text-1)', lineHeight: 1.8, fontSize: '1.02rem' }}>

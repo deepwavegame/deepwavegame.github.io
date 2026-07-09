@@ -5,8 +5,7 @@ import Head from '@docusaurus/Head';
  * Per-product SEO tags for a tool detail page: description, keywords, canonical,
  * Open Graph, Twitter card and a SoftwareApplication JSON-LD block.
  *
- * Reads the plain-string `seo` block on a tool from `src/data/tools.js`
- * (marketing copy lives in <Translate> nodes which can't go inside meta tags).
+ * Reads the plain-string `seo` block on a tool from `src/data/tools.js`.
  */
 export default function ProductSeo({ tool }) {
   const { title, seo = {}, specs = {} } = tool;

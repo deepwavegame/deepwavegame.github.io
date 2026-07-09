@@ -41,8 +41,9 @@ export function CardMedia({ src, height = 220, overlay = true, children, classNa
       style={{
         height,
         backgroundImage: src
-          ? `${overlay ? 'linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)),' : ''} url(${src})`
-          : 'linear-gradient(135deg, #0a0a0a, #1a1a1a)',
+          ? `${overlay ? 'linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.55)),' : ''} url(${src})`
+          : 'none',
+        backgroundColor: src ? undefined : 'var(--c-bg-2)',
         ...style,
       }}
     >
