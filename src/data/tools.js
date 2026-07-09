@@ -1,5 +1,4 @@
 import React from 'react';
-import Translate from '@docusaurus/Translate';
 import { STORE, ITCH } from '@site/src/lib/brands';
 
 export const TOOL_TYPES = {
@@ -12,16 +11,9 @@ const tools = [
     id: 'infinite-corrugated-roof',
     type: TOOL_TYPES.UNITY_PACKAGE,
     title: 'Infinite Corrugated Roof',
-    tagline: (
-      <Translate id="tools.infinite-corrugated-roof.tagline">
-        Procedural corrugated metal roofs for Unity.
-      </Translate>
-    ),
-    description: (
-      <Translate id="tools.infinite-corrugated-roof.description">
-        Generate production-ready corrugated metal roofs from a single component — live-edited panels, animation-curve wave profiles, Perlin weathering, optional spline deformation, an automatic 3-level LOD system and one-click FBX baking.
-      </Translate>
-    ),
+    tagline: 'Procedural corrugated metal roofs for Unity.',
+    description:
+      'Generate production-ready corrugated metal roofs from a single component — live-edited panels, animation-curve wave profiles, Perlin weathering, optional spline deformation, an automatic 3-level LOD system and one-click FBX baking.',
     thumbnail: '/img/products/tools/infinite-corrugated-roof/Dd6Gwv.jpg',
     links: {
       page: '/tools/infinite-corrugated-roof',
@@ -31,7 +23,7 @@ const tools = [
     },
     specs: {
       price: '$12.69',
-      version: 'v1.0.1',
+      version: 'v1.1.0',
       size: '68.9 MB',
       requirement: 'Unity 2021.3+',
     },
@@ -43,39 +35,26 @@ const tools = [
         'unity corrugated roof, procedural roof unity, metal sheet generator, industrial roof asset, corrugated metal, LOD roof, spline roof, fence builder, unity environment tool, deepwave',
     },
     isUnderDevelopment: false,
-    blogTag: 'infinite-corrugated-roof',
     features: [
       {
-        title: <Translate id="tools.infinite-corrugated-roof.f1.t">Live Panel Generation</Translate>,
-        description: (
-          <Translate id="tools.infinite-corrugated-roof.f1.d">
-            Size the roof with a grid of overlapping panels — every field rebuilds the mesh instantly in the Editor, with zero GC pressure between edits.
-          </Translate>
-        ),
+        title: 'Live Panel Generation',
+        description:
+          'Size the roof with a grid of overlapping panels — every field rebuilds the mesh instantly in the Editor, with zero GC pressure between edits.',
       },
       {
-        title: <Translate id="tools.infinite-corrugated-roof.f2.t">Curve-Driven Wave Profiles</Translate>,
-        description: (
-          <Translate id="tools.infinite-corrugated-roof.f2.d">
-            Shape the corrugation cross-section with any AnimationCurve — round, trapezoidal or asymmetric — plus Perlin surface noise for believable weathering.
-          </Translate>
-        ),
+        title: 'Curve-Driven Wave Profiles',
+        description:
+          'Shape the corrugation cross-section with any AnimationCurve — round, trapezoidal or asymmetric — plus Perlin surface noise for believable weathering.',
       },
       {
-        title: <Translate id="tools.infinite-corrugated-roof.f3.t">Spline Deformation</Translate>,
-        description: (
-          <Translate id="tools.infinite-corrugated-roof.f3.d">
-            Bend the roof along a SplineContainer with three modes — smooth deform, flat-per-panel, or rigid chain-follow (optional Unity Splines package).
-          </Translate>
-        ),
+        title: 'Spline Deformation',
+        description:
+          'Bend the roof along a SplineContainer with three modes — smooth deform, flat-per-panel, or rigid chain-follow (optional Unity Splines package).',
       },
       {
-        title: <Translate id="tools.infinite-corrugated-roof.f4.t">LOD System & FBX Baking</Translate>,
-        description: (
-          <Translate id="tools.infinite-corrugated-roof.f4.d">
-            An automatic 3-level LODGroup keeps distant roofs cheap, and one-click FBX baking ships a static, deterministic mesh for final builds.
-          </Translate>
-        ),
+        title: 'LOD System & FBX Baking',
+        description:
+          'An automatic 3-level LODGroup keeps distant roofs cheap, and one-click FBX baking ships a static, deterministic mesh for final builds.',
       },
     ],
   },
@@ -83,16 +62,9 @@ const tools = [
     id: 'simple-painter',
     type: TOOL_TYPES.UNITY_PACKAGE,
     title: 'Simple Painter',
-    tagline: (
-      <Translate id="tools.simple-painter.tagline">
-        Runtime 3D texture-painting toolkit for Unity.
-      </Translate>
-    ),
-    description: (
-      <Translate id="tools.simple-painter.description">
-        Listed on the Asset Store as Simple Paint 3D, this modular toolkit paints directly onto meshes at runtime — multi-channel PBR painting, Photoshop-style layers, six stroke methods, five input devices and an optional physically-simulated fluid-paint mode.
-      </Translate>
-    ),
+    tagline: 'Runtime 3D texture-painting toolkit for Unity.',
+    description:
+      'Listed on the Asset Store as Simple Paint 3D, this modular toolkit paints directly onto meshes at runtime — multi-channel PBR painting, Photoshop-style layers, six stroke methods, five input devices and an optional physically-simulated fluid-paint mode.',
     thumbnail: '/img/products/tools/simple-painter/thumbnail.jpg',
     links: {
       page: '/tools/simple-painter',
@@ -104,8 +76,8 @@ const tools = [
       ],
     },
     specs: {
-      price: '$37.65',
-      version: 'v0.1.0',
+      price: '$47.65',
+      version: 'v0.1.1',
       size: '87.4 MB',
       requirement: 'Unity 2021.3+',
     },
@@ -117,55 +89,82 @@ const tools = [
         'unity texture painting, runtime paint tool unity, 3d texture painting unity, simple paint 3d, PBR channel painting, unity fluid paint, uv seam fix unity, unity decal paint, paint on skinned mesh, deepwave simple painter',
     },
     isUnderDevelopment: false,
-    blogTag: 'simple-painter',
     features: [
       {
-        title: <Translate id="tools.simple-painter.f1.t">Multi-Channel PBR Painting</Translate>,
-        description: (
-          <Translate id="tools.simple-painter.f1.d">
-            Paint Color, Scalar (metallic, smoothness, AO…) and Normal channels independently — each bound to any shader property you define.
-          </Translate>
-        ),
+        title: 'Multi-Channel PBR Painting',
+        description:
+          'Paint Color, Scalar (metallic, smoothness, AO…) and Normal channels independently — each bound to any shader property you define.',
       },
       {
-        title: <Translate id="tools.simple-painter.f2.t">Photoshop-Style Layers</Translate>,
-        description: (
-          <Translate id="tools.simple-painter.f2.d">
-            Every channel holds its own stack of layers with visibility, opacity, a starting texture and a blend mode matched to its data type.
-          </Translate>
-        ),
+        title: 'Photoshop-Style Layers',
+        description:
+          'Every channel holds its own stack of layers with visibility, opacity, a starting texture and a blend mode matched to its data type.',
       },
       {
-        title: <Translate id="tools.simple-painter.f3.t">Five Input Devices</Translate>,
-        description: (
-          <Translate id="tools.simple-painter.f3.d">
-            Mouse, pressure-sensitive Pen, Touch, physics Collision impacts and Particle collisions all feed the same stroke pipeline.
-          </Translate>
-        ),
+        title: 'Five Input Devices',
+        description:
+          'Mouse, pressure-sensitive Pen, Touch, physics Collision impacts and Particle collisions all feed the same stroke pipeline.',
       },
       {
-        title: <Translate id="tools.simple-painter.f4.t">Six Stroke Methods</Translate>,
-        description: (
-          <Translate id="tools.simple-painter.f4.d">
-            Direct freehand, Dot, live Drag Dot, rubber-band Line, smoothed Bezier curves and a resizable Anchored decal — all hot-swappable at runtime.
-          </Translate>
-        ),
+        title: 'Six Stroke Methods',
+        description:
+          'Direct freehand, Dot, live Drag Dot, rubber-band Line, smoothed Bezier curves and a resizable Anchored decal — all hot-swappable at runtime.',
       },
       {
-        title: <Translate id="tools.simple-painter.f5.t">Physically-Simulated Fluid Paint</Translate>,
-        description: (
-          <Translate id="tools.simple-painter.f5.d">
-            An optional viscous committer adds real adhesion, viscosity, cohesive pressure, gravity flow and evaporation to wet paint.
-          </Translate>
-        ),
+        title: 'Physically-Simulated Fluid Paint',
+        description:
+          'An optional viscous committer adds real adhesion, viscosity, cohesive pressure, gravity flow and evaporation to wet paint.',
       },
       {
-        title: <Translate id="tools.simple-painter.f6.t">Automatic UV Seam Fixing</Translate>,
-        description: (
-          <Translate id="tools.simple-painter.f6.d">
-            A geometric analyzer stitches disconnected UV islands so strokes never show a gap or hard edge at a seam — even on skinned characters.
-          </Translate>
-        ),
+        title: 'Automatic UV Seam Fixing',
+        description:
+          'A geometric analyzer stitches disconnected UV islands so strokes never show a gap or hard edge at a seam — even on skinned characters.',
+      },
+    ],
+  },
+  {
+    id: 'retro-os',
+    type: TOOL_TYPES.UNITY_PACKAGE,
+    title: 'Retro OS',
+    tagline: 'Windows 95-style in-game operating system for Unity.',
+    description:
+      'A data-driven in-game OS you drop into any Unity project: desktop, draggable windows, a Start menu, a login screen, a virtual file system, a working terminal, mail, CCTV monitors, a retro web browser and a synthesized-sound audio module. Programs are ScriptableObject assets you drag into one profile, and every interaction raises a game event that can drive your story.',
+    thumbnail: null,
+    links: {
+      page: '/tools/retro-os',
+      docs: '/docs/tools/retro-os/intro',
+    },
+    specs: {
+      version: 'v0.2.0',
+      requirement: 'Unity 2021.3+',
+    },
+    seo: {
+      description:
+        'Retro OS is a data-driven Windows 95-style in-game OS for Unity: desktop, windows, terminal, virtual file system, CCTV, mail, a retro browser and a game-event pipeline that drives your story.',
+      keywords:
+        'unity retro os, windows 95 unity, in-game computer unity, fake os unity asset, unity terminal simulator, unity cctv camera system, found footage horror unity, unity desktop simulator, unity virtual file system, deepwave retro os, wave0084',
+    },
+    isUnderDevelopment: true,
+    features: [
+      {
+        title: 'Draggable Window Manager',
+        description:
+          'A full desktop shell — draggable/resizable windows, taskbar, Start menu and a login screen, all data-driven from ScriptableObject profiles.',
+      },
+      {
+        title: 'Working Terminal & Virtual File System',
+        description:
+          'Eight real commands (help, ls, cd, cat, open, pwd, clear, decrypt) over a file tree you author entirely as assets.',
+      },
+      {
+        title: 'CCTV, Mail & Browser Apps',
+        description:
+          'Live camera feeds with a 48-frame in-engine DVR rewind, an inbox and a retro browser — every interaction can raise a game event to drive your story.',
+      },
+      {
+        title: 'Zero Audio or Image Assets',
+        description:
+          'Nine UI sounds synthesized at runtime and thirteen desktop icons drawn procedurally — nothing to import, nothing to license.',
       },
     ],
   },
@@ -173,16 +172,9 @@ const tools = [
     id: 'blender-horror-exporter',
     type: TOOL_TYPES.BLENDER_ADDON,
     title: 'Horror Asset Exporter',
-    tagline: (
-      <Translate id="tools.horror-exporter.tagline">
-        Automated pipeline for exporting horror-ready assets from Blender.
-      </Translate>
-    ),
-    description: (
-      <Translate id="tools.horror-exporter.description">
-        One-click export with optimized LODs, material assignments, and collider generation for Unity/Unreal.
-      </Translate>
-    ),
+    tagline: 'Automated pipeline for exporting horror-ready assets from Blender.',
+    description:
+      'One-click export with optimized LODs, material assignments, and collider generation for Unity/Unreal.',
     thumbnail:
       'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
     links: {
@@ -198,15 +190,14 @@ const tools = [
       requirement: 'Blender 3.6 - 4.1',
     },
     isUnderDevelopment: true,
-    blogTag: 'horror-exporter',
     features: [
       {
-        title: <Translate id="tools.horror-exporter.f1.t">Auto-LOD</Translate>,
-        description: <Translate id="tools.horror-exporter.f1.d">Generate optimized mesh levels automatically.</Translate>,
+        title: 'Auto-LOD',
+        description: 'Generate optimized mesh levels automatically.',
       },
       {
-        title: <Translate id="tools.horror-exporter.f2.t">PBR Mapping</Translate>,
-        description: <Translate id="tools.horror-exporter.f2.d">One-click material conversion for HDRP/URP.</Translate>,
+        title: 'PBR Mapping',
+        description: 'One-click material conversion for HDRP/URP.',
       },
     ],
   },

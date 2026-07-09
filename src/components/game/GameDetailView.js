@@ -1,6 +1,5 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import Translate from '@docusaurus/Translate';
 import { Hero, Section, SectionTitle, Card, Button, StatList } from '@site/src/components/ui';
 import { FeatureCard } from '@site/src/components/cards';
 import styles from './GameDetailView.module.css';
@@ -11,7 +10,7 @@ export default function GameDetailView({ game }) {
   const actions = (
     <>
       <Button href="#trailer" variant="primary" size="lg">
-        <Translate id="games.common.watch_trailer">WATCH TRAILER</Translate>
+        WATCH TRAILER
       </Button>
       {game.steam && <Button to={game.steam} brand="steam" size="lg">STEAM</Button>}
       {game.itch && <Button to={game.itch} brand="itch" size="lg">ITCH.IO</Button>}
@@ -40,7 +39,7 @@ export default function GameDetailView({ game }) {
       {game.story && (
         <Section tone="base" spacing="lg">
           <SectionTitle kicker="// NARRATIVE" align="center">
-            <Translate id="games.common.story_title">STORY</Translate>
+            STORY
           </SectionTitle>
           <div className="row">
             <div className="col col--8 col--offset-2">
@@ -60,7 +59,7 @@ export default function GameDetailView({ game }) {
       {game.features && game.features.length > 0 && (
         <Section tone="elevated" spacing="lg">
           <SectionTitle kicker="// KEY_FEATURES" align="center">
-            <Translate id="games.common.features_title">KEY FEATURES</Translate>
+            KEY FEATURES
           </SectionTitle>
           <div className="row">
             {game.features.map((f, i) => (
@@ -74,7 +73,7 @@ export default function GameDetailView({ game }) {
 
       <Section id="trailer" tone="deeper" spacing="lg">
         <SectionTitle kicker="// VIDEO_FEED" align="center">
-          <Translate id="games.common.trailer_title">TRAILER</Translate>
+          TRAILER
         </SectionTitle>
         <div className="row">
           <div className="col col--10 col--offset-1">

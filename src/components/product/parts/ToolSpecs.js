@@ -1,5 +1,4 @@
 import React from 'react';
-import Translate from '@docusaurus/Translate';
 import { Card, StatList, Kicker } from '@site/src/components/ui';
 import styles from './parts.module.css';
 
@@ -23,9 +22,7 @@ export default function ToolSpecs({ specs, actions, isUnderDevelopment }) {
             <span className={styles.priceLabel}>PRICE</span>
             <span className={styles.price}>{specs.price}</span>
           </div>
-          <p className={styles.priceNote}>
-            <Translate id="tools.common.pricing_desc">One-time payment. Lifetime updates support.</Translate>
-          </p>
+          <p className={styles.priceNote}>One-time payment. Lifetime updates support.</p>
         </>
       )}
 

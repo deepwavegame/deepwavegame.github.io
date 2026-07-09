@@ -1,15 +1,11 @@
 import React from 'react';
-import Translate from '@docusaurus/Translate';
 
 const assets = [
   {
     id: 'horror-environment-pack',
-    title: <Translate id="assets.horror-pack.title">Horror Environment Vol. 1</Translate>,
-    description: (
-      <Translate id="assets.horror-pack.description">
-        Modular assets for abandoned industrial settings. High-quality PBR textures for Unity and Unreal Engine.
-      </Translate>
-    ),
+    title: 'Horror Environment Vol. 1',
+    description:
+      'Modular assets for abandoned industrial settings. High-quality PBR textures for Unity and Unreal Engine.',
     price: '$29.99',
     type: '3D ENVIRONMENT',
     cgTrader: 'https://cgtrader.com/example',

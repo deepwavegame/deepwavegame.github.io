@@ -1,6 +1,5 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import Translate from '@docusaurus/Translate';
 import { PageHeader, Section } from '@site/src/components/ui';
 import { GameCard } from '@site/src/components/cards';
 import games from '@site/src/data/games';
@@ -10,8 +9,8 @@ export default function Games() {
     <Layout title="Games" description="WAVE0084 Studio — Horror game projects">
       <PageHeader
         kicker="// PROJECT_REPOSITORY"
-        title={<><Translate id="games.page.title.part1">PROJECT</Translate> <span style={{ color: 'var(--c-accent)' }}><Translate id="games.page.title.part2">REPOSITORY</Translate></span></>}
-        subtitle={<Translate id="games.page.subtitle">All current and classified game projects of WAVE0084 Studio. Status reports updated continuously.</Translate>}
+        title={<>PROJECT <span style={{ color: 'var(--c-accent)' }}>REPOSITORY</span></>}
+        subtitle="All current and classified game projects of WAVE0084 Studio. Status reports updated continuously."
       />
 
       <Section tone="base" spacing="lg">

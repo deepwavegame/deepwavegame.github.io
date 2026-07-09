@@ -1,65 +1,57 @@
-import React from 'react';
-import Translate from '@docusaurus/Translate';
-
 const studio = {
   name: 'WAVE0084',
-  fullName: 'WAVE0084 // RELIQUARY',
-  tagline: <Translate id="homepage.tagline">A Reliquary of Cursed Code &mdash; Indie Horror Workshop</Translate>,
-  kicker: 'EST. MMXXIV · ORDO INDEPENDENS',
+  fullName: 'WAVE0084 Studio',
+  tagline: 'Indie horror games & Unity tools.',
+  kicker: 'EST. 2024 · INDEPENDENT STUDIO',
   hero: {
     title: 'WAVE0084',
-    subtitle: <Translate id="homepage.hero.subtitle">A reliquary of cursed code. We carve fear into engines and machine-saints from dead frequencies.</Translate>,
-    kicker: 'IN NOMINE — VIGIL OPEN',
+    subtitle: 'Indie horror games and professional Unity tools, built by a one-person studio.',
+    kicker: 'INDEPENDENT GAME & TOOL STUDIO',
     backgroundImage: null,
   },
   about: {
-    kicker: 'CONFITEOR',
-    title: <Translate id="homepage.sections.about.title.part1">IRON </Translate>,
-    accent: <Translate id="homepage.sections.about.title.part2">SAINT</Translate>,
-    body: (
-      <Translate id="homepage.sections.about.description">
-        A small workshop of one. We build psychological horror on Unity HDRP and forge
-        tools that other rituals can use. Every release is a relic: bone, iron, and code,
-        wrapped in cloth and set on the altar.
-      </Translate>
-    ),
+    kicker: 'ABOUT',
+    title: 'SMALL ',
+    accent: 'STUDIO',
+    body:
+      'A workshop of one. Psychological horror games built on Unity HDRP, and production-grade Unity tools built from the same pipeline — Infinite Corrugated Roof, Simple Painter, and Retro OS.',
   },
   pillars: {
-    kicker: 'TRIPTYCH',
-    title: 'THREE',
-    accent: 'OFFERINGS',
+    kicker: 'WHAT WE MAKE',
+    title: 'GAMES, TOOLS ',
+    accent: '& ASSETS',
     items: [
       {
         index: 1,
-        title: <Translate id="homepage.features.games.title">Games</Translate>,
-        description: <Translate id="homepage.features.games.desc">Slow, claustrophobic horror. HDRP-rendered ritual chambers.</Translate>,
-        cta: <Translate id="homepage.features.games.cta">Enter the Chamber</Translate>,
+        title: 'Games',
+        description: 'Slow, atmospheric psychological horror built on Unity HDRP.',
+        cta: 'View Games',
         to: '/games',
       },
       {
         index: 2,
-        title: <Translate id="homepage.features.tools.title">Tools</Translate>,
-        description: <Translate id="homepage.features.tools.desc">Unity packages forged in production. Sharp, single-purpose, no oil.</Translate>,
-        cta: <Translate id="homepage.features.tools.cta">Take the Knife</Translate>,
+        title: 'Tools',
+        description: 'Unity packages built and battle-tested in our own production pipeline.',
+        cta: 'View Tools',
         to: '/tools',
       },
       {
         index: 3,
-        title: <Translate id="homepage.features.assets.title">Assets</Translate>,
-        description: <Translate id="homepage.features.assets.desc">3D relics and environmental bone for your own altarpieces.</Translate>,
-        cta: <Translate id="homepage.features.assets.cta">Gather Relics</Translate>,
+        title: 'Assets',
+        description: '3D environment packs and textures for your own projects.',
+        cta: 'View Assets',
         to: '/assets',
       },
     ],
   },
   stats: [
-    { label: 'RELICS', value: '02' },
-    { label: 'INSTRUMENTS', value: '03' },
-    { label: 'ENGINES', value: 'UNITY † BLENDER' },
-    { label: 'STATUS', value: 'CONSECRATED' },
+    { label: 'GAMES', value: '1' },
+    { label: 'TOOLS', value: '4' },
+    { label: 'ENGINES', value: 'UNITY + BLENDER' },
+    { label: 'STATUS', value: 'ACTIVE' },
   ],
-  primaryCta: { to: '/games/lil-sis', label: <Translate id="homepage.cta.latest_game">LATEST RELIC</Translate> },
-  secondaryCta: { to: '/tools', label: <Translate id="homepage.cta.explore_tools">THE INSTRUMENTS</Translate> },
+  primaryCta: { to: '/games/lil-sis', label: 'LATEST GAME' },
+  secondaryCta: { to: '/tools', label: 'VIEW TOOLS' },
 };
 
 export default studio;
