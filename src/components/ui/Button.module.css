@@ -12,6 +12,7 @@
   border-radius: 0;
   border: none;
   background: var(--c-bg-1);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.04));
   color: var(--c-text-0);
   box-shadow: var(--bevel-raised);
   transition: none;
@@ -20,8 +21,15 @@
   user-select: none;
 }
 
+/* Keyboard focus = dotted Win9x focus rectangle */
+.btn:focus-visible {
+  outline: 1px dotted var(--c-text-0);
+  outline-offset: -5px;
+}
+
 .btn:active {
   box-shadow: var(--bevel-sunken);
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.3));
   padding-top: calc(var(--btn-pad-y, 0.7rem) + 1px) !important;
   padding-left: calc(var(--btn-pad-x, 1.4rem) + 1px) !important;
 }
@@ -59,12 +67,21 @@
 }
 
 .variant-primary {
-  background-color: var(--c-bg-1);
   color: var(--c-accent);
   font-weight: 800;
 }
+.variant-primary::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  background: var(--c-phosphor);
+  box-shadow: var(--glow-phosphor);
+}
 .variant-primary:hover {
-  background-color: var(--c-bg-4);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(0, 0, 128, 0.05));
 }
 
 .variant-ghost {
