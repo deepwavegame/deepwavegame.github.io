@@ -40,6 +40,15 @@
   --c-amber: #ffb000;
   --glow-phosphor: 0 0 6px rgba(23, 224, 196, 0.6), 0 0 2px rgba(23, 224, 196, 0.9);
 
+  /* Analog-horror signal colours — dead broadcast, emergency red, sickly green */
+  --c-blood: #d81f2a;
+  --c-blood-dim: #7a1016;
+  --c-signal: #4dffb0;
+  --c-vhs: #2e6bff;
+  --c-void: #04100e;
+  --glow-blood: 0 0 10px rgba(216, 31, 42, 0.6);
+  --glow-signal: 0 0 10px rgba(77, 255, 176, 0.5);
+
   --c-danger: #aa0000;
   --c-warn: #8a5a00;
   --c-success: #046a04;
@@ -146,16 +155,17 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-color: #016d6f;
+  background-color: #050e0c;
   background-image:
-    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1.4px),
-    radial-gradient(ellipse 130% 90% at 50% -20%, rgba(46, 190, 184, 0.55), transparent 55%),
-    radial-gradient(ellipse 120% 90% at 50% 120%, rgba(0, 0, 0, 0.38), transparent 55%),
-    linear-gradient(180deg, #016b6d 0%, #008080 48%, #026a6c 100%);
+    radial-gradient(rgba(120, 220, 200, 0.05) 1px, transparent 1.4px),
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(20, 96, 82, 0.5), transparent 55%),
+    radial-gradient(ellipse 120% 100% at 50% 120%, rgba(0, 0, 0, 0.66), transparent 55%),
+    linear-gradient(180deg, #06130f 0%, #082019 50%, #050d0b 100%);
   background-size: 4px 4px, cover, cover, cover;
 }
 
-/* CRT glass: scanlines + a gentle vignette laid over the whole screen */
+/* CRT glass: scanlines + a gentle vignette laid over the whole screen,
+   with a faint, occasional flicker for that dying-signal unease. */
 body::after {
   content: '';
   position: fixed;
@@ -163,8 +173,15 @@ body::after {
   z-index: 9000;
   pointer-events: none;
   background-image:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 3px),
-    radial-gradient(ellipse 100% 100% at 50% 50%, transparent 62%, rgba(0, 20, 20, 0.16));
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.06) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse 100% 100% at 50% 50%, transparent 58%, rgba(0, 12, 10, 0.28));
+  animation: crt-flicker 5s steps(1) infinite;
+}
+@keyframes crt-flicker {
+  0%, 96%, 100% { opacity: 1; }
+  97% { opacity: 0.82; }
+  98% { opacity: 0.96; }
+  99% { opacity: 0.88; }
 }
 
 #__docusaurus { position: relative; z-index: 2; }
