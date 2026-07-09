@@ -1,5 +1,7 @@
 // @ts-check
-// Docusaurus config for Wave0084 Studio — Windows 95 desktop theme.
+// Docusaurus config for Wave0084 Studio — "SYSTEM OS" Windows 9x theme.
+
+const { themes } = require('prism-react-renderer');
 
 const config = {
   title: 'Wave0084 Studio',
@@ -51,6 +53,10 @@ const config = {
         defaultMode: 'light',
         disableSwitch: true,
         respectPrefersColorScheme: false,
+      },
+      prism: {
+        theme: themes.vsDark,
+        darkTheme: themes.vsDark,
       },
       image: 'img/products/tools/simple-painter/thumbnail.jpg',
       navbar: {

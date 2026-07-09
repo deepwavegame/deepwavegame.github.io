@@ -1,27 +1,29 @@
 /**
- * WAVE0084 STUDIO — Windows 95 desktop theme.
- * Design tokens + base atmosphere. Components own their CSS modules.
- * Token NAMES are kept stable (--c-*, --f-*) so every component and inline
- * style across the site picks up the new palette automatically.
+ * WAVE0084 STUDIO — "SYSTEM OS" theme.
+ * An art-directed Windows 9x desktop: authentic grey/navy chrome, real window
+ * bevels, a textured CRT desktop, and phosphor accents for the "tech soul".
+ *
+ * Token NAMES are kept stable (--c-*, --f-*, --bevel-*) so every component and
+ * inline style across the site picks up the palette automatically.
  */
 
 :root {
-  /* === Palette: classic Win95 grey, navy & white === */
-  --c-bg-0: #008080;         /* desktop teal */
+  /* === Palette: classic Win9x grey, navy & teal desktop === */
+  --c-bg-0: #008080;         /* desktop teal (base) */
   --c-bg-1: #c0c0c0;         /* window face */
-  --c-bg-2: #c0c0c0;
+  --c-bg-2: #cac6be;
   --c-bg-3: #d4d0c8;
-  --c-bg-4: #e8e8e8;
+  --c-bg-4: #e8e6e0;
 
   --c-border-0: #808080;
-  --c-border-1: #808080;
+  --c-border-1: #9a958c;
   --c-border-2: #404040;
   --c-border-3: #000000;
 
-  --c-text-0: #000000;       /* headings / high-contrast text */
-  --c-text-1: #1a1a1a;       /* body text */
+  --c-text-0: #0a0a0a;       /* headings / high-contrast text */
+  --c-text-1: #1c1c1c;       /* body text */
   --c-text-2: #3a3a3a;
-  --c-text-3: #5a5a5a;
+  --c-text-3: #5c5750;
   --c-text-4: #808080;
 
   /* Accent — the navy/blue pair used for highlights and links */
@@ -30,6 +32,13 @@
   --c-accent-soft: rgba(0, 0, 128, 0.08);
   --c-accent-glow: rgba(0, 0, 128, 0.25);
   --c-accent-wet: #0000ee;      /* classic hyperlink blue */
+
+  /* Phosphor — CRT cyan-green, used sparingly for LEDs, cursors & glows.
+     This is the "tech soul": a screen-lit accent over the cold grey chrome. */
+  --c-phosphor: #17e0c4;
+  --c-phosphor-dim: #0a9d8a;
+  --c-amber: #ffb000;
+  --glow-phosphor: 0 0 6px rgba(23, 224, 196, 0.6), 0 0 2px rgba(23, 224, 196, 0.9);
 
   --c-danger: #aa0000;
   --c-warn: #8a5a00;
@@ -42,26 +51,39 @@
   --c-blender: #a0501a;
   --c-cgtrader: #6a5524;
 
+  /* Title-bar gradient — the iconic Win98 navy→azure sweep */
+  --titlebar: linear-gradient(90deg, #00007a 0%, #0a2a9c 45%, #1c7fd6 100%);
+  --titlebar-idle: linear-gradient(90deg, #6f6f7a 0%, #9a9aa4 100%);
+
+  /* Paper — the "document" surface used for long-form docs reading */
+  --paper: #f7f5ee;
+  --paper-edge: #e6e2d6;
+
   /* Typography — plain system UI, no display faces */
   --f-sans: Tahoma, "Segoe UI", Verdana, Arial, sans-serif;
-  --f-mono: Consolas, "Lucida Console", "Courier New", monospace;
+  --f-mono: "Cascadia Mono", Consolas, "Lucida Console", "Courier New", monospace;
   --f-display: Tahoma, "Segoe UI", Verdana, Arial, sans-serif;
-  --f-code: Consolas, "Courier New", monospace;
+  --f-code: "Cascadia Mono", Consolas, "Courier New", monospace;
 
   /* Spacing scale */
   --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
   --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
 
-  /* Radius — Windows 95 has square corners, never rounded */
+  /* Radius — Windows 9x has square corners, never rounded */
   --r-0: 0;
   --r-1: 0;
   --r-2: 0;
 
-  /* Bevels — the signature Win95 3D border, built from four inset layers */
+  /* Bevels — the signature Win9x 3D border, built from four inset layers */
   --bevel-raised: inset 1px 1px 0 #fff, inset -1px -1px 0 #000,
                   inset 2px 2px 0 #dfdfdf, inset -2px -2px 0 #808080;
   --bevel-sunken: inset 1px 1px 0 #000, inset -1px -1px 0 #fff,
                   inset 2px 2px 0 #808080, inset -2px -2px 0 #dfdfdf;
+  /* A thin single-line groove for dividers & inputs */
+  --bevel-groove: inset 1px 1px 0 #808080, inset -1px -1px 0 #fff;
+  /* Window drop shadow — lifts panels off the desktop */
+  --shadow-window: 4px 4px 0 rgba(0, 0, 0, 0.28);
+  --shadow-window-sm: 2px 2px 0 rgba(0, 0, 0, 0.25);
 
   /* Docusaurus (Infima) overrides */
   --ifm-color-primary: var(--c-accent);
@@ -73,7 +95,7 @@
   --ifm-color-primary-lightest: #6bc0f0;
 
   --ifm-background-color: var(--c-bg-1);
-  --ifm-background-surface-color: #ffffff;
+  --ifm-background-surface-color: var(--paper);
   --ifm-color-content: var(--c-text-1);
   --ifm-heading-color: var(--c-text-0);
   --ifm-heading-font-family: var(--f-display);
@@ -85,14 +107,19 @@
 
   --ifm-menu-color: var(--c-text-1);
   --ifm-menu-color-active: var(--c-accent);
-  --ifm-menu-color-background-active: var(--c-accent-soft);
+  --ifm-menu-color-background-active: transparent;
   --ifm-menu-color-background-hover: rgba(0, 0, 0, 0.05);
 
   --ifm-link-color: var(--c-accent-wet);
   --ifm-toc-border-color: var(--c-border-1);
   --ifm-navbar-height: 3.4rem;
   --ifm-global-radius: 0;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 128, 0.1);
+  --ifm-code-border-radius: 0;
+  --ifm-pre-border-radius: 0;
+  --docusaurus-highlighted-code-line-bg: rgba(23, 224, 196, 0.12);
+
+  --ifm-breadcrumb-border-radius: 0;
+  --ifm-breadcrumb-item-background-active: var(--c-bg-1);
 }
 
 [data-theme='dark'] {
@@ -105,9 +132,39 @@ html {
 }
 
 body {
-  background-color: var(--c-bg-0);
   color: var(--c-text-1);
   -webkit-font-smoothing: antialiased;
+  background-color: #008080;
+}
+
+/* The desktop wallpaper lives on a fixed layer (no background-attachment:fixed
+   on the scrolling body — that forces full-page repaints and janks capture).
+   Layered CRT desktop: soft top glow, corner shadow, teal gradient + dot dither. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #016d6f;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1.4px),
+    radial-gradient(ellipse 130% 90% at 50% -20%, rgba(46, 190, 184, 0.55), transparent 55%),
+    radial-gradient(ellipse 120% 90% at 50% 120%, rgba(0, 0, 0, 0.38), transparent 55%),
+    linear-gradient(180deg, #016b6d 0%, #008080 48%, #026a6c 100%);
+  background-size: 4px 4px, cover, cover, cover;
+}
+
+/* CRT glass: scanlines + a gentle vignette laid over the whole screen */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse 100% 100% at 50% 50%, transparent 62%, rgba(0, 20, 20, 0.16));
 }
 
 #__docusaurus { position: relative; z-index: 2; }
@@ -116,6 +173,24 @@ body {
   background: var(--c-accent);
   color: #fff;
 }
+
+/* === Win9x chunky scrollbars === */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #c0c0c0 #d9d5cd;
+}
+::-webkit-scrollbar { width: 16px; height: 16px; background: #d9d5cd; }
+::-webkit-scrollbar-track {
+  background:
+    repeating-conic-gradient(#cfcbc2 0 25%, #dcd8d0 0 50%) 0 0 / 4px 4px;
+  box-shadow: var(--bevel-sunken);
+}
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  box-shadow: var(--bevel-raised);
+}
+::-webkit-scrollbar-thumb:hover { background: #cac6be; }
+::-webkit-scrollbar-corner { background: #d9d5cd; }
 
 /* Headings use the same plain UI font as the rest of the desktop */
 h1, h2, h3, .markdown h1, .markdown h2, .markdown h3 {
@@ -132,13 +207,24 @@ p, .markdown p {
   line-height: 1.6;
 }
 
-/* === Navbar: taskbar-style raised bar === */
+/* === Navbar: raised taskbar / menu bar === */
 .navbar {
   background-color: var(--c-bg-1) !important;
   border-bottom: none;
-  box-shadow: inset 0 1px 0 #fff, 0 1px 0 #000, 0 2px 6px rgba(0, 0, 0, 0.3);
-  position: relative;
+  box-shadow: inset 0 1px 0 #fff, inset 0 -1px 0 #808080,
+              0 2px 0 #000, 0 3px 10px rgba(0, 0, 0, 0.35);
+  position: sticky;
+  padding: 0 0.5rem;
 }
+
+/* The brand reads like a Win9x "Start" button */
+.navbar__brand {
+  padding: 0.28rem 0.7rem 0.28rem 0.5rem;
+  margin-right: 0.75rem;
+  box-shadow: var(--bevel-raised);
+  background: var(--c-bg-1);
+}
+.navbar__brand:active { box-shadow: var(--bevel-sunken); }
 
 .navbar__title {
   font-family: var(--f-display);
@@ -146,7 +232,10 @@ p, .markdown p {
   letter-spacing: 1px;
   color: var(--c-text-0) !important;
   font-size: 0.95rem;
+  text-shadow: 1px 1px 0 #fff;
 }
+
+.navbar__logo { height: 1.4rem; }
 
 .navbar__item {
   font-family: var(--f-sans);
@@ -157,17 +246,25 @@ p, .markdown p {
 
 .navbar__link {
   color: var(--c-text-1);
-  transition: color 0.15s;
+  padding: 0.35rem 0.7rem;
+  transition: none;
+  position: relative;
 }
 
 .navbar__link:hover {
-  color: var(--c-accent);
+  color: var(--c-text-0);
+  box-shadow: var(--bevel-raised);
+  background: var(--c-bg-2);
 }
 
 .navbar__link--active {
-  color: var(--c-accent) !important;
+  color: var(--c-text-0) !important;
   font-weight: 700;
+  box-shadow: var(--bevel-sunken);
+  background: var(--c-bg-3);
 }
+
+.navbar__link--active:hover { box-shadow: var(--bevel-sunken); }
 
 .header-github-link::before {
   content: '';
@@ -181,25 +278,27 @@ p, .markdown p {
   transition: background-color 0.15s;
 }
 
-.header-github-link:hover::before {
-  background-color: var(--c-accent);
-}
+.header-github-link:hover { box-shadow: none; background: transparent; }
+.header-github-link:hover::before { background-color: var(--c-accent); }
+
+/* Mobile menu toggle sits flush in the taskbar */
+.navbar__toggle { color: var(--c-text-0); }
 
 /* === Footer: sunken status-bar strip === */
 .footer {
   background-color: var(--c-bg-1) !important;
   border-top: none;
-  box-shadow: inset 0 1px 0 #fff;
+  box-shadow: inset 0 2px 0 #fff, inset 0 3px 0 #dfdfdf, 0 -1px 0 #808080;
   padding: 3rem 0 1.5rem 0 !important;
   position: relative;
 }
 
 .footer__title {
   color: var(--c-text-0) !important;
-  font-family: var(--f-display);
-  font-size: 0.85rem !important;
-  letter-spacing: 0;
-  text-transform: none;
+  font-family: var(--f-mono);
+  font-size: 0.72rem !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   margin-bottom: 1rem !important;
   font-weight: 700;
 }
@@ -219,50 +318,46 @@ p, .markdown p {
 
 .footer__copyright {
   margin-top: 2rem;
-  padding-top: 1.25rem;
-  box-shadow: inset 0 1px 0 #fff;
-  font-family: var(--f-sans);
-  font-size: 0.78rem !important;
-  color: var(--c-text-3) !important;
-  letter-spacing: 0;
+  padding: 0.5rem 0.75rem;
+  display: inline-block;
+  box-shadow: var(--bevel-sunken);
+  background: var(--c-bg-2);
+  font-family: var(--f-mono);
+  font-size: 0.72rem !important;
+  color: var(--c-text-2) !important;
+  letter-spacing: 0.5px;
 }
 
-/* === Sidebar / docs === */
-.menu__link--active {
-  border-left: 2px solid var(--c-accent);
-  border-radius: 0;
-  font-weight: 700;
+/* ============================================================
+ * DOCS — long-form reading rendered as a "document window"
+ * sitting on the desktop. Paper surface, dark ink, Win9x panes.
+ * This is what replaces the bare teal "wrapper" bleeding behind
+ * the text: the content now lives on an opaque, readable page.
+ * ========================================================== */
+
+/* Content column → a raised paper window */
+.theme-doc-markdown {
+  background: var(--paper);
+  color: var(--c-text-1);
+  box-shadow: var(--bevel-raised), var(--shadow-window);
+  padding: 2.25rem 2.6rem 2.75rem;
+  margin: 1.25rem 0 2rem;
+  position: relative;
+  z-index: 1;
 }
 
-.markdown a {
-  color: var(--c-accent-wet);
-  text-decoration: underline;
+/* A hairline "paper grain" of ruled lines, barely there */
+.theme-doc-markdown::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(var(--paper-edge) 1px, transparent 1px);
+  background-size: 100% 2.1rem;
+  opacity: 0.35;
+  z-index: -1;
 }
 
-/* === Brand button colors (kept for utility) === */
-.brand-steam { background: var(--c-steam) !important; color: #fff !important; }
-.brand-steam:hover { background: #3a3a4a !important; }
-.brand-itch { background: var(--c-itch) !important; color: #fff !important; }
-.brand-itch:hover { background: #cc0000 !important; }
-.brand-unity { background: var(--c-unity) !important; color: #fff !important; }
-.brand-unity:hover { background: #505050 !important; }
-.brand-blender { background: var(--c-blender) !important; color: #fff !important; }
-.brand-blender:hover { background: #c06020 !important; }
-.brand-cgtrader { background: var(--c-cgtrader) !important; color: #fff !important; }
-.brand-cgtrader:hover { background: #8a7534 !important; }
-
-/* === Utility globals === */
-.mono { font-family: var(--f-mono); }
-.tag-label { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--c-text-3); }
-
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; }
-}
-
-/* === Docs & long-form content ===
- * Long-form reading (docs) uses the same system sans as the rest of the
- * desktop — there is no separate "marketing font" to reconcile any more.
- */
 .main-wrapper .theme-doc-markdown,
 .main-wrapper article {
   font-family: var(--f-sans);
@@ -276,7 +371,7 @@ p, .markdown p {
   font-family: inherit;
   font-style: normal;
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--c-text-1);
   letter-spacing: 0;
 }
@@ -296,23 +391,278 @@ p, .markdown p {
   color: var(--c-text-0);
 }
 
+/* Page title gets a navy "title bar" underline for OS flavour */
+.theme-doc-markdown > header h1,
+.markdown > h1:first-child {
+  position: relative;
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+.theme-doc-markdown > header h1::after,
+.markdown > h1:first-child::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--titlebar);
+}
+
+/* Section headings anchored with a small phosphor tick */
+.markdown h2 {
+  border-bottom: 1px solid var(--paper-edge);
+  padding-bottom: 0.35rem;
+  margin-top: 2.6rem;
+}
+.markdown h3 { margin-top: 1.8rem; }
+
 .main-wrapper .theme-doc-markdown code,
 .main-wrapper article code {
   font-family: var(--f-mono);
-  font-size: 0.9em;
-  background: rgba(0, 0, 0, 0.06);
-  padding: 2px 6px;
+  font-size: 0.88em;
+  background: #eceae2;
+  padding: 1px 6px;
   border-radius: 0;
-  color: var(--c-text-0);
+  box-shadow: var(--bevel-groove);
+  color: #002e5a;
 }
 
-.theme-doc-sidebar-container,
-.menu,
-.menu__link {
-  font-family: var(--f-sans);
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 0.92rem;
+.markdown a {
+  color: var(--c-accent-wet);
+  text-decoration: underline;
 }
-.menu__link { color: var(--c-text-1); }
-.menu__list-item-collapsible .menu__link { font-weight: 600; }
+.markdown a:hover { color: var(--c-accent); }
+
+/* --- Code blocks → dark terminal windows --- */
+.theme-code-block,
+.main-wrapper div[class*='codeBlockContainer'] {
+  box-shadow: var(--bevel-raised), var(--shadow-window-sm) !important;
+  border-radius: 0 !important;
+  margin-bottom: 1.4rem;
+}
+.main-wrapper div[class*='codeBlockTitle'] {
+  background: var(--titlebar) !important;
+  color: #fff !important;
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  border-radius: 0 !important;
+  border: none !important;
+  text-transform: uppercase;
+}
+.main-wrapper pre[class*='prism'],
+.main-wrapper div[class*='codeBlockContent'] pre {
+  border-radius: 0 !important;
+}
+.main-wrapper code[class*='codeBlockLines'] { font-family: var(--f-mono); }
+
+/* --- Tables → sunken Win9x list controls --- */
+.markdown table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: var(--bevel-sunken);
+  background: #fff;
+  margin: 1.4rem 0;
+  font-size: 0.9rem;
+}
+.markdown table thead tr {
+  background: var(--c-bg-3);
+  box-shadow: var(--bevel-raised);
+}
+.markdown table th {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--c-text-0);
+  border: none;
+  text-align: left;
+  padding: 0.55rem 0.8rem;
+}
+.markdown table td {
+  border-top: 1px solid #e2e0d7;
+  border-right: 1px dotted #d8d5cb;
+  padding: 0.5rem 0.8rem;
+  color: var(--c-text-1);
+}
+.markdown table tr:nth-child(even) td { background: #f4f2ea; }
+
+/* --- Admonitions → Win9x message boxes --- */
+.theme-admonition {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: var(--bevel-raised), var(--shadow-window-sm);
+  background: var(--c-bg-2) !important;
+  color: var(--c-text-1);
+}
+.theme-admonition .admonitionHeading_node,
+.theme-admonition div[class*='admonitionHeading'] {
+  font-family: var(--f-mono);
+  font-size: 0.72rem !important;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* === Sidebar & TOC panes === */
+.theme-doc-sidebar-container {
+  background: var(--c-bg-1);
+  box-shadow: var(--bevel-raised);
+  margin: 1.25rem 0.4rem 1rem 0;
+  border-right: none !important;
+}
+.theme-doc-sidebar-container > div { padding-top: 0.5rem; }
+
+.menu {
+  font-family: var(--f-sans);
+  padding: 0.6rem !important;
+}
+
+.menu__list-item-collapsible .menu__link { font-weight: 700; }
+
+.menu__link {
+  color: var(--c-text-1);
+  border-radius: 0;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.6rem;
+}
+.menu__link:hover {
+  background: var(--c-bg-3);
+  box-shadow: var(--bevel-groove);
+}
+/* Active file = classic Win9x selected row: navy fill, white text */
+.menu__link--active:not(.menu__link--sublist) {
+  background: var(--c-accent) !important;
+  color: #fff !important;
+  box-shadow: none;
+  border-left: none;
+  font-weight: 700;
+}
+.menu__link--active:not(.menu__link--sublist)::before {
+  content: '▸ ';
+  color: var(--c-phosphor);
+}
+
+.menu__caret:hover { background: var(--c-bg-3); }
+
+/* Right-hand table of contents */
+.theme-doc-toc-desktop,
+.table-of-contents {
+  border-left: none;
+}
+.table-of-contents {
+  background: var(--c-bg-1);
+  box-shadow: var(--bevel-raised);
+  padding: 0.8rem 0.4rem;
+  margin-top: 1.25rem;
+  font-size: 0.78rem;
+}
+.table-of-contents__left-border { border: none; }
+.table-of-contents__link {
+  color: var(--c-text-2);
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+}
+.table-of-contents__link--active,
+.table-of-contents__link:hover {
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+/* Breadcrumbs → a thin location bar */
+.breadcrumbs {
+  padding: 0.45rem 0.7rem;
+  box-shadow: var(--bevel-sunken);
+  background: var(--c-bg-2);
+  display: inline-flex;
+  margin-top: 1rem;
+}
+.breadcrumbs__item { display: inline-flex; align-items: center; }
+.breadcrumbs__link {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  color: var(--c-text-2);
+  background: transparent;
+  padding: 0.15rem 0.45rem;
+}
+.breadcrumbs__link:hover { background: var(--c-bg-3); color: var(--c-accent); }
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--c-accent);
+  font-weight: 700;
+  background: transparent;
+}
+
+/* Prev / next pager → raised buttons */
+.pagination-nav__link {
+  box-shadow: var(--bevel-raised);
+  border: none;
+  border-radius: 0;
+  background: var(--c-bg-1);
+}
+.pagination-nav__link:hover { background: var(--c-bg-2); }
+.pagination-nav__sublabel {
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--c-text-3);
+}
+.pagination-nav__label { color: var(--c-text-0); }
+
+/* Mobile "On this page" collapsible TOC */
+button[class*='tocCollapsibleButton'] {
+  box-shadow: var(--bevel-raised);
+  border: none !important;
+  border-radius: 0;
+  background: var(--c-bg-1);
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Generated category index cards */
+article .card,
+.main-wrapper a[class*='cardContainer'] {
+  box-shadow: var(--bevel-raised) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: var(--c-bg-1) !important;
+  transition: none;
+}
+.main-wrapper a[class*='cardContainer']:hover { background: var(--c-bg-2) !important; }
+
+/* === Brand button colors (kept for utility) === */
+.brand-steam { background: var(--c-steam) !important; color: #fff !important; }
+.brand-steam:hover { background: #3a3a4a !important; }
+.brand-itch { background: var(--c-itch) !important; color: #fff !important; }
+.brand-itch:hover { background: #cc0000 !important; }
+.brand-unity { background: var(--c-unity) !important; color: #fff !important; }
+.brand-unity:hover { background: #505050 !important; }
+.brand-blender { background: var(--c-blender) !important; color: #fff !important; }
+.brand-blender:hover { background: #c06020 !important; }
+.brand-cgtrader { background: var(--c-cgtrader) !important; color: #fff !important; }
+.brand-cgtrader:hover { background: #8a7534 !important; }
+
+/* === Utility globals === */
+.mono { font-family: var(--f-mono); }
+.tag-label { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--c-text-3); }
+
+/* Blinking terminal caret, reusable */
+.caret::after {
+  content: '_';
+  color: var(--c-phosphor);
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+@keyframes caret-blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+@media (max-width: 996px) {
+  .theme-doc-markdown { padding: 1.5rem 1.25rem 2rem; margin: 0.75rem 0; }
+  .theme-doc-sidebar-container { margin: 0; }
+}

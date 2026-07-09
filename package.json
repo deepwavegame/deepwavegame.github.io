@@ -1,14 +1,10 @@
 {
   "name": "wave0084.com",
-  "version": "0.4.1",
+  "version": "0.5.1",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "start:vi": "docusaurus start --locale vi",
-    "start:zh": "docusaurus start --locale zh",
-    "start:ja": "docusaurus start --locale ja",
-    "start:id": "docusaurus start --locale id",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

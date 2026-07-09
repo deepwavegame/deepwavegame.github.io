@@ -1,5 +1,7 @@
 .card {
   background-color: var(--c-bg-1);
+  /* Faint top-lit sheen so the grey face reads like moulded plastic */
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 40%);
   border-radius: 0;
   padding: 1.4rem;
   transition: none;
@@ -11,7 +13,7 @@
 }
 
 .bordered {
-  box-shadow: var(--bevel-raised);
+  box-shadow: var(--bevel-raised), var(--shadow-window-sm);
 }
 
 .flush {
@@ -19,15 +21,20 @@
 }
 
 .accent {
-  box-shadow: var(--bevel-raised), inset 0 0 0 1px var(--c-accent);
+  box-shadow: var(--bevel-raised), inset 0 3px 0 0 var(--c-accent), var(--shadow-window-sm);
 }
 
 .hoverable {
   cursor: pointer;
 }
 
+/* Hover = the card "powers on": a phosphor edge and a lifted shadow */
 .hoverable:hover {
-  box-shadow: var(--bevel-raised), inset 0 0 0 1px var(--c-accent);
+  box-shadow: var(--bevel-raised), inset 0 0 0 1px var(--c-phosphor-dim),
+              0 0 0 1px var(--c-phosphor-dim), 5px 5px 0 rgba(0, 0, 0, 0.28);
+}
+.hoverable:active {
+  box-shadow: var(--bevel-sunken), inset 0 0 0 1px var(--c-phosphor-dim);
 }
 
 .body {
@@ -41,6 +48,6 @@
   background-size: cover;
   background-position: center;
   position: relative;
-  box-shadow: inset 0 -1px 0 #808080;
+  box-shadow: inset 0 0 0 3px var(--c-bg-1), var(--bevel-sunken);
   flex-shrink: 0;
 }
