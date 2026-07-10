@@ -35,10 +35,10 @@
   flex: 1 1 auto;
   height: 1px;
   min-width: 24px;
-  background: linear-gradient(90deg, var(--c-accent), transparent);
+  background: linear-gradient(90deg, var(--c-accent-dim), transparent);
 }
 
 /* When flanked on both sides, mirror the right-hand rule direction. */
 .align-center .rule:first-child {
-  background: linear-gradient(90deg, transparent, var(--c-accent));
+  background: linear-gradient(90deg, transparent, var(--c-accent-dim));
 }
