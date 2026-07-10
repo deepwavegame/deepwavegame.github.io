@@ -9,6 +9,7 @@ export default function Card({
   bordered = true,
   flush = false,
   accent = false,
+  variant = 'default',
   style,
   ...rest
 }) {
@@ -16,6 +17,7 @@ export default function Card({
     <div
       className={clsx(
         styles.card,
+        variant === 'broadcast' && styles.broadcast,
         hoverable && styles.hoverable,
         bordered && styles.bordered,
         flush && styles.flush,

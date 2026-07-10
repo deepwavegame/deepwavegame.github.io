@@ -9,8 +9,8 @@
 .item {
   display: flex;
   justify-content: space-between;
-  padding: 0.6rem 0;
-  border-bottom: 1px dashed var(--c-border-2);
+  padding: 0.7rem 0;
+  border-bottom: 1px dashed var(--bc-line);
 }
 
 .item:last-child {
@@ -18,13 +18,14 @@
 }
 
 .label {
-  color: var(--c-text-3);
+  color: var(--bc-dim);
   letter-spacing: 2px;
   text-transform: uppercase;
   font-size: 0.7rem;
 }
 
 .value {
-  color: var(--c-accent);
+  color: var(--c-phosphor);
   font-weight: 700;
+  text-shadow: 0 0 10px rgba(23, 224, 196, 0.3);
 }

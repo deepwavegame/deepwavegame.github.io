@@ -1,0 +1,88 @@
+/* Shared broadcast layout for the games / tools / assets listings */
+
+/* --- "Program guide" strip above each grid --- */
+.guide {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding: 0.6rem 1rem;
+  background: rgba(4, 16, 14, 0.55);
+  border: 1px solid var(--bc-line);
+  border-left: 3px solid var(--c-phosphor);
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bc-dim);
+}
+.guideLabel {
+  color: var(--c-phosphor);
+  text-shadow: 0 0 10px rgba(23, 224, 196, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.guideDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-blood);
+  box-shadow: 0 0 8px var(--c-blood);
+  animation: cat-blink 1.05s steps(1) infinite;
+}
+@keyframes cat-blink { 50% { opacity: 0.15; } }
+.guideCount {
+  color: var(--bc-teal);
+  border: 1px solid var(--bc-line-2);
+  padding: 0.12rem 0.5rem;
+}
+.guideSpacer { flex: 1 1 auto; min-width: 12px; }
+.guideBars { margin-left: auto; }
+
+/* --- The grid --- */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+/* Games: large 2-up feature cards */
+.gridGames {
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  max-width: 940px;
+  margin: 0 auto;
+}
+/* Tools: dense 3-up (never more than ~3 per row) */
+.gridTools {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+/* Assets: single featured, centered */
+.gridAssets {
+  grid-template-columns: minmax(0, 460px);
+  justify-content: center;
+}
+
+/* --- Sign-off strip below each grid --- */
+.signoff {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-family: var(--f-mono);
+  font-size: 0.64rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--bc-dim);
+  padding: 0.9rem 0;
+  border-top: 1px dashed var(--bc-line);
+  animation: signoff-flicker 5s steps(1) infinite;
+}
+@keyframes signoff-flicker {
+  0%, 95%, 100% { opacity: 0.8; }
+  96% { opacity: 0.3; }
+  97% { opacity: 0.7; }
+}
+.signoff b { color: var(--c-phosphor); font-weight: 700; }
+
+@media (max-width: 520px) {
+  .gridGames { grid-template-columns: 1fr; }
+  .guideBars { display: none; }
+}

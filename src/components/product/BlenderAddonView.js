@@ -19,7 +19,7 @@ export default function BlenderAddonView({ tool }) {
         </Button>
       )}
       {tool.links.docs && tool.links.docs !== '#' && (
-        <Button to={tool.links.docs} variant="ghost" block size="md">
+        <Button to={tool.links.docs} variant="bc" block size="md">
           DOCUMENTATION
         </Button>
       )}
@@ -39,7 +39,7 @@ export default function BlenderAddonView({ tool }) {
               label="[ BLENDER ADDON ]"
             />
 
-            <div style={{ marginTop: '2.5rem', color: 'var(--c-text-1)', lineHeight: 1.8, fontSize: '1.02rem' }}>
+            <div style={{ marginTop: '2.5rem', color: 'var(--bc-text)', lineHeight: 1.8, fontSize: '1.02rem' }}>
               <p>{tool.description}</p>
             </div>
 

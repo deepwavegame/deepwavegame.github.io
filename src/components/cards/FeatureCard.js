@@ -4,7 +4,7 @@ import styles from './FeatureCard.module.css';
 
 export default function FeatureCard({ index, icon, title, description }) {
   return (
-    <Card className={styles.card}>
+    <Card variant="broadcast" className={styles.card}>
       {(index || icon) && (
         <div className={styles.header}>
           {icon ? <span className={styles.icon}>{icon}</span> : (

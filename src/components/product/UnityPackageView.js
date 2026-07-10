@@ -27,7 +27,7 @@ export default function UnityPackageView({ tool }) {
         </Button>
       )}
       {links.docs && links.docs !== '#' && (
-        <Button to={links.docs} variant="ghost" block size="md">
+        <Button to={links.docs} variant="bc" block size="md">
           DOCUMENTATION
         </Button>
       )}
@@ -48,7 +48,7 @@ export default function UnityPackageView({ tool }) {
               label={dev ? '[ PREVIEW NOT AVAILABLE ]' : '[ PREVIEW ]'}
             />
 
-            <div style={{ marginTop: '2.5rem', color: 'var(--c-text-1)', lineHeight: 1.8, fontSize: '1.02rem' }}>
+            <div style={{ marginTop: '2.5rem', color: 'var(--bc-text)', lineHeight: 1.8, fontSize: '1.02rem' }}>
               <p>{tool.description}</p>
             </div>
 

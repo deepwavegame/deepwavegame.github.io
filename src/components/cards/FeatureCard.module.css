@@ -1,5 +1,5 @@
 .card {
-  background: var(--c-bg-2);
+  background: var(--bc-panel);
 }
 
 .header {
@@ -13,8 +13,9 @@
   font-family: var(--f-mono);
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--c-accent);
+  color: var(--c-phosphor);
   letter-spacing: -1px;
+  text-shadow: 0 0 14px rgba(23, 224, 196, 0.4);
 }
 
 .icon {
@@ -24,12 +25,12 @@
 .line {
   flex-grow: 1;
   height: 1px;
-  background: linear-gradient(90deg, var(--c-accent), transparent);
+  background: linear-gradient(90deg, var(--c-phosphor), transparent);
 }
 
 .title {
   font-size: 1.05rem;
-  color: var(--c-text-0);
+  color: var(--bc-head);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-weight: 700;
@@ -37,7 +38,7 @@
 }
 
 .desc {
-  color: var(--c-text-2);
+  color: var(--bc-dim);
   font-size: 0.88rem;
   line-height: 1.7;
   margin: 0;

@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import clsx from 'clsx';
 import styles from './Button.module.css';
 
-const VARIANTS = ['default', 'primary', 'ghost', 'danger', 'outline'];
+const VARIANTS = ['default', 'primary', 'ghost', 'danger', 'outline', 'bc', 'bcPrimary'];
 const SIZES = ['sm', 'md', 'lg'];
 const BRANDS = ['steam', 'itch', 'unity', 'blender', 'cgtrader'];
 
