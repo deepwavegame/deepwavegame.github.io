@@ -67,12 +67,20 @@
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
 }
 
 .specsDivider {
   margin: 1.5rem 0 0.75rem;
+  /* color: rgba(23, 224, 196, 0.5); */
 }
 
 .actions {
@@ -115,9 +123,13 @@
   text-shadow: 0 0 12px rgba(23, 224, 196, 0.3);
 }
 
-.features { margin-top: 3rem; }
+.features {
+  margin-top: 3rem;
+}
 
-.featuresHeader { margin-bottom: 1.5rem; }
+.featuresHeader {
+  margin-bottom: 1.5rem;
+}
 
 .preview {
   background: radial-gradient(ellipse at 50% 38%, #0e2e26, #05120f);

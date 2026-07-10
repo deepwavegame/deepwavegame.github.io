@@ -92,13 +92,13 @@ const config = {
             title: 'Resources',
             items: [
               { label: 'Documentation', to: '/docs/tools/simple-painter/intro' },
-              { label: 'Support', href: 'mailto:support@wave0084.com' },
+              { label: 'Support', href: 'mailto:deepwavegame@gmail.com' },
             ],
           },
           {
             title: 'Community',
             items: [
-              { label: 'Discord', href: 'https://discord.gg/wave0084' },
+              { label: 'Discord', href: 'https://discord.gg/BBAbWu2Mv' },
               { label: 'Twitter / X', href: 'https://twitter.com/wave0084' },
               { label: 'YouTube', href: 'https://youtube.com/@wave0084' },
               { label: 'GitHub', href: 'https://github.com/deepwavegame' },

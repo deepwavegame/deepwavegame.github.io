@@ -17,6 +17,7 @@
   text-transform: uppercase;
   color: var(--bc-dim);
 }
+
 .guideLabel {
   color: var(--c-phosphor);
   text-shadow: 0 0 10px rgba(23, 224, 196, 0.35);
@@ -24,6 +25,7 @@
   align-items: center;
   gap: 0.5rem;
 }
+
 .guideDot {
   width: 8px;
   height: 8px;
@@ -32,30 +34,44 @@
   box-shadow: 0 0 8px var(--c-blood);
   animation: cat-blink 1.05s steps(1) infinite;
 }
-@keyframes cat-blink { 50% { opacity: 0.15; } }
+
+@keyframes cat-blink {
+  50% {
+    opacity: 0.15;
+  }
+}
+
 .guideCount {
   color: var(--bc-teal);
   border: 1px solid var(--bc-line-2);
   padding: 0.12rem 0.5rem;
 }
-.guideSpacer { flex: 1 1 auto; min-width: 12px; }
-.guideBars { margin-left: auto; }
+
+.guideSpacer {
+  flex: 1 1 auto;
+  min-width: 12px;
+}
+
+.guideBars {
+  margin-left: auto;
+}
 
 /* --- The grid --- */
 .grid {
   display: grid;
   gap: 1.5rem;
 }
-/* Games: large 2-up feature cards */
+
+/* Games: large 2-up feature cards, max 2 per row, fills the outer container */
 .gridGames {
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  max-width: 940px;
-  margin: 0 auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+
 /* Tools: dense 3-up (never more than ~3 per row) */
 .gridTools {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
+
 /* Assets: single featured, centered */
 .gridAssets {
   grid-template-columns: minmax(0, 460px);
@@ -75,14 +91,35 @@
   border-top: 1px dashed var(--bc-line);
   animation: signoff-flicker 5s steps(1) infinite;
 }
+
 @keyframes signoff-flicker {
-  0%, 95%, 100% { opacity: 0.8; }
-  96% { opacity: 0.3; }
-  97% { opacity: 0.7; }
+
+  0%,
+  95%,
+  100% {
+    opacity: 0.8;
+  }
+
+  96% {
+    opacity: 0.3;
+  }
+
+  97% {
+    opacity: 0.7;
+  }
 }
-.signoff b { color: var(--c-phosphor); font-weight: 700; }
+
+.signoff b {
+  color: var(--c-phosphor);
+  font-weight: 700;
+}
 
 @media (max-width: 520px) {
-  .gridGames { grid-template-columns: 1fr; }
-  .guideBars { display: none; }
+  .gridGames {
+    grid-template-columns: 1fr;
+  }
+
+  .guideBars {
+    display: none;
+  }
 }
