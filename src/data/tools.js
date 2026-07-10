@@ -135,6 +135,7 @@ const tools = [
       docs: '/docs/tools/retro-os/intro',
     },
     specs: {
+      price: '$15.65',
       version: 'v0.2.0',
       requirement: 'Unity 2021.3+',
     },
@@ -144,7 +145,7 @@ const tools = [
       keywords:
         'unity retro os, windows 95 unity, in-game computer unity, fake os unity asset, unity terminal simulator, unity cctv camera system, found footage horror unity, unity desktop simulator, unity virtual file system, deepwave retro os, wave0084',
     },
-    isUnderDevelopment: true,
+    isUnderDevelopment: false,
     features: [
       {
         title: 'Draggable Window Manager',
@@ -165,6 +166,54 @@ const tools = [
         title: 'Zero Audio or Image Assets',
         description:
           'Nine UI sounds synthesized at runtime and thirteen desktop icons drawn procedurally — nothing to import, nothing to license.',
+      },
+    ],
+  },
+  {
+    id: 'dynamic-target-framer',
+    type: TOOL_TYPES.UNITY_PACKAGE,
+    title: 'Dynamic Target Framer',
+    tagline: 'Pixel-tight UI framing for whatever the player is looking at.',
+    description:
+      'Puts a clean, dynamic bounding box on screen around whatever 3D object the player is aiming at. The frame is built from the object’s real mesh or MeshCollider vertices, not a loose world-space box, so it stays as tight as possible from every camera angle. The Runtime only measures and publishes the result as data — how it’s drawn is entirely up to you, with a drop-in reference view included.',
+    thumbnail: null,
+    links: {
+      page: '/tools/dynamic-target-framer',
+      docs: '/docs/tools/dynamic-target-framer/intro',
+    },
+    specs: {
+      price: '$5.69',
+      version: 'v1.0.0',
+      size: '0.3 MB',
+      requirement: 'Unity 6000.0+',
+    },
+    seo: {
+      description:
+        'Dynamic Target Framer draws a pixel-tight UI frame around any 3D object on screen. Mesh-accurate, allocation-free, and presentation-agnostic — the Runtime only publishes screen-space frame data, so you can wire in your own look on Built-in, URP or HDRP.',
+      keywords:
+        'unity target framer, unity bounding box ui, look at highlight unity, unity selection frame, unity interaction prompt, mesh accurate bounding box, unity crosshair target, unity ui frame object, allocation free unity ui, deepwave dynamic target framer',
+    },
+    isUnderDevelopment: false,
+    features: [
+      {
+        title: 'Mesh-Accurate Fit',
+        description:
+          'Projects the target’s real mesh or MeshCollider vertices to screen space — not a loose world-space AABB — so the frame hugs the silhouette from every angle.',
+      },
+      {
+        title: 'Presentation-Agnostic Core',
+        description:
+          'The Runtime component only measures and publishes a TargetFrame (a screen-space rectangle). It never references uGUI, so any renderer — yours or ours — can consume it.',
+      },
+      {
+        title: 'Drop-In Reference View',
+        description:
+          'The included TargetFrameView sample reproduces padding, smoothing and idle states in one component — copy it as a starting point for your own look.',
+      },
+      {
+        title: 'Zero Steady-State GC',
+        description:
+          'Mesh vertices are cached once per mesh and the box is only recalculated when the camera or target actually moves — built for low-end and mobile.',
       },
     ],
   },

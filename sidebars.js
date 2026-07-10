@@ -70,6 +70,22 @@ const sidebars = {
       items: ['tools/retro-os/intro'],
     },
   ],
+
+  // Sidebar cho Dynamic Target Framer
+  dynamicTargetFramerSidebar: [
+    {
+      type: 'category',
+      label: 'Dynamic Target Framer',
+      link: {
+        type: 'generated-index',
+        title: 'Dynamic Target Framer Documentation',
+        description:
+          'Documentation for Dynamic Target Framer — a pixel-tight, mesh-accurate UI framing package for Unity.',
+        slug: '/dynamic-target-framer',
+      },
+      items: ['tools/dynamic-target-framer/intro'],
+    },
+  ],
 };
 
 module.exports = sidebars;
