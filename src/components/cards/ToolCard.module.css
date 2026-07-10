@@ -144,6 +144,8 @@
 .actions {
   display: flex;
   gap: 0.6rem;
-  margin-top: auto;
+  margin-top: 1.3rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(23, 224, 196, 0.15);
 }
 .actions > * { flex: 1; }
