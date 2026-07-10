@@ -39,11 +39,7 @@ export default function ToolCard({ tool }) {
         <h3 className={styles.title}>{tool.title}</h3>
         <p className={styles.tagline}>{tool.tagline}</p>
 
-        <div className={styles.specs}>
-          {tool.specs?.requirement && <span>{tool.specs.requirement}</span>}
-        </div>
-
-        <div className={styles.actions}>
+        <div className={styles.actions} style={{ marginTop: 'auto' }}>
           {hasDocs && (
             <Button to={tool.links.docs} variant="bc" size="md">
               DOCS

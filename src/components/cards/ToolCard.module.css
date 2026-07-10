@@ -63,35 +63,38 @@
   z-index: 5;
 }
 
-/* === Price tag — bright phosphor, unmistakable === */
+/* === Price tag — refined, elegant — bright phosphor, subtle positioning === */
 .priceTag {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 0.75rem;
+  left: 0.75rem;
   z-index: 5;
   display: flex;
   flex-direction: column;
-  padding: 0.45rem 1rem 0.5rem;
-  background: rgba(4, 16, 14, 0.82);
-  border-left: 3px solid var(--c-phosphor);
-  border-top: 1px solid var(--bc-line-2);
-  box-shadow: 0 0 22px rgba(23, 224, 196, 0.25);
-  backdrop-filter: blur(3px);
+  gap: 0.15rem;
+  padding: 0.5rem 0.85rem 0.55rem;
+  background: rgba(4, 16, 14, 0.75);
+  border-left: 2px solid var(--c-phosphor);
+  border: 1px solid rgba(23, 224, 196, 0.3);
+  box-shadow: 0 0 18px rgba(23, 224, 196, 0.18);
+  backdrop-filter: blur(4px);
 }
 .priceLabel {
   font-family: var(--f-mono);
-  font-size: 0.56rem;
-  letter-spacing: 2px;
+  font-size: 0.54rem;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--bc-red);
+  opacity: 0.9;
 }
 .priceValue {
   font-family: var(--f-mono);
-  font-weight: 800;
-  font-size: 1.35rem;
+  font-weight: 700;
+  font-size: 1.28rem;
   color: var(--c-phosphor);
   line-height: 1;
-  text-shadow: 0 0 16px rgba(23, 224, 196, 0.55);
+  text-shadow: 0 0 14px rgba(23, 224, 196, 0.45);
+  letter-spacing: -0.5px;
 }
 
 /* === Body === */
