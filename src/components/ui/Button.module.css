@@ -108,6 +108,50 @@
   background-color: var(--c-bg-4);
 }
 
+/* === Broadcast variants — dark phosphor CTAs for the dead-signal skin === */
+.variant-bc,
+.variant-bcPrimary {
+  font-family: var(--f-mono);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 0;
+  background: rgba(10, 25, 22, 0.6);
+  background-image: none;
+  box-shadow: none;
+  border: 1px solid var(--bc-line-2);
+  color: var(--bc-text);
+  transition: color 0.15s, background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+.variant-bc:hover,
+.variant-bcPrimary:hover {
+  color: #04100e;
+  background: var(--c-phosphor);
+  border-color: var(--c-phosphor);
+  box-shadow: 0 0 24px rgba(23, 224, 196, 0.45);
+}
+.variant-bc:active,
+.variant-bcPrimary:active {
+  box-shadow: none;
+  transform: translateY(1px);
+  padding: var(--btn-pad-y) var(--btn-pad-x) !important;
+  background-image: none;
+}
+.variant-bcPrimary {
+  color: #04100e;
+  background: var(--c-phosphor);
+  border-color: var(--c-phosphor);
+  box-shadow: 0 0 20px rgba(23, 224, 196, 0.4);
+}
+.variant-bcPrimary:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #04100e;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+.variant-bc:focus-visible,
+.variant-bcPrimary:focus-visible { outline: 1px dotted var(--c-phosphor); outline-offset: 2px; }
+
 /* Modifiers */
 .block { width: 100%; }
 .disabled {

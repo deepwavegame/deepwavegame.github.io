@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardBody, CardMedia, Button, Badge } from '@site/src/components/ui';
+import { Button, Badge } from '@site/src/components/ui';
+import { StaticField } from '@site/src/components/fx';
 import styles from './AssetCard.module.css';
 
 const STORE_BUTTONS = [
@@ -11,16 +12,25 @@ const STORE_BUTTONS = [
 
 export default function AssetCard({ asset }) {
   return (
-    <Card flush className={styles.card}>
-      <div className={styles.typeBadge}>
-        <Badge tone="accent">{asset.type}</Badge>
+    <div className={styles.card}>
+      <div className={styles.screen}>
+        {asset.thumbnail && (
+          <div
+            className={styles.shot}
+            style={{ backgroundImage: `url(${asset.thumbnail})` }}
+            aria-hidden
+          />
+        )}
+        <StaticField className={styles.static} opacity={0.12} />
+        <div className={styles.scan} aria-hidden />
+
+        <div className={styles.typeBadge}>
+          <Badge tone="accent" broadcast>{asset.type}</Badge>
+        </div>
+        <span className={styles.feed}>◄► ASSET FEED</span>
       </div>
 
-      <CardMedia src={asset.thumbnail} height={220} overlay={false}>
-        <div className={styles.fade} />
-      </CardMedia>
-
-      <CardBody>
+      <div className={styles.body}>
         <h3 className={styles.title}>{asset.title}</h3>
         <p className={styles.desc}>{asset.description}</p>
 
@@ -30,13 +40,13 @@ export default function AssetCard({ asset }) {
         </div>
 
         <div className={styles.stores}>
-          {STORE_BUTTONS.filter(b => asset[b.key]).map((b) => (
+          {STORE_BUTTONS.filter((b) => asset[b.key]).map((b) => (
             <Button key={b.key} to={asset[b.key]} brand={b.brand} size="sm">
               {b.label}
             </Button>
           ))}
         </div>
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   );
 }

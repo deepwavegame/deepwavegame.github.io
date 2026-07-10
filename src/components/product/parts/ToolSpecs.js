@@ -10,7 +10,7 @@ export default function ToolSpecs({ specs, actions, isUnderDevelopment }) {
   ].filter(Boolean);
 
   return (
-    <Card hoverable={false} accent className={styles.specCard}>
+    <Card hoverable={false} variant="broadcast" className={styles.specCard}>
       {isUnderDevelopment ? (
         <div className={styles.devBanner}>
           <span className={styles.devDot} />

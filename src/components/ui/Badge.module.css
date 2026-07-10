@@ -38,6 +38,22 @@
   color: var(--c-text-3);
 }
 
+/* === Broadcast chip: dark HUD tag with a glowing current-colour border === */
+.bc {
+  background: rgba(4, 16, 14, 0.72);
+  box-shadow: none;
+  border: 1px solid currentColor;
+  padding: 0.28rem 0.6rem;
+  text-shadow: 0 0 8px currentColor;
+  backdrop-filter: blur(2px);
+}
+.bc.accent { color: var(--c-phosphor); }
+.bc.success { color: var(--c-signal); }
+.bc.warn { color: var(--bc-amber); }
+.bc.danger { color: var(--bc-red); }
+.bc.muted { color: var(--bc-dim); }
+.bc.default { color: var(--bc-teal); }
+
 .pulse::before {
   content: '';
   width: 6px;
@@ -45,6 +61,7 @@
   border-radius: 50%;
   background: currentColor;
   animation: pulse-dot 1.6s ease-in-out infinite;
+  box-shadow: 0 0 8px currentColor;
 }
 
 @keyframes pulse-dot {

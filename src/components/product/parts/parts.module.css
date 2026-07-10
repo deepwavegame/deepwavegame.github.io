@@ -1,8 +1,10 @@
 .specCard {
   position: sticky;
   top: 96px;
-  background: var(--c-bg-3) !important;
+  background: var(--bc-panel-2) !important;
   padding: 1.5rem !important;
+  border-top: 3px solid var(--c-phosphor) !important;
+  box-shadow: 0 0 24px rgba(23, 224, 196, 0.12), 0 16px 40px rgba(0, 0, 0, 0.55) !important;
 }
 
 .priceWrap {
@@ -17,7 +19,7 @@
   font-family: var(--f-mono);
   font-size: 0.65rem;
   letter-spacing: 3px;
-  color: var(--c-accent);
+  color: var(--bc-red);
   margin-bottom: 0.5rem;
 }
 
@@ -25,14 +27,15 @@
   font-family: var(--f-mono);
   font-size: 2.25rem;
   font-weight: 800;
-  color: var(--c-text-0);
+  color: var(--c-phosphor);
   letter-spacing: -1px;
+  text-shadow: 0 0 22px rgba(23, 224, 196, 0.45);
 }
 
 .priceNote {
   text-align: center;
   font-size: 0.7rem;
-  color: var(--c-text-3);
+  color: var(--bc-dim);
   font-family: var(--f-mono);
   margin: 0.25rem 0 0;
   letter-spacing: 0.5px;
@@ -44,9 +47,9 @@
   justify-content: center;
   gap: 8px;
   padding: 1rem;
-  border: 1px dashed var(--c-warn);
-  background: rgba(176, 128, 32, 0.06);
-  color: var(--c-warn);
+  border: 1px dashed var(--bc-amber);
+  background: rgba(255, 176, 0, 0.06);
+  color: var(--bc-amber);
   font-family: var(--f-mono);
   font-size: 0.78rem;
   letter-spacing: 2px;
@@ -58,7 +61,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--c-warn);
+  background: var(--bc-amber);
+  box-shadow: 0 0 8px var(--bc-amber);
   animation: blink 1.4s ease-in-out infinite;
 }
 
@@ -77,7 +81,7 @@
   gap: 8px;
   margin-top: 1.5rem;
   padding-top: 1.25rem;
-  border-top: 1px solid var(--c-border-1);
+  border-top: 1px solid var(--bc-line);
 }
 
 .header {
@@ -92,21 +96,23 @@
 
 .title {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
-  color: var(--c-text-0);
+  color: var(--bc-head);
   margin: 0 0 0.5rem;
   font-weight: 800;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
   line-height: 1.15;
-  text-transform: none;
+  text-transform: uppercase;
+  text-shadow: 0 0 28px rgba(77, 255, 176, 0.18);
 }
 
 .tagline {
   font-family: var(--f-mono);
   font-size: 1rem;
-  color: var(--c-accent);
+  color: var(--c-phosphor);
   font-weight: 400;
   letter-spacing: 0.5px;
   margin: 0;
+  text-shadow: 0 0 12px rgba(23, 224, 196, 0.3);
 }
 
 .features { margin-top: 3rem; }
@@ -114,8 +120,8 @@
 .featuresHeader { margin-bottom: 1.5rem; }
 
 .preview {
-  background: #fff;
-  box-shadow: var(--bevel-sunken);
+  background: radial-gradient(ellipse at 50% 38%, #0e2e26, #05120f);
+  border: 1px solid var(--bc-line-2);
   padding-bottom: 56.25%;
   position: relative;
   overflow: hidden;
@@ -136,12 +142,20 @@
   align-items: center;
   justify-content: center;
   font-family: var(--f-mono);
-  color: var(--c-text-3);
+  color: var(--bc-teal);
   letter-spacing: 3px;
   font-size: 0.85rem;
   z-index: 2;
+  text-shadow: 0 0 12px rgba(77, 255, 176, 0.35);
 }
 
+/* scanline veil over the preview screen */
 .previewGrid {
-  display: none;
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: var(--bc-scan);
+  mix-blend-mode: multiply;
 }

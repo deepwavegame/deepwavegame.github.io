@@ -37,6 +37,26 @@
   box-shadow: var(--bevel-sunken), inset 0 0 0 1px var(--c-phosphor-dim);
 }
 
+/* === Broadcast variant: dark monitor panel === */
+.broadcast {
+  background: var(--bc-panel);
+  background-image: none;
+  color: var(--bc-text);
+  border: 1px solid var(--bc-line);
+}
+.broadcast.bordered {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.broadcast.hoverable:hover {
+  border-color: var(--c-phosphor);
+  box-shadow: 0 0 0 1px var(--c-phosphor), 0 0 30px rgba(23, 224, 196, 0.28),
+              0 16px 40px rgba(0, 0, 0, 0.6);
+}
+.broadcast.hoverable:active {
+  box-shadow: inset 0 0 0 1px var(--c-phosphor-dim), 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+.broadcast .media { box-shadow: none; }
+
 .body {
   padding: 1.4rem;
   flex-grow: 1;
