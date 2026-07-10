@@ -9,7 +9,7 @@
 
 :root {
   /* === Palette: classic Win9x grey, navy & teal desktop === */
-  --c-bg-0: #008080;         /* desktop teal (base) */
+  --c-bg-0: #04100e;         /* desktop base — dead-signal void (was Win95 teal) */
   --c-bg-1: #c0c0c0;         /* window face */
   --c-bg-2: #cac6be;
   --c-bg-3: #d4d0c8;
@@ -143,7 +143,7 @@ html {
 body {
   color: var(--c-text-1);
   -webkit-font-smoothing: antialiased;
-  background-color: #008080;
+  background-color: var(--c-void);
 }
 
 /* The desktop wallpaper lives on a fixed layer (no background-attachment:fixed

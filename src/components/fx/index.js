@@ -99,22 +99,18 @@ export function TypeLine({ text, speed = 16, startDelay = 250, className, caret 
     }
     setOut('');
     setDone(false);
-    let i = 0;
-    let interval;
-    const start = setTimeout(() => {
-      interval = setInterval(() => {
-        i += 1;
-        setOut(text.slice(0, i));
-        if (i >= text.length) {
-          clearInterval(interval);
-          setDone(true);
-        }
-      }, speed);
-    }, startDelay);
-    return () => {
-      clearTimeout(start);
-      clearInterval(interval);
-    };
+    // Elapsed-time based typing: throttled/background tabs jump straight to the
+    // correct position instead of crawling one tick per throttled interval.
+    const t0 = performance.now() + startDelay;
+    const interval = setInterval(() => {
+      const chars = Math.max(0, Math.floor((performance.now() - t0) / speed));
+      setOut(text.slice(0, chars));
+      if (chars >= text.length) {
+        clearInterval(interval);
+        setDone(true);
+      }
+    }, Math.max(speed, 24));
+    return () => clearInterval(interval);
   }, [shown, text, speed, startDelay]);
 
   return (
