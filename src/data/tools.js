@@ -218,6 +218,63 @@ const tools = [
     ],
   },
   {
+    id: 'analog-vhs',
+    type: TOOL_TYPES.UNITY_PACKAGE,
+    title: 'Analog VHS',
+    tagline: 'Retro VHS & CRT post-processing for Unity.',
+    description:
+      'Turns any camera into a worn tape deck, a broadcast monitor or a haunted camcorder. Seven independent profile modules — pixelation, color, noise, jitter, signal grade, CRT screen and phosphor trail — render in four fullscreen passes shared by Built-in, URP and HDRP, with real bandwidth-limited composite color, a rolling-tracking-loss analog-horror toolkit, and a one-click pipeline setup tool.',
+    thumbnail: null,
+    links: {
+      page: '/tools/analog-vhs',
+      docs: '/docs/tools/analog-vhs/intro',
+    },
+    specs: {
+      price: '$25.65',
+      version: 'v1.2.0',
+      requirement: 'Unity 6000.0+',
+    },
+    seo: {
+      description:
+        'Analog VHS is a retro post-processing effect for Unity 6: worn-tape grain, tracking loss, scanlines and real bandwidth-limited composite color, with a CRT screen model and analog-horror toolkit. Built-in, URP & HDRP, 14 presets.',
+      keywords:
+        'unity vhs shader, unity crt shader, retro post processing unity, analog horror unity, vhs effect unity, composite video unity, scanline shader unity, tracking loss effect, unity found footage horror, deepwave analog vhs',
+    },
+    isUnderDevelopment: false,
+    features: [
+      {
+        title: 'Seven Independent Modules',
+        description:
+          'Pixelation, Color, Noise, Jitter, Signal & Grade, CRT Screen and Phosphor Trail, each with its own master toggle — mix and match on one profile asset.',
+      },
+      {
+        title: 'Real Bandwidth-Limited Color',
+        description:
+          'Luma stored at half resolution and re-sharpened with an unsharp mask, chroma at ~1/16 resolution with horizontal delay — the actual composite-video bleed mechanism, not a blur filter.',
+      },
+      {
+        title: 'Analog-Horror Toolkit',
+        description:
+          'Rolling tracking loss that slides the picture into static, per-line hue phase error, wavy scanline distortion and head-switch darkening.',
+      },
+      {
+        title: 'CRT Screen Model',
+        description:
+          'Barrel curvature with a black border, RGB phosphor stripe mask, full-frame flicker and a TV-style vignette that stays live even with bandwidth limiting off.',
+      },
+      {
+        title: 'One-Click Pipeline Setup',
+        description:
+          'A diagnose-and-apply tool wires up the URP renderer feature or HDRP custom pass volume, assigns a default profile and converts scene materials between pipelines.',
+      },
+      {
+        title: '14 Ready-Made Presets',
+        description:
+          'From a clean VCR to full signal chaos, plus a runtime preset-cycler sample with on-screen next/previous controls.',
+      },
+    ],
+  },
+  {
     id: 'blender-horror-exporter',
     type: TOOL_TYPES.BLENDER_ADDON,
     title: 'Horror Asset Exporter',

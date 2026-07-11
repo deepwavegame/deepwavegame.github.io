@@ -86,6 +86,22 @@ const sidebars = {
       items: ['tools/dynamic-target-framer/intro'],
     },
   ],
+
+  // Sidebar cho Analog VHS
+  analogVhsSidebar: [
+    {
+      type: 'category',
+      label: 'Analog VHS',
+      link: {
+        type: 'generated-index',
+        title: 'Analog VHS Documentation',
+        description:
+          'Documentation for Analog VHS — a retro VHS & CRT post-processing effect for Unity, with a bandwidth-limited composite color model and an analog-horror toolkit.',
+        slug: '/analog-vhs',
+      },
+      items: ['tools/analog-vhs/intro'],
+    },
+  ],
 };
 
 module.exports = sidebars;
