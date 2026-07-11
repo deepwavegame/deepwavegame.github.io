@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-tools/infinite-corrugated-roof/editor-guide" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Editor Guide | Wave0084 Studio</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://deepwavegame.github.io/img/products/tools/simple-painter/thumbnail.jpg"><meta data-rh="true" name="twitter:image" content="https://deepwavegame.github.io/img/products/tools/simple-painter/thumbnail.jpg"><meta data-rh="true" property="og:url" content="https://deepwavegame.github.io/docs/tools/infinite-corrugated-roof/editor-guide"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Editor Guide | Wave0084 Studio"><meta data-rh="true" name="description" content="Every field on the Infinite Corrugated Roof Inspector — panel layout, wave configuration, mesh, modifiers, texture atlas mapping and randomization."><meta data-rh="true" property="og:description" content="Every field on the Infinite Corrugated Roof Inspector — panel layout, wave configuration, mesh, modifiers, texture atlas mapping and randomization."><meta data-rh="true" name="keywords" content="corrugated roof inspector,roof panel settings unity,wave profile animationcurve,roof texture atlas"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://deepwavegame.github.io/docs/tools/infinite-corrugated-roof/editor-guide"><link data-rh="true" rel="alternate" href="https://deepwavegame.github.io/docs/tools/infinite-corrugated-roof/editor-guide" hreflang="en"><link data-rh="true" rel="alternate" href="https://deepwavegame.github.io/docs/tools/infinite-corrugated-roof/editor-guide" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Infinite Corrugated Roof","item":"https://deepwavegame.github.io/docs/infinite-corrugated-roof"},{"@type":"ListItem","position":2,"name":"Editor Guide","item":"https://deepwavegame.github.io/docs/tools/infinite-corrugated-roof/editor-guide"}]}</script><link rel="stylesheet" href="/assets/css/styles.d4709db9.css">
+<script src="/assets/js/runtime~main.e6af36f7.js" defer="defer"></script>
+<script src="/assets/js/main.3f82dfc8.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Wave0084 Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="Wave0084 Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">WAVE0084</b></a><a class="navbar__item navbar__link" href="/games">Games</a><a class="navbar__item navbar__link" href="/tools">Tools</a><a class="navbar__item navbar__link" href="/assets">Assets</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/deepwavegame" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/infinite-corrugated-roof"><span title="Infinite Corrugated Roof" class="categoryLinkLabel_W154">Infinite Corrugated Roof</span></a><button aria-label="Collapse sidebar category &#x27;Infinite Corrugated Roof&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/infinite-corrugated-roof/product-overview"><span title="Overview" class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/infinite-corrugated-roof/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/infinite-corrugated-roof/getting-started"><span title="Getting Started" class="linkLabel_WmDU">Getting Started</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/tools/infinite-corrugated-roof/editor-guide"><span title="Editor Guide" class="linkLabel_WmDU">Editor Guide</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/infinite-corrugated-roof/advanced-features"><span title="Advanced Features" class="linkLabel_WmDU">Advanced Features</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/infinite-corrugated-roof/technical-reference"><span title="LOD &amp; Performance" class="linkLabel_WmDU">LOD &amp; Performance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/infinite-corrugated-roof/api-reference"><span title="API Reference" class="linkLabel_WmDU">API Reference</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/infinite-corrugated-roof"><span>Infinite Corrugated Roof</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Editor Guide</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Editor &amp; Inspector Guide</h1></header>
+<p>The <code>InfiniteCorrugatedRoof</code> component groups its parameters into logical sections. Field
+names below match the public fields on the component, so they line up with the
+<a class="" href="/docs/tools/infinite-corrugated-roof/api-reference">scripting API</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="panel-layout--dimensions">Panel layout &amp; dimensions<a href="#panel-layout--dimensions" class="hash-link" aria-label="Direct link to Panel layout &amp; dimensions" title="Direct link to Panel layout &amp; dimensions" translate="no">​</a></h2>
+<p>Controls the size of the grid and how panels overlap.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>columnCount</code></td><td>Number of panel columns across the roof (X axis)</td><td><code>1</code></td></tr><tr><td><code>rowCount</code></td><td>Number of panel rows along the roof (Y axis)</td><td><code>1</code></td></tr><tr><td><code>panelWidth</code></td><td>Width of a single panel, in meters</td><td><code>1.0</code></td></tr><tr><td><code>panelLength</code></td><td>Length of a single panel, in meters</td><td><code>2.0</code></td></tr><tr><td><code>verticalOverlap</code></td><td>Vertical overlap between stacked rows, in meters</td><td><code>0.15</code></td></tr><tr><td><code>overlapDistance</code></td><td>Tiny depth offset between overlapping layers to prevent Z-fighting</td><td><code>0.001</code></td></tr></tbody></table>
+<p>Columns overlap by exactly one corrugation wave so adjacent panels always line up
+seamlessly; rows overlap by <code>verticalOverlap</code>, just like real corrugated sheets.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="wave-configuration">Wave configuration<a href="#wave-configuration" class="hash-link" aria-label="Direct link to Wave configuration" title="Direct link to Wave configuration" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>waveProfile</code></td><td><code>AnimationCurve</code> describing the cross-section of one wave, sampled over 0–1</td><td>trapezoid-like</td></tr><tr><td><code>wavesPerPanel</code></td><td>Number of corrugation waves across one panel&#x27;s width</td><td><code>9</code></td></tr><tr><td><code>corrugationAmplitude</code></td><td>Height of the wave, in meters</td><td><code>0.035</code></td></tr></tbody></table>
+<p>Any curve shape is supported — round, trapezoidal, asymmetric — as long as it has at least
+two keyframes. An invalid curve is reset to a safe default automatically.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mesh-settings">Mesh settings<a href="#mesh-settings" class="hash-link" aria-label="Direct link to Mesh settings" title="Direct link to Mesh settings" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>lengthSegmentsPerPanel</code></td><td>Subdivisions along a panel&#x27;s length (LOD0); lower LODs use fewer</td><td><code>24</code></td></tr><tr><td><code>sheetThickness</code></td><td>Sheet thickness, in meters; <code>0</code> = single-sided sheet</td><td><code>0.001</code></td></tr></tbody></table>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>Performance</div><div class="admonitionContent_BuS1"><p>Thickness doubles the vertex and triangle count (front + back faces). Keep it at <code>0</code> for
+distant or background roofs and only enable it where the edge profile is visible.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="modifiers--variations">Modifiers &amp; variations<a href="#modifiers--variations" class="hash-link" aria-label="Direct link to Modifiers &amp; variations" title="Direct link to Modifiers &amp; variations" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="panel-transform">Panel transform<a href="#panel-transform" class="hash-link" aria-label="Direct link to Panel transform" title="Direct link to Panel transform" translate="no">​</a></h3>
+<p>Adds believable, non-uniform placement to individual panels.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td><code>horizontalJitterMeters</code></td><td>Random horizontal offset per panel</td></tr><tr><td><code>verticalGapMeters</code></td><td>Random vertical gap between stacked panels</td></tr><tr><td><code>tiltDegrees</code> / <code>yawDegrees</code></td><td>Small random rotation per panel</td></tr><tr><td><code>lengthVarianceMeters</code></td><td>Random shortening of panel length (creates uneven row splits)</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="surface-noise">Surface noise<a href="#surface-noise" class="hash-link" aria-label="Direct link to Surface noise" title="Direct link to Surface noise" translate="no">​</a></h3>
+<p>Perlin-based displacement that breaks up an overly-perfect surface.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td><code>height</code></td><td>Vertical displacement amount</td></tr><tr><td><code>warp</code></td><td>Horizontal / depth displacement amount</td></tr><tr><td><code>scale</code></td><td>Size of the noise features — smaller = finer detail</td></tr><tr><td><code>detail</code></td><td>Blend between a smooth and a rougher secondary noise octave</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cut-settings">Cut settings<a href="#cut-settings" class="hash-link" aria-label="Direct link to Cut settings" title="Direct link to Cut settings" translate="no">​</a></h3>
+<p>Trims the roof rectangle with an angled line at the start and/or end edge — useful for
+gables and sloped roof ends.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td><code>mode</code></td><td><code>Horizontal</code> cuts the whole panel straight; <code>Diagonal</code> follows the angle per vertex</td></tr><tr><td><code>startAngleDegrees</code> / <code>endAngleDegrees</code></td><td>Cut angle at the start/end edge; the sign selects which side the cut pivots from</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="texture-mapping">Texture mapping<a href="#texture-mapping" class="hash-link" aria-label="Direct link to Texture mapping" title="Direct link to Texture mapping" translate="no">​</a></h2>
+<p>ICR expects a texture atlas with <strong>8 wear-level columns</strong>, each picturing <strong>12 corrugation
+waves</strong> — so one material can represent everything from clean, new metal to heavily rusted
+sheets.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td><code>panelColors</code></td><td>List of vertex colors, assignable per panel (tint applied in the shader)</td></tr><tr><td><code>verticalTiling</code></td><td>Repeats the atlas vertically along the panel length</td></tr><tr><td><code>verticalOffset</code></td><td>Shifts the V coordinate — useful to de-align tiling seams between rows</td></tr><tr><td><code>wearLevel</code></td><td>Selects which of the 8 atlas columns (0–7) each panel uses</td></tr><tr><td><code>panelColorIndex</code></td><td>Selects which color from <code>panelColors</code> each panel uses</td></tr></tbody></table>
+<p>Panel orientation (mirrored/flipped) is chosen per panel automatically to avoid a
+repetitive, tiled look.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="randomization--seed">Randomization &amp; seed<a href="#randomization--seed" class="hash-link" aria-label="Direct link to Randomization &amp; seed" title="Direct link to Randomization &amp; seed" translate="no">​</a></h2>
+<p><code>wearLevel</code>, <code>verticalOffset</code> and <code>panelColorIndex</code> are <strong>Dynamic Values</strong>: toggle
+<strong>Randomize</strong> on any of them to draw a value per panel from a min–max range instead of a
+fixed value.</p>
+<p>All randomization — jitter, tilt and noise offsets included — is driven by <code>randomSeed</code>.
+The same seed always reproduces the exact same roof, so you can share a seed with a
+teammate or lock one in before a final build.</p>
+<hr>
+<p><em>Next: <a class="" href="/docs/tools/infinite-corrugated-roof/technical-reference">Technical Reference</a></em></p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/tools/infinite-corrugated-roof/getting-started"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Getting Started</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/tools/infinite-corrugated-roof/advanced-features"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Advanced Features</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#panel-layout--dimensions" class="table-of-contents__link toc-highlight">Panel layout &amp; dimensions</a></li><li><a href="#wave-configuration" class="table-of-contents__link toc-highlight">Wave configuration</a></li><li><a href="#mesh-settings" class="table-of-contents__link toc-highlight">Mesh settings</a></li><li><a href="#modifiers--variations" class="table-of-contents__link toc-highlight">Modifiers &amp; variations</a><ul><li><a href="#panel-transform" class="table-of-contents__link toc-highlight">Panel transform</a></li><li><a href="#surface-noise" class="table-of-contents__link toc-highlight">Surface noise</a></li><li><a href="#cut-settings" class="table-of-contents__link toc-highlight">Cut settings</a></li></ul></li><li><a href="#texture-mapping" class="table-of-contents__link toc-highlight">Texture mapping</a></li><li><a href="#randomization--seed" class="table-of-contents__link toc-highlight">Randomization &amp; seed</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Products</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/games">Games</a></li><li class="footer__item"><a class="footer__link-item" href="/tools">Unity Tools</a></li><li class="footer__item"><a class="footer__link-item" href="/assets">3D Assets</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/tools/simple-painter/intro">Documentation</a></li><li class="footer__item"><a href="mailto:deepwavegame@gmail.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">Support<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/BBAbWu2Mv" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://twitter.com/wave0084" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter / X<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://youtube.com/@wave0084" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/deepwavegame" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/privacy">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms">Terms of Service</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 WAVE0084 STUDIO. All Rights Reserved.</div></div></div></footer></div>
+</body>
+</html>
