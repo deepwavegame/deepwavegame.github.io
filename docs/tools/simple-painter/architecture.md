@@ -2,7 +2,7 @@
 id: architecture
 title: Architecture & Execution Order
 sidebar_position: 4
-description: How a Simple Painter stroke flows through a single Unity frame — input, tool, committer, canvas — driven by explicit DefaultExecutionOrder.
+description: How a Simple Painter stroke flows through a single Unity frame — input, tool, canvas commit — driven by explicit DefaultExecutionOrder and five ordered GPU command phases.
 keywords:
   - simple painter architecture
   - paint pipeline unity
@@ -13,43 +13,44 @@ keywords:
 # Architecture & Execution Order
 
 Every paint interaction flows through the same pipeline. A **Paint Tool** GameObject wires
-together a `PaintInput`, a `PaintDrawer`, and (via assets) a stroke method and an ink
-configuration. A separate **Canvas** GameObject hosts the channel/layer data and a
-committer.
+together an `InputConfig`-driven reader and a `PaintDrawer`; a separate **Canvas**
+GameObject hosts the channel/layer data and, for a `SimulationCanvas`, a fluid solver.
 
 ## The per-stroke pipeline
 
 ```mermaid
 graph LR
-    A["Input Device<br/>ray + pressure"] --> B["Stroke Method<br/>aligned, spaced, jittered stamps"]
-    B --> C["Ink / Drawer<br/>Brush · Erase · Fill · Pick"]
-    C --> D["Committer<br/>instant or fluid sim"]
-    D --> E["Canvas / Material<br/>composite · seam fix · update"]
+    A["Input Device<br/>ray or ready-made stamp"] --> B["Stroke Method<br/>aligned, spaced, jittered stamps"]
+    B --> C["DrawConfig / Ink<br/>Brush · Fill"]
+    C --> D["Canvas Commit<br/>instant or fluid sim"]
+    D --> E["Composite<br/>seam fix · material update"]
 ```
 
-1. **Input device** — Mouse / Pen / Touch / Collision / Particle produces a ray + pressure.
+1. **Input device** — Mouse / Pen / Touch / Collision / Particle / Object produces a ray
+   (or, for Object, a ready-made stamp straight from a transform).
 2. **Stroke method** — shapes the ray into aligned, spaced and jittered stamps.
-3. **Ink / Drawer** — Brush, Erase, Fill or Pick rasterises the stamps into a scratch buffer.
-4. **Committer** — bakes the scratch into the layer, instantly or via a fluid simulation.
-5. **Canvas / Material** — layers composite, seams get fixed, the material updates.
+3. **DrawConfig / Ink** — Standard Brush or Fill Mesh rasterises the stamps into every
+   target's scratch buffer.
+4. **Canvas commit** — bakes the scratch into the layer, instantly, or by stepping a
+   fluid solver first on a `SimulationCanvas`.
+5. **Composite** — layers blend, seams get fixed, the material updates.
 
 ## Explicit execution order
 
-Execution is deliberate: input and physics run first, the tool draws next, committers bake
-after that, and the canvas composites last — all within the same frame. This is driven by
-Unity's `DefaultExecutionOrder` attribute on each component:
+Execution is deliberate: input and physics run first, the tool draws next, and the canvas
+steps its simulation (if any), commits and composites last — all within the same frame.
+This is driven by Unity's `DefaultExecutionOrder` attribute:
 
 | Order | Component | Responsibility |
 | --- | --- | --- |
 | `0` | Unity Physics / Input | Collisions, particle-collision events, raw device state |
 | `100` | `PaintTool` | Polls the input, hands its stamp buffer to the drawer |
-| `200` | `PaintCommitter` (Standard / FluidViscous) | Bakes or simulates the scratch buffer into a layer |
-| `1000` | `PaintCanvas` | Composites layers, applies seam fixing, updates the material |
+| `1000` | `PaintCanvas` | Commits pending strokes (stepping its fluid solver first, on a `SimulationCanvas`), composites layers, applies seam fixing, updates the material |
 
 :::info Why this matters
 Because every stage only ever *writes* to a scratch buffer and never clears someone else's
-state, tools, strokes and committers can all be mixed and matched — a Bezier stroke can
-drive a fluid simulation, a collision input can drive a plain brush — without any of the
+state, tools, strokes, ink and solvers can all be mixed and matched — a Bezier stroke can
+feed a fluid simulation, a collision input can drive a plain brush — without any of the
 pieces needing to know about each other.
 :::
 

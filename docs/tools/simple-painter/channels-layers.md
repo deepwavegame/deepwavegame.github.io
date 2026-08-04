@@ -2,7 +2,7 @@
 id: channels-layers
 title: Canvas, Channels & Layers
 sidebar_position: 7
-description: PaintCanvas hosts a stack of PaintChannels (Color, Scalar, Normal), each with its own layers, opacity, blend modes and an optional simulation buffer.
+description: Three canvas types — MultiChannelCanvas, SimulationCanvas and SingleTargetCanvas — each hosting PaintChannels (Color, Scalar, Normal) with layers, opacity and blend modes.
 keywords:
   - paint canvas unity
   - paint channel layer
@@ -12,10 +12,18 @@ keywords:
 
 # Canvas, Channels & Layers
 
-`PaintCanvas` is the main entry-point component. It hosts a list of `PaintChannel` entries,
-discovers and manages one or many `Paintable` targets, and drives the whole system by
-broadcasting lifecycle phases (`Initialize`, `Update`, `Reset`, `Clear`, `SourceChanged`)
-down through its channel/layer tree every frame.
+`PaintCanvas` is an abstract lifecycle host — it resolves the `Paintable` target, owns the
+UV-seam environment, and drives the whole system by broadcasting lifecycle phases
+(`Initialize`, `Update`, `Reset`, `Clear`, `SourceChanged`) down through its channel/layer
+tree every frame. Three concrete canvases build on it.
+
+## The three canvas types
+
+| Canvas | Best for | Notes |
+| --- | --- | --- |
+| `MultiChannelCanvas` | The general case — several channels, each with its own layer stack | Owns a `ChannelTopology` that groups channels by shader property |
+| `SimulationCanvas` | Physically simulated wet paint | Drives a shared `SimulationWorkspace`; needs a sibling fluid solver — see [Fluid Simulation](./committers-fluid.md) |
+| `SingleTargetCanvas` | One channel, no layer stack, cheapest option | Stamps land straight on the layer; no compositing step |
 
 ## Channels (ChannelDefinition)
 
@@ -26,29 +34,26 @@ Each **channel** is authored as a `ChannelDefinition` asset:
 | **Value Type** | `Color`, `Scalar`, or `Normal` |
 | **Shader Property / Keyword** | The target material property the channel drives |
 | **Default Value** | Fallback value used before anything is painted |
-| **Simulation Primary** | Optional — allocates a second buffer for fluid-dynamics data (velocity + mass) |
+| **sRGB / Bit Depth** | Colour-space and precision settings for the channel's buffers |
 
 Because the shader property is fully configurable, a channel can drive albedo, a
 metallic/smoothness mask, a normal map, or any other property your material exposes.
 
-:::warning Simulation Primary
-Enable **Simulation Primary** only on the channel that drives the
-[fluid-viscous committer](./committers-fluid.md). It allocates an extra render target for
-velocity + mass, so enabling it needlessly wastes GPU memory.
-:::
-
 ## Layers (PaintLayer)
 
-Each channel owns an independent stack of **layers** (`PaintLayer`): visibility, opacity,
-an optional starting texture, and a blend mode. Blend modes are tracked **separately per
-value type**, so switching a channel's type never misinterprets a setting that belonged to
-a different family:
+On a `MultiChannelCanvas` or `SimulationCanvas`, each channel owns an independent stack of
+**layers** (`PaintLayer`): visibility, opacity, an optional starting texture, and a blend
+mode. Blend modes are tracked **separately per value type**, so switching a channel's type
+never misinterprets a setting that belonged to a different family:
 
 | Value type | Blend modes |
 | --- | --- |
 | **Color** | Normal, Multiply, Add, Min, Max, Screen, Overlay, Soft Light |
 | **Scalar** | Normal, Multiply, Add, Min, Max |
 | **Normal** | Lerp, RNM (Reoriented Normal Mapping), UDN, Whiteout, Overlay, Max Slope, Subtract |
+
+A `SingleTargetCanvas` skips layers and compositing entirely — a stamp lands straight on
+its one buffer, which is why it's the cheapest of the three.
 
 ## Compositing
 
@@ -65,20 +70,18 @@ graph TD
     E --> F["Final texture → material"]
 ```
 
-## Multi-object canvas switching
+## Retargeting at runtime
 
-At runtime, a canvas can register multiple `Paintable` targets and `Switch()` the active
-one — useful for customizers with several parts or characters — reusing the same render
-textures rather than reallocating GPU memory per switch:
+A canvas paints exactly one `Paintable` at a time. Call `SetTarget(...)` to point it at a
+different object — the existing render textures are reused rather than reallocated:
 
 ```csharp
-// Switch the active paintable by index or by reference.
-paintCanvas.Switch(1);
-paintCanvas.Switch(otherPaintable);
+// Retarget the canvas onto a different paintable object.
+paintCanvas.SetTarget(otherPaintable);
 
 // Restore or wipe the current canvas.
-paintCanvas.Reset();  // back to each layer's starting texture
-paintCanvas.Clear();  // wipe to the default background
+paintCanvas.ResetToOrigin(); // back to each layer's starting texture
+paintCanvas.Clear();         // wipe to the default background
 ```
 
 ---

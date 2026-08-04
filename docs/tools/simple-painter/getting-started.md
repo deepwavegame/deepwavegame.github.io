@@ -2,7 +2,7 @@
 id: getting-started
 title: Getting Started
 sidebar_position: 3
-description: Build a paintable object in Unity with Simple Painter in seven steps — Paintable, PaintCanvas, a committer, and a Paint Tool made of an input device, a stroke and an ink config.
+description: Build a paintable object in Unity with Simple Painter in eight steps — Paintable, one of three canvas types, an optional fluid solver, and a Paint Tool made of an input device and a DrawConfig.
 keywords:
   - simple painter setup
   - unity runtime painting tutorial
@@ -28,7 +28,7 @@ Two playable WebGL demos are available on itch.io —
 [demo 2](https://deepwave.itch.io/simple-painter-unity-demo-2).
 :::
 
-## The 7-step setup
+## The 8-step setup
 
 ### 1 — Make the object paintable
 
@@ -36,69 +36,76 @@ Add a `Paintable` component to the `Renderer` you want to paint. Set its **Textu
 (the resolution of every paint buffer for that object) and **Submesh Index**. It works
 with regular meshes and with `SkinnedMeshRenderer` alike.
 
-### 2 — Add the Canvas
+### 2 — Pick a canvas type
 
-Add a `PaintCanvas` component on the same object or a parent. Populate its **Channels**
-list — one `PaintChannel` per material property you want to paint (e.g. Albedo, Normal,
-Metallic), each pointing at a `ChannelDefinition` asset and holding one or more
-`PaintLayer` entries.
+Add one of the following to the same object or a parent:
 
-### 3 — Add a Committer
+| Canvas | Best for |
+| --- | --- |
+| `MultiChannelCanvas` | The general case — several channels, each with its own layer stack |
+| `SimulationCanvas` | Physically simulated wet paint |
+| `SingleTargetCanvas` | One channel, no layer stack, the cheapest option |
 
-On the same GameObject as the canvas, add `StandardCommitter` for instant painting, or
-`FluidViscousCommitter` for physically-simulated wet paint (which needs a primary channel
-binding).
+### 3 — Configure its channels
 
-### 4 — Build the Tool
+- On a `MultiChannelCanvas`, populate **Channels** — one `PaintChannel` per material
+  property, each pointing at a `ChannelDefinition` asset and holding one or more
+  `PaintLayer` entries.
+- On a `SimulationCanvas`, populate its `SimulationChannel` list the same way, plus a
+  `ThicknessResponse` curve per channel.
+- On a `SingleTargetCanvas`, just assign one `ChannelDefinition`.
+
+### 4 — Simulation canvas only: add a solver
+
+Add exactly one of `FluidViscousSimulation`, `FluidInkSimulation` or
+`FluidFilmSimulation` as a sibling component — the canvas discovers it automatically.
+
+### 5 — Build the Tool
 
 On whichever object should receive player input, add `PaintTool` together with one
-`PaintInput` and a `PaintDrawer`:
+`InputConfig` asset:
 
-- `MousePaintInput`, `PenPaintInput`, `TouchPaintInput`, `CollisionPaintInput` or
-  `ParticlePaintInput`.
+`MouseInputConfig`, `PenInputConfig`, `TouchInputConfig`, `CollisionInputConfig`,
+`ParticleInputConfig`, or `ObjectInputConfig`.
 
-`PaintTool` auto-resolves both the input and the drawer from the same GameObject if left
-unassigned.
+### 6 — Assign a DrawConfig
 
-### 5 — Assign a Stroke
+Create a tool asset — `StandardBrushConfig` or `FillMeshConfig` — configure its ink
+channel list (colour/value, texture, intensity) and assign it to `PaintTool`.
 
-Create a stroke asset and assign it to the `PaintInput`:
+### 7 — Optional: assign a stroke preset
 
-`DirectStrokeConfig`, `DotStrokeConfig`, `DragDotStrokeConfig`, `LineStrokeConfig`,
-`BezierStrokeConfig`, or `AnchoredStrokeConfig`.
+Screen-based devices (Mouse/Pen/Touch) can take an optional `StrokeConfig` preset —
+`LineStrokeConfig`, `BezierStrokeConfig`, `DragDotStrokeConfig` or
+`AnchoredStrokeConfig` — for a shaped path instead of the one-stamp-per-ray default.
 
-### 6 — Assign an Ink Configuration
+### 8 — Optional: progress tracking
 
-Create a tool asset — `StandardBrushConfig`, `EraseConfig`, `FillMeshConfig`, or
-`PickConfig` — configure its ink channel list (colour/value, texture, intensity) and
-assign it to the `PaintDrawer`.
-
-### 7 — Optional: Seam Fixing & Progress
-
-Add `PaintEnvironment` next to the `Paintable` for automatic UV seam fixing on
-multi-island meshes, and/or `PaintProgressTracker` to measure paint completion at runtime.
+Add `PaintProgressTracker` next to a `MultiChannelCanvas` or `SimulationCanvas` to
+measure paint completion at runtime.
 
 ## How the pieces connect
 
 ```mermaid
 graph LR
     subgraph Tool["Paint Tool GameObject"]
-        PI["PaintInput<br/>(Mouse / Pen / Touch / …)"]
-        PD["PaintDrawer<br/>(brush / erase / fill / pick)"]
+        PI["InputConfig<br/>(Mouse / Pen / Touch / …)"]
+        PD["DrawConfig<br/>(brush / fill, ink list)"]
         PT["PaintTool"]
     end
     subgraph Canvas["Canvas GameObject"]
-        PC["PaintCanvas<br/>(channels + layers)"]
-        CM["Committer<br/>(Standard / FluidViscous)"]
+        PC["PaintCanvas<br/>(MultiChannel / Simulation / SingleTarget)"]
+        FS["Fluid solver<br/>(SimulationCanvas only)"]
     end
     P["Paintable<br/>(Renderer)"]
-    PT --> PI --> PD --> CM --> PC --> P
+    PT --> PI --> PD --> PC --> P
+    FS -.-> PC
 ```
 
 :::tip Hot-swappable by design
-`PaintInput.SwitchStroke(...)` and `PaintDrawer.SwitchConfig(...)` can be called at
-runtime, so a single Tool GameObject can flip between a brush and an eraser, or a Line
-stroke and a Bezier stroke, without re-wiring components.
+`PaintTool.SwitchInput(...)` and `PaintTool.SwitchPaint(...)` can be called at runtime, so
+a single Tool GameObject can flip between a brush and a fill, or a Line stroke and a
+Bezier stroke, without re-wiring components.
 :::
 
 ---

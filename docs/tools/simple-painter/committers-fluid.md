@@ -1,61 +1,88 @@
 ---
 id: committers-fluid
-title: Committers & Fluid Simulation
+title: Fluid Simulation
 sidebar_position: 10
-description: A committer bakes the in-progress stroke into a layer — instantly with the Standard committer, or through a physically-simulated wet-paint process with the Fluid Viscous committer.
+description: Three interchangeable GPU fluid solvers for a SimulationCanvas — FluidViscousSimulation (MLS-MPM viscous paint), FluidInkSimulation (vorticity-confined ink bloom) and FluidFilmSimulation (cheap height-field drip and dry).
 keywords:
   - fluid paint simulation unity
-  - viscous paint committer
+  - viscous paint solver
   - wet paint unity
-  - paint committer
+  - ink bloom simulation
 ---
 
-# Committers & Fluid Simulation
+# Fluid Simulation
 
-A **committer** bakes the in-progress scratch stroke into a channel's active layer. The
-package ships two families.
+`PaintSimulation` is the base for every GPU fluid solver a `SimulationCanvas` can drive —
+it handles the fixed-timestep clock, an inactivity timeout, and warming up its own shaders
+once at scene load. Add exactly one concrete solver as a sibling component to a
+`SimulationCanvas`.
 
-## Direct / Standard committer
+## The three solvers
 
-Commits a finished stroke straight into the paint layer the moment it ends. No
-time-stepping, no physics: what you draw is what lands. This is the default — add
-`StandardCommitter` for instant painting.
+### Fluid Viscous
 
-## Simulation / Fluid Viscous committer
+MLS-MPM viscous paint. Thin films and small droplets stay pinned in place until
+accumulated mass exceeds an **adhesion** (yield) threshold, then flow downhill, blending
+velocity between neighbouring texels for **viscosity**, and pulling dense clusters together
+via **cohesive pressure**.
 
-Runs an iterative, fixed-timestep simulation on the scratch buffer across multiple frames
-before baking it in, adding genuine physically-modelled behaviour:
-
-- **Adhesion / yield pinning** — thin films and small droplets stay pinned in place until
-  accumulated mass exceeds an adhesion threshold.
+- **Adhesion / yield pinning** — nothing moves below the yield threshold.
 - **Viscosity** — velocity is blended between neighbouring texels.
 - **Cohesive pressure** — dense clusters are pulled together.
 - **Gravity via flow field** — once mass exceeds the threshold, paint flows downhill along
   the surface's gravity direction, supplied by the
   [seam-fixing flow field](./paint-surface.md#gravity-and-turbulence-field).
-- **Evaporation** and **absorption / drain** — wet paint dries and drains over time.
 
-Colour and coverage are carried directly from the painted data rather than synthesised, so
-**what you paint is what flows**.
+### Fluid Ink
 
-:::info Requires a primary channel
-The Fluid Viscous committer needs a channel flagged **Simulation Primary** (which allocates
-its velocity + mass buffer) and reads the gravity flow field from a
-[`PaintEnvironment`](./paint-surface.md#seam-fixing-with-paintenvironment).
+An Eulerian grid solver (adapted from the "Chimera's Breath" technique) whose signature
+feature is **vorticity confinement** — re-injecting the small-scale curl a grid solver
+would otherwise smear away, giving swirling, low-viscosity ink/smoke tendrils instead of a
+smooth blob.
+
+- **Viscosity** and **buoyancy** — a density-gradient pressure that drives the ink's
+  outward bloom.
+- **Vorticity confinement** — the signature knob; 0 behaves like thick oil, higher values
+  give curling filaments.
+- **Capillary spread** — lets ink creep into dry ground independent of velocity.
+
+### Fluid Film
+
+A height-field cellular automaton — no velocity state, no pressure solve, by far the
+cheapest of the three. Paint pools on flat faces, runs down steep ones, and dries into a
+permanent stain behind the run.
+
+- **Retention** — a slope-dependent mass threshold; only mass above it can move.
+- **Squared flow axis** — collapses the flow onto the dominant direction, so a drip stays
+  a narrow streak instead of diffusing into a blob.
+- **Capillary spread** and **exponential fade** — optional sideways creep and drying.
+
+:::info Colour and coverage come from what you painted
+All three solvers carry colour directly from the painted data rather than synthesising it,
+so what you paint is what flows — no separate colour parameter to keep in sync.
 :::
+
+## Shared workspace
+
+All three read the same shared **flow field** (gravity direction, optional gust +
+micro-noise turbulence, optional normal-map influence — see
+[Seam Fixing](./paint-surface.md#gravity-and-turbulence-field)) and write into a common
+`SimulationWorkspace`: a Visual buffer (advected colour + painted absorption) and a
+Dynamics buffer (velocity + mass), both fed directly by the brush's `VisualInk` /
+`DynamicsInk` stamps.
 
 ## Derived PBR channels
 
-Simulation committers can also derive **secondary PBR channels** — for example a
-bump/normal or roughness channel — from the simulated paint thickness, using a per-channel
-dry ↔ wet response curve (with its own gamma, normal strength, and an optional stylised
-"water look" tint), each committed at an independently tunable ratio.
+Each of the canvas's `SimulationChannel` entries bakes the shared workspace into its own
+layer using a per-channel **`ThicknessResponse`** curve — dry ↔ wet value or normal
+strength, with its own gamma — at an independently tunable commit ratio. This is how, for
+example, a Scalar "wetness" channel and a Normal "relief" channel can both be derived from
+the same simulated paint thickness.
 
 ```csharp
-// Swap committers at runtime — instant painting → wet fluid paint.
-// (Both live on the canvas GameObject; enable the one you want active.)
-standardCommitter.enabled = false;
-fluidViscousCommitter.enabled = true;
+// Pick a solver by enabling exactly one on the SimulationCanvas GameObject.
+fluidViscousSimulation.enabled = false;
+fluidInkSimulation.enabled = true;
 ```
 
 ---

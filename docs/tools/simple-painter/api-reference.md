@@ -19,12 +19,11 @@ are the components, methods, enums and events that actually ship.
 
 | Component | Members you call at runtime |
 | --- | --- |
-| `PaintCanvas` | `Switch(int index)` / `Switch(Paintable)` — change active target · `Reset()` — restore starting textures · `Clear()` — wipe to background |
-| `PaintInput` (base) | `SwitchStroke(StrokeConfig)` — hot-swap the stroke asset |
-| `PaintDrawer` | `SwitchConfig(InkConfig)` — hot-swap the active tool (brush ↔ erase ↔ fill ↔ pick) |
+| `PaintCanvas` (base) | `SetTarget(Paintable)` / `Target` — retarget the canvas · `ResetToOrigin()` — restore starting textures · `Clear()` — wipe to background |
+| `MultiChannelCanvas` / `SimulationCanvas` | `GetChannel(ChannelDefinition)` — resolve a `PaintChannel` at runtime |
+| `PaintTool` | `SwitchInput(InputConfig)` — hot-swap the input device · `SwitchPaint(DrawConfig)` — hot-swap the active brush/fill · `PaintDab(Ray)` / `Stamp()` — manual one-shot painting |
 | `Paintable` | Texture Size, Submesh Index; wraps a `Renderer` (mesh or `SkinnedMeshRenderer`) |
 | `PaintableLink` | Forwards proxy-collider raycast hits back to a shared `Paintable` |
-| `PaintEnvironment` | UV seam fixing + gravity/turbulence flow field |
 | `PaintProgressTracker` | `Progress`, `DonePixels`, `TotalPixels`, `OnUpdated` event; static `GlobalProgress`, `AllReady` |
 | `PaintEngine` | `EnqueueCommand(ICommand)` — enqueue a pooled GPU command |
 
@@ -33,10 +32,10 @@ are the components, methods, enums and events that actually ship.
 | Enum | Values |
 | --- | --- |
 | `ChannelValueType` | Color, Scalar, Normal |
-| `DynamicMode` | Constant, Pressure, Distance, Speed, Time, Random |
+| `ValueSource` | Constant, Pressure, Distance, Speed, Time, Direction, Random |
 | Stamp alignment | Surface, View |
-| Brush shape | None, Circle, Texture |
-| Fill scope | Connected solid, UV island, Crease patch, Single triangle |
+| Draw shape | None, Circle, Texture |
+| Fill scope (`FillMode`) | Face Directions, Seam, Shape Edge, Triangle |
 | `RenderPipelineType` | BuiltIn, URP, HDRP |
 
 ## Blend modes
@@ -54,16 +53,17 @@ selected:
 
 `PaintProgressTracker` reports how much of a channel's active layer has been painted
 (**Fill** mode) or erased (**Erase** mode) against a reference value on a chosen colour
-channel (R/G/B/A):
+channel (R/G/B/A). It works against a `MultiChannelCanvas` or a `SimulationCanvas` — a
+`SingleTargetCanvas` has no layer stack to report progress over.
 
 ```csharp
 void OnEnable()  => tracker.OnUpdated += HandleProgress;
 void OnDisable() => tracker.OnUpdated -= HandleProgress;
 
-void HandleProgress()
+void HandleProgress(PaintProgressTracker t)
 {
-    float pct = tracker.Progress;            // 0–1 for this tracker
-    float all = PaintProgressTracker.GlobalProgress; // aggregate across the scene
+    float pct = t.Progress;                          // 0–1 for this tracker
+    float all = PaintProgressTracker.GlobalProgress;  // aggregate across the scene
     if (PaintProgressTracker.AllReady) { /* every tracker done */ }
 }
 ```
@@ -77,12 +77,6 @@ void HandleProgress()
 Subscribe to `OnUpdated` in `OnEnable` and unsubscribe in `OnDisable`. Failing to
 unsubscribe causes null-reference exceptions and leaks when objects are destroyed.
 :::
-
-## The Pick tool
-
-`PickConfig` drives a non-destructive eyedropper: it asynchronously reads the committed
-layer at the clicked point and raises a C# event carrying the sampled values — wire that
-event up to update a UI colour swatch or feed the value back into a brush.
 
 ---
 

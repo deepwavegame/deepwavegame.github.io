@@ -2,7 +2,7 @@
 id: paint-engine
 title: PaintEngine & Performance
 sidebar_position: 5
-description: PaintEngine records every GPU paint operation into one pooled command buffer per frame, bucketed into five ordered phases, with object pooling, Job System raycasting and async GPU readback.
+description: PaintEngine records every GPU paint operation into one pooled command buffer per frame, bucketed into five ordered phases, with object pooling, upfront shader warm-up, Job System raycasting and async GPU readback.
 keywords:
   - paint engine unity
   - command buffer pool
@@ -50,7 +50,7 @@ an object pool, so this is zero-allocation:
 
 ```csharp
 // Rent a command from its pool instead of allocating a new one.
-var cmd = StandardDrawCommand.Get(visualRT, dynamicsRT, stamps);
+var cmd = StampDepositCommand.Get(targetTexture, ink, in brush, samples, context, in surface);
 PaintEngine.EnqueueCommand(cmd);
 // After execution the command is disposed back to its pool automatically.
 ```
@@ -66,14 +66,21 @@ PaintEngine.EnqueueCommand(cmd);
 - **Guaranteed VRAM teardown** — every pooled render texture and cached solid texture is
   explicitly released when the paint engine shuts down.
 
+## Upfront shader warm-up
+
+A `SimulationCanvas` pays every one of its shaders' first-compile cost once, right after
+`Awake`, instead of leaving it to land on the player's first stroke. It draws Flow, the
+active solver's own passes, and Bake/Commit for every active channel against small
+throwaway targets — matching exactly what the canvas's normal update path will draw, so
+nothing gets warmed that won't actually be used.
+
 ## Batch raycasting & async readback
 
 - **Job System batch raycasting** — dense per-frame stroke sampling (e.g. a fast Bezier
   stroke) automatically switches from a plain loop to parallel, job-scheduled raycasts once
   the batch is large enough to benefit.
-- **Async GPU readback** — the Pick tool and Progress Tracker both use non-blocking
-  `AsyncGPUReadback` exclusively, so sampling colours or measuring coverage never stalls
-  the main thread.
+- **Async GPU readback** — the Progress Tracker uses non-blocking `AsyncGPUReadback`
+  exclusively, so measuring coverage never stalls the main thread.
 - **Cross-platform format fallback** — render-target format selection automatically
   degrades from floating-point to normalized formats on platforms without float-blend
   support (e.g. WebGL without the relevant extension).
