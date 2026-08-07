@@ -11,6 +11,7 @@ export const STORE = {
     'https://assetstore.unity.com/packages/tools/painting/simple-paint-3d-375642',
   infiniteCorrugatedRoof:
     'https://assetstore.unity.com/packages/tools/modeling/infinite-corrugated-roof-357650',
+  analogVhs: 'https://assetstore.unity.com/packages/slug/385582',
 };
 
 /** itch.io pages (playable demos / builder). */

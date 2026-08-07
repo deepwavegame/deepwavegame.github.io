@@ -223,54 +223,56 @@ const tools = [
     title: 'Analog VHS',
     tagline: 'Retro VHS & CRT post-processing for Unity.',
     description:
-      'Turns any camera into a worn tape deck, a broadcast monitor or a haunted camcorder. Seven independent profile modules — pixelation, color, noise, jitter, signal grade, CRT screen and phosphor trail — render in four fullscreen passes shared by Built-in, URP and HDRP, with real bandwidth-limited composite color, a rolling-tracking-loss analog-horror toolkit, and a one-click pipeline setup tool.',
+      'Turns any camera into a worn tape deck, a broadcast monitor or a haunted camcorder. Nine modules render inline on the camera component itself — no profile asset in the middle, so what the inspector shows is what renders — covering the whole signal path from real lens chromatic aberration and lens dirt through a single Colour Grade module to a CRT screen with beam reconstruction and a 15-architecture phosphor mask. Built-in, URP and HDRP, with 20 ready-made presets and a one-click pipeline setup tool.',
     thumbnail: null,
     links: {
       page: '/tools/analog-vhs',
+      assetStore: STORE.analogVhs,
       docs: '/docs/tools/analog-vhs/intro',
     },
     specs: {
       price: '$25.65',
-      version: 'v1.2.0',
+      version: 'v1.3.0',
       requirement: 'Unity 6000.0+',
     },
     seo: {
+      canonical: STORE.analogVhs,
       description:
-        'Analog VHS is a retro post-processing effect for Unity 6: worn-tape grain, tracking loss, scanlines and real bandwidth-limited composite color, with a CRT screen model and analog-horror toolkit. Built-in, URP & HDRP, 14 presets.',
+        'Analog VHS is a retro post-processing effect for Unity 6: real lens chromatic aberration, film grain, tracking loss, bandwidth-limited composite color and a CRT screen model with beam reconstruction and phosphor mask — all on one camera component, no profile asset. Built-in, URP & HDRP, 20 presets.',
       keywords:
-        'unity vhs shader, unity crt shader, retro post processing unity, analog horror unity, vhs effect unity, composite video unity, scanline shader unity, tracking loss effect, unity found footage horror, deepwave analog vhs',
+        'unity vhs shader, unity crt shader, retro post processing unity, analog horror unity, vhs effect unity, composite video unity, scanline shader unity, tracking loss effect, unity found footage horror, unity chromatic aberration shader, unity phosphor mask crt, deepwave analog vhs',
     },
     isUnderDevelopment: false,
     features: [
       {
-        title: 'Seven Independent Modules',
+        title: 'Nine Modules, No Profile Asset',
         description:
-          'Pixelation, Color, Noise, Jitter, Signal & Grade, CRT Screen and Phosphor Trail, each with its own master toggle — mix and match on one profile asset.',
+          'Lens, Retro Resolution, Tape Artifacts, Distortion, Composite Signal, Colour Quantization, Colour Grade, Bloom and CRT Screen, in the order light travels through them — serialized directly on the camera, so a slider you drag in Play mode changes the picture instead of quietly editing a shared asset.',
       },
       {
-        title: 'Real Bandwidth-Limited Color',
+        title: 'Real Lens Chromatic Aberration & Dirt',
         description:
-          'Luma stored at half resolution and re-sharpened with an unsharp mask, chroma at ~1/16 resolution with horizontal delay — the actual composite-video bleed mechanism, not a blur filter.',
+          'Lateral dispersion sampled as a spectral smear from the optical axis — zero in the centre, widening toward the corners — plus lens dirt lit by the halation behind it.',
       },
       {
-        title: 'Analog-Horror Toolkit',
+        title: 'One Place For Colour',
         description:
-          'Rolling tracking loss that slides the picture into static, per-line hue phase error, wavy scanline distortion and head-switch darkening.',
+          'Tape levels, chroma response, exposure, lift/gamma/gain, saturation and split toning all live in one Colour Grade module, folded to two gain/offset pairs and a matrix on the CPU — 13 built-in looks included.',
       },
       {
         title: 'CRT Screen Model',
         description:
-          'Barrel curvature with a black border, RGB phosphor stripe mask, full-frame flicker and a TV-style vignette that stays live even with bandwidth limiting off.',
+          'Beam reconstruction that rebuilds every pixel from the two raster lines around it, a 15-architecture phosphor mask, radial beam convergence error, edge-pinned barrel curvature and phosphor afterglow.',
       },
       {
-        title: 'One-Click Pipeline Setup',
+        title: 'Analog-Horror Toolkit',
         description:
-          'A diagnose-and-apply tool wires up the URP renderer feature or HDRP custom pass volume, assigns a default profile and converts scene materials between pipelines.',
+          'A drifting tracking line that collapses a band of rows onto one, per-line hue phase error, wavy scanline distortion and one-sided horizontal tape smear.',
       },
       {
-        title: '14 Ready-Made Presets',
+        title: '20 Ready-Made Presets',
         description:
-          'From a clean VCR to full signal chaos, plus a runtime preset-cycler sample with on-screen next/previous controls.',
+          'From a clean VCR to full signal chaos, plus a demo scene with first-person controls and a live settings menu that exposes every parameter.',
       },
     ],
   },
