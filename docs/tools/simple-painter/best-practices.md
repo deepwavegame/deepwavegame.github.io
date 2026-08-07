@@ -88,9 +88,9 @@ automatically, so paint bleeds correctly across islands instead of stopping at t
 There's no separate component to add.
 
 **Can I measure how much of an object has been painted?**
-Yes, with `PaintProgressTracker` on a `MultiChannelCanvas` or `SimulationCanvas` — a live
-0–100% ratio (fill or erase), optionally masked to the real UV footprint, with an event and
-scene-wide aggregation.
+Yes, with `PaintProgressTracker` on any canvas type — a live 0–100% ratio (fill or erase,
+coverage or value/colour based), optionally masked to the real UV footprint, with an event
+and scene-wide aggregation.
 
 **Which input devices are supported?**
 Mouse, pressure-sensitive Pen, Touch (single-touch), physics Collision impacts,

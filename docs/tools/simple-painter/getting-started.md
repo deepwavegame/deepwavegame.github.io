@@ -81,8 +81,8 @@ Screen-based devices (Mouse/Pen/Touch) can take an optional `StrokeConfig` prese
 
 ### 8 — Optional: progress tracking
 
-Add `PaintProgressTracker` next to a `MultiChannelCanvas` or `SimulationCanvas` to
-measure paint completion at runtime.
+Add `PaintProgressTracker` next to any of the three canvas types to measure paint
+completion at runtime.
 
 ## How the pieces connect
 

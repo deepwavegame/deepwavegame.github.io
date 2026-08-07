@@ -48,7 +48,7 @@ stroke can drive a fluid simulation, a collision input can drive a plain brush, 
 ## Grounded in what actually ships
 
 This documentation was written from a full read-through of the package's runtime source
-(194 C# scripts across 10 modules), so every feature described reflects what is in the
+(192 C# scripts across 10 modules), so every feature described reflects what is in the
 package — not aspirational or planned functionality.
 
 ## Read next

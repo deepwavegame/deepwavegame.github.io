@@ -19,8 +19,7 @@ are the components, methods, enums and events that actually ship.
 
 | Component | Members you call at runtime |
 | --- | --- |
-| `PaintCanvas` (base) | `SetTarget(Paintable)` / `Target` — retarget the canvas · `ResetToOrigin()` — restore starting textures · `Clear()` — wipe to background |
-| `MultiChannelCanvas` / `SimulationCanvas` | `GetChannel(ChannelDefinition)` — resolve a `PaintChannel` at runtime |
+| `PaintCanvas` (base) | `SetTarget(Paintable)` / `Target` — retarget the canvas · `ResetToOrigin()` — restore starting textures · `Clear()` — wipe to background · `GetChannel(ChannelDefinition)` — resolve a `PaintChannel` at runtime (populated on `MultiChannelCanvas` / `SimulationCanvas`) |
 | `PaintTool` | `SwitchInput(InputConfig)` — hot-swap the input device · `SwitchPaint(DrawConfig)` — hot-swap the active brush/fill · `PaintDab(Ray)` / `Stamp()` — manual one-shot painting |
 | `Paintable` | Texture Size, Submesh Index; wraps a `Renderer` (mesh or `SkinnedMeshRenderer`) |
 | `PaintableLink` | Forwards proxy-collider raycast hits back to a shared `Paintable` |
@@ -51,10 +50,12 @@ selected:
 
 ## Progress tracking events
 
-`PaintProgressTracker` reports how much of a channel's active layer has been painted
-(**Fill** mode) or erased (**Erase** mode) against a reference value on a chosen colour
-channel (R/G/B/A). It works against a `MultiChannelCanvas` or a `SimulationCanvas` — a
-`SingleTargetCanvas` has no layer stack to report progress over.
+`PaintProgressTracker` reports how much of a channel's paint buffer has been painted
+(**Fill** mode) or erased (**Erase** mode). It reads one of five `ProgressSource` values —
+**Coverage** (every channel), **Value** (the scalar on Scalar, or an RGB match against a
+reference colour + tolerance on Color/Normal), and **Red/Green/Blue** (Color channels
+only). It works against any of the three canvas types — `MultiChannelCanvas`,
+`SimulationCanvas`, or `SingleTargetCanvas`.
 
 ```csharp
 void OnEnable()  => tracker.OnUpdated += HandleProgress;

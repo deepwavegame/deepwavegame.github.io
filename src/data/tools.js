@@ -64,7 +64,7 @@ const tools = [
     title: 'Simple Painter',
     tagline: 'Runtime 3D texture-painting toolkit for Unity.',
     description:
-      'Listed on the Asset Store as Simple Paint 3D, this modular toolkit paints directly onto meshes at runtime — multi-channel PBR painting, Photoshop-style layers, six stroke methods, five input devices and an optional physically-simulated fluid-paint mode.',
+      'Listed on the Asset Store as Simple Paint 3D, this modular toolkit paints directly onto meshes at runtime — multi-channel PBR painting, Photoshop-style layers, five stroke methods, six input devices and three physically-simulated fluid-paint solvers.',
     thumbnail: '/img/products/tools/simple-painter/thumbnail.jpg',
     links: {
       page: '/tools/simple-painter',
@@ -77,14 +77,14 @@ const tools = [
     },
     specs: {
       price: '$47.65',
-      version: 'v0.1.1',
+      version: 'v0.2.2',
       size: '87.4 MB',
       requirement: 'Unity 2021.3+',
     },
     seo: {
       canonical: STORE.simplePainter,
       description:
-        'Simple Painter (Simple Paint 3D) is a runtime 3D texture-painting toolkit for Unity: multi-channel PBR painting, Photoshop-style layers, six stroke methods, five input devices and physically-simulated fluid paint. Built-in, URP & HDRP.',
+        'Simple Painter (Simple Paint 3D) is a runtime 3D texture-painting toolkit for Unity: multi-channel PBR painting, Photoshop-style layers, five stroke methods, six input devices and three physically-simulated fluid-paint solvers. Built-in, URP & HDRP.',
       keywords:
         'unity texture painting, runtime paint tool unity, 3d texture painting unity, simple paint 3d, PBR channel painting, unity fluid paint, uv seam fix unity, unity decal paint, paint on skinned mesh, deepwave simple painter',
     },
@@ -101,19 +101,19 @@ const tools = [
           'Every channel holds its own stack of layers with visibility, opacity, a starting texture and a blend mode matched to its data type.',
       },
       {
-        title: 'Five Input Devices',
+        title: 'Six Input Devices',
         description:
-          'Mouse, pressure-sensitive Pen, Touch, physics Collision impacts and Particle collisions all feed the same stroke pipeline.',
+          'Mouse, pressure-sensitive Pen, Touch, physics Collision, Particle (with an optional pierce-through mode) and a transform-driven Object device all feed the same stroke pipeline.',
       },
       {
-        title: 'Six Stroke Methods',
+        title: 'Five Stroke Methods',
         description:
-          'Direct freehand, Dot, live Drag Dot, rubber-band Line, smoothed Bezier curves and a resizable Anchored decal — all hot-swappable at runtime.',
+          'Direct freehand, live-following Drag Dot, rubber-band Line, smoothed Bezier curves and a resizable Anchored decal — all hot-swappable at runtime.',
       },
       {
-        title: 'Physically-Simulated Fluid Paint',
+        title: 'Three Fluid Simulation Solvers',
         description:
-          'An optional viscous committer adds real adhesion, viscosity, cohesive pressure, gravity flow and evaporation to wet paint.',
+          'Drop-in GPU solvers for a SimulationCanvas: viscous MLS-MPM paint, an Eulerian vorticity-confined ink bloom, and a cheap height-field drip/run model.',
       },
       {
         title: 'Automatic UV Seam Fixing',

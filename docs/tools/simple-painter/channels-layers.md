@@ -15,15 +15,17 @@ keywords:
 `PaintCanvas` is an abstract lifecycle host — it resolves the `Paintable` target, owns the
 UV-seam environment, and drives the whole system by broadcasting lifecycle phases
 (`Initialize`, `Update`, `Reset`, `Clear`, `SourceChanged`) down through its channel/layer
-tree every frame. Three concrete canvases build on it.
+tree every frame. It also implements `IDrawContext` directly, so a `PaintDrawer` resolves
+its stamp targets straight from the canvas — there is no separate per-canvas context
+object. Three concrete canvases build on it.
 
 ## The three canvas types
 
 | Canvas | Best for | Notes |
 | --- | --- | --- |
-| `MultiChannelCanvas` | The general case — several channels, each with its own layer stack | Owns a `ChannelTopology` that groups channels by shader property |
+| `MultiChannelCanvas` | The general case — several channels, each with its own layer stack | Populates the shared `ChannelTopology` that groups channels by shader property |
 | `SimulationCanvas` | Physically simulated wet paint | Drives a shared `SimulationWorkspace`; needs a sibling fluid solver — see [Fluid Simulation](./committers-fluid.md) |
-| `SingleTargetCanvas` | One channel, no layer stack, cheapest option | Stamps land straight on the layer; no compositing step |
+| `SingleTargetCanvas` | One channel, no layer stack, cheapest option | A stamp lands straight in its own buffer; one publish draw per dirty frame composites it over the material — no layer stack, no scratch, no shared topology |
 
 ## Channels (ChannelDefinition)
 
