@@ -128,7 +128,7 @@ const tools = [
     title: 'Retro OS',
     tagline: 'Windows 95-style in-game operating system for Unity.',
     description:
-      'A data-driven in-game OS you drop into any Unity project: desktop, draggable windows, a Start menu, a login screen, a virtual file system, a working terminal, mail, CCTV monitors, a retro web browser and a synthesized-sound audio module. Programs are ScriptableObject assets you drag into one profile, and every interaction raises a game event that can drive your story.',
+      'A Windows 95-style computer you drop into a Unity scene — not a picture of one. Windows that drag and resize, drives that are real folders on your disk, a browser that renders the HTML and CSS files you actually wrote, a LAN of machines that stop serving when you switch them off, CCTV wired to live scene cameras, five period games, and an event for everything the player does. Programs are components you add under the machine; there is no profile asset to maintain.',
     thumbnail: null,
     links: {
       page: '/tools/retro-os',
@@ -136,36 +136,46 @@ const tools = [
     },
     specs: {
       price: '$15.65',
-      version: 'v0.2.0',
+      version: 'v1.0.0',
       requirement: 'Unity 2021.3+',
     },
     seo: {
       description:
-        'Retro OS is a data-driven Windows 95-style in-game OS for Unity: desktop, windows, terminal, virtual file system, CCTV, mail, a retro browser and a game-event pipeline that drives your story.',
+        'Retro OS is a Windows 95-style in-game operating system for Unity: a desktop, drives that are real folders, a browser that renders your own HTML and CSS, a LAN of machines, CCTV with a DVR, five period games and a game-event pipeline that drives your story.',
       keywords:
-        'unity retro os, windows 95 unity, in-game computer unity, fake os unity asset, unity terminal simulator, unity cctv camera system, found footage horror unity, unity desktop simulator, unity virtual file system, deepwave retro os, wave0084',
+        'unity retro os, windows 95 unity, in-game computer unity, fake os unity asset, unity terminal simulator, unity cctv camera system, unity in game web browser, unity render html in ui, found footage horror unity, unity desktop simulator, unity virtual file system, deepwave retro os, wave0084',
     },
     isUnderDevelopment: false,
     features: [
       {
-        title: 'Draggable Window Manager',
+        title: 'A Desktop, Not a Mock-up',
         description:
-          'A full desktop shell — draggable/resizable windows, taskbar, Start menu and a login screen, all data-driven from ScriptableObject profiles.',
+          'Draggable, resizable windows clamped to the work area, a taskbar with live window buttons, a Start menu with hover fly-outs, and 25+ reusable Windows 95 controls to build your own programs from. It logs on, logs off and shuts down like a machine, fading the glass to a dead monitor while your game keeps running.',
       },
       {
-        title: 'Working Terminal & Virtual File System',
+        title: 'Drives Are Real Folders',
         description:
-          'Eight real commands (help, ls, cd, cat, open, pwd, clear, decrypt) over a file tree you author entirely as assets.',
+          'A machine\u2019s drives are the folders inside its folder \u2014 C is the C: drive, A the floppy, D the CD. Drop a .txt in and it is in the game: no import step, no asset, no restart. Hidden, encrypted, password, owner and sharing live in a .rmeta sidecar you edit in the Inspector or in Notepad.',
       },
       {
-        title: 'CCTV, Mail & Browser Apps',
+        title: 'A Browser That Renders Your Own Pages',
         description:
-          'Live camera feeds with a 48-frame in-engine DVR rewind, an inbox and a retro browser — every interaction can raise a game event to drive your story.',
+          'Write a site in any editor, check it in Chrome, drop the folder into internet/ \u2014 and the address the player types is the folder name. Real HTML and CSS, working inline links, images, and the era\u2019s torn-page placeholder when a picture is missing.',
       },
       {
-        title: 'Zero Audio or Image Assets',
+        title: 'A LAN of Machines, Not a Folder Called lan',
         description:
-          'Nine UI sounds synthesized at runtime and thirteen desktop icons drawn procedurally — nothing to import, nothing to license.',
+          'Every computer is a component with a name, an address and a folder of drives. A share is one line in a folder\u2019s own sidecar, so a folder copied to another machine arrives shared \u2014 and players can share folders themselves from Explorer. Switch a machine off and its shares vanish from Explorer mid-game.',
+      },
+      {
+        title: 'CCTV, Games and a Curved Tube',
+        description:
+          'Point a channel at a scene Camera and it renders live, with pan and zoom that move the real camera, plus a DVR buffer any channel can be scrubbed back through. Five period games on public-domain rules. Barrel curvature, scanlines and vignette, with clicks still landing where they look.',
+      },
+      {
+        title: 'Every Click Is a Game Event',
+        description:
+          '39 event IDs and 18 rule actions, answered three ways so each person on the team can use the one that suits them: no-code rules in the inspector, UnityEvents on the component, or C#. Nine UI sounds synthesized at runtime and 71 icons painted from code \u2014 nothing to import, nothing to license.',
       },
     ],
   },
