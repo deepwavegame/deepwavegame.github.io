@@ -144,6 +144,24 @@ const tools = [
         'RetroOS is a Windows 95-style in-game operating system for Unity: real-folder drives, a browser that renders your own HTML and CSS, a LAN of machines, CCTV with a DVR, five period games and a game-event pipeline. Unity 2022.3+, Built-in / URP / HDRP.',
       keywords:
         'unity retro os, windows 95 unity, in-game computer unity, fake os unity asset, unity terminal simulator, unity cctv camera system, unity in game web browser, unity render html in ui, found footage horror unity, unity desktop simulator, unity virtual file system, deepwave retro os, wave0084',
+      faq: [
+        {
+          q: 'Are the UI elements sprites or PSDs, or drawn from code?',
+          a: 'The entire interface is drawn at runtime in C# on Unity UI (uGUI) — window chrome, the 71 icons, scroll bars and dithers are all painted procedurally. There is no texture atlas or PSD for the interface. One RetroTheme asset controls every colour, metric and font, and full C# source is included. It renders on Built-in, URP and HDRP unchanged, with no custom shaders and no TextMeshPro dependency.',
+        },
+        {
+          q: 'Is there a real file system you can use at runtime?',
+          a: "Yes. A machine's drives are real folders on disk (C, A floppy, D CD, plus network drives). A File Explorer app does New Folder, New Text Document, rename, delete, cut/copy/paste and a Sharing dialog, and a terminal runs the usual shell commands over the same file system. Per-user privacy is enforced. In a build the content is copied into the player's Documents folder on first run, so it stays writable and moddable.",
+        },
+        {
+          q: 'Is this a framework to build on, or a preconfigured UI system?',
+          a: 'A functional framework. A program is a component you drop under the OS object; your own app is about fifteen lines. There is an OS-wide event bus with no-code rules, an HTML/CSS browser engine that renders the files you drop into internet/, a LAN of real machines where powering one off drops its share from the others live, plus mail, CCTV with a DVR wired to live scene cameras, a terminal and five period games. It ships with a demo machine so it runs on import, but it is built to be extended.',
+        },
+        {
+          q: 'Which Unity versions and render pipelines are supported?',
+          a: 'Unity 2022.3 LTS and newer, including Unity 6. The OS is uGUI and draws nothing pipeline-specific, so it works on Built-in, URP and HDRP. The only caveat is the 3D demo scene, whose own materials are URP and need their shaders re-assigned in a Built-in or HDRP project.',
+        },
+      ],
     },
     isUnderDevelopment: false,
     features: [
@@ -201,6 +219,28 @@ const tools = [
         'Cobweb Weaver is a Unity editor tool: a brush that paints spider webs onto your existing geometry, nailing each to the walls and beams around the cursor. 66 verts a web, exports to FBX. Unity 6000.3+, Built-in / URP / HDRP.',
       keywords:
         'unity spider web, unity cobweb, unity cobweb tool, paint cobwebs unity, spiderweb generator unity, unity scene dressing tool, unity cobweb fbx export, spider web wind unity, low poly spider web unity, deepwave cobweb weaver',
+      faq: [
+        {
+          q: 'How is this different from Spiderweb Generator or Dynamic Spider Web?',
+          a: 'Different job. Those generate a web — strands, or runtime cut/burn/tear. Cobweb Weaver places a hundred pre-made webs, 66 vertices each, attached to the room and merged to a couple of renderers, and the finished room exports to FBX. If you need webs the player destroys at runtime, use one of those. For dressing a level fast and shipping it static, use this. You can own both.',
+        },
+        {
+          q: 'Will it slow my game down?',
+          a: 'Nothing runs per frame. One Awake merges the webs under a root into a handful of renderers — by style and by a 12 m cube so the level still culls room by room — and then it is finished. A web is 66 vertices, and the meshes are generated at load rather than written into your scene file.',
+        },
+        {
+          q: 'It says it does not touch materials — how do the webs look like silk?',
+          a: 'The sample ships a silk shader for Built-in, Universal and HDRP. The package generates meshes and stops there, deliberately, so it can never overwrite a material you own. Any material will draw the silk. To make the webs move, assign Deepwave/WindDynamics/Fabric — the vertex layout already matches, with no preparation step — or use the sample wind driver.',
+        },
+        {
+          q: 'What Unity version does it need?',
+          a: 'Unity 6000.3 or newer. There is no back-port to 2021, 2022 or earlier Unity 6. Universal RP 17.3 is a package dependency even for a Built-in project, because it guarantees the core shader library the sample uses, but the project itself runs on Built-in, Universal or HDRP.',
+        },
+        {
+          q: 'Can I use my own web textures?',
+          a: 'Yes, and it is a first-class path. Any grid of webs works — white silk in RGB, the web in alpha. Create a Cobweb Style, assign the texture, set the grid and press Read Sheet.',
+        },
+      ],
     },
     isUnderDevelopment: false,
     features: [

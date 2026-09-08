@@ -3,14 +3,28 @@ import Head from '@docusaurus/Head';
 
 /**
  * Per-product SEO tags for a tool detail page: description, keywords, canonical,
- * Open Graph, Twitter card and a SoftwareApplication JSON-LD block.
+ * Open Graph, Twitter card, a SoftwareApplication JSON-LD block, and — when the
+ * tool's `seo.faq` array is present — a matching FAQPage JSON-LD block.
  *
  * Reads the plain-string `seo` block on a tool from `src/data/tools.js`.
  */
 export default function ProductSeo({ tool }) {
   const { title, seo = {}, specs = {} } = tool;
-  const { description = '', keywords = '', canonical = '' } = seo;
+  const { description = '', keywords = '', canonical = '', faq = [] } = seo;
   const priceValue = (specs.price || '').replace(/[^0-9.]/g, '');
+
+  const faqLd =
+    Array.isArray(faq) && faq.length
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faq.map((item) => ({
+            '@type': 'Question',
+            name: item.q,
+            acceptedAnswer: { '@type': 'Answer', text: item.a },
+          })),
+        }
+      : null;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -45,6 +59,9 @@ export default function ProductSeo({ tool }) {
       {description && <meta name="twitter:description" content={description} />}
 
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      {faqLd && (
+        <script type="application/ld+json">{JSON.stringify(faqLd)}</script>
+      )}
     </Head>
   );
 }

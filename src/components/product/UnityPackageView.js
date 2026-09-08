@@ -7,6 +7,7 @@ import { ToolHeader, ToolSpecs, ToolFeatures, ToolPreview } from './parts';
 export default function UnityPackageView({ tool }) {
   const dev = tool.isUnderDevelopment;
   const { links = {} } = tool;
+  const faq = tool.seo?.faq || [];
 
   const actions = (
     <>
@@ -53,6 +54,43 @@ export default function UnityPackageView({ tool }) {
             </div>
 
             <ToolFeatures features={tool.features} />
+
+            {!dev && faq.length > 0 && (
+              <div style={{ marginTop: '2.5rem' }}>
+                <h2 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>
+                  Frequently asked
+                </h2>
+                {faq.map((item) => (
+                  <details
+                    key={item.q}
+                    style={{
+                      borderTop: '1px solid var(--ifm-color-emphasis-300)',
+                      padding: '0.85rem 0',
+                    }}
+                  >
+                    <summary
+                      style={{
+                        cursor: 'pointer',
+                        fontWeight: 600,
+                        color: 'var(--bc-text)',
+                      }}
+                    >
+                      {item.q}
+                    </summary>
+                    <p
+                      style={{
+                        marginTop: '0.6rem',
+                        marginBottom: 0,
+                        color: 'var(--bc-text)',
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      {item.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="col col--4">
