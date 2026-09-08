@@ -31,7 +31,7 @@ const studio = {
     lines: [
       '> A studio of one, transmitting from inside Unity HDRP.',
       '> Slow, atmospheric analog-horror — and the production-grade tools',
-      '  built to make it: Infinite Corrugated Roof · Simple Painter · Retro OS.',
+      '  built to make it: Infinite Corrugated Roof · Simple Painter · RetroOS.',
       '> The signal has not stopped since 2024.',
     ],
   },

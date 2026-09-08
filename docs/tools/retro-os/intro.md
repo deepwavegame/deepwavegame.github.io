@@ -14,9 +14,9 @@ keywords:
   - unity virtual file system
 ---
 
-# Retro OS — Introduction
+# RetroOS — Introduction
 
-**Retro OS** is a Windows 95-style computer you drop into a Unity scene. Not a picture of
+**RetroOS** is a Windows 95-style computer you drop into a Unity scene. Not a picture of
 one: windows that drag and resize, drives that are real folders on your disk, a browser
 that renders the actual HTML and CSS files you wrote, a LAN of machines that stop serving
 when you switch them off, and an event for every single thing the player does inside it.
@@ -96,6 +96,6 @@ list.
 
 ## Where to go next
 
-- [Tools overview](/tools) — see Retro OS alongside Deepwave's other Unity packages
+- [Tools overview](/tools) — see RetroOS alongside Deepwave's other Unity packages
 - The package's own `README.md` (included with the `.unitypackage` / Package Manager
   install) covers the full walkthrough and every program in detail.

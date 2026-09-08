@@ -55,16 +55,16 @@ const sidebars = {
     },
   ],
 
-  // Sidebar cho Retro OS
+  // Sidebar cho RetroOS
   retroOsSidebar: [
     {
       type: 'category',
-      label: 'Retro OS',
+      label: 'RetroOS',
       link: {
         type: 'generated-index',
-        title: 'Retro OS Documentation',
+        title: 'RetroOS Documentation',
         description:
-          'Documentation for Retro OS — a data-driven Windows 95-style in-game operating system for Unity.',
+          'Documentation for RetroOS — a data-driven Windows 95-style in-game operating system for Unity.',
         slug: '/retro-os',
       },
       items: ['tools/retro-os/intro'],

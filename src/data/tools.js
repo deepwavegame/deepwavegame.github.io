@@ -125,7 +125,7 @@ const tools = [
   {
     id: 'retro-os',
     type: TOOL_TYPES.UNITY_PACKAGE,
-    title: 'Retro OS',
+    title: 'RetroOS',
     tagline: 'Windows 95-style in-game operating system for Unity.',
     description:
       'A Windows 95-style computer you drop into a Unity scene — not a picture of one. Windows that drag and resize, drives that are real folders on your disk, a browser that renders the HTML and CSS files you actually wrote, a LAN of machines that stop serving when you switch them off, CCTV wired to live scene cameras, five period games, and an event for everything the player does. Programs are components you add under the machine; there is no profile asset to maintain.',
