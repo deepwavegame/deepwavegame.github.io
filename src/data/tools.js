@@ -180,6 +180,58 @@ const tools = [
     ],
   },
   {
+    id: 'cobweb-weaver',
+    type: TOOL_TYPES.UNITY_PACKAGE,
+    title: 'Cobweb Weaver',
+    tagline: 'A brush that paints spider webs onto your geometry.',
+    description:
+      'An editor tool that paints pre-made spider webs onto the geometry you already built. Drag over a wall and each web nails itself to the corners and beams that are actually there, picking its own shape \u2014 sheet, corner, cluster or drape \u2014 from the space under the cursor. 66 verts a web, meshes generated never serialised, pins editable in 3D, and the room exports to FBX. Every mesh carries Deepwave Wind Dynamics\u2019 fabric vertex layout, so wind is a material assignment.',
+    thumbnail: null,
+    links: {
+      page: '/tools/cobweb-weaver',
+      docs: '/docs/tools/cobweb-weaver/intro',
+    },
+    specs: {
+      price: '$34.99',
+      version: 'v1.0.0',
+      requirement: 'Unity 6000.3+',
+    },
+    seo: {
+      description:
+        'Cobweb Weaver is a Unity editor tool: a brush that paints spider webs onto your existing geometry, nailing each to the walls and beams around the cursor. 66 verts a web, exports to FBX. Unity 6000.3+, Built-in / URP / HDRP.',
+      keywords:
+        'unity spider web, unity cobweb, unity cobweb tool, paint cobwebs unity, spiderweb generator unity, unity scene dressing tool, unity cobweb fbx export, spider web wind unity, low poly spider web unity, deepwave cobweb weaver',
+    },
+    isUnderDevelopment: false,
+    features: [
+      {
+        title: 'A Brush That Reads the Room',
+        description:
+          'Drag over any geometry in the scene view. Each dab casts a fan of rays out of the surface under the cursor, measures how enclosed the space is, and picks one of four forms on its own \u2014 sheet, corner, cluster or drape. The cursor shows the resolved form before you click.',
+      },
+      {
+        title: 'Anchors Read From the Artwork',
+        description:
+          'A cobweb sheet holds nine webs. The tool reads where each one\u2019s silk runs off its cell out of the alpha channel, then raycasts each anchor into your scene. Rays that hit become pins; rays that miss hang free and carry the sag.',
+      },
+      {
+        title: '66 Vertices a Web',
+        description:
+          'Against ~12,000 for a strand generator. 97 painted webs merge to 2 renderers in one Awake, by style and 12 m chunk. Meshes are generated at load and never written into the scene file \u2014 77% off the sample scene.',
+      },
+      {
+        title: 'Pins Editable in 3D, Then Export to FBX',
+        description:
+          'Multi-select pins, drag them anywhere in three dimensions, and the cloth rebuilds as you drag. A finished room exports to one FBX \u2014 welded, or a mesh per web \u2014 with a four-component UV that survives the round trip. Unity\u2019s FBX Exporter is not required.',
+      },
+      {
+        title: 'The Silk Already Speaks Wind Dynamics',
+        description:
+          'Every built mesh carries Deepwave Wind Dynamics\u2019 fabric vertex layout, so assigning that package\u2019s Fabric material is the whole setup for wind. Wind Dynamics is optional and nothing here depends on it. Sample silk shader for Built-in, Universal and HDRP.',
+      },
+    ],
+  },
+  {
     id: 'dynamic-target-framer',
     type: TOOL_TYPES.UNITY_PACKAGE,
     title: 'Dynamic Target Framer',

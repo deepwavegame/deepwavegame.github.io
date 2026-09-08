@@ -87,6 +87,22 @@ const sidebars = {
     },
   ],
 
+  // Sidebar cho Cobweb Weaver
+  cobwebWeaverSidebar: [
+    {
+      type: 'category',
+      label: 'Cobweb Weaver',
+      link: {
+        type: 'generated-index',
+        title: 'Cobweb Weaver Documentation',
+        description:
+          'Documentation for Cobweb Weaver — a Unity editor tool that paints spider webs onto existing geometry and exports the room to FBX.',
+        slug: '/cobweb-weaver',
+      },
+      items: ['tools/cobweb-weaver/intro'],
+    },
+  ],
+
   // Sidebar cho Analog VHS
   analogVhsSidebar: [
     {
