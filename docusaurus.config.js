@@ -38,7 +38,18 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: 'docs',
         },
-        blog: false,
+        blog: {
+          path: 'blog',
+          routeBasePath: 'blog',
+          blogTitle: 'Deepwave Devlog',
+          blogDescription:
+            'Devlogs and technical write-ups from Deepwave — Unity tools and analog-horror games.',
+          showReadingTime: true,
+          postsPerPage: 10,
+          blogSidebarTitle: 'Recent posts',
+          blogSidebarCount: 20,
+          feedOptions: { type: ['rss', 'atom'], xslt: true },
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -69,6 +80,7 @@ const config = {
           { to: '/games', label: 'Games', position: 'left' },
           { to: '/tools', label: 'Tools', position: 'left' },
           { to: '/assets', label: 'Assets', position: 'left' },
+          { to: '/blog', label: 'Devlog', position: 'left' },
           {
             href: 'https://github.com/deepwavegame',
             position: 'right',
