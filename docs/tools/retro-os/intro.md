@@ -2,7 +2,7 @@
 id: intro
 title: Introduction
 sidebar_position: 1
-description: Retro OS is a Windows 95-style in-game operating system for Unity — a desktop, a file system made of real folders, a browser that renders your own HTML and CSS, a LAN of machines, CCTV, five period games, and an event for everything the player does.
+description: RetroOS is a Windows 95-style in-game operating system for Unity — real-folder drives, a browser that renders your own HTML and CSS, a LAN of machines, CCTV with a DVR, five period games, and an event for everything the player does.
 keywords:
   - unity retro os
   - windows 95 unity
@@ -10,6 +10,8 @@ keywords:
   - unity terminal simulator
   - unity cctv camera system
   - unity in game web browser
+  - unity desktop simulator
+  - unity virtual file system
 ---
 
 # Retro OS — Introduction
@@ -32,12 +34,12 @@ list.
 
 | | |
 | --- | --- |
-| **Unity** | 2021.3 or newer, including Unity 6 |
+| **Unity** | 2022.3 or newer, including Unity 6 |
 | **Dependencies** | None. uGUI only — no TextMeshPro, no custom shaders |
 | **Render pipelines** | Built-in, URP and HDRP — it draws nothing pipeline-specific |
 | **Built-in programs** | 19, plus a host component for a program you build yourself |
 | **Games** | 5 — Mines, Solitaire, FreeCell, Reversi, Snake |
-| **Terminal commands** | 9 — `help`, `ls`, `cd`, `cat`, `open`, `pwd`, `print`, `clear`, `decrypt` — plus your own, written in the inspector |
+| **Terminal commands** | 8 — `help`, `ls`, `cd`, `cat`, `open`, `pwd`, `clear`, `decrypt` — plus your own, written in the inspector |
 | **Game-event IDs** | 39 |
 | **Rule action kinds** | 18 — flags, revealing and unlocking files, mail, launching a program, alerts, sounds, the blue screen, log off, shut down, taking a site off the air… |
 | **Colour schemes** | 14 of the originals, switchable at runtime from the Control Panel |
@@ -83,9 +85,10 @@ list.
   rest. React to them three ways, whichever suits the person doing the work: no-code rules
   in the inspector, UnityEvents on the component, or C#.
 
-- **Runs on a curved CRT** — barrel curvature, scanlines and a vignette, on a fullscreen
-  overlay or on a monitor prop in your 3D scene, with the pointer staying aligned to the
-  curve so clicks still land where they look.
+- **Runs on the glass of a 3D monitor** — the whole OS is drawn once into a RenderTexture
+  you hang on a CRT model, lit by your own emissive glass material. An on-screen cursor
+  mode walks a drawn pointer across the tube with the mouse, a gamepad stick or a dragging
+  finger; sitting down flips to a pixel-exact fullscreen overlay.
 
 - **Nothing to import** — every UI sound is synthesized and every icon is painted from
   code, so the package ships with no audio or image assets to license. The same painter

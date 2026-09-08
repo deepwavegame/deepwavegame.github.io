@@ -135,13 +135,13 @@ const tools = [
       docs: '/docs/tools/retro-os/intro',
     },
     specs: {
-      price: '$15.65',
-      version: 'v1.0.0',
-      requirement: 'Unity 2021.3+',
+      price: '$49.99',
+      version: 'v1.1.0',
+      requirement: 'Unity 2022.3+',
     },
     seo: {
       description:
-        'Retro OS is a Windows 95-style in-game operating system for Unity: a desktop, drives that are real folders, a browser that renders your own HTML and CSS, a LAN of machines, CCTV with a DVR, five period games and a game-event pipeline that drives your story.',
+        'RetroOS is a Windows 95-style in-game operating system for Unity: real-folder drives, a browser that renders your own HTML and CSS, a LAN of machines, CCTV with a DVR, five period games and a game-event pipeline. Unity 2022.3+, Built-in / URP / HDRP.',
       keywords:
         'unity retro os, windows 95 unity, in-game computer unity, fake os unity asset, unity terminal simulator, unity cctv camera system, unity in game web browser, unity render html in ui, found footage horror unity, unity desktop simulator, unity virtual file system, deepwave retro os, wave0084',
     },
@@ -168,9 +168,9 @@ const tools = [
           'Every computer is a component with a name, an address and a folder of drives. A share is one line in a folder\u2019s own sidecar, so a folder copied to another machine arrives shared \u2014 and players can share folders themselves from Explorer. Switch a machine off and its shares vanish from Explorer mid-game.',
       },
       {
-        title: 'CCTV, Games and a Curved Tube',
+        title: 'CCTV, Games and the Glass of a 3D Monitor',
         description:
-          'Point a channel at a scene Camera and it renders live, with pan and zoom that move the real camera, plus a DVR buffer any channel can be scrubbed back through. Five period games on public-domain rules. Barrel curvature, scanlines and vignette, with clicks still landing where they look.',
+          'Point a channel at a scene Camera and it renders live, with pan and zoom that move the real camera, plus a DVR buffer any channel can be scrubbed back through. Five period games on public-domain rules. The whole OS is drawn once into a RenderTexture you hang on a CRT model, with an on-screen cursor walked across the glass by the mouse, a gamepad stick or touch.',
       },
       {
         title: 'Every Click Is a Game Event',
@@ -241,7 +241,7 @@ const tools = [
       docs: '/docs/tools/analog-vhs/intro',
     },
     specs: {
-      price: '$25.65',
+      price: '$27.65',
       version: 'v1.3.0',
       requirement: 'Unity 6000.0+',
     },
