@@ -141,7 +141,7 @@ const tools = [
     },
     seo: {
       description:
-        'RetroOS is a Windows 95-style in-game operating system for Unity: real-folder drives, a browser that renders your own HTML and CSS, a LAN of machines, CCTV with a DVR, five period games and a game-event pipeline. Unity 2022.3+, Built-in / URP / HDRP.',
+        'A working Windows 95-style OS inside your Unity game: drives that are real folders, a browser that renders your own HTML and CSS, a LAN, CCTV, and 5 period games.',
       keywords:
         'unity retro os, windows 95 unity, in-game computer unity, fake os unity asset, unity terminal simulator, unity cctv camera system, unity in game web browser, unity render html in ui, found footage horror unity, unity desktop simulator, unity virtual file system, deepwave retro os, wave0084',
       faq: [
@@ -216,7 +216,7 @@ const tools = [
     },
     seo: {
       description:
-        'Cobweb Weaver is a Unity editor tool: a brush that paints spider webs onto your existing geometry, nailing each to the walls and beams around the cursor. 66 verts a web, exports to FBX. Unity 6000.3+, Built-in / URP / HDRP.',
+        'A Unity editor tool: a brush that places pre-made spider webs onto your existing geometry, nailing each to the walls and beams around the cursor. Exports to FBX.',
       keywords:
         'unity spider web, unity cobweb, unity cobweb tool, paint cobwebs unity, spiderweb generator unity, unity scene dressing tool, unity cobweb fbx export, spider web wind unity, low poly spider web unity, deepwave cobweb weaver',
       faq: [

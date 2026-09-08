@@ -2,7 +2,7 @@
 id: intro
 title: Introduction
 sidebar_position: 1
-description: RetroOS is a Windows 95-style in-game operating system for Unity — real-folder drives, a browser that renders your own HTML and CSS, a LAN of machines, CCTV with a DVR, five period games, and an event for everything the player does.
+description: "A working Windows 95-style OS inside your Unity game: drives that are real folders, a browser that renders your own HTML and CSS, a LAN, CCTV, and 5 period games."
 keywords:
   - unity retro os
   - windows 95 unity

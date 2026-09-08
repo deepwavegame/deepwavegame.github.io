@@ -2,7 +2,7 @@
 id: intro
 title: Introduction
 sidebar_position: 1
-description: Cobweb Weaver is a Unity editor tool that paints spider webs onto your existing geometry. Each web nails itself to the walls, corners and beams around the cursor, then the room exports to FBX. 66 verts a web, Unity 6000.3+, Built-in/URP/HDRP.
+description: "A Unity editor tool: a brush that places pre-made spider webs onto your existing geometry, nailing each to the walls and beams around the cursor. Exports to FBX."
 keywords:
   - unity spider web
   - unity cobweb
