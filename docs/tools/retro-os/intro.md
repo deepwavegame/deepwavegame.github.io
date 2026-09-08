@@ -12,6 +12,8 @@ keywords:
   - unity in game web browser
   - unity desktop simulator
   - unity virtual file system
+  - fake os game unity
+  - interface sim unity
 ---
 
 # RetroOS — Introduction

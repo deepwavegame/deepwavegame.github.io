@@ -143,7 +143,7 @@ const tools = [
       description:
         'A working Windows 95-style OS inside your Unity game: drives that are real folders, a browser that renders your own HTML and CSS, a LAN, CCTV, and 5 period games.',
       keywords:
-        'unity retro os, windows 95 unity, in-game computer unity, fake os unity asset, unity terminal simulator, unity cctv camera system, unity in game web browser, unity render html in ui, found footage horror unity, unity desktop simulator, unity virtual file system, deepwave retro os, wave0084',
+        'unity retro os, windows 95 unity, in-game computer unity, fake os unity asset, interface sim unity, unity terminal simulator, unity cctv camera system, unity in game web browser, unity render html in ui, found footage horror unity, unity desktop simulator, unity virtual file system, deepwave retro os, wave0084',
       faq: [
         {
           q: 'Are the UI elements sprites or PSDs, or drawn from code?',
