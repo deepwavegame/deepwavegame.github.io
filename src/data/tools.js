@@ -257,7 +257,7 @@ const tools = [
       {
         title: '66 Vertices a Web',
         description:
-          'Against ~12,000 for a strand generator. 97 painted webs merge to 2 renderers in one Awake, by style and 12 m chunk. Meshes are generated at load and never written into the scene file \u2014 77% off the sample scene.',
+          'Against ~12,000 for a strand generator. 97 placed webs merge to 2 renderers in one Awake, by style and 12 m chunk. Meshes are generated at load and never written into the scene file \u2014 77% off the sample scene.',
       },
       {
         title: 'Pins Editable in 3D, Then Export to FBX',
