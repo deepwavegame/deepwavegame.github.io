@@ -201,7 +201,7 @@ const tools = [
     id: 'cobweb-weaver',
     type: TOOL_TYPES.UNITY_PACKAGE,
     title: 'Cobweb Weaver',
-    tagline: 'A brush that paints spider webs onto your geometry.',
+    tagline: 'A brush that places spider webs onto your geometry.',
     description:
       'An editor tool that paints pre-made spider webs onto the geometry you already built. Drag over a wall and each web nails itself to the corners and beams that are actually there, picking its own shape \u2014 sheet, corner, cluster or drape \u2014 from the space under the cursor. 66 verts a web, meshes generated never serialised, pins editable in 3D, and the room exports to FBX. Every mesh carries Deepwave Wind Dynamics\u2019 fabric vertex layout, so wind is a material assignment.',
     thumbnail: null,

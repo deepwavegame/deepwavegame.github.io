@@ -15,15 +15,15 @@ keywords:
 
 # Cobweb Weaver — Introduction
 
-**Cobweb Weaver** is a Unity editor tool that paints spider webs onto the geometry you
-already built. Drag over a wall and each web nails itself to the corners and beams that are
-actually there — so a web looks like it grew on the wall rather than like it was dropped in
-front of it.
+**Cobweb Weaver** is a Unity editor tool that places pre-made spider webs onto the geometry
+you already built. Drag over a wall and each web nails itself to the corners and beams that
+are actually there — so a web looks like it grew on the wall rather than like it was dropped
+in front of it.
 
 :::info It generates meshes and stops there
 The package does not own the material and writes no shader properties — any material draws
 the silk. What it owns is the vertex data, and that data is Deepwave Wind Dynamics' fabric
-layout, so a painted web drops onto that package's `Fabric` material and moves correctly
+layout, so a placed web drops onto that package's `Fabric` material and moves correctly
 with no preparation step. Wind Dynamics is optional and nothing here depends on it.
 :::
 
@@ -57,7 +57,7 @@ with no preparation step. Wind Dynamics is optional and nothing here depends on 
   mix). Everything else has a defensible default.
 
 - **66 vertices a web** — against about 12,000 for a strand generator. Quads whose corner
-  of the texture is blank are never built. 97 painted webs ship as 2 renderers, merged
+  of the texture is blank are never built. 97 placed webs ship as 2 renderers, merged
   automatically by style and by a 12 m cube so the level still culls room by room.
 
 - **Meshes are generated, never stored** — a patch keeps its cards; the mesh is built from
@@ -69,7 +69,7 @@ with no preparation step. Wind Dynamics is optional and nothing here depends on 
   on a zoomed canvas of the web itself.
 
 - **Export the room to FBX** — one mesh welded together, or a mesh per web in one file,
-  with a four-component UV that survives the round trip. The painted webs are kept under
+  with a four-component UV that survives the round trip. The placed webs are kept under
   the imported model so the room can still be re-exported after a style change.
 
 - **What it deliberately is not** — not a cloth simulator, it does not tear webs at
