@@ -33,7 +33,7 @@ with no preparation step. Wind Dynamics is optional and nothing here depends on 
 | --- | --- |
 | **Unity** | 6000.3 or newer. No back-port to 2021, 2022 or earlier Unity 6 |
 | **Dependencies** | `com.unity.mathematics`; Universal RP 17.3 as a package dependency (the project itself may run on Built-in, Universal or HDRP) |
-| **Render pipelines** | Sample silk shader for Built-in and Universal (verified); HDRP one menu item away (ships but not run here) |
+| **Render pipelines** | Sample silk shader for Universal and Built-in (verified); HDRP one menu item away (ships but not run here) |
 | **Source** | Full C# — 45 scripts, no DLLs: 11 runtime, 20 editor, 6 sample, 8 test |
 | **Tests** | 59 EditMode tests — the sheet reader against the shipped art, the mesh warp and trim, placement into a real two-walled corner, the vertex packing, the FBX handedness flip and unit scale, the submesh split |
 | **Forms** | 4, resolved automatically — sheet, corner, cluster, drape |

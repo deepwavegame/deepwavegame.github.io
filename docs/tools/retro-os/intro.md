@@ -38,7 +38,7 @@ list.
 | --- | --- |
 | **Unity** | 2022.3 or newer, including Unity 6 |
 | **Dependencies** | None. uGUI only — no TextMeshPro, no custom shaders |
-| **Render pipelines** | Built-in, URP and HDRP — it draws nothing pipeline-specific |
+| **Render pipelines** | URP, HDRP and the Built-in pipeline — it draws nothing pipeline-specific, so there is nothing to convert now or when Built-in is retired |
 | **Built-in programs** | 19, plus a host component for a program you build yourself |
 | **Games** | 5 — Mines, Solitaire, FreeCell, Reversi, Snake |
 | **Terminal commands** | 8 — `help`, `ls`, `cd`, `cat`, `open`, `pwd`, `clear`, `decrypt` — plus your own, written in the inspector |

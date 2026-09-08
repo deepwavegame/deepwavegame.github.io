@@ -147,7 +147,7 @@ const tools = [
       faq: [
         {
           q: 'Are the UI elements sprites or PSDs, or drawn from code?',
-          a: 'The entire interface is drawn at runtime in C# on Unity UI (uGUI) — window chrome, the 71 icons, scroll bars and dithers are all painted procedurally. There is no texture atlas or PSD for the interface. One RetroTheme asset controls every colour, metric and font, and full C# source is included. It renders on Built-in, URP and HDRP unchanged, with no custom shaders and no TextMeshPro dependency.',
+          a: 'The entire interface is drawn at runtime in C# on Unity UI (uGUI) — window chrome, the 71 icons, scroll bars and dithers are all painted procedurally. There is no texture atlas or PSD for the interface. One RetroTheme asset controls every colour, metric and font, and full C# source is included. It renders on URP, HDRP and the Built-in pipeline unchanged, with no custom shaders and no TextMeshPro dependency.',
         },
         {
           q: 'Is there a real file system you can use at runtime?',
@@ -159,7 +159,7 @@ const tools = [
         },
         {
           q: 'Which Unity versions and render pipelines are supported?',
-          a: 'Unity 2022.3 LTS and newer, including Unity 6. The OS is uGUI and draws nothing pipeline-specific, so it works on Built-in, URP and HDRP. The only caveat is the 3D demo scene, whose own materials are URP and need their shaders re-assigned in a Built-in or HDRP project.',
+          a: 'Unity 2022.3 LTS and newer, including Unity 6. The OS is uGUI and draws nothing pipeline-specific, so it works on URP, HDRP and the Built-in pipeline with nothing to convert. The only caveat is the 3D demo scene, whose own materials are URP and need their shaders re-assigned in a Built-in or HDRP project.',
         },
       ],
     },
