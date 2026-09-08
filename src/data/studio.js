@@ -31,7 +31,7 @@ const studio = {
     lines: [
       '> A studio of one, transmitting from inside Unity HDRP.',
       '> Slow, atmospheric analog-horror — and the production-grade tools',
-      '  built to make it: Infinite Corrugated Roof · Simple Painter · RetroOS.',
+      '  built to make it: RetroOS · Cobweb Weaver · Analog VHS · Simple Painter.',
       '> The signal has not stopped since 2024.',
     ],
   },
@@ -79,7 +79,7 @@ const studio = {
 
   stats: [
     { label: 'GAMES', value: '1' },
-    { label: 'TOOLS', value: '4' },
+    { label: 'TOOLS', value: '6' },
     { label: 'ENGINES', value: 'UNITY + BLENDER' },
     { label: 'STATUS', value: 'ACTIVE' },
   ],
