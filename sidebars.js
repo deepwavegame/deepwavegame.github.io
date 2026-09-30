@@ -103,6 +103,25 @@ const sidebars = {
     },
   ],
 
+  // Sidebar cho Weatherscape
+  weatherscapeSidebar: [
+    {
+      type: 'category',
+      label: 'Weatherscape',
+      link: {
+        type: 'generated-index',
+        title: 'Weatherscape Documentation',
+        description:
+          'Documentation for Weatherscape — physically based weathering, wind, snow and dust for the Universal Render Pipeline, driven by one Weather.',
+        slug: '/weatherscape',
+      },
+      items: [
+        'tools/weatherscape/intro',
+        'tools/weatherscape/getting-started',
+      ],
+    },
+  ],
+
   // Sidebar cho Analog VHS
   analogVhsSidebar: [
     {

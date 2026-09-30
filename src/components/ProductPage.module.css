@@ -1,0 +1,88 @@
+.layout {
+  display: grid;
+  gap: var(--space-lg);
+  padding-bottom: var(--space-xl);
+}
+
+.main {
+  display: grid;
+  gap: var(--space-lg);
+  align-content: start;
+  min-width: 0;
+}
+
+.figure {
+  margin: 0;
+}
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: var(--rule-width) solid var(--site-border);
+}
+
+.description {
+  max-width: 46ch;
+  margin: 0;
+  font-size: var(--text-lead);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.heading {
+  margin: 0 0 var(--space-sm);
+}
+
+.faq details p {
+  max-width: 62ch;
+  margin: 0.6rem 0 0;
+}
+
+.sheet {
+  align-self: start;
+  display: grid;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: var(--rule-width) solid var(--site-border);
+  background: var(--site-surface);
+  box-shadow: 6px 6px 0 var(--site-border);
+}
+
+.price {
+  display: grid;
+  gap: 0.2rem;
+}
+.price strong {
+  font-family: var(--font-display);
+  margin-top: 0.4rem;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+.note {
+  color: var(--site-muted);
+  font-size: var(--text-small);
+}
+
+.status {
+  margin: 0;
+}
+
+.actions {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 997px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) 21rem;
+    gap: var(--space-xl);
+  }
+  .sheet {
+    position: sticky;
+    top: calc(var(--ifm-navbar-height) + var(--space-md));
+  }
+}

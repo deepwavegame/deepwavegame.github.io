@@ -1,0 +1,231 @@
+/**
+ * The shell: masthead (navbar), mobile menu and the colophon footer.
+ * Configuration lives in docusaurus.config.js; this file only dresses it.
+ */
+
+/* ---------- Masthead ---------- */
+
+.navbar {
+  padding: 0 var(--gutter);
+  color: var(--paper);
+  border-bottom: var(--rule-width) solid var(--signal);
+  --site-accent: var(--signal-on-ink);
+}
+.navbar__inner {
+  max-width: calc(var(--content-width) - 2 * var(--gutter));
+  margin-inline: auto;
+}
+.navbar__items {
+  align-items: stretch;
+}
+
+/* The wordmark is a framed label, like a plate on a machine. */
+.navbar__brand {
+  align-self: center;
+  gap: 0.55rem;
+  margin-right: clamp(1rem, 3vw, 2.5rem);
+  padding: 0.25rem 0.8rem 0.25rem 0.4rem;
+  border: var(--rule-width) solid var(--paper);
+  color: var(--paper);
+  text-decoration: none;
+  transition: background-color var(--ifm-transition-fast), color var(--ifm-transition-fast);
+}
+.navbar__brand:hover {
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+}
+.navbar__logo {
+  height: 1.75rem;
+  margin: 0;
+}
+.navbar__logo img {
+  height: 100%;
+}
+.navbar__title {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1;
+}
+
+/* Infima hides .navbar__item on small screens; only set display where they show. */
+@media (min-width: 997px) {
+  .navbar__link {
+    display: flex;
+    align-items: center;
+  }
+}
+.navbar__link {
+  padding: 0 0.85rem;
+  color: rgb(238 234 221 / 0.78);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--paper);
+  text-decoration: underline;
+  text-decoration-color: var(--signal-on-ink);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.6em;
+}
+
+.navbar__toggle {
+  align-self: center;
+  margin-right: 0.75rem;
+  padding: 0.5rem;
+  border: var(--rule-width) solid var(--paper);
+  color: var(--paper);
+}
+
+/* ---------- Mobile menu: full-bleed, set in display type ---------- */
+
+.navbar-sidebar {
+  --ifm-navbar-sidebar-width: 100%;
+  --ifm-menu-link-sublist-icon-filter: invert(1);
+  --site-text: var(--paper);
+  --site-accent: var(--signal-on-ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.navbar-sidebar__brand {
+  min-height: var(--ifm-navbar-height);
+  padding: 0 var(--gutter);
+  border-bottom: var(--rule-width) solid var(--signal);
+  box-shadow: none;
+}
+.navbar-sidebar__close {
+  margin-left: auto;
+  padding: 0.5rem;
+  border: var(--rule-width) solid var(--paper);
+  color: var(--paper);
+}
+.navbar-sidebar__items {
+  height: calc(100% - var(--ifm-navbar-height));
+}
+.navbar-sidebar__item {
+  padding: var(--space-md) var(--gutter);
+}
+.navbar-sidebar .menu__link {
+  color: var(--paper);
+  border-radius: 0;
+}
+.navbar-sidebar .menu__link:hover {
+  background: transparent;
+  color: var(--signal-on-ink);
+}
+.navbar-sidebar .menu__link--active {
+  background: transparent;
+  box-shadow: none;
+  color: var(--signal-on-ink);
+}
+/* Primary links: big lettering. The docs tree (second panel) keeps normal size. */
+.navbar-sidebar__item:first-child .menu__link {
+  padding: 0.35rem 0;
+  border-bottom: var(--rule-hair) solid var(--site-hairline);
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+.navbar-sidebar__back {
+  margin: 0 0 var(--space-sm);
+  padding: 0.6rem 0;
+  color: var(--paper);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ---------- Colophon ---------- */
+
+.footer {
+  --ifm-footer-background-color: var(--ink);
+  --ifm-footer-color: var(--paper);
+  --ifm-footer-title-color: var(--paper);
+  --ifm-footer-link-color: var(--paper);
+  --site-bg: var(--ink);
+  --site-text: var(--paper);
+  --site-muted: rgb(238 234 221 / 0.72);
+  --site-hairline: rgb(238 234 221 / 0.24);
+  --site-accent: var(--signal-on-ink);
+  padding-top: var(--space-xl);
+  overflow: hidden;
+}
+.footer__links {
+  gap: var(--space-md) 0;
+}
+.footer__title {
+  margin-bottom: var(--space-sm);
+  padding-top: 0.7rem;
+  border-top: var(--rule-width) solid var(--paper);
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.footer__item {
+  margin: 0;
+}
+.footer__link-item {
+  display: inline-block;
+  padding: 0.2rem 0;
+  color: rgb(238 234 221 / 0.78);
+  font-size: 1rem;
+  text-decoration: none;
+}
+.footer__link-item:hover {
+  color: var(--paper);
+  text-decoration: underline;
+}
+.footer__link-item svg {
+  margin-left: 0.3em;
+  opacity: 0.6;
+}
+
+.footer__bottom {
+  margin-top: var(--space-xl);
+}
+.footer__copyright {
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.25rem var(--space-md);
+  padding-bottom: var(--space-md);
+  color: var(--site-muted);
+  font-size: var(--text-small);
+  text-align: left;
+}
+.footer__copyright p {
+  margin: 0;
+}
+/* Oversized lettering as graphic material: the wordmark spans the whole measure. */
+.footer__mark {
+  display: block;
+  margin-bottom: var(--space-md);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 25.8cqw;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 0.74;
+  text-transform: uppercase;
+  user-select: none;
+}
+@media (min-width: 700px) {
+  .footer__copyright {
+    grid-template-columns: 1fr auto;
+  }
+  .footer__mark {
+    grid-column: 1 / -1;
+  }
+}

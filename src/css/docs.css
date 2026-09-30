@@ -1,0 +1,557 @@
+/**
+ * Reading surfaces: docs, blog and long-form pages (`.markdown`).
+ * Same system as the landing pages, tuned for reading: display type is kept to
+ * the page title and h2, prose stays inside a comfortable measure, and code,
+ * tables and diagrams are allowed to use the full column.
+ */
+
+/* ---------- Docs frame ---------- */
+
+/* Keep sidebar + article + TOC together on huge screens. */
+div:has(> .theme-doc-sidebar-container) {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  width: 100%;
+}
+
+.theme-doc-sidebar-container {
+  border-right: var(--rule-hair) solid var(--site-hairline);
+}
+@media (min-width: 997px) {
+  :root {
+    /* The sidebar column includes the page gutter so its text lines up with the masthead. */
+    --doc-sidebar-width: calc(var(--sidebar-width) + var(--gutter));
+  }
+  .theme-doc-sidebar-container {
+    --menu-inset: var(--gutter);
+  }
+}
+
+.main-wrapper {
+  min-height: 60vh;
+}
+
+/* ---------- Sidebar ---------- */
+
+.theme-doc-sidebar-container .menu {
+  padding: var(--space-md) var(--space-sm) var(--space-lg) var(--menu-inset, 0);
+  font-size: 0.95rem;
+}
+.menu__list {
+  margin: 0;
+}
+.menu__link {
+  padding: 0.4rem 0.75rem;
+  border-radius: 0;
+  color: var(--site-text);
+  font-weight: 400;
+  line-height: 1.35;
+  text-decoration: none;
+}
+.menu__link:hover {
+  background: var(--paper-deep);
+  color: var(--site-text);
+  text-decoration: none;
+}
+.menu__link--active:not(.menu__link--sublist) {
+  background: var(--paper-deep);
+  box-shadow: inset 4px 0 0 var(--signal);
+  color: var(--site-text);
+  font-weight: 700;
+}
+.menu__link--sublist-caret::after {
+  opacity: 0.7;
+}
+.menu__caret:hover {
+  background: var(--paper-deep);
+}
+.menu__list .menu__list {
+  margin-left: 0.75rem;
+  padding-left: 0.25rem;
+  border-left: var(--rule-hair) solid var(--site-hairline);
+}
+/* The product name at the head of each tree reads as a heading. */
+.theme-doc-sidebar-menu > .menu__list-item > .menu__list-item-collapsible > .menu__link {
+  padding-left: 0;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.theme-doc-sidebar-menu > .menu__list-item > .menu__list-item-collapsible {
+  margin-bottom: var(--space-xs);
+  border-bottom: var(--rule-width) solid var(--site-border);
+}
+.theme-doc-sidebar-menu > .menu__list-item > .menu__list-item-collapsible:hover {
+  background: transparent;
+}
+
+/* ---------- Breadcrumbs ---------- */
+
+.breadcrumbs {
+  margin: var(--space-md) 0 var(--space-sm);
+}
+.breadcrumbs__link {
+  padding: 0;
+  background: transparent;
+  color: var(--site-muted);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.breadcrumbs__link:hover {
+  background: transparent;
+  color: var(--site-accent);
+  text-decoration: underline;
+}
+.breadcrumbs__item--active .breadcrumbs__link {
+  background: transparent;
+  color: var(--site-text);
+}
+.breadcrumbs__item:not(:last-child)::after {
+  content: '/';
+  width: auto;
+  height: auto;
+  margin: 0 0.6em;
+  background: none;
+  color: var(--site-muted);
+  font-size: var(--text-micro);
+  opacity: 1;
+}
+
+/* ---------- Table of contents ---------- */
+
+.theme-doc-toc-desktop {
+  padding-top: var(--space-md);
+}
+.table-of-contents {
+  padding: 0 0 0 var(--space-sm);
+  border-left: var(--rule-hair) solid var(--site-hairline);
+  font-size: var(--text-small);
+}
+.theme-doc-toc-desktop::before {
+  content: 'On this page';
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--site-muted);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.table-of-contents__link {
+  display: block;
+  padding: 0.15rem 0.5rem;
+  color: var(--site-muted);
+  line-height: 1.35;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--site-text);
+  text-decoration: none;
+}
+.table-of-contents__link--active {
+  background: var(--paper-deep);
+  box-shadow: inset 3px 0 0 var(--signal);
+  font-weight: 700;
+}
+.table-of-contents li {
+  margin: 0.15rem 0;
+}
+
+.theme-doc-toc-mobile > button {
+  padding: 0.85rem 0;
+  border-block: var(--rule-width) solid var(--site-border);
+  background: transparent;
+  color: var(--site-text);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ---------- Article typography ---------- */
+
+.markdown {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+/* Prose stays in the measure; code, tables and diagrams do not. */
+.markdown > :is(p, ul, ol, dl, blockquote, details, h3, h4, h5, h6) {
+  max-width: var(--measure);
+}
+.markdown > :is(p, ul, ol, dl, blockquote, .theme-admonition, .theme-code-block, .table-scroll, .tabs, details, figure) {
+  margin-bottom: 1.35rem;
+}
+.markdown li + li {
+  margin-top: 0.35rem;
+}
+.markdown li > :is(ul, ol) {
+  margin-top: 0.35rem;
+}
+
+/* Page title: display capitals over a double rule, like a newspaper masthead. */
+article > .theme-doc-markdown:first-child {
+  padding-top: var(--space-md);
+}
+.markdown > header > h1,
+.markdown > h1:first-child,
+[class*="generatedIndexPage"] > header > h1 {
+  margin: 0 0 var(--space-md);
+  padding-bottom: 0.6rem;
+  border-bottom: 6px double var(--site-border);
+  font-size: clamp(2.75rem, 2rem + 3vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.markdown h2 {
+  margin: 3rem 0 1rem;
+  padding-top: 0.6rem;
+  border-top: var(--rule-width) solid var(--site-border);
+  font-size: clamp(1.9rem, 1.6rem + 1vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+.markdown h3 {
+  margin: 2.25rem 0 0.6rem;
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.markdown :is(h4, h5, h6) {
+  margin: 1.75rem 0 0.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.markdown .hash-link {
+  color: var(--site-muted);
+}
+
+.markdown a:not(.button) {
+  text-decoration-color: var(--signal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+.markdown a:not(.button):hover {
+  color: var(--site-accent);
+}
+
+.markdown blockquote {
+  margin-inline: 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  color: var(--site-text);
+  font-size: 1.15rem;
+}
+
+.markdown hr {
+  height: 0;
+  border: 0;
+  border-top: var(--rule-width) solid var(--site-border);
+}
+
+.markdown img {
+  height: auto;
+}
+
+/* Inline code: a quiet tint, no border. */
+code {
+  border: 0;
+  font-variant-ligatures: none;
+}
+.markdown :is(h2, h3, h4) code {
+  font-size: 0.8em;
+}
+
+/* ---------- Code blocks: an ink slab ---------- */
+
+.theme-code-block {
+  --ifm-pre-background: var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+  color: #e8e6dc;
+}
+.theme-code-block pre {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.theme-code-block [class*='codeBlockTitle'] {
+  padding: 0.5rem 1rem;
+  border-bottom: var(--rule-hair) solid rgb(238 234 221 / 0.24);
+  border-radius: 0;
+  background: #1b2a25;
+  color: rgb(238 234 221 / 0.85);
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.theme-code-block [class*='codeBlockContent'] {
+  border-radius: 0;
+}
+.theme-code-block button {
+  border-radius: 0;
+}
+
+/* Diagrams (mermaid) sit on the paper, framed by rules. */
+.docusaurus-mermaid-container {
+  margin: 1.75rem 0;
+  padding: var(--space-md) 0;
+  border-block: var(--rule-hair) solid var(--site-border);
+  overflow-x: auto;
+}
+
+/* ---------- Tables: ledger rules, no boxes ---------- */
+
+.table-scroll {
+  overflow-x: auto;
+}
+.markdown table {
+  display: table;
+  width: 100%;
+  margin: 0;
+  overflow: visible;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.markdown table thead tr {
+  border: 0;
+  border-bottom: var(--rule-width) solid var(--site-border);
+}
+.markdown table th {
+  padding: 0.6rem 1rem 0.6rem 0;
+  border: 0;
+  background: transparent;
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.markdown table td {
+  padding: 0.65rem 1rem 0.65rem 0;
+  border: 0;
+  border-bottom: var(--rule-hair) solid var(--site-hairline);
+  vertical-align: top;
+}
+.markdown table tr {
+  border: 0;
+  background: transparent;
+}
+
+/* ---------- Admonitions: a rule, a label, quiet paper ---------- */
+
+.theme-admonition {
+  --admon: var(--ink);
+  padding: 0.9rem 1.25rem 0.5rem;
+  border: 0;
+  border-top: 4px solid var(--admon);
+  border-radius: 0;
+  background: var(--paper-deep);
+  box-shadow: none;
+  color: var(--site-text);
+  font-size: 1rem;
+}
+.theme-admonition-tip { --admon: #1f6b52; }
+.theme-admonition-info { --admon: #245b86; }
+.theme-admonition-warning { --admon: #9a6200; }
+.theme-admonition-danger,
+.theme-admonition-caution { --admon: var(--signal); }
+.theme-admonition [class*='admonitionHeading'] {
+  margin-bottom: 0.4rem;
+  color: var(--site-text);
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.theme-admonition [class*='admonitionIcon'] svg {
+  fill: var(--admon);
+}
+.theme-admonition [class*='admonitionContent'] > :last-child {
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Tabs and details ---------- */
+
+.tabs {
+  border-bottom: var(--rule-hair) solid var(--site-hairline);
+}
+.tabs__item {
+  padding: 0.6rem 1rem;
+  border-radius: 0;
+  border-bottom: 3px solid transparent;
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.tabs__item:hover {
+  background: var(--paper-deep);
+}
+.tabs__item--active {
+  border-bottom-color: var(--signal);
+  color: var(--site-text);
+}
+
+details {
+  border-top: var(--rule-hair) solid var(--site-border);
+  padding: 0.85rem 0;
+}
+details:last-of-type {
+  border-bottom: var(--rule-hair) solid var(--site-border);
+}
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* ---------- Pagination ---------- */
+
+.pagination-nav {
+  margin-top: var(--space-lg);
+  gap: var(--space-md);
+}
+.pagination-nav__link {
+  padding: 1rem 0 0;
+  border: 0;
+  border-top: var(--rule-width) solid var(--site-border);
+  border-radius: 0;
+  text-decoration: none;
+}
+.pagination-nav__link:hover {
+  border-top-color: var(--signal);
+  color: var(--site-accent);
+}
+.pagination-nav__sublabel {
+  color: var(--site-muted);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.pagination-nav__label {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.pagination-nav__link:hover .pagination-nav__label {
+  color: var(--site-accent);
+}
+
+/* ---------- Category index pages (generated) ---------- */
+
+.card {
+  border: 0;
+  border-top: var(--rule-width) solid var(--site-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--site-text);
+  text-decoration: none;
+}
+.card:hover {
+  border-top-color: var(--signal);
+  background: var(--paper-deep);
+  box-shadow: none;
+  color: var(--site-text);
+}
+.card [class*='cardTitle'] {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.card [class*='cardDescription'] {
+  color: var(--site-muted);
+}
+
+/* ---------- Blog ---------- */
+
+.blog-wrapper main {
+  padding-block: var(--space-md) var(--space-xl);
+}
+.blog-wrapper article {
+  margin-bottom: var(--space-lg);
+}
+.blog-wrapper article h1,
+.blog-wrapper article h2 {
+  margin-bottom: 0.4rem;
+  font-size: var(--display-s);
+  font-weight: 800;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+.blog-wrapper article h1 a,
+.blog-wrapper article h2 a {
+  text-decoration: none;
+}
+.blog-wrapper article h2 a:hover {
+  color: var(--site-accent);
+}
+.blog-wrapper article time {
+  color: var(--site-muted);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.blog-wrapper aside nav {
+  font-size: var(--text-small);
+}
+.blog-wrapper aside [class*='sidebarItemTitle'] {
+  padding-top: 0.6rem;
+  border-top: var(--rule-width) solid var(--site-border);
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.blog-wrapper aside [class*='sidebarItemLink'] {
+  text-decoration: none;
+}
+.blog-wrapper aside [class*='sidebarItemLinkActive'] {
+  color: var(--site-accent);
+}
+
+.tag,
+.blog-wrapper .badge {
+  border: var(--rule-hair) solid var(--site-border);
+  border-radius: 0;
+  background: transparent;
+  color: var(--site-text);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.tag:hover {
+  background: var(--ink);
+  color: var(--paper);
+}

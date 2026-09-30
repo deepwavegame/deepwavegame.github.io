@@ -1,96 +1,40 @@
+/** Copy for the homepage. Everything else on the site reads from tools, games and assets. */
 const studio = {
   name: 'WAVE0084',
-  fullName: 'WAVE0084 Studio',
+  founded: 2024,
   tagline: 'Analog-horror games & Unity tools.',
-  kicker: 'EST. 2024 · INDEPENDENT STUDIO',
+  intro:
+    'An independent analog-horror studio. We broadcast games that should not exist — and release the tools we built inside the signal.',
+  description:
+    'Wave0084 is an independent analog-horror studio: the game Lil Sis, and production-grade Unity tools — Simple Painter, RetroOS, Cobweb Weaver, Analog VHS and more.',
 
-  // === Homepage broadcast ===
-  hero: {
-    channel: 'CH-84',
-    kicker: 'INCOMING SIGNAL // DO NOT ADJUST YOUR SET',
-    title: 'WAVE0084',
-    subtitle:
-      'An independent analog-horror studio. We broadcast games that should not exist — and release the tools we built inside the signal.',
-    signal: 'SIGNAL: UNSTABLE',
-    stamp: 'REC 19XX·08·04',
-    backgroundImage: null,
-  },
+  strap: ['This is not a test', 'Do not adjust your set', 'Stand by'],
 
-  ticker: [
-    'THIS IS NOT A TEST OF THE EMERGENCY BROADCAST SYSTEM',
-    'TRANSMISSION 0084',
-    'DO NOT ADJUST YOUR SET',
-    'IF YOU CAN STILL READ THIS YOU HAVE BEEN WATCHING TOO LONG',
-    'STAND BY',
+  departments: [
+    {
+      title: 'Games',
+      text: 'Slow, atmospheric analog-horror built on Unity HDRP.',
+      to: '/games',
+    },
+    {
+      title: 'Tools',
+      text: 'Unity packages, battle-tested inside our own production pipeline.',
+      to: '/tools',
+    },
+    {
+      title: 'Assets',
+      text: '3D environment packs and textures recovered for your own projects.',
+      to: '/assets',
+    },
   ],
 
-  transmission: {
-    kicker: 'INCOMING TRANSMISSION',
-    title: 'ONE OPERATOR.',
-    accent: 'ONE SIGNAL.',
-    lines: [
-      '> A studio of one, transmitting from inside Unity HDRP.',
-      '> Slow, atmospheric analog-horror — and the production-grade tools',
-      '  built to make it: RetroOS · Cobweb Weaver · Analog VHS · Simple Painter.',
-      '> The signal has not stopped since 2024.',
+  statement: {
+    title: 'The signal has not stopped since 2024.',
+    text: [
+      'A studio of one, transmitting from inside Unity HDRP.',
+      'Slow, atmospheric analog-horror — and the production-grade tools built to make it.',
     ],
   },
-
-  pillars: {
-    kicker: 'BROADCAST CHANNELS',
-    title: 'SELECT A ',
-    accent: 'CHANNEL',
-    items: [
-      {
-        index: 1,
-        channel: 'CH-01',
-        feed: 'FEED // LIL SIS',
-        title: 'Games',
-        description: 'Slow, atmospheric analog-horror built on Unity HDRP.',
-        cta: 'TUNE IN',
-        to: '/games',
-      },
-      {
-        index: 2,
-        channel: 'CH-02',
-        feed: 'FEED // TOOLCHAIN',
-        title: 'Tools',
-        description: 'Unity packages, battle-tested inside our own production pipeline.',
-        cta: 'ACCESS',
-        to: '/tools',
-      },
-      {
-        index: 3,
-        channel: 'CH-03',
-        feed: 'FEED // ARCHIVE',
-        title: 'Assets',
-        description: '3D environment packs and textures recovered for your own projects.',
-        cta: 'OPEN',
-        to: '/assets',
-      },
-    ],
-  },
-
-  diagnostics: {
-    kicker: 'SYSTEM DIAGNOSTICS',
-    title: 'SIGNAL ',
-    accent: 'READOUT',
-  },
-
-  stats: [
-    { label: 'GAMES', value: '1' },
-    { label: 'TOOLS', value: '6' },
-    { label: 'ENGINES', value: 'UNITY + BLENDER' },
-    { label: 'STATUS', value: 'ACTIVE' },
-  ],
-
-  standby: {
-    label: 'PLEASE STAND BY',
-    sub: 'WAVE0084 // TRANSMISSION RESUMES SHORTLY',
-  },
-
-  primaryCta: { to: '/games/lil-sis', label: 'TUNE IN' },
-  secondaryCta: { to: '/tools', label: 'ENTER ARCHIVE' },
 };
 
 export default studio;

@@ -1,0 +1,108 @@
+.entry {
+  position: relative;
+  display: grid;
+  gap: var(--space-sm) var(--space-md);
+  padding: var(--space-md) 0 var(--space-lg);
+  border-top: var(--rule-width) solid var(--site-border);
+}
+.entry:last-child {
+  border-bottom: var(--rule-width) solid var(--site-border);
+}
+
+.num {
+  margin: 0;
+  color: var(--site-accent);
+  font-size: var(--text-small);
+}
+
+.main {
+  display: grid;
+  gap: var(--space-sm);
+  align-content: start;
+  justify-items: start;
+}
+
+.kicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin: 0;
+  color: var(--site-muted);
+}
+.status {
+  color: var(--site-text);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--display-m);
+  font-weight: 800;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+/* Stretch the title link across the row. */
+.link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.entry:hover .link {
+  color: var(--site-accent);
+}
+.entry:has(.link:focus-visible) {
+  outline: 3px solid var(--site-accent);
+  outline-offset: 4px;
+}
+.link:focus-visible {
+  outline: 0;
+}
+
+/* Classified work: the title is struck through with a redaction bar. */
+.redacted {
+  width: fit-content;
+  padding: 0 0.1em;
+  background: var(--site-text);
+  color: var(--site-text);
+  user-select: none;
+}
+
+.text {
+  max-width: 44ch;
+  margin: 0;
+  font-size: 1.125rem;
+  text-wrap: pretty;
+}
+
+.actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+.side {
+  display: grid;
+  gap: var(--space-sm);
+  align-content: start;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: var(--rule-width) solid var(--site-border);
+}
+
+@media (min-width: 900px) {
+  .entry {
+    grid-template-columns: 3.5rem minmax(0, 1fr) minmax(16rem, 22rem);
+    column-gap: var(--space-lg);
+  }
+}

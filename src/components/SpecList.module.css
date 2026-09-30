@@ -1,0 +1,23 @@
+.list {
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-sm);
+  padding: 0.6rem 0;
+  border-bottom: var(--rule-hair) solid var(--site-hairline);
+}
+
+.item dt {
+  color: var(--site-muted);
+}
+
+.item dd {
+  margin: 0;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}

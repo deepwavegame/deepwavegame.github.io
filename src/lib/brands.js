@@ -28,3 +28,17 @@ export const SOCIAL = {
   itch: 'https://deepwave.itch.io',
   email: 'deepwavegame@gmail.com',
 };
+
+const STORE_LABELS = {
+  assetStore: 'Unity Asset Store',
+  blenderMarket: 'Blender Market',
+  cgTrader: 'CGTrader',
+  itch: 'itch.io',
+  steam: 'Steam',
+};
+
+/** `{ assetStore, itch, … }` → `[{ label, href }]`, in the order the stores are listed above. */
+export const storeLinks = (links) =>
+  Object.entries(STORE_LABELS)
+    .filter(([key]) => links[key])
+    .map(([key, label]) => ({ label, href: links[key] }));

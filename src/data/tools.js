@@ -1,4 +1,3 @@
-import React from 'react';
 import { STORE, ITCH } from '@site/src/lib/brands';
 
 export const TOOL_TYPES = {
@@ -212,6 +211,7 @@ const tools = [
     specs: {
       price: '$34.99',
       version: 'v1.0.0',
+      size: '6.3 MB',
       requirement: 'Unity 6000.3+',
     },
     seo: {
@@ -239,6 +239,14 @@ const tools = [
         {
           q: 'Can I use my own web textures?',
           a: 'Yes, and it is a first-class path. Any grid of webs works — white silk in RGB, the web in alpha. Create a Cobweb Style, assign the texture, set the grid and press Read Sheet.',
+        },
+        {
+          q: 'Which render pipelines does it support?',
+          a: 'The tool itself is pipeline-agnostic: it only builds meshes. The sample silk shader is verified on Universal and Built-in, where it ships as two SubShaders of one file. HDRP is one menu item away (Samples ▸ Render Pipeline ▸ Install HDRP Shader), because an HDRP include cannot live in a shared shader without breaking projects that do not use HDRP.',
+        },
+        {
+          q: 'Do I need Deepwave Wind Dynamics or the FBX Exporter package?',
+          a: 'No to both. Nothing in the package references Wind Dynamics; the mesh format simply matches its Fabric shader. FBX export is written by the package itself, so Unity’s FBX Exporter is neither used nor required. The only package dependencies are Unity Mathematics and Universal RP 17.3.',
         },
       ],
     },
@@ -268,6 +276,11 @@ const tools = [
         title: 'The Silk Already Speaks Wind Dynamics',
         description:
           'Every built mesh carries Deepwave Wind Dynamics\u2019 fabric vertex layout, so assigning that package\u2019s Fabric material is the whole setup for wind. Wind Dynamics is optional and nothing here depends on it. Sample silk shader for Built-in, Universal and HDRP.',
+      },
+      {
+        title: 'One Button to Start',
+        description:
+          'Tools ▸ Cobweb Weaver ▸ Set Everything Up finds the cobweb sheets in your project, fixes their import settings, measures every web on them and creates a style for each — plus a material to paint with when the sample silk shader is installed. Open Cobweb Studio, press Start Painting, drag over geometry. Shift erases.',
       },
     ],
   },
@@ -379,14 +392,71 @@ const tools = [
     ],
   },
   {
+    id: 'weatherscape',
+    type: TOOL_TYPES.UNITY_PACKAGE,
+    title: 'Weatherscape',
+    tagline: 'Physically based weathering, wind, snow and dust for URP.',
+    description:
+      'One Weather drives the whole scene: wind, rain, snow, dust and age. Each material family then ages the way the real material does — paint flakes along its cracks and shows the plaster, steel rusts where water stays, copper turns green where the rain washes it, wood silvers and checks along its grain. Flags, awnings, grass, leaves and trees move in the same wind that gameplay reads through Wind.GetVelocity.',
+    thumbnail: null,
+    links: {
+      page: '/tools/weatherscape',
+      docs: '/docs/tools/weatherscape/intro',
+    },
+    // Size is the package folder uncompressed (2026-09-30); replace with the store figure at release.
+    specs: {
+      version: 'v1.0.0',
+      size: '96.3 MB',
+      requirement: 'Unity 6000.3+ · URP 17.3+',
+    },
+    seo: {
+      description:
+        'Weatherscape weathers a URP scene from one Weather: paint flakes, steel rusts, copper greens and wood silvers, while wind, snow and dust follow. Unity 6000.3+.',
+      keywords:
+        'unity weathering shader, urp weathering, procedural rust unity, unity weather system, unity wind system, unity snow shader, unity dust shader, unity vegetation wind shader, peeling paint shader, urp wall shader, deepwave weatherscape',
+    },
+    isUnderDevelopment: true,
+    features: [
+      {
+        title: 'One Weather Drives the Scene',
+        description:
+          'A single component sets wind (speed in m/s, direction, gusts, turbulence), wetness, snow, dust and age for every Weatherscape material at once. Presets — Calm, Breezy, Rain, Storm, Snowfall, Dusty — set the lot in one click, and everything can be animated, keyed on a Timeline or scripted.',
+      },
+      {
+        title: 'Materials That Age by Their Own Physics',
+        description:
+          'Eight families — Wall, Masonry, Metal, Wood, Plastic, Glass, Fabric and Vegetation — each fail by their own mechanism. A wall is paint over plaster over brick: paint crazes and flakes along cracks and never shows brick directly; plaster spalls where damp works it. Steel rusts where water stays, copper turns green where rain washes it, wood silvers and checks along its grain.',
+      },
+      {
+        title: 'Exposure, Baked or Estimated',
+        description:
+          'A material works the moment you assign it, estimating its exposure from orientation. Bake an Exposure Group and it learns the real geometry: edges wear, grime collects under ledges, water streaks run down from sills, damp rises from the ground and rust runs down from iron. The bake takes seconds and runs in the background.',
+      },
+      {
+        title: 'Wind That Gameplay Can Read',
+        description:
+          'One analytic wind field is shared by the shaders and by Wind.GetVelocity, and a test holds the CPU and GPU within 2 mm/s of each other. Wind Sources — directional, radial and shelter — change it locally: a fan, a character pushing through grass, a sheltered courtyard.',
+      },
+      {
+        title: 'Vegetation in Four Kinds',
+        description:
+          'Grass, Leaves, Bark and Brush in one shader: plants bend about their pivot, branches twist and leaves flutter, with light glowing through thin leaves. Set the mesh data to From Height and any mesh moves as it is; bake it when you want finer control. Motion vectors stay correct.',
+      },
+      {
+        title: 'Editor Tools That Explain Themselves',
+        description:
+          'Material inspectors list what is wrong with one-click fixes, a library of ready-made materials sits beside a Weatherscape window with debug views, and Create From Maps turns your own albedo, normal, roughness, occlusion and height into Weatherscape layers. Four climates — Temperate, Tropical, Arid and Alpine — set the look of soiling, moss, snow and stains.',
+      },
+    ],
+  },
+  {
     id: 'blender-horror-exporter',
     type: TOOL_TYPES.BLENDER_ADDON,
     title: 'Horror Asset Exporter',
     tagline: 'Automated pipeline for exporting horror-ready assets from Blender.',
     description:
       'One-click export with optimized LODs, material assignments, and collider generation for Unity/Unreal.',
-    thumbnail:
-      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+    thumbnail: null,
     links: {
       page: '/tools/blender-horror-exporter',
       blenderMarket: 'https://blendermarket.com/products/example',
@@ -416,3 +486,10 @@ const tools = [
 export default tools;
 
 export const getTool = (id) => tools.find((t) => t.id === id);
+
+/** Label / value pairs for a tool's spec sheet. */
+export const toolSpecs = ({ specs }) => [
+  specs.version && ['Version', specs.version],
+  specs.requirement && ['Requires', specs.requirement],
+  specs.size && ['Size', specs.size],
+];

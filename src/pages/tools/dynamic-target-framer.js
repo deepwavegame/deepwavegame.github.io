@@ -1,7 +1,5 @@
-import React from 'react';
-import { getTool } from '@site/src/data/tools';
-import ToolPage from '@site/src/components/product';
+import ProductPage from '@site/src/components/ProductPage';
 
 export default function DynamicTargetFramerPage() {
-  return <ToolPage tool={getTool('dynamic-target-framer')} />;
+  return <ProductPage id="dynamic-target-framer" />;
 }
