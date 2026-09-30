@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-tools/simple-painter/channels-layers" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Canvas, Channels &amp; Layers | Wave0084 Studio</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" property="og:image" content="https://deepwavegame.github.io/img/products/tools/simple-painter/thumbnail.jpg"><meta data-rh="true" name="twitter:image" content="https://deepwavegame.github.io/img/products/tools/simple-painter/thumbnail.jpg"><meta data-rh="true" property="og:url" content="https://deepwavegame.github.io/docs/tools/simple-painter/channels-layers"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Canvas, Channels &amp; Layers | Wave0084 Studio"><meta data-rh="true" name="description" content="Three canvas types — MultiChannelCanvas, SimulationCanvas and SingleTargetCanvas — each hosting PaintChannels (Color, Scalar, Normal) with layers, opacity and blend modes."><meta data-rh="true" property="og:description" content="Three canvas types — MultiChannelCanvas, SimulationCanvas and SingleTargetCanvas — each hosting PaintChannels (Color, Scalar, Normal) with layers, opacity and blend modes."><meta data-rh="true" name="keywords" content="paint canvas unity,paint channel layer,pbr blend modes unity,multi channel painting"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://deepwavegame.github.io/docs/tools/simple-painter/channels-layers"><link data-rh="true" rel="alternate" href="https://deepwavegame.github.io/docs/tools/simple-painter/channels-layers" hreflang="en"><link data-rh="true" rel="alternate" href="https://deepwavegame.github.io/docs/tools/simple-painter/channels-layers" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Simple Painter","item":"https://deepwavegame.github.io/docs/simple-painter"},{"@type":"ListItem","position":2,"name":"Canvas, Channels & Layers","item":"https://deepwavegame.github.io/docs/tools/simple-painter/channels-layers"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Wave0084 Studio RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Wave0084 Studio Atom Feed">
+
+
+
+
+
+<link rel="preload" as="font" type="font/woff2" href="/fonts/big-shoulders-display.woff2" crossorigin="anonymous">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/atkinson-next.woff2" crossorigin="anonymous">
+<style>@font-face{font-family:"Big Shoulders Display";src:url(/fonts/big-shoulders-display.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}@font-face{font-family:"Atkinson Hyperlegible Next";src:url(/fonts/atkinson-next.woff2) format("woff2");font-weight:200 800;font-style:normal;font-display:swap}@font-face{font-family:"Atkinson Hyperlegible Next";src:url(/fonts/atkinson-next-italic.woff2) format("woff2");font-weight:200 800;font-style:italic;font-display:swap}</style><link rel="stylesheet" href="/assets/css/styles.c0f46a53.css">
+<script src="/assets/js/runtime~main.6dce5b42.js" defer="defer"></script>
+<script src="/assets/js/main.b30bf41e.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">WAVE0084</b></a><a class="navbar__item navbar__link" href="/games">Games</a><a class="navbar__item navbar__link" href="/tools">Tools</a><a class="navbar__item navbar__link" href="/assets">Assets</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs">Docs</a><a class="navbar__item navbar__link" href="/blog">Devlog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/deepwavegame" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/simple-painter"><span title="Simple Painter" class="categoryLinkLabel_W154">Simple Painter</span></a><button aria-label="Collapse sidebar category &#x27;Simple Painter&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/product-overview"><span title="Overview" class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/getting-started"><span title="Getting Started" class="linkLabel_WmDU">Getting Started</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/architecture"><span title="Architecture &amp; Execution Order" class="linkLabel_WmDU">Architecture &amp; Execution Order</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/paint-engine"><span title="PaintEngine &amp; Performance" class="linkLabel_WmDU">PaintEngine &amp; Performance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/paint-surface"><span title="Paintable &amp; Seam Fixing" class="linkLabel_WmDU">Paintable &amp; Seam Fixing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/tools/simple-painter/channels-layers"><span title="Canvas, Channels &amp; Layers" class="linkLabel_WmDU">Canvas, Channels &amp; Layers</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/triggers-strokes"><span title="Input &amp; Stroke Methods" class="linkLabel_WmDU">Input &amp; Stroke Methods</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/tools-brushes"><span title="Draw Config &amp; Ink" class="linkLabel_WmDU">Draw Config &amp; Ink</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/committers-fluid"><span title="Fluid Simulation" class="linkLabel_WmDU">Fluid Simulation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/api-reference"><span title="API Reference" class="linkLabel_WmDU">API Reference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tools/simple-painter/best-practices"><span title="Platform, Performance &amp; FAQ" class="linkLabel_WmDU">Platform, Performance &amp; FAQ</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/simple-painter"><span>Simple Painter</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Canvas, Channels &amp; Layers</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Canvas, Channels &amp; Layers</h1></header>
+<p><code>PaintCanvas</code> is an abstract lifecycle host — it resolves the <code>Paintable</code> target, owns the
+UV-seam environment, and drives the whole system by broadcasting lifecycle phases
+(<code>Initialize</code>, <code>Update</code>, <code>Reset</code>, <code>Clear</code>, <code>SourceChanged</code>) down through its channel/layer
+tree every frame. It also implements <code>IDrawContext</code> directly, so a <code>PaintDrawer</code> resolves
+its stamp targets straight from the canvas — there is no separate per-canvas context
+object. Three concrete canvases build on it.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-three-canvas-types">The three canvas types<a href="#the-three-canvas-types" class="hash-link" aria-label="Direct link to The three canvas types" title="Direct link to The three canvas types" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-scroll" tabindex="0"><table><thead><tr><th>Canvas</th><th>Best for</th><th>Notes</th></tr></thead><tbody><tr><td><code>MultiChannelCanvas</code></td><td>The general case — several channels, each with its own layer stack</td><td>Populates the shared <code>ChannelTopology</code> that groups channels by shader property</td></tr><tr><td><code>SimulationCanvas</code></td><td>Physically simulated wet paint</td><td>Drives a shared <code>SimulationWorkspace</code>; needs a sibling fluid solver — see <a class="" href="/docs/tools/simple-painter/committers-fluid">Fluid Simulation</a></td></tr><tr><td><code>SingleTargetCanvas</code></td><td>One channel, no layer stack, cheapest option</td><td>A stamp lands straight in its own buffer; one publish draw per dirty frame composites it over the material — no layer stack, no scratch, no shared topology</td></tr></tbody></table></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="channels-channeldefinition">Channels (ChannelDefinition)<a href="#channels-channeldefinition" class="hash-link" aria-label="Direct link to Channels (ChannelDefinition)" title="Direct link to Channels (ChannelDefinition)" translate="no">​</a></h2>
+<p>Each <strong>channel</strong> is authored as a <code>ChannelDefinition</code> asset:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-scroll" tabindex="0"><table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody><tr><td><strong>Value Type</strong></td><td><code>Color</code>, <code>Scalar</code>, or <code>Normal</code></td></tr><tr><td><strong>Shader Property / Keyword</strong></td><td>The target material property the channel drives</td></tr><tr><td><strong>Default Value</strong></td><td>Fallback value used before anything is painted</td></tr><tr><td><strong>sRGB / Bit Depth</strong></td><td>Colour-space and precision settings for the channel&#x27;s buffers</td></tr></tbody></table></div>
+<p>Because the shader property is fully configurable, a channel can drive albedo, a
+metallic/smoothness mask, a normal map, or any other property your material exposes.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="layers-paintlayer">Layers (PaintLayer)<a href="#layers-paintlayer" class="hash-link" aria-label="Direct link to Layers (PaintLayer)" title="Direct link to Layers (PaintLayer)" translate="no">​</a></h2>
+<p>On a <code>MultiChannelCanvas</code> or <code>SimulationCanvas</code>, each channel owns an independent stack of
+<strong>layers</strong> (<code>PaintLayer</code>): visibility, opacity, an optional starting texture, and a blend
+mode. Blend modes are tracked <strong>separately per value type</strong>, so switching a channel&#x27;s type
+never misinterprets a setting that belonged to a different family:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-scroll" tabindex="0"><table><thead><tr><th>Value type</th><th>Blend modes</th></tr></thead><tbody><tr><td><strong>Color</strong></td><td>Normal, Multiply, Add, Min, Max, Screen, Overlay, Soft Light</td></tr><tr><td><strong>Scalar</strong></td><td>Normal, Multiply, Add, Min, Max</td></tr><tr><td><strong>Normal</strong></td><td>Lerp, RNM (Reoriented Normal Mapping), UDN, Whiteout, Overlay, Max Slope, Subtract</td></tr></tbody></table></div>
+<p>A <code>SingleTargetCanvas</code> skips layers and compositing entirely — a stamp lands straight on
+its one buffer, which is why it&#x27;s the cheapest of the three.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="compositing">Compositing<a href="#compositing" class="hash-link" aria-label="Direct link to Compositing" title="Direct link to Compositing" translate="no">​</a></h2>
+<p>Every frame a dirty channel is composited: the origin texture, then all visible layers
+(bottom to top, each with its blend mode and opacity), then the in-progress scratch stroke,
+producing the final texture set on the material.</p>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="retargeting-at-runtime">Retargeting at runtime<a href="#retargeting-at-runtime" class="hash-link" aria-label="Direct link to Retargeting at runtime" title="Direct link to Retargeting at runtime" translate="no">​</a></h2>
+<p>A canvas paints exactly one <code>Paintable</code> at a time. Call <code>SetTarget(...)</code> to point it at a
+different object — the existing render textures are reused rather than reallocated:</p>
+<div class="language-csharp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#101a17"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-csharp codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#101a17"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9CDCFE"><span class="token comment" style="color:rgb(106, 153, 85)">// Retarget the canvas onto a different paintable object.</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain">paintCanvas</span><span class="token punctuation" style="color:rgb(212, 212, 212)">.</span><span class="token function" style="color:rgb(220, 220, 170)">SetTarget</span><span class="token punctuation" style="color:rgb(212, 212, 212)">(</span><span class="token plain">otherPaintable</span><span class="token punctuation" style="color:rgb(212, 212, 212)">)</span><span class="token punctuation" style="color:rgb(212, 212, 212)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain"></span><span class="token comment" style="color:rgb(106, 153, 85)">// Restore or wipe the current canvas.</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain">paintCanvas</span><span class="token punctuation" style="color:rgb(212, 212, 212)">.</span><span class="token function" style="color:rgb(220, 220, 170)">ResetToOrigin</span><span class="token punctuation" style="color:rgb(212, 212, 212)">(</span><span class="token punctuation" style="color:rgb(212, 212, 212)">)</span><span class="token punctuation" style="color:rgb(212, 212, 212)">;</span><span class="token plain"> </span><span class="token comment" style="color:rgb(106, 153, 85)">// back to each layer&#x27;s starting texture</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain">paintCanvas</span><span class="token punctuation" style="color:rgb(212, 212, 212)">.</span><span class="token function" style="color:rgb(220, 220, 170)">Clear</span><span class="token punctuation" style="color:rgb(212, 212, 212)">(</span><span class="token punctuation" style="color:rgb(212, 212, 212)">)</span><span class="token punctuation" style="color:rgb(212, 212, 212)">;</span><span class="token plain">         </span><span class="token comment" style="color:rgb(106, 153, 85)">// wipe to the default background</span><br></span></code></pre></div></div>
+<hr>
+<p><em>Next: <a class="" href="/docs/tools/simple-painter/triggers-strokes">Input &amp; Stroke Methods</a></em></p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/tools/simple-painter/paint-surface"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Paintable &amp; Seam Fixing</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/tools/simple-painter/triggers-strokes"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Input &amp; Stroke Methods</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#the-three-canvas-types" class="table-of-contents__link toc-highlight">The three canvas types</a></li><li><a href="#channels-channeldefinition" class="table-of-contents__link toc-highlight">Channels (ChannelDefinition)</a></li><li><a href="#layers-paintlayer" class="table-of-contents__link toc-highlight">Layers (PaintLayer)</a></li><li><a href="#compositing" class="table-of-contents__link toc-highlight">Compositing</a></li><li><a href="#retargeting-at-runtime" class="table-of-contents__link toc-highlight">Retargeting at runtime</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Studio</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/games">Games</a></li><li class="footer__item"><a class="footer__link-item" href="/tools">Tools</a></li><li class="footer__item"><a class="footer__link-item" href="/assets">Assets</a></li><li class="footer__item"><a class="footer__link-item" href="/blog">Devlog</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/tools/simple-painter/intro">Simple Painter</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/tools/infinite-corrugated-roof/intro">Infinite Corrugated Roof</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/tools/retro-os/intro">RetroOS</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/tools/cobweb-weaver/intro">Cobweb Weaver</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/tools/analog-vhs/intro">Analog VHS</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/tools/weatherscape/intro">Weatherscape</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/tools/dynamic-target-framer/intro">Dynamic Target Framer</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Elsewhere</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/BBAbWu2Mv" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://twitter.com/wave0084" target="_blank" rel="noopener noreferrer" class="footer__link-item">X / Twitter<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://youtube.com/@wave0084" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://deepwave.itch.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">itch.io<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/deepwavegame" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="mailto:deepwavegame@gmail.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">Email<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/privacy">Privacy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms">Terms</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">
+          <span class="footer__mark" aria-hidden="true">WAVE0084</span>
+          <p>© 2026 WAVE0084 Studio. All rights reserved.</p>
+          <p>Set in Big Shoulders Display and Atkinson Hyperlegible Next. Built with Docusaurus.</p></div></div></div></footer></div>
+</body>
+</html>

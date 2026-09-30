@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwave0084_com=globalThis.webpackChunkwave0084_com||[]).push([[7089],{7089(e,c,a){a.d(c,{createArchitectureServices:()=>h.S});var h=a(5796);a(4954)}}]);

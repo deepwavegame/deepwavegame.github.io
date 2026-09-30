@@ -1,0 +1,8 @@
+Big Shoulders Display — Copyright Google Inc. / The Big Shoulders Project Authors.
+Atkinson Hyperlegible Next — Copyright 2020-2024 The Atkinson Hyperlegible Next Project Authors.
+
+Both are licensed under the SIL Open Font License, Version 1.1.
+Full text: https://openfontlicense.org
+
+The .woff2 files here are the Latin subsets distributed by Fontsource
+(@fontsource-variable/big-shoulders-display, @fontsource-variable/atkinson-hyperlegible-next).

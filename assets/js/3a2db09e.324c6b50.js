@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwave0084_com=globalThis.webpackChunkwave0084_com||[]).push([[8121],{8070(a){a.exports=JSON.parse('{"tags":[{"label":"unity","permalink":"/blog/tags/unity","count":1},{"label":"gamedev","permalink":"/blog/tags/gamedev","count":1},{"label":"devlog","permalink":"/blog/tags/devlog","count":1}]}')}}]);

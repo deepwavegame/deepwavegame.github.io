@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwave0084_com=globalThis.webpackChunkwave0084_com||[]).push([[8146],{9328(e){e.exports=JSON.parse('{"metadata":{"permalink":"/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Devlogs and technical write-ups from Deepwave \u2014 Unity tools and analog-horror games.","blogTitle":"Deepwave Devlog"}}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwave0084_com=globalThis.webpackChunkwave0084_com||[]).push([[7472],{5513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"The Deepwave devlog is live","permalink":"/blog/devlog-is-live","unlisted":false,"date":"2026-09-09T00:00:00.000Z"}]}')}}]);

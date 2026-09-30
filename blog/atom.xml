@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://deepwavegame.github.io/blog</id>
+    <title>Wave0084 Studio Blog</title>
+    <updated>2026-09-09T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://deepwavegame.github.io/blog"/>
+    <subtitle>Wave0084 Studio Blog</subtitle>
+    <icon>https://deepwavegame.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[The Deepwave devlog is live]]></title>
+        <id>https://deepwavegame.github.io/blog/devlog-is-live</id>
+        <link href="https://deepwavegame.github.io/blog/devlog-is-live"/>
+        <updated>2026-09-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A place for the technical write-ups and build notes behind Deepwave's Unity tools and analog-horror games.]]></summary>
+        <content type="html"><![CDATA[<p>This is where the longer write-ups go — the parts of building a tool that do not
+fit in a store description or a changelog line.</p>
+<p>Coming up:</p>
+<ul>
+<li class=""><strong>How the RetroOS browser renders real HTML and CSS inside Unity's UI system</strong> —
+the parser, the CSS cascade, and hit-testing a link in the middle of a wrapped
+paragraph.</li>
+<li class=""><strong>Reading where a cobweb attaches straight out of the texture's alpha channel</strong> —
+why the artwork already knows where the web is tied, and how Cobweb Weaver turns
+that into a placement algorithm.</li>
+<li class=""><strong>Writing an FBX file from Unity without the FBX Exporter package</strong> — because the
+format has no four-component UV, and a cobweb vertex carries four.</li>
+</ul>
+<p>If you want to be told when these land, the <a class="" href="https://deepwavegame.github.io/tools">tools index</a> links every
+package's docs and store page.</p>]]></content>
+        <author>
+            <name>Deepwave</name>
+            <uri>https://github.com/deepwavegame</uri>
+        </author>
+        <category label="unity" term="unity"/>
+        <category label="gamedev" term="gamedev"/>
+        <category label="devlog" term="devlog"/>
+    </entry>
+</feed>
